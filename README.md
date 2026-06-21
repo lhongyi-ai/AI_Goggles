@@ -79,9 +79,47 @@ arduino-cli monitor -p /dev/cu.usbmodemXXXX -c baudrate=115200
 Serial commands in the main firmware:
 
 - `p`: take one photo
-- `r`: record one 10-second JPEG sequence
+- `r`: record one clip with the recommended benchmark profile
 - `s`: print next file indexes
+- `i`: print hardware, memory, SD, BLE, and active profile information
+- `b`: run the video smoothness benchmark suite
 - `h`: print help
+
+## BLE Phone Control
+
+The firmware exposes a BLE control service so a phone can trigger the same commands as USB serial.
+
+BLE identifiers:
+
+```text
+Device name: AI_Goggles
+Service UUID: 7b8f0001-2f5d-4d5a-9e4f-7f6a8c8d0001
+Control characteristic UUID: 7b8f0002-2f5d-4d5a-9e4f-7f6a8c8d0001
+```
+
+Phone test apps:
+
+- iPhone: nRF Connect or LightBlue
+- Android: nRF Connect
+
+Phone steps:
+
+1. Power the XIAO ESP32S3 Sense.
+2. Open nRF Connect or LightBlue.
+3. Scan for `AI_Goggles`.
+4. Connect to the device.
+5. Open the custom service UUID above.
+6. Open the control characteristic UUID above.
+7. Write one UTF-8/text command:
+   - `p`: take one photo
+   - `r`: record one clip with the recommended profile
+   - `s`: update/read status
+   - `i`: print hardware/profile info to Serial Monitor
+   - `b`: run the benchmark suite
+   - `h`: print help to Serial Monitor
+8. Read the same characteristic to see a simple status string like `ready: recording done`.
+
+Do not write a new `r` or `b` command while a recording is already running. The board is busy during capture.
 
 ## Output Files
 
@@ -97,6 +135,16 @@ JPEG sequences:
 ```text
 /clip_0001/frame_0001.jpg
 /clip_0001/frame_0002.jpg
+/clip_0001/clip_info.csv
+/clip_0001/frame_timing.csv
+```
+
+Single-file MJPEG benchmark output:
+
+```text
+/clip_0005.mjpeg
+/clip_0005_info.csv
+/clip_0005_timing.csv
 ```
 
 The XIAO ESP32S3 Sense does not have a hardware H.264 encoder, so it cannot directly create smooth MP4/MOV files on-device. Convert a clip folder to MP4 on your computer:
@@ -106,6 +154,29 @@ ffmpeg -framerate 10 -i frame_%04d.jpg -c:v libx264 -pix_fmt yuv420p clip_0001.m
 ```
 
 This repo also includes a macOS LaunchAgent and shell script that can auto-convert SD card `clip_*` folders to MP4 when the card is mounted.
+
+## Video Smoothness Benchmark
+
+The firmware records per-frame timing with `esp_timer_get_time()` and writes metrics after recording finishes. It does not print per-frame logs during capture.
+
+Profile summary:
+
+| Profile | Resolution | JPEG quality | Target FPS | SD SPI | Storage |
+| --- | --- | ---: | ---: | ---: | --- |
+| A | 320x240 | 15 | 10 | 10 MHz | Separate JPEG files |
+| B | 320x240 | 15 | 15 | 20 MHz | Separate JPEG files |
+| C | 320x240 | 20 | 20 | 20 MHz | Separate JPEG files |
+| D | 640x480 | 15 | 10 | 20 MHz | Separate JPEG files |
+| E | 320x240 | 15 | 10 | 20 MHz | Single-file MJPEG |
+
+Analyze a clip:
+
+```bash
+python3 scripts/analyze_clip_metrics.py /Volumes/UNTITLED\ 2/clip_0001
+python3 scripts/analyze_clip_metrics.py /Volumes/UNTITLED\ 2/clip_0005_info.csv
+```
+
+See [docs/video_smoothness_benchmark.md](docs/video_smoothness_benchmark.md) for the full benchmark workflow and CFR/VFR MP4 conversion notes.
 
 ## Bluetooth Audio Note
 
