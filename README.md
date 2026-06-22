@@ -199,6 +199,56 @@ ffmpeg -framerate 10 -i frame_%04d.jpg -c:v libx264 -pix_fmt yuv420p clip_0001.m
 
 This repo also includes a macOS LaunchAgent and shell script that can auto-convert SD card `clip_*` folders and `.mjpeg` files to `sd_clip_*.mp4` when the card is mounted. Live network recordings are saved separately as `recordings/live/live_*.mp4`.
 
+## macOS SD Auto Convert
+
+Install once:
+
+```bash
+chmod +x scripts/*.sh
+./scripts/install_auto_convert_launch_agent.sh
+```
+
+Prepare each AI Goggles SD card once:
+
+```bash
+./scripts/prepare_ai_goggles_sd.sh "/Volumes/SD_CARD_NAME"
+```
+
+Normal use:
+
+```text
+1. Remove the SD card from the XIAO.
+2. Insert it into the Mac.
+3. Wait for background conversion.
+4. Open ~/Movies/AI_Goggles/SD_Recordings/
+```
+
+Check status:
+
+```bash
+./scripts/check_auto_convert_status.sh
+```
+
+Logs:
+
+```bash
+tail -f ~/Library/Logs/AI_Goggles/auto_convert.log
+```
+
+Manual trigger for debugging:
+
+```bash
+launchctl kickstart -k gui/$(id -u)/com.stanley.ai-glasses.auto-convert
+```
+
+Uninstall:
+
+```bash
+./scripts/uninstall_auto_convert_launch_agent.sh
+```
+
+`StartOnMount` fires for many mounted volumes, but the script only processes volumes with `AI_GOGGLES.marker` or a strict legacy `clip_XXXX` recording layout. See [docs/macos_sd_auto_convert.md](docs/macos_sd_auto_convert.md).
+
 ## Video Smoothness Benchmark
 
 The firmware records per-frame timing with `esp_timer_get_time()` and writes metrics after recording finishes. It does not print per-frame logs during capture.

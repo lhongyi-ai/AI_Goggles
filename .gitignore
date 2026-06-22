@@ -9,3 +9,7 @@ v0_camera_prototype/wifi_config.h
 *.mp4
 *.mov
 *.avi
+*.partial.mp4
+*.failed_*.mp4
+*.invalid_*.mp4
+*.lock

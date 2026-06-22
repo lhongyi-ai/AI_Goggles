@@ -124,11 +124,11 @@ SD recording is the priority path. If Wi-Fi disconnects, the browser closes, or 
 
 ## SD Auto Conversion
 
-When the SD card is mounted on the Mac, `scripts/auto_convert_clips.sh` converts:
+When the SD card is mounted on the Mac, `scripts/auto_convert_clips.sh` converts SD recordings into:
 
 ```text
-/clip_0004.mjpeg -> /sd_clip_0004.mp4
-/clip_0005/frame_*.jpg -> /clip_0005/sd_clip_0005.mp4
+~/Movies/AI_Goggles/SD_Recordings/VOLUME_sd_clip_0004.mp4
+~/Movies/AI_Goggles/SD_Recordings/VOLUME_sd_clip_0005.mp4
 ```
 
 These files are different from live network MP4s:
