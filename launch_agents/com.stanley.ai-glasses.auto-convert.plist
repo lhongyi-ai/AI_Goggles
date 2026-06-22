@@ -18,6 +18,11 @@
   <key>StartInterval</key>
   <integer>10</integer>
 
+  <key>WatchPaths</key>
+  <array>
+    <string>/Volumes</string>
+  </array>
+
   <key>StandardOutPath</key>
   <string>/Users/stanley/Library/Logs/ai-glasses-auto-convert.launchd.out.log</string>
 

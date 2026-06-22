@@ -4,7 +4,12 @@
 
   Controls:
   - p: take one JPEG photo
-  - r: record one clip with the recommended profile
+  - r: start SD MJPEG recording while Wi-Fi preview remains available
+  - x: stop the current SD recording
+  - j: start JPEG sequence debug recording
+  - m: start SD MJPEG recording
+  - v: toggle the Wi-Fi preview server
+  - w: print Wi-Fi status and preview URLs
   - s: print next file indexes
   - i: print hardware, memory, SD, and profile info
   - b: run the video smoothness benchmark suite
@@ -17,6 +22,7 @@
 #include <BLEDevice.h>
 #include <BLEServer.h>
 #include <BLEUtils.h>
+#include <WiFi.h>
 #include <math.h>
 #include <stdlib.h>
 #include "esp_camera.h"
@@ -24,6 +30,18 @@
 #include "FS.h"
 #include "SD.h"
 #include "SPI.h"
+
+#if __has_include("wifi_config.h")
+#include "wifi_config.h"
+#endif
+
+#ifndef WIFI_SSID
+#define WIFI_SSID ""
+#endif
+
+#ifndef WIFI_PASSWORD
+#define WIFI_PASSWORD ""
+#endif
 
 // ============================================================
 // User-facing hardware settings
@@ -47,6 +65,10 @@ constexpr const char *BLE_CONTROL_UUID = "7b8f0002-2f5d-4d5a-9e4f-7f6a8c8d0001";
 
 constexpr size_t MAX_TIMING_FRAMES = 1400;
 constexpr uint32_t MIN_FREE_SD_BYTES = 2UL * 1024UL * 1024UL;
+constexpr uint16_t HTTP_PORT = 80;
+constexpr uint32_t WIFI_CONNECT_TIMEOUT_MS = 12000;
+constexpr uint16_t PREVIEW_TARGET_FPS = 10;
+constexpr uint8_t PREVIEW_FRAME_DIVIDER = 1;
 
 // ============================================================
 // XIAO ESP32S3 Sense camera pin mapping
@@ -80,6 +102,14 @@ enum class StorageMode {
   MJPEG_SINGLE_FILE
 };
 
+enum class RecordingState {
+  IDLE,
+  RECORDING_MJPEG,
+  RECORDING_JPEG_SEQUENCE,
+  STOPPING,
+  ERROR
+};
+
 struct RecordingProfile {
   const char *name;
   framesize_t frameSize;
@@ -102,7 +132,8 @@ constexpr RecordingProfile PROFILES[] = {
 };
 
 constexpr size_t PROFILE_COUNT = sizeof(PROFILES) / sizeof(PROFILES[0]);
-constexpr size_t RECOMMENDED_PROFILE_INDEX = 0;
+constexpr size_t RECOMMENDED_PROFILE_INDEX = 4;
+constexpr size_t JPEG_SEQUENCE_PROFILE_INDEX = 0;
 
 // ============================================================
 // Recording measurements
@@ -118,10 +149,13 @@ struct FrameTiming {
   uint32_t sdOpenDurationUs;
   uint32_t sdWriteDurationUs;
   uint32_t sdCloseDurationUs;
+  uint32_t previewSendDurationUs;
   uint32_t totalFrameDurationUs;
   uint32_t frameIntervalUs;
   uint32_t jpegSizeBytes;
   bool writeSuccess;
+  bool previewSent;
+  bool previewDropped;
   bool deadlineMissed;
 };
 
@@ -142,6 +176,9 @@ struct RecordingSummary {
   uint32_t captureAttempts = 0;
   uint32_t successfulFrames = 0;
   uint32_t failedFrames = 0;
+  uint32_t previewFramesSent = 0;
+  uint32_t previewFramesDropped = 0;
+  uint32_t previewDisconnects = 0;
   uint32_t missedDeadlines = 0;
   uint32_t skippedFrameSlots = 0;
   uint32_t timingRowsStored = 0;
@@ -167,6 +204,8 @@ struct RecordingSummary {
   double avgSdOpenUs = 0.0;
   double avgSdWriteUs = 0.0;
   uint32_t p95SdWriteUs = 0;
+  double avgPreviewSendUs = 0.0;
+  uint32_t p95PreviewSendUs = 0;
   double avgSdCloseUs = 0.0;
   double avgTotalFrameUs = 0.0;
   double avgJpegBytes = 0.0;
@@ -184,8 +223,29 @@ struct CaptureWriteResult {
   uint32_t sdOpenDurationUs = 0;
   uint32_t sdWriteDurationUs = 0;
   uint32_t sdCloseDurationUs = 0;
+  uint32_t previewSendDurationUs = 0;
   uint64_t captureStartUs = 0;
   uint64_t frameReadyUs = 0;
+  bool previewSent = false;
+  bool previewDropped = false;
+};
+
+struct RecordingSession {
+  RecordingState state = RecordingState::IDLE;
+  RecordingProfile profile = PROFILES[RECOMMENDED_PROFILE_INDEX];
+  RecordingSummary summary;
+  File mjpegFile;
+  char infoPath[64] = {0};
+  char timingPath[64] = {0};
+  uint64_t previousCaptureStartUs = 0;
+  uint64_t nextFrameDueUs = 0;
+  uint32_t savedFrameIndex = 1;
+  uint32_t theoreticalFrameSlot = 0;
+  uint32_t consecutiveFailures = 0;
+  uint32_t previewFramesSentAtStart = 0;
+  uint32_t previewFramesDroppedAtStart = 0;
+  uint32_t previewDisconnectsAtStart = 0;
+  bool fileOpen = false;
 };
 
 // ============================================================
@@ -219,6 +279,19 @@ camera_grab_mode_t activeGrabMode = CAMERA_GRAB_LATEST;
 uint32_t activeSdFrequency = SD_SAFE_FREQUENCY;
 
 RecordingSummary lastBenchmarkSummaries[PROFILE_COUNT];
+RecordingSession recordingSession;
+
+WiFiServer httpServer(HTTP_PORT);
+WiFiClient previewClient;
+bool wifiConfigured = strlen(WIFI_SSID) > 0;
+bool wifiConnected = false;
+bool previewServerEnabled = true;
+bool httpServerStarted = false;
+uint32_t previewFramesSent = 0;
+uint32_t previewFramesDropped = 0;
+uint32_t previewDisconnects = 0;
+uint64_t lastPreviewOnlyFrameUs = 0;
+uint64_t lastStatusPrintUs = 0;
 
 // ============================================================
 // Forward declarations
@@ -228,13 +301,20 @@ void setBleStatus(const String &status);
 void queueBleCommand(char command);
 void executeCommand(char command, const char *source);
 bool recordClip(const RecordingProfile &profile, const char *reason, RecordingSummary *summaryOut);
+bool startRecordingSession(const RecordingProfile &profile, const char *reason);
+void requestStopRecordingSession(const char *reason);
+void updateRecordingSession();
+void updatePreviewOnlyCapture();
+bool initializeWiFiAndHttp();
+void updateHttpServer();
+void printWiFiStatus();
 
 class GogglesServerCallbacks : public BLEServerCallbacks {
   void onConnect(BLEServer *server) override {
     (void)server;
     bleClientConnected = true;
     Serial.println("BLE client connected.");
-    setBleStatus("connected: write p,r,s,i,b,h");
+    setBleStatus("connected: write p,r,x,j,m,v,w,s,i,b,h");
   }
 
   void onDisconnect(BLEServer *server) override {
@@ -265,8 +345,30 @@ const char *storageModeName(StorageMode mode) {
   return mode == StorageMode::SEPARATE_JPEG ? "separate_jpeg" : "mjpeg_single_file";
 }
 
+const char *recordingStateName(RecordingState state) {
+  switch (state) {
+    case RecordingState::IDLE:
+      return "idle";
+    case RecordingState::RECORDING_MJPEG:
+      return "recording_mjpeg";
+    case RecordingState::RECORDING_JPEG_SEQUENCE:
+      return "recording_jpeg_sequence";
+    case RecordingState::STOPPING:
+      return "stopping";
+    case RecordingState::ERROR:
+      return "error";
+  }
+  return "unknown";
+}
+
 const char *grabModeName(camera_grab_mode_t mode) {
   return mode == CAMERA_GRAB_LATEST ? "latest" : "when_empty";
+}
+
+bool isRecordingActive() {
+  return recordingSession.state == RecordingState::RECORDING_MJPEG ||
+         recordingSession.state == RecordingState::RECORDING_JPEG_SEQUENCE ||
+         recordingSession.state == RecordingState::STOPPING;
 }
 
 void setRecordingLed(bool on) {
@@ -472,8 +574,9 @@ void queueBleCommand(char command) {
     command = static_cast<char>(command - 'A' + 'a');
   }
 
-  if (command != 'p' && command != 'r' && command != 's' && command != 'h' && command != 'i' && command != 'b') {
-    setBleStatus("error: write p,r,s,i,b,h");
+  if (command != 'p' && command != 'r' && command != 'x' && command != 'j' && command != 'm' &&
+      command != 'v' && command != 'w' && command != 's' && command != 'h' && command != 'i' && command != 'b') {
+    setBleStatus("error: write p,r,x,j,m,v,w,s,i,b,h");
     Serial.printf("BLE ignored unknown command: %c\n", command);
     return;
   }
@@ -500,7 +603,7 @@ bool initializeBLE() {
     BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE
   );
   bleControlCharacteristic->setCallbacks(new GogglesControlCallbacks());
-  setBleStatus("ready: write p,r,s,i,b,h");
+  setBleStatus("ready: write p,r,x,j,m,v,w,s,i,b,h");
 
   service->start();
 
@@ -547,6 +650,10 @@ void makeMjpegTimingPath(uint32_t index, char *path, size_t pathSize) {
 }
 
 bool clipIndexExists(uint32_t index) {
+  if (!sdInitialized) {
+    return false;
+  }
+
   char path[64];
   makeClipDirectory(index, path, sizeof(path));
   if (SD.exists(path)) {
@@ -561,6 +668,13 @@ bool clipIndexExists(uint32_t index) {
 }
 
 void findNextAvailableIndexes() {
+  if (!sdInitialized) {
+    Serial.println("microSD is not mounted; file indexes will be scanned after SD is available.");
+    nextPhotoIndex = 1;
+    nextClipIndex = 1;
+    return;
+  }
+
   char path[64];
   nextPhotoIndex = 1;
   makePhotoPath(nextPhotoIndex, path, sizeof(path));
@@ -630,7 +744,77 @@ bool captureAndSaveJpeg(const char *filePath) {
   return true;
 }
 
-CaptureWriteResult captureAndWriteFrame(const char *filePath, File *mjpegFile) {
+bool hasPreviewClient() {
+  return previewClient && previewClient.connected();
+}
+
+void closePreviewClient(const char *reason) {
+  if (previewClient) {
+    previewClient.stop();
+  }
+  ++previewDisconnects;
+  Serial.printf("Preview client disconnected: %s\n", reason);
+}
+
+bool sendAllToPreview(const uint8_t *data, size_t length) {
+  if (!hasPreviewClient()) {
+    return false;
+  }
+
+  size_t written = previewClient.write(data, length);
+  if (written != length) {
+    closePreviewClient("short write");
+    return false;
+  }
+
+  return true;
+}
+
+bool sendTextToPreview(const char *text) {
+  return sendAllToPreview(reinterpret_cast<const uint8_t *>(text), strlen(text));
+}
+
+bool sendPreviewFrame(camera_fb_t *frame, uint32_t *sendDurationUs, bool *dropped) {
+  *sendDurationUs = 0;
+  *dropped = false;
+
+  if (!hasPreviewClient()) {
+    return false;
+  }
+
+  char header[96];
+  int headerLength = snprintf(
+    header,
+    sizeof(header),
+    "--frame\r\nContent-Type: image/jpeg\r\nContent-Length: %u\r\n\r\n",
+    static_cast<unsigned int>(frame->len)
+  );
+
+  int availableBytes = previewClient.availableForWrite();
+  size_t requiredBytes = static_cast<size_t>(headerLength) + frame->len + 2;
+  if (availableBytes > 0 && static_cast<size_t>(availableBytes) < min(requiredBytes, static_cast<size_t>(4096))) {
+    *dropped = true;
+    ++previewFramesDropped;
+    return false;
+  }
+
+  uint64_t sendStartUs = nowUs();
+  bool ok = sendAllToPreview(reinterpret_cast<const uint8_t *>(header), static_cast<size_t>(headerLength)) &&
+            sendAllToPreview(frame->buf, frame->len) &&
+            sendTextToPreview("\r\n");
+  *sendDurationUs = static_cast<uint32_t>(nowUs() - sendStartUs);
+
+  if (ok) {
+    ++previewFramesSent;
+  } else {
+    *dropped = true;
+    ++previewFramesDropped;
+  }
+
+  return ok;
+}
+
+CaptureWriteResult captureAndDistributeFrame(const char *filePath, File *mjpegFile, bool writeToSd, bool allowPreview) {
   CaptureWriteResult result;
   result.captureStartUs = nowUs();
 
@@ -650,44 +834,58 @@ CaptureWriteResult captureAndWriteFrame(const char *filePath, File *mjpegFile) {
   result.jpegSizeBytes = frame->len;
 
   File imageFile;
-  uint64_t openStartUs = nowUs();
-  if (mjpegFile == nullptr) {
-    if (SD.exists(filePath)) {
-      esp_camera_fb_return(frame);
-      return result;
+  size_t bytesWritten = 0;
+  size_t expectedBytes = frame->len;
+
+  if (writeToSd) {
+    uint64_t openStartUs = nowUs();
+    if (mjpegFile == nullptr) {
+      if (SD.exists(filePath)) {
+        esp_camera_fb_return(frame);
+        return result;
+      }
+      imageFile = SD.open(filePath, FILE_WRITE);
+      result.sdOpenDurationUs = static_cast<uint32_t>(nowUs() - openStartUs);
+      if (!imageFile) {
+        esp_camera_fb_return(frame);
+        return result;
+      }
+    } else {
+      result.sdOpenDurationUs = 0;
     }
-    imageFile = SD.open(filePath, FILE_WRITE);
-    result.sdOpenDurationUs = static_cast<uint32_t>(nowUs() - openStartUs);
-    if (!imageFile) {
-      esp_camera_fb_return(frame);
-      return result;
+
+    File &targetFile = mjpegFile == nullptr ? imageFile : *mjpegFile;
+
+    uint64_t writeStartUs = nowUs();
+    bytesWritten = targetFile.write(frame->buf, frame->len);
+    result.sdWriteDurationUs = static_cast<uint32_t>(nowUs() - writeStartUs);
+
+    uint64_t closeStartUs = nowUs();
+    if (mjpegFile == nullptr) {
+      imageFile.close();
+    }
+    result.sdCloseDurationUs = static_cast<uint32_t>(nowUs() - closeStartUs);
+
+    if (bytesWritten == expectedBytes) {
+      result.success = true;
+    } else if (mjpegFile == nullptr && filePath != nullptr) {
+      SD.remove(filePath);
     }
   } else {
-    result.sdOpenDurationUs = 0;
+    result.success = true;
   }
 
-  File &targetFile = mjpegFile == nullptr ? imageFile : *mjpegFile;
-
-  uint64_t writeStartUs = nowUs();
-  size_t bytesWritten = targetFile.write(frame->buf, frame->len);
-  result.sdWriteDurationUs = static_cast<uint32_t>(nowUs() - writeStartUs);
-
-  uint64_t closeStartUs = nowUs();
-  if (mjpegFile == nullptr) {
-    imageFile.close();
+  if (allowPreview) {
+    result.previewSent = sendPreviewFrame(frame, &result.previewSendDurationUs, &result.previewDropped);
   }
-  result.sdCloseDurationUs = static_cast<uint32_t>(nowUs() - closeStartUs);
 
-  size_t expectedBytes = frame->len;
   esp_camera_fb_return(frame);
 
-  if (bytesWritten == expectedBytes) {
-    result.success = true;
-  } else if (mjpegFile == nullptr && filePath != nullptr) {
-    SD.remove(filePath);
-  }
-
   return result;
+}
+
+CaptureWriteResult captureAndWriteFrame(const char *filePath, File *mjpegFile) {
+  return captureAndDistributeFrame(filePath, mjpegFile, true, false);
 }
 
 // ============================================================
@@ -778,6 +976,7 @@ void computeSummaryStats(RecordingSummary &summary) {
 
   computeMetricStats(&FrameTiming::captureDurationUs, summary.timingRowsStored, &summary.avgCaptureUs, &summary.p95CaptureUs);
   computeMetricStats(&FrameTiming::sdWriteDurationUs, summary.timingRowsStored, &summary.avgSdWriteUs, &summary.p95SdWriteUs);
+  computeMetricStats(&FrameTiming::previewSendDurationUs, summary.timingRowsStored, &summary.avgPreviewSendUs, &summary.p95PreviewSendUs);
 
   uint64_t openSum = 0;
   uint64_t closeSum = 0;
@@ -857,6 +1056,12 @@ void printSummary(const RecordingSummary &summary) {
   Serial.printf("SD write avg/P95: %.1f/%lu us\n",
                 summary.avgSdWriteUs, static_cast<unsigned long>(summary.p95SdWriteUs));
   Serial.printf("SD close avg: %.1f us\n", summary.avgSdCloseUs);
+  Serial.printf("Preview sent/dropped/disconnects: %lu/%lu/%lu\n",
+                static_cast<unsigned long>(summary.previewFramesSent),
+                static_cast<unsigned long>(summary.previewFramesDropped),
+                static_cast<unsigned long>(summary.previewDisconnects));
+  Serial.printf("Preview send avg/P95: %.1f/%lu us\n",
+                summary.avgPreviewSendUs, static_cast<unsigned long>(summary.p95PreviewSendUs));
   Serial.printf("Total frame avg: %.1f us\n", summary.avgTotalFrameUs);
   Serial.printf("JPEG avg/min/max: %.1f/%lu/%lu bytes\n",
                 summary.avgJpegBytes,
@@ -927,6 +1132,9 @@ bool writeClipInfoCsv(const char *path, const RecordingSummary &summary) {
   writeCsvLineU32(file, "capture_attempts", summary.captureAttempts);
   writeCsvLineU32(file, "successful_frames", summary.successfulFrames);
   writeCsvLineU32(file, "failed_frames", summary.failedFrames);
+  writeCsvLineU32(file, "preview_frames_sent", summary.previewFramesSent);
+  writeCsvLineU32(file, "preview_frames_dropped", summary.previewFramesDropped);
+  writeCsvLineU32(file, "preview_disconnects", summary.previewDisconnects);
   writeCsvLineDouble(file, "actual_average_fps", summary.actualFps);
   writeCsvLineDouble(file, "average_frame_interval_us", summary.avgFrameIntervalUs);
   writeCsvLineU32(file, "minimum_frame_interval_us", summary.minFrameIntervalUs);
@@ -940,6 +1148,8 @@ bool writeClipInfoCsv(const char *path, const RecordingSummary &summary) {
   writeCsvLineDouble(file, "average_sd_open_us", summary.avgSdOpenUs);
   writeCsvLineDouble(file, "average_sd_write_us", summary.avgSdWriteUs);
   writeCsvLineU32(file, "p95_sd_write_us", summary.p95SdWriteUs);
+  writeCsvLineDouble(file, "average_preview_send_us", summary.avgPreviewSendUs);
+  writeCsvLineU32(file, "p95_preview_send_us", summary.p95PreviewSendUs);
   writeCsvLineDouble(file, "average_sd_close_us", summary.avgSdCloseUs);
   writeCsvLineDouble(file, "average_total_frame_us", summary.avgTotalFrameUs);
   writeCsvLineDouble(file, "average_jpeg_size_bytes", summary.avgJpegBytes);
@@ -970,11 +1180,11 @@ bool writeFrameTimingCsv(const char *path, const RecordingSummary &summary) {
     return false;
   }
 
-  file.println("capture_attempt,saved_frame_index,scheduled_start_us,capture_start_us,frame_ready_us,capture_duration_us,sd_open_duration_us,sd_write_duration_us,sd_close_duration_us,total_frame_duration_us,frame_interval_us,jpeg_size_bytes,write_success,deadline_missed");
+  file.println("capture_attempt,saved_frame_index,scheduled_start_us,capture_start_us,frame_ready_us,capture_duration_us,sd_open_duration_us,sd_write_duration_us,sd_close_duration_us,preview_send_duration_us,total_frame_duration_us,frame_interval_us,jpeg_size_bytes,write_success,preview_sent,preview_dropped,deadline_missed");
 
   for (uint32_t i = 0; i < summary.timingRowsStored; ++i) {
     const FrameTiming &row = frameTimings[i];
-    file.printf("%lu,%lu,%llu,%llu,%llu,%lu,%lu,%lu,%lu,%lu,%lu,%lu,%u,%u\n",
+    file.printf("%lu,%lu,%llu,%llu,%llu,%lu,%lu,%lu,%lu,%lu,%lu,%lu,%lu,%u,%u,%u,%u\n",
                 static_cast<unsigned long>(row.captureAttempt),
                 static_cast<unsigned long>(row.savedFrameIndex),
                 row.scheduledStartUs,
@@ -984,10 +1194,13 @@ bool writeFrameTimingCsv(const char *path, const RecordingSummary &summary) {
                 static_cast<unsigned long>(row.sdOpenDurationUs),
                 static_cast<unsigned long>(row.sdWriteDurationUs),
                 static_cast<unsigned long>(row.sdCloseDurationUs),
+                static_cast<unsigned long>(row.previewSendDurationUs),
                 static_cast<unsigned long>(row.totalFrameDurationUs),
                 static_cast<unsigned long>(row.frameIntervalUs),
                 static_cast<unsigned long>(row.jpegSizeBytes),
                 row.writeSuccess ? 1 : 0,
+                row.previewSent ? 1 : 0,
+                row.previewDropped ? 1 : 0,
                 row.deadlineMissed ? 1 : 0);
   }
 
@@ -1155,12 +1368,15 @@ bool recordClip(const RecordingProfile &profile, const char *reason, RecordingSu
       row.sdOpenDurationUs = result.sdOpenDurationUs;
       row.sdWriteDurationUs = result.sdWriteDurationUs;
       row.sdCloseDurationUs = result.sdCloseDurationUs;
+      row.previewSendDurationUs = result.previewSendDurationUs;
       row.totalFrameDurationUs = result.captureStartUs > 0 ? static_cast<uint32_t>(frameEndUs - result.captureStartUs) : 0;
       row.frameIntervalUs = previousCaptureStartUs > 0 && result.captureStartUs > previousCaptureStartUs
         ? static_cast<uint32_t>(result.captureStartUs - previousCaptureStartUs)
         : 0;
       row.jpegSizeBytes = result.jpegSizeBytes;
       row.writeSuccess = result.success;
+      row.previewSent = result.previewSent;
+      row.previewDropped = result.previewDropped;
       row.deadlineMissed = deadlineMissed;
     } else {
       summary.timingTruncated = true;
@@ -1233,6 +1449,248 @@ bool recordClip(const RecordingProfile &profile, const char *reason, RecordingSu
   return summary.successfulFrames > 0;
 }
 
+bool startRecordingSession(const RecordingProfile &profile, const char *reason) {
+  if (isRecordingActive()) {
+    Serial.println("ERROR: A recording session is already active. Send x to stop it first.");
+    setBleStatus("error: already recording");
+    return false;
+  }
+
+  RecordingSession session;
+  session.state = profile.storageMode == StorageMode::MJPEG_SINGLE_FILE
+    ? RecordingState::RECORDING_MJPEG
+    : RecordingState::RECORDING_JPEG_SEQUENCE;
+  session.profile = profile;
+
+  RecordingSummary &summary = session.summary;
+  strlcpy(summary.profileName, profile.name, sizeof(summary.profileName));
+  summary.width = profile.width;
+  summary.height = profile.height;
+  summary.jpegQuality = profile.jpegQuality;
+  summary.targetFps = profile.targetFps;
+  summary.targetIntervalUs = 1000000UL / profile.targetFps;
+  summary.requestedSdFrequency = profile.sdFrequency;
+  summary.storageMode = profile.storageMode;
+  summary.durationSeconds = 0;
+  summary.bleConnected = bleClientConnected;
+
+  Serial.println();
+  Serial.printf("Starting live recording session: %s (%s)\n", profile.name, reason);
+
+  if (!ensureCameraForProfile(profile)) {
+    Serial.println("ERROR: Camera profile could not be applied.");
+    setBleStatus("error: camera");
+    return false;
+  }
+
+  if (!ensureSdFrequency(profile.sdFrequency, &summary.actualSdFrequency)) {
+    Serial.println("ERROR: microSD is not available.");
+    setBleStatus("error: sd");
+    return false;
+  }
+
+  loadSdSpace(&summary);
+  if (summary.sdFreeBytes < MIN_FREE_SD_BYTES) {
+    Serial.printf("ERROR: Refusing to record. SD free bytes %llu.\n", summary.sdFreeBytes);
+    setBleStatus("error: sd free");
+    return false;
+  }
+
+  while (clipIndexExists(nextClipIndex)) {
+    ++nextClipIndex;
+  }
+
+  if (!prepareClipOutputs(profile, nextClipIndex, summary.outputPath, sizeof(summary.outputPath), session.infoPath, sizeof(session.infoPath), session.timingPath, sizeof(session.timingPath))) {
+    Serial.printf("ERROR: Could not create output for clip index %lu.\n", static_cast<unsigned long>(nextClipIndex));
+    setBleStatus("error: output");
+    return false;
+  }
+
+  if (profile.storageMode == StorageMode::MJPEG_SINGLE_FILE) {
+    session.mjpegFile = SD.open(summary.outputPath, FILE_WRITE);
+    if (!session.mjpegFile) {
+      Serial.printf("ERROR: Could not create %s\n", summary.outputPath);
+      setBleStatus("error: mjpeg open");
+      return false;
+    }
+    session.fileOpen = true;
+  }
+
+  summary.freeHeapBefore = ESP.getFreeHeap();
+  summary.freePsramBefore = ESP.getFreePsram();
+  summary.recordingStartUs = nowUs();
+  session.nextFrameDueUs = summary.recordingStartUs;
+  session.previewFramesSentAtStart = previewFramesSent;
+  session.previewFramesDroppedAtStart = previewFramesDropped;
+  session.previewDisconnectsAtStart = previewDisconnects;
+  recordingSession = session;
+
+  setRecordingLed(true);
+  setBleStatus(profile.storageMode == StorageMode::MJPEG_SINGLE_FILE ? "recording: mjpeg" : "recording: jpeg");
+
+  Serial.printf("Recording output: %s\n", recordingSession.summary.outputPath);
+  Serial.println("Send x to stop and write metadata.");
+  return true;
+}
+
+void finishRecordingSession(const char *reason) {
+  if (recordingSession.state == RecordingState::IDLE) {
+    return;
+  }
+
+  RecordingSummary &summary = recordingSession.summary;
+  Serial.printf("Finishing recording session: %s\n", reason);
+
+  if (recordingSession.fileOpen) {
+    recordingSession.mjpegFile.flush();
+    recordingSession.mjpegFile.close();
+    recordingSession.fileOpen = false;
+  }
+
+  summary.recordingEndUs = nowUs();
+  summary.freeHeapAfter = ESP.getFreeHeap();
+  summary.freePsramAfter = ESP.getFreePsram();
+  summary.previewFramesSent = previewFramesSent - recordingSession.previewFramesSentAtStart;
+  summary.previewFramesDropped = previewFramesDropped - recordingSession.previewFramesDroppedAtStart;
+  summary.previewDisconnects = previewDisconnects - recordingSession.previewDisconnectsAtStart;
+
+  computeSummaryStats(summary);
+  printSummary(summary);
+  writeClipInfoCsv(recordingSession.infoPath, summary);
+  writeFrameTimingCsv(recordingSession.timingPath, summary);
+
+  ++nextClipIndex;
+  setRecordingLed(false);
+
+  if (summary.failedFrames > 0 && summary.actualSdFrequency > SD_SAFE_FREQUENCY) {
+    Serial.println("Write failures occurred at high SD frequency; falling back to 10 MHz for future operations.");
+    mountMicroSD(SD_SAFE_FREQUENCY);
+    findNextAvailableIndexes();
+  }
+
+  setBleStatus("ready: recording stopped");
+  recordingSession = RecordingSession();
+}
+
+void requestStopRecordingSession(const char *reason) {
+  if (!isRecordingActive()) {
+    Serial.println("No active recording session to stop.");
+    setBleStatus("ready: idle");
+    return;
+  }
+
+  Serial.printf("Stop requested: %s\n", reason);
+  recordingSession.state = RecordingState::STOPPING;
+}
+
+void updateRecordingSession() {
+  if (recordingSession.state == RecordingState::IDLE || recordingSession.state == RecordingState::ERROR) {
+    return;
+  }
+
+  if (recordingSession.state == RecordingState::STOPPING) {
+    finishRecordingSession("stop command");
+    return;
+  }
+
+  RecordingSummary &summary = recordingSession.summary;
+  uint64_t currentUs = nowUs();
+  if (currentUs < recordingSession.nextFrameDueUs) {
+    return;
+  }
+
+  bool deadlineMissed = currentUs > recordingSession.nextFrameDueUs + summary.targetIntervalUs;
+  if (deadlineMissed) {
+    ++summary.missedDeadlines;
+  }
+
+  ++summary.captureAttempts;
+  char framePath[72] = {0};
+  if (summary.storageMode == StorageMode::SEPARATE_JPEG) {
+    makeFramePath(summary.outputPath, recordingSession.savedFrameIndex, framePath, sizeof(framePath));
+  }
+
+  CaptureWriteResult result = captureAndDistributeFrame(
+    summary.storageMode == StorageMode::SEPARATE_JPEG ? framePath : nullptr,
+    summary.storageMode == StorageMode::MJPEG_SINGLE_FILE ? &recordingSession.mjpegFile : nullptr,
+    true,
+    previewServerEnabled && hasPreviewClient() && (summary.captureAttempts % PREVIEW_FRAME_DIVIDER == 0)
+  );
+  uint64_t frameEndUs = nowUs();
+
+  if (summary.timingRowsStored < frameTimingCapacity && frameTimings != nullptr) {
+    FrameTiming &row = frameTimings[summary.timingRowsStored++];
+    row.captureAttempt = summary.captureAttempts;
+    row.savedFrameIndex = result.success ? recordingSession.savedFrameIndex : 0;
+    row.scheduledStartUs = recordingSession.nextFrameDueUs;
+    row.captureStartUs = result.captureStartUs;
+    row.frameReadyUs = result.frameReadyUs;
+    row.captureDurationUs = result.captureDurationUs;
+    row.sdOpenDurationUs = result.sdOpenDurationUs;
+    row.sdWriteDurationUs = result.sdWriteDurationUs;
+    row.sdCloseDurationUs = result.sdCloseDurationUs;
+    row.previewSendDurationUs = result.previewSendDurationUs;
+    row.totalFrameDurationUs = result.captureStartUs > 0 ? static_cast<uint32_t>(frameEndUs - result.captureStartUs) : 0;
+    row.frameIntervalUs = recordingSession.previousCaptureStartUs > 0 && result.captureStartUs > recordingSession.previousCaptureStartUs
+      ? static_cast<uint32_t>(result.captureStartUs - recordingSession.previousCaptureStartUs)
+      : 0;
+    row.jpegSizeBytes = result.jpegSizeBytes;
+    row.writeSuccess = result.success;
+    row.previewSent = result.previewSent;
+    row.previewDropped = result.previewDropped;
+    row.deadlineMissed = deadlineMissed;
+  } else {
+    summary.timingTruncated = true;
+  }
+
+  if (result.captureStartUs > 0) {
+    recordingSession.previousCaptureStartUs = result.captureStartUs;
+  }
+
+  if (result.success) {
+    ++summary.successfulFrames;
+    summary.totalBytesWritten += result.jpegSizeBytes;
+    ++recordingSession.savedFrameIndex;
+    recordingSession.consecutiveFailures = 0;
+  } else {
+    ++summary.failedFrames;
+    ++recordingSession.consecutiveFailures;
+    if (recordingSession.consecutiveFailures >= 8) {
+      Serial.println("ERROR: Too many consecutive frame write failures; stopping clip.");
+      recordingSession.state = RecordingState::STOPPING;
+    }
+  }
+
+  ++recordingSession.theoreticalFrameSlot;
+  recordingSession.nextFrameDueUs = summary.recordingStartUs + static_cast<uint64_t>(recordingSession.theoreticalFrameSlot) * summary.targetIntervalUs;
+  uint64_t afterFrameUs = nowUs();
+  while (afterFrameUs > recordingSession.nextFrameDueUs + summary.targetIntervalUs) {
+    ++recordingSession.theoreticalFrameSlot;
+    ++summary.skippedFrameSlots;
+    recordingSession.nextFrameDueUs = summary.recordingStartUs + static_cast<uint64_t>(recordingSession.theoreticalFrameSlot) * summary.targetIntervalUs;
+  }
+}
+
+void updatePreviewOnlyCapture() {
+  if (isRecordingActive() || !previewServerEnabled || !hasPreviewClient()) {
+    return;
+  }
+
+  if (!ensureCameraForProfile(PROFILES[RECOMMENDED_PROFILE_INDEX])) {
+    closePreviewClient("camera unavailable");
+    return;
+  }
+
+  uint64_t currentUs = nowUs();
+  uint32_t intervalUs = 1000000UL / PREVIEW_TARGET_FPS;
+  if (lastPreviewOnlyFrameUs != 0 && currentUs - lastPreviewOnlyFrameUs < intervalUs) {
+    return;
+  }
+
+  CaptureWriteResult result = captureAndDistributeFrame(nullptr, nullptr, false, true);
+  lastPreviewOnlyFrameUs = result.captureStartUs > 0 ? result.captureStartUs : currentUs;
+}
+
 void printBenchmarkTable(const RecordingSummary *summaries, size_t count) {
   Serial.println();
   Serial.println("Benchmark comparison");
@@ -1282,6 +1740,9 @@ void printSystemInfo() {
   Serial.printf("Free PSRAM: %lu bytes\n", static_cast<unsigned long>(ESP.getFreePsram()));
   Serial.printf("Current SD frequency: %lu Hz\n", static_cast<unsigned long>(activeSdFrequency));
   Serial.printf("BLE: %s\n", bleClientConnected ? "connected" : "advertising/disconnected");
+  Serial.printf("Recording state: %s\n", recordingStateName(recordingSession.state));
+  Serial.printf("Wi-Fi: %s\n", wifiConnected ? WiFi.localIP().toString().c_str() : (wifiConfigured ? "configured, disconnected" : "not configured"));
+  Serial.printf("Preview client: %s\n", hasPreviewClient() ? "connected" : "none");
   loadSdSpace(nullptr);
 
   Serial.println();
@@ -1303,6 +1764,306 @@ void printSystemInfo() {
 }
 
 // ============================================================
+// Wi-Fi preview server
+// ============================================================
+
+double currentSessionFps() {
+  if (!isRecordingActive() || recordingSession.summary.recordingStartUs == 0) {
+    return 0.0;
+  }
+
+  double elapsedSeconds = static_cast<double>(nowUs() - recordingSession.summary.recordingStartUs) / 1000000.0;
+  return elapsedSeconds > 0.0 ? static_cast<double>(recordingSession.summary.successfulFrames) / elapsedSeconds : 0.0;
+}
+
+String httpUrl(const char *path) {
+  if (!wifiConnected) {
+    return String("Wi-Fi not connected");
+  }
+  return String("http://") + WiFi.localIP().toString() + path;
+}
+
+bool initializeWiFiAndHttp() {
+  if (!wifiConfigured) {
+    Serial.println("Wi-Fi SSID is not configured. Create v0_camera_prototype/wifi_config.h to enable preview.");
+    return false;
+  }
+
+  WiFi.mode(WIFI_STA);
+  WiFi.setSleep(false);
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+
+  Serial.printf("Connecting to Wi-Fi SSID: %s\n", WIFI_SSID);
+  unsigned long startMs = millis();
+  while (WiFi.status() != WL_CONNECTED && millis() - startMs < WIFI_CONNECT_TIMEOUT_MS) {
+    delay(250);
+    Serial.print('.');
+  }
+  Serial.println();
+
+  wifiConnected = WiFi.status() == WL_CONNECTED;
+  if (!wifiConnected) {
+    Serial.println("WARNING: Wi-Fi did not connect. SD recording still works.");
+    return false;
+  }
+
+  httpServer.begin();
+  httpServerStarted = true;
+  Serial.println("Wi-Fi preview server ready.");
+  printWiFiStatus();
+  return true;
+}
+
+void ensureWiFiConnection() {
+  if (!wifiConfigured) {
+    wifiConnected = false;
+    return;
+  }
+
+  bool connectedNow = WiFi.status() == WL_CONNECTED;
+  if (wifiConnected && !connectedNow) {
+    Serial.println("WARNING: Wi-Fi disconnected. SD recording continues.");
+    if (hasPreviewClient()) {
+      closePreviewClient("wifi disconnected");
+    }
+  }
+
+  wifiConnected = connectedNow;
+}
+
+void printWiFiStatus() {
+  ensureWiFiConnection();
+
+  Serial.println();
+  Serial.println("Wi-Fi / Preview");
+  Serial.println("----------------");
+  Serial.printf("Configured: %s\n", wifiConfigured ? "yes" : "no");
+  Serial.printf("Connected: %s\n", wifiConnected ? "yes" : "no");
+  Serial.printf("Preview server: %s\n", previewServerEnabled ? "enabled" : "disabled");
+  Serial.printf("HTTP server started: %s\n", httpServerStarted ? "yes" : "no");
+  Serial.printf("Stream client: %s\n", hasPreviewClient() ? "connected" : "none");
+  Serial.printf("Preview sent/dropped/disconnects: %lu/%lu/%lu\n",
+                static_cast<unsigned long>(previewFramesSent),
+                static_cast<unsigned long>(previewFramesDropped),
+                static_cast<unsigned long>(previewDisconnects));
+  if (wifiConnected) {
+    Serial.printf("IP: %s\n", WiFi.localIP().toString().c_str());
+    Serial.printf("Preview page: %s\n", httpUrl("/").c_str());
+    Serial.printf("Stream URL: %s\n", httpUrl("/stream").c_str());
+    Serial.printf("Status URL: %s\n", httpUrl("/status").c_str());
+  } else if (!wifiConfigured) {
+    Serial.println("Create v0_camera_prototype/wifi_config.h with WIFI_SSID and WIFI_PASSWORD.");
+  }
+}
+
+String readHttpRequestLine(WiFiClient &client) {
+  String line;
+  unsigned long startMs = millis();
+  while (client.connected() && millis() - startMs < 300) {
+    while (client.available() > 0) {
+      char c = static_cast<char>(client.read());
+      if (c == '\n') {
+        line.trim();
+        return line;
+      }
+      if (c != '\r') {
+        line += c;
+      }
+      if (line.length() > 160) {
+        line.trim();
+        return line;
+      }
+    }
+    delay(1);
+  }
+  line.trim();
+  return line;
+}
+
+void drainHttpHeaders(WiFiClient &client) {
+  unsigned long startMs = millis();
+  String line;
+  while (client.connected() && millis() - startMs < 300) {
+    while (client.available() > 0) {
+      char c = static_cast<char>(client.read());
+      if (c == '\n') {
+        line.trim();
+        if (line.length() == 0) {
+          return;
+        }
+        line = "";
+      } else if (c != '\r') {
+        line += c;
+      }
+    }
+    delay(1);
+  }
+}
+
+void sendHttpHeader(WiFiClient &client, const char *status, const char *contentType, const char *extraHeaders = nullptr) {
+  client.printf("HTTP/1.1 %s\r\n", status);
+  client.printf("Content-Type: %s\r\n", contentType);
+  client.println("Connection: close");
+  client.println("Cache-Control: no-store");
+  if (extraHeaders != nullptr) {
+    client.print(extraHeaders);
+  }
+  client.println();
+}
+
+void sendIndexPage(WiFiClient &client) {
+  sendHttpHeader(client, "200 OK", "text/html; charset=utf-8");
+  client.println("<!doctype html><html><head><meta name='viewport' content='width=device-width,initial-scale=1'>");
+  client.println("<title>AI Goggles Live Preview</title>");
+  client.println("<style>body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:20px;background:#111;color:#eee}img{max-width:100%;border:1px solid #555}button{font-size:16px;margin:4px;padding:8px 12px}</style>");
+  client.println("</head><body><h1>AI Goggles Live Preview</h1>");
+  client.println("<img src='/stream' alt='live preview'>");
+  client.println("<p>Live preview is MJPEG. Local recording is saved to microSD.</p>");
+  client.println("<p><a href='/status'>Status JSON</a> · <a href='/capture'>Capture JPEG</a></p>");
+  client.println("<script>setInterval(()=>fetch('/status').then(r=>r.json()).then(s=>document.title=(s.recording?'REC ':'')+'AI Goggles Live Preview').catch(()=>{}),2000)</script>");
+  client.println("</body></html>");
+}
+
+void sendStatusJson(WiFiClient &client) {
+  sendHttpHeader(client, "200 OK", "application/json");
+  RecordingSummary &summary = recordingSession.summary;
+  client.println("{");
+  client.printf("  \"recording\": %s,\n", isRecordingActive() ? "true" : "false");
+  client.printf("  \"recording_state\": \"%s\",\n", recordingStateName(recordingSession.state));
+  client.printf("  \"storage_mode\": \"%s\",\n", isRecordingActive() ? storageModeName(summary.storageMode) : "none");
+  client.printf("  \"clip\": \"%s\",\n", isRecordingActive() ? summary.outputPath : "");
+  client.printf("  \"target_fps\": %u,\n", isRecordingActive() ? summary.targetFps : PREVIEW_TARGET_FPS);
+  client.printf("  \"actual_fps\": %.2f,\n", currentSessionFps());
+  client.printf("  \"successful_frames\": %lu,\n", static_cast<unsigned long>(summary.successfulFrames));
+  client.printf("  \"failed_frames\": %lu,\n", static_cast<unsigned long>(summary.failedFrames));
+  client.printf("  \"preview_clients\": %u,\n", hasPreviewClient() ? 1 : 0);
+  client.printf("  \"preview_frames_sent\": %lu,\n", static_cast<unsigned long>(previewFramesSent));
+  client.printf("  \"preview_dropped_frames\": %lu,\n", static_cast<unsigned long>(previewFramesDropped));
+  client.printf("  \"preview_disconnects\": %lu,\n", static_cast<unsigned long>(previewDisconnects));
+  client.printf("  \"free_heap\": %lu,\n", static_cast<unsigned long>(ESP.getFreeHeap()));
+  client.printf("  \"free_psram\": %lu,\n", static_cast<unsigned long>(ESP.getFreePsram()));
+  client.printf("  \"sd_ready\": %s,\n", sdInitialized ? "true" : "false");
+  client.printf("  \"wifi_connected\": %s,\n", wifiConnected ? "true" : "false");
+  client.printf("  \"ip\": \"%s\"\n", wifiConnected ? WiFi.localIP().toString().c_str() : "");
+  client.println("}");
+}
+
+void sendBusy(WiFiClient &client, const char *message) {
+  sendHttpHeader(client, "409 Conflict", "text/plain; charset=utf-8");
+  client.println(message);
+}
+
+void sendCaptureJpeg(WiFiClient &client) {
+  if (isRecordingActive() || hasPreviewClient()) {
+    sendBusy(client, "Camera pipeline is busy. Use /stream during preview or stop recording first.");
+    return;
+  }
+
+  if (!ensureCameraForProfile(PROFILES[RECOMMENDED_PROFILE_INDEX])) {
+    sendHttpHeader(client, "500 Internal Server Error", "text/plain; charset=utf-8");
+    client.println("Camera unavailable");
+    return;
+  }
+
+  camera_fb_t *frame = esp_camera_fb_get();
+  if (frame == nullptr || frame->format != PIXFORMAT_JPEG) {
+    if (frame != nullptr) {
+      esp_camera_fb_return(frame);
+    }
+    sendHttpHeader(client, "500 Internal Server Error", "text/plain; charset=utf-8");
+    client.println("Capture failed");
+    return;
+  }
+
+  client.println("HTTP/1.1 200 OK");
+  client.println("Content-Type: image/jpeg");
+  client.printf("Content-Length: %u\r\n", static_cast<unsigned int>(frame->len));
+  client.println("Cache-Control: no-store");
+  client.println("Connection: close");
+  client.println();
+  client.write(frame->buf, frame->len);
+  esp_camera_fb_return(frame);
+}
+
+void startStreamResponse(WiFiClient &client) {
+  if (!previewServerEnabled) {
+    sendBusy(client, "Preview server is disabled. Send v over Serial/BLE to enable it.");
+    return;
+  }
+
+  if (hasPreviewClient()) {
+    sendBusy(client, "Only one /stream client is supported in this V0 firmware.");
+    return;
+  }
+
+  client.setNoDelay(true);
+  client.setTimeout(1);
+  client.println("HTTP/1.1 200 OK");
+  client.println("Content-Type: multipart/x-mixed-replace; boundary=frame");
+  client.println("Cache-Control: no-store");
+  client.println("Connection: keep-alive");
+  client.println();
+  previewClient = client;
+  Serial.println("Preview stream client connected.");
+}
+
+void updateHttpServer() {
+  ensureWiFiConnection();
+  if (!wifiConnected || !httpServerStarted) {
+    return;
+  }
+
+  if (previewClient && !previewClient.connected()) {
+    closePreviewClient("client closed");
+  }
+
+  WiFiClient client = httpServer.available();
+  if (!client) {
+    return;
+  }
+
+  String requestLine = readHttpRequestLine(client);
+  if (requestLine.length() == 0) {
+    client.stop();
+    return;
+  }
+  drainHttpHeaders(client);
+
+  int firstSpace = requestLine.indexOf(' ');
+  int secondSpace = requestLine.indexOf(' ', firstSpace + 1);
+  String method = firstSpace > 0 ? requestLine.substring(0, firstSpace) : "";
+  String path = secondSpace > firstSpace ? requestLine.substring(firstSpace + 1, secondSpace) : "/";
+  int queryIndex = path.indexOf('?');
+  if (queryIndex >= 0) {
+    path = path.substring(0, queryIndex);
+  }
+
+  if (method != "GET") {
+    sendHttpHeader(client, "405 Method Not Allowed", "text/plain; charset=utf-8");
+    client.println("Only GET is supported");
+    client.stop();
+    return;
+  }
+
+  if (path == "/") {
+    sendIndexPage(client);
+    client.stop();
+  } else if (path == "/status") {
+    sendStatusJson(client);
+    client.stop();
+  } else if (path == "/capture") {
+    sendCaptureJpeg(client);
+    client.stop();
+  } else if (path == "/stream") {
+    startStreamResponse(client);
+  } else {
+    sendHttpHeader(client, "404 Not Found", "text/plain; charset=utf-8");
+    client.println("Not found");
+    client.stop();
+  }
+}
+
+// ============================================================
 // Controls
 // ============================================================
 
@@ -1310,7 +2071,12 @@ void printHelp() {
   Serial.println();
   Serial.println("Commands:");
   Serial.println("  p - take one photo");
-  Serial.println("  r - record one clip with the recommended profile");
+  Serial.println("  r - start SD MJPEG recording with Wi-Fi preview available");
+  Serial.println("  x - stop current SD recording and write metadata");
+  Serial.println("  j - start JPEG sequence debug recording");
+  Serial.println("  m - start SD MJPEG recording");
+  Serial.println("  v - enable/disable Wi-Fi preview server");
+  Serial.println("  w - print Wi-Fi status, IP, and preview URLs");
   Serial.println("  s - print next file indexes");
   Serial.println("  i - print hardware, memory, SD, and profile info");
   Serial.println("  b - run video smoothness benchmark suite");
@@ -1320,7 +2086,7 @@ void printHelp() {
   Serial.printf("  Device: %s\n", BLE_DEVICE_NAME);
   Serial.printf("  Service: %s\n", BLE_SERVICE_UUID);
   Serial.printf("  Control characteristic: %s\n", BLE_CONTROL_UUID);
-  Serial.println("  Write p, r, s, i, b, or h as text/UTF-8.");
+  Serial.println("  Write p, r, x, j, m, v, w, s, i, b, or h as text/UTF-8.");
 }
 
 void executeCommand(char command, const char *source) {
@@ -1331,35 +2097,63 @@ void executeCommand(char command, const char *source) {
   Serial.printf("%s command: %c\n", source, command);
 
   if (command == 'p') {
+    if (isRecordingActive()) {
+      Serial.println("Photo command ignored while recording. Send x first.");
+      setBleStatus("error: recording");
+      return;
+    }
     setBleStatus("busy: taking photo");
     takeSinglePhoto();
     setBleStatus("ready: photo done");
   } else if (command == 'r') {
-    setBleStatus("busy: recording");
-    RecordingSummary summary;
-    recordClip(PROFILES[RECOMMENDED_PROFILE_INDEX], "recommended", &summary);
-    setBleStatus("ready: recording done");
+    startRecordingSession(PROFILES[RECOMMENDED_PROFILE_INDEX], "recommended");
+  } else if (command == 'x') {
+    requestStopRecordingSession(source);
+  } else if (command == 'j') {
+    startRecordingSession(PROFILES[JPEG_SEQUENCE_PROFILE_INDEX], "jpeg debug");
+  } else if (command == 'm') {
+    startRecordingSession(PROFILES[RECOMMENDED_PROFILE_INDEX], "mjpeg");
+  } else if (command == 'v') {
+    previewServerEnabled = !previewServerEnabled;
+    if (!previewServerEnabled && hasPreviewClient()) {
+      closePreviewClient("preview disabled");
+    }
+    Serial.printf("Preview server %s.\n", previewServerEnabled ? "enabled" : "disabled");
+    setBleStatus(previewServerEnabled ? "ready: preview enabled" : "ready: preview disabled");
+  } else if (command == 'w') {
+    printWiFiStatus();
+    setBleStatus(wifiConnected ? WiFi.localIP().toString() : "wifi not connected");
   } else if (command == 's') {
     String status =
       "photo=" + String(nextPhotoIndex) +
       ", clip=" + String(nextClipIndex) +
-      ", ble=" + String(bleClientConnected ? "connected" : "advertising");
+      ", rec=" + String(recordingStateName(recordingSession.state)) +
+      ", wifi=" + String(wifiConnected ? WiFi.localIP().toString() : "off");
     Serial.printf("Next photo index: %lu\n", static_cast<unsigned long>(nextPhotoIndex));
     Serial.printf("Next clip index: %lu\n", static_cast<unsigned long>(nextClipIndex));
+    Serial.printf("Recording state: %s\n", recordingStateName(recordingSession.state));
     setBleStatus(status);
   } else if (command == 'i') {
     printSystemInfo();
     setBleStatus("ready: info printed");
   } else if (command == 'b') {
+    if (isRecordingActive()) {
+      Serial.println("Benchmark ignored while recording. Send x first.");
+      setBleStatus("error: recording");
+      return;
+    }
+    if (hasPreviewClient()) {
+      closePreviewClient("benchmark starting");
+    }
     runBenchmarkSuite();
   } else if (command == 'h' || command == '?') {
     printHelp();
-    setBleStatus("ready: write p,r,s,i,b,h");
+    setBleStatus("ready: write p,r,x,j,m,v,w,s,i,b,h");
   } else if (command == '\n' || command == '\r') {
     return;
   } else {
     Serial.printf("Unknown command: %c\n", command);
-    setBleStatus("error: write p,r,s,i,b,h");
+    setBleStatus("error: write p,r,x,j,m,v,w,s,i,b,h");
   }
 }
 
@@ -1404,7 +2198,11 @@ void updateButton() {
       unsigned long pressDurationMs = currentTimeMs - buttonPressStartMs;
       Serial.printf("Button released after %lu ms.\n", pressDurationMs);
       if (!longPressTriggered) {
-        takeSinglePhoto();
+        if (isRecordingActive()) {
+          requestStopRecordingSession("button short press");
+        } else {
+          takeSinglePhoto();
+        }
       }
       buttonWasPressed = false;
       longPressTriggered = false;
@@ -1419,8 +2217,11 @@ void updateButton() {
   ) {
     longPressTriggered = true;
     Serial.println("Long press detected.");
-    RecordingSummary summary;
-    recordClip(PROFILES[RECOMMENDED_PROFILE_INDEX], "button", &summary);
+    if (isRecordingActive()) {
+      requestStopRecordingSession("button long press");
+    } else {
+      startRecordingSession(PROFILES[RECOMMENDED_PROFILE_INDEX], "button");
+    }
     buttonWasPressed = false;
     stableButtonState = digitalRead(BUTTON_PIN);
     lastRawButtonState = stableButtonState;
@@ -1472,14 +2273,16 @@ void setup() {
 
   Serial.println("Initializing microSD card...");
   if (!mountMicroSD(SD_SAFE_FREQUENCY)) {
-    Serial.println("FATAL ERROR: microSD could not start.");
-    fatalBlink(2, 150, 350);
+    Serial.println("WARNING: microSD could not start. Preview can still run, but SD recording commands will fail until SD is available.");
+  } else {
+    findNextAvailableIndexes();
   }
-
-  findNextAvailableIndexes();
 
   Serial.println("Initializing BLE control...");
   initializeBLE();
+
+  Serial.println("Initializing Wi-Fi preview server...");
+  initializeWiFiAndHttp();
 
   stableButtonState = digitalRead(BUTTON_PIN);
   lastRawButtonState = stableButtonState;
@@ -1495,5 +2298,8 @@ void loop() {
   updateSerialCommands();
   updateBleCommands();
   updateButton();
+  updateHttpServer();
+  updateRecordingSession();
+  updatePreviewOnlyCapture();
   delay(2);
 }

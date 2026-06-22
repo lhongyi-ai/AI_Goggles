@@ -107,6 +107,7 @@ def analyze(path: Path) -> list[tuple[str, str]]:
     sd_write = [to_float(row.get("sd_write_duration_us")) for row in rows if to_float(row.get("sd_write_duration_us")) > 0]
     sd_open = [to_float(row.get("sd_open_duration_us")) for row in rows if to_float(row.get("sd_open_duration_us")) > 0]
     sd_close = [to_float(row.get("sd_close_duration_us")) for row in rows if to_float(row.get("sd_close_duration_us")) > 0]
+    preview_send = [to_float(row.get("preview_send_duration_us")) for row in rows if to_float(row.get("preview_send_duration_us")) > 0]
     jpeg_sizes = [to_float(row.get("jpeg_size_bytes")) for row in successful if to_float(row.get("jpeg_size_bytes")) > 0]
 
     elapsed_seconds = 0.0
@@ -131,6 +132,9 @@ def analyze(path: Path) -> list[tuple[str, str]]:
         ("successful_frames", str(len(successful))),
         ("failed_frames", str(len(rows) - len(successful))),
         ("missed_deadlines", str(sum(1 for row in rows if row.get("deadline_missed") == "1"))),
+        ("preview_frames_sent", info.get("preview_frames_sent", str(sum(1 for row in rows if row.get("preview_sent") == "1")))),
+        ("preview_frames_dropped", info.get("preview_frames_dropped", str(sum(1 for row in rows if row.get("preview_dropped") == "1")))),
+        ("preview_disconnects", info.get("preview_disconnects", "")),
         ("longest_stall_us", f"{max(intervals) if intervals else 0:.1f}"),
         ("total_bytes", f"{total_bytes:.0f}"),
         ("throughput_kb_s", f"{throughput:.3f}"),
@@ -145,6 +149,8 @@ def analyze(path: Path) -> list[tuple[str, str]]:
     for key, value in describe("sd_write_us", sd_write):
         result.append((key, f"{value:.3f}"))
     for key, value in describe("sd_close_us", sd_close):
+        result.append((key, f"{value:.3f}"))
+    for key, value in describe("preview_send_us", preview_send):
         result.append((key, f"{value:.3f}"))
     for key, value in describe("jpeg_size_bytes", jpeg_sizes):
         result.append((key, f"{value:.3f}"))

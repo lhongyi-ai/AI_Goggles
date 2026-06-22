@@ -37,7 +37,7 @@ for clip_dir in /Volumes/*/clip_*(N/); do
   fi
 
   clip_name="${clip_dir:t}"
-  output_file="$clip_dir/${clip_name}.mp4"
+  output_file="$clip_dir/sd_${clip_name}.mp4"
   lock_file="$clip_dir/.${clip_name}.converting"
   info_file="$clip_dir/clip_info.csv"
 
@@ -73,7 +73,7 @@ for clip_dir in /Volumes/*/clip_*(N/); do
         -i frame_%04d.jpg \
         -c:v libx264 \
         -pix_fmt yuv420p \
-        "${clip_name}.mp4"
+        "sd_${clip_name}.mp4"
   ) >> "$LOG_FILE" 2>&1
 
   result=$?
@@ -90,7 +90,7 @@ done
 for mjpeg_file in /Volumes/*/clip_*.mjpeg(N.); do
   clip_name="${mjpeg_file:t:r}"
   volume_dir="${mjpeg_file:h}"
-  output_file="$volume_dir/${clip_name}.mp4"
+  output_file="$volume_dir/sd_${clip_name}.mp4"
   lock_file="$volume_dir/.${clip_name}.converting"
   info_file="$volume_dir/${clip_name}_info.csv"
 

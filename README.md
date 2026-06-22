@@ -5,10 +5,10 @@ V0 firmware for a Seeed Studio XIAO ESP32S3 Sense wearable camera validation pro
 ## V0 Behavior
 
 - Short press on D1: capture one JPEG photo.
-- Long press on D1 for at least 1 second: capture JPEG frames for 10 seconds.
+- Long press on D1 for at least 1 second: start SD MJPEG recording. Press again or send `x` to stop.
 - Red LED on D2 stays on while capturing.
 - Files are saved to the Sense microSD card without overwriting old files.
-- Wi-Fi file transfer, Bluetooth audio, battery, AI, display, and custom PCB work are intentionally out of scope for this camera V0.
+- Wi-Fi live preview is available when `v0_camera_prototype/wifi_config.h` is configured.
 
 ## Wiring
 
@@ -79,11 +79,50 @@ arduino-cli monitor -p /dev/cu.usbmodemXXXX -c baudrate=115200
 Serial commands in the main firmware:
 
 - `p`: take one photo
-- `r`: record one clip with the recommended benchmark profile
+- `r`: start SD MJPEG recording with Wi-Fi preview available
+- `x`: stop current SD recording and write metadata
+- `j`: start JPEG sequence debug recording
+- `m`: start SD MJPEG recording
+- `v`: enable or disable Wi-Fi preview server
+- `w`: print Wi-Fi status, IP, and preview URLs
 - `s`: print next file indexes
 - `i`: print hardware, memory, SD, BLE, and active profile information
 - `b`: run the video smoothness benchmark suite
 - `h`: print help
+
+## Wi-Fi Live Preview And Mac MP4
+
+Copy and edit the Wi-Fi config:
+
+```bash
+cp v0_camera_prototype/wifi_config.example.h v0_camera_prototype/wifi_config.h
+```
+
+Then upload the firmware. In Serial Monitor, send:
+
+```text
+w
+```
+
+Open the printed preview page:
+
+```text
+http://XIAO_IP/
+```
+
+Record a live H.264 MP4 on the Mac:
+
+```bash
+./scripts/live_preview_record.sh XIAO_IP
+```
+
+Stop with Ctrl+C, or:
+
+```bash
+./scripts/stop_live_recording.sh
+```
+
+See [docs/live_preview_and_dual_recording.md](docs/live_preview_and_dual_recording.md) for the architecture, endpoints, and validation plan.
 
 ## BLE Phone Control
 
@@ -112,7 +151,12 @@ Phone steps:
 6. Open the control characteristic UUID above.
 7. Write one UTF-8/text command:
    - `p`: take one photo
-   - `r`: record one clip with the recommended profile
+   - `r`: start SD MJPEG recording
+   - `x`: stop recording
+   - `j`: start JPEG sequence debug recording
+   - `m`: start SD MJPEG recording
+   - `v`: toggle Wi-Fi preview server
+   - `w`: print Wi-Fi status
    - `s`: update/read status
    - `i`: print hardware/profile info to Serial Monitor
    - `b`: run the benchmark suite
@@ -139,7 +183,7 @@ JPEG sequences:
 /clip_0001/frame_timing.csv
 ```
 
-Single-file MJPEG benchmark output:
+Single-file MJPEG output:
 
 ```text
 /clip_0005.mjpeg
@@ -153,7 +197,7 @@ The XIAO ESP32S3 Sense does not have a hardware H.264 encoder, so it cannot dire
 ffmpeg -framerate 10 -i frame_%04d.jpg -c:v libx264 -pix_fmt yuv420p clip_0001.mp4
 ```
 
-This repo also includes a macOS LaunchAgent and shell script that can auto-convert SD card `clip_*` folders to MP4 when the card is mounted.
+This repo also includes a macOS LaunchAgent and shell script that can auto-convert SD card `clip_*` folders and `.mjpeg` files to `sd_clip_*.mp4` when the card is mounted. Live network recordings are saved separately as `recordings/live/live_*.mp4`.
 
 ## Video Smoothness Benchmark
 

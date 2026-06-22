@@ -1,3 +1,11 @@
 .DS_Store
 *.tmp
 *.log
+recordings/
+v0_camera_prototype/wifi_config.h
+*.jpg
+*.jpeg
+*.mjpeg
+*.mp4
+*.mov
+*.avi
