@@ -28,6 +28,12 @@ log_error() {
   { print -r -- "$line" >> "$ERROR_LOG_FILE" } 2>/dev/null || true
 }
 
+log_note() {
+  local line="[$(date '+%Y-%m-%d %H:%M:%S')] $*"
+  print -r -- "$line" >&2
+  { print -r -- "$line" >> "$LOG_FILE" } 2>/dev/null || true
+}
+
 find_tool() {
   local tool_name="$1"
   local candidate
@@ -113,12 +119,12 @@ fps_for_info_file() {
   if [[ -z "$fps" ]]; then
     fps="$(read_info_value "$info_file" "target_fps" || true)"
     if [[ -n "$fps" ]]; then
-      log "Using target_fps from metadata because actual FPS was missing: $fps"
+      log_note "Using target_fps from metadata because actual FPS was missing: $fps"
     fi
   fi
   if [[ -z "$fps" ]]; then
     fps="$DEFAULT_FPS"
-    log "Metadata FPS missing; falling back to ${DEFAULT_FPS} FPS for $info_file"
+    log_note "Metadata FPS missing; falling back to ${DEFAULT_FPS} FPS for $info_file"
   fi
 
   print -r -- "$fps"
