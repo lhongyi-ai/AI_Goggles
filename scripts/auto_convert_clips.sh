@@ -5,6 +5,7 @@ set -euo pipefail
 MARKER_NAME="AI_GOGGLES.marker"
 MARKER_CONTENT="AI_GOGGLES_SD_V1"
 DEFAULT_FPS="10"
+MOUNT_SETTLE_SECONDS="${AI_GOGGLES_MOUNT_SETTLE_SECONDS:-10}"
 QUIET_SECONDS="${AI_GOGGLES_QUIET_SECONDS:-5}"
 STALE_LOCK_SECONDS=$((6 * 60 * 60))
 GLOBAL_LOCK_DIR="/tmp/ai-goggles-auto-convert.lock"
@@ -460,7 +461,7 @@ main() {
   local volume
 
   log "StartOnMount trigger received"
-  sleep 2
+  sleep "$MOUNT_SETTLE_SECONDS"
 
   if (( $# > 0 )); then
     volumes=("$@")
