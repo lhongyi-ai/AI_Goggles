@@ -2,6 +2,141 @@
 
 V0 firmware for a Seeed Studio XIAO ESP32S3 Sense wearable camera validation prototype.
 
+## KiCad Hardware Automation
+
+This repository now includes a maintainable KiCad + Python + VS Code automation skeleton for the future AI sports glasses carrier board. The current hardware target is a minimal Radxa CM4 / RK3576 carrier exploration flow, but this code intentionally generates only a reviewable test PCB. It does not generate a complete Radxa CM4 carrier board, does not add unverified CM4 pin mappings, and does not autoroute high-speed signals.
+
+### Quick Start
+
+```bash
+./scripts/setup_environment.sh
+source .venv/bin/activate
+python scripts/check_environment.py
+python scripts/generate_test_board.py
+python scripts/run_drc.py
+```
+
+On this machine, initial probing found Python 3.12.4 at `/opt/anaconda3/bin/python3`, but did not find `kicad-cli` in `PATH` or under `/Applications/KiCad`. The scripts keep working in fallback mode and will automatically use KiCad CLI if it is installed later.
+
+### VS Code Usage
+
+Select the workspace interpreter at:
+
+```text
+${workspaceFolder}/.venv/bin/python
+```
+
+The `.vscode/tasks.json` file provides these tasks:
+
+- `Hardware: Check Environment`
+- `Hardware: Test KiCad IPC`
+- `Hardware: Generate Test Board`
+- `Hardware: Run DRC`
+- `Hardware: Export Gerbers`
+- `Hardware: Run All Checks`
+
+The debug launch configs cover:
+
+- `scripts/check_ipc_connection.py`
+- `scripts/generate_test_board.py`
+
+Open the KiCad project from:
+
+```text
+hardware/ai_glasses_carrier.kicad_pro
+```
+
+The fallback generator writes:
+
+```text
+hardware/ai_glasses_carrier.kicad_pcb
+```
+
+### IPC API Usage
+
+1. Start KiCad.
+2. Open PCB Editor.
+3. Open `hardware/ai_glasses_carrier.kicad_pcb`.
+4. Enable KiCad's IPC/API server for your installed KiCad version.
+5. Run:
+
+```bash
+python scripts/check_ipc_connection.py
+```
+
+This repository does not hard-code a KiCad IPC settings menu name because no KiCad installation was detectable when this environment was created. After KiCad is installed, run `python scripts/check_environment.py` to capture the version, then use the matching KiCad documentation or Preferences search for IPC/API server settings. The IPC checker refuses to report success unless it can use importable bindings and verify a live KiCad/PCB Editor session.
+
+### Two Automation Routes
+
+```text
+Route A: IPC API
+Use this for interacting with the PCB currently open in KiCad.
+
+Route B: Standard KiCad file generation
+Use this for batch generation, CI, Git review, and non-GUI environments.
+```
+
+Route B is the primary fallback today. `scripts/generate_test_board.py` creates a 50 mm x 20 mm two-layer board with Edge.Cuts, two mounting holes, one 1x4 test connector, and these test nets:
+
+- `+5V`
+- `GND`
+- `I2C_SCL`
+- `I2C_SDA`
+
+### Configuration
+
+Hardware settings live in:
+
+- `config/board.yaml` — V1 carrier spec (6-layer, target outline, P0/P1 interfaces)
+- `config/cm4_pins.yaml` — RK3576 signal catalog mapped to carrier nets
+- `config/cm4_v1_pin_assignment.yaml` — **pin freeze gate** (requirements Section 3.3)
+- `config/components_v1.yaml` — candidate parts for every P0/P1 block
+- `config/design_rules.yaml` — 6-layer stack + impedance rules (MIPI 100Ω, USB 90Ω)
+
+Pin/signal entries are marked `source_verified: false` until they are manually
+checked against *Radxa CM4 Schematic V1.20*. AI-generated content is auxiliary only.
+
+### V1 Carrier Board (Radxa CM4 / RK3576)
+
+The V1 deliverable is defined by `AI_Sports_Glasses_PCB_Requirements_v1.1.pdf`.
+Generate the 6-layer skeleton (outline + full net list + mounting holes):
+
+```bash
+.venv/bin/python scripts/generate_carrier_board.py
+```
+
+This produces a **pre-layout skeleton only** — no B2B/USB/camera footprints.
+Per requirements **Section 3.3**, real layout may not begin until the pin
+assignment is frozen. Check the gate:
+
+```bash
+.venv/bin/python scripts/check_pin_freeze.py
+```
+
+The gate stays **BLOCKED** until every P0 row in `cm4_v1_pin_assignment.yaml` has
+a real pin number + verified source, all Section 8.3 TBD items are resolved, and
+`status:` is set to `FROZEN`. Only then should real footprints be placed.
+
+> Note: `generate_test_board.py` (legacy 2-layer toolchain check) writes to the
+> same `hardware/ai_glasses_carrier.kicad_pcb` path. After running `pytest`,
+> re-run `generate_carrier_board.py` to restore the carrier as the active board.
+
+### Reports And Manufacturing Output
+
+DRC output is written to:
+
+```text
+generated/reports/drc-report.txt
+```
+
+Manufacturing export output is written to:
+
+```text
+generated/gerbers/
+```
+
+Both scripts inspect `kicad-cli --help` before constructing version-sensitive commands.
+
 ## V0 Behavior
 
 - Short press on D1: capture one JPEG photo.

@@ -1,0 +1,281 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# COMPONENT CANDIDATES — ai_glasses_carrier_v1
+# ═══════════════════════════════════════════════════════════════════════════════
+# Candidate parts for each functional block. These are STARTING POINTS for
+# evaluation, NOT final BOM. Every part must be:
+#   - confirmed in stock / not EOL (Section 9.2: no discontinued critical parts)
+#   - reviewed by a human for the actual electrical requirements
+#   - cross-checked against the chosen CM4 SKU, camera module and battery
+#
+# selected: true means this part is the frozen choice for V1.
+# All currently selected: false until human review (Section 1.1: AI is auxiliary).
+# ═══════════════════════════════════════════════════════════════════════════════
+
+metadata:
+  board: ai_glasses_carrier_v1
+  status: candidates_for_review
+  reference_designs:
+    - "Radxa CM4 IO Schematic V1.10 + GitHub"
+    - "Radxa CM4 Schematic V1.20"
+
+# ── COMPUTE MODULE (P0) ─────────────────────────────────────────────────────
+compute_module:
+  - item: "Radxa CM4"
+    requirement: "RK3576, Wi-Fi 6 + BT 5.4 SKU, 4GB (or 8GB) RAM, eMMC"
+    note: "Must pick a wireless SKU explicitly — do NOT infer wireless from RK3576 alone"
+    record_before_purchase: ["full P/N", "hw version", "RAM", "eMMC", "wireless config", "antenna form"]
+    sku: "RM126-D4E32J0R35W28"   # RK3576 / 4GB LPDDR4X / 32GB eMMC / Wi-Fi6+BT5.x (W = wireless)
+    selected: true
+
+# ── B2B CONNECTORS (P0) ─────────────────────────────────────────────────────
+b2b_connectors:
+  - item: "100-pin board-to-board mezzanine (×3: J3A, J3B, J1)"
+    requirement: "Official Radxa-specified or fully compatible P/N; verified stack height via STEP"
+    candidates:
+      - "Hirose DF40 series (verify exact pin count, stack height, official match)"
+    note: "Carrier side target is DF40C-100DS-0.4V(51); module side is DF40C-100DP-0.4V(51); mated height target 1.5mm. Must be verified by 2-layer connector-only fit-check board + official CM4 STEP before layout freeze."
+    selected: false
+
+# ── CAMERA (P0) ─────────────────────────────────────────────────────────────
+camera:
+  sensor:
+    - item: "MIPI-CSI sensor module (TBD)"
+      requirement: ">=1080p30; 2-lane preferred; Linux/RKISP driver available"
+      candidates:
+        - "OV5647 (2-lane, well-supported, 5MP) — basic bring-up"
+        - "IMX219 (2-lane, 8MP, common RKISP support)"
+        - "IMX415 (4-lane, 4K) — only if frame rate/res needs 4-lane"
+      note: "FPC pinout MUST come from final module — do NOT match by pin count only"
+      selected: false
+  fpc_connector:
+    - item: "MIPI FPC/FFC connector"
+      requirement: "Pinout and pitch defined by chosen camera module"
+      note: "Place near front frame / hinge side"
+      selected: false
+  esd:
+    - item: "Low-capacitance ESD array for MIPI"
+      requirement: "<=0.4 pF per line; placed on FPC end"
+      candidates: ["TI TPD4E05U06", "ON ESD7104"]
+      selected: false
+  power:
+    - item: "Camera LDO(s)"
+      requirement: "Provide needed rails of 1.2V / 1.8V / 2.8V / 3.3V; local decoupling; controllable enable"
+      candidates: ["TI LP5907 (low-noise LDO per rail)"]
+      selected: false
+
+# ── MICROPHONES (P0) ────────────────────────────────────────────────────────
+microphones:
+  - item: "Digital MEMS PDM microphone ×2"
+    requirement: "PDM output; VDD/IO matches CM4 VCCIO (likely 1.8V); L/R select on shared clock"
+    candidates:
+      - "Knowles SPH0641LU4H-1 (PDM, 1.8-3.6V)"
+      - "TDK ICS-41350 (PDM)"
+    note: "Place at board edge aligned to enclosure acoustic ports; add 0R debug resistors"
+    selected: false
+
+# ── AUDIO OUTPUT (P0) ───────────────────────────────────────────────────────
+audio_amp:
+  amp:
+    - item: "Digital-input Class-D amplifier (I2S/SAI in)"
+      requirement: "I2S/SAI input; mono; GPIO EN/MUTE; suits speaker or bone conduction"
+      candidates:
+        - "TI TAS2563 (I2S in, smart amp, I2C config)"
+        - "Maxim MAX98357A (I2S in, simple, no I2C, mono)"
+      note: "MAX98357A is simplest for V1; TAS2563 if speaker protection/DSP wanted"
+      selected: false
+  speaker:
+    - item: "Speaker or bone-conduction transducer"
+      requirement: "2-pin latching connector or pads; impedance & power TBD from module"
+      selected: false
+
+# ── USB-C (P0) ──────────────────────────────────────────────────────────────
+usb_c:
+  connector:
+    - item: "USB-C receptacle (USB 2.0)"
+      requirement: "Shell ground + mechanical retention; no need for USB3 pairs"
+      candidates: ["GCT USB4085", "Amphenol 12401548E4#2A"]
+      selected: false
+  cc_resistors:
+    - item: "CC1/CC2 pull-down 5.1k (Sink)"
+      requirement: "Two 5.1k to GND for USB-C Sink role"
+      selected: false
+  esd:
+    - item: "USB2 D+/D- ESD clamp"
+      requirement: "Low capacitance; within 1mm of connector"
+      candidates: ["TI TPD2E009", "ON ESD7004"]
+      selected: false
+  input_protection:
+    - item: "VBUS protection (TVS + fuse/e-fuse + reverse block)"
+      requirement: "TVS on 5V; fuse/e-fuse limiting; reverse-current/over-voltage block"
+      candidates: ["TI TPS25940 (e-fuse) for input protection", "Bourns TVS diode"]
+      selected: false
+
+# ── 5V SYSTEM POWER (P0/P1) ─────────────────────────────────────────────────
+power_5v:
+  bring_up:
+    - item: "Direct 5V from USB-C / bench supply"
+      requirement: ">=4A continuous with transient margin (P0 bench bring-up)"
+      note: "P0 stage: power CM4 directly to validate boot/camera/NPU/audio/wireless"
+      selected: false
+  boost:
+    - item: "1S Li-Po -> 5V boost converter (P1)"
+      requirement: "High efficiency; soft-start; input UVLO; output OCP; meets peak load + thermal"
+      candidates:
+        - "TI TPS61022 (up to ~5A boost)"
+        - "TI TPS61288"
+      note: "Size to measured peak load (camera+NPU+H.265+Wi-Fi simultaneously)"
+      selected: false
+  current_sense:
+    - item: "0R / shunt resistor footprint in series with 5V"
+      requirement: "Allow power/current logging"
+      selected: false
+
+# ── BATTERY SYSTEM (P1) ─────────────────────────────────────────────────────
+battery:
+  cell:
+    - item: "1S Li-Po cell"
+      requirement: "3.0-4.2V; capacity/discharge TBD; safety cert; keyed connector"
+      selected: false
+  charger:
+    - item: "USB-C 1S Li-Po charger with power-path"
+      requirement: "Configurable charge current; NTC; system runs while charging; no reverse leak"
+      candidates:
+        - "TI BQ25180 (1S, I2C, power-path, small)"
+        - "TI BQ24074 (power-path, NTC)"
+      selected: false
+  protection:
+    - item: "Battery protection IC (OVP/UVP/OCP/SCP)"
+      requirement: "Do NOT rely on bare cell"
+      candidates: ["TI BQ29700", "Seiko S-8261"]
+      selected: false
+  fuel_gauge:
+    - item: "I2C fuel gauge"
+      requirement: "Voltage, SOC, remaining capacity, low-battery interrupt"
+      candidates:
+        - "TI BQ27220 / BQ27421"
+        - "Maxim MAX17048 (simple, ModelGauge)"
+      selected: false
+
+# ── IMU (P1) ────────────────────────────────────────────────────────────────
+imu:
+  - item: "6-axis IMU (I2C)"
+    requirement: "Accel + gyro; I2C; interrupt support"
+    candidates:
+      - "TDK ICM-42688-P"
+      - "Bosch BMI270"
+    note: "I2C controller must differ from camera I2C"
+    selected: false
+
+# ── VIBRATION (P1) ──────────────────────────────────────────────────────────
+vibration:
+  - item: "Vibration motor + driver"
+    requirement: "ERM/LRA driver or low-side MOSFET; PWM controllable"
+    candidates:
+      - "TI DRV2605L (LRA/ERM haptic driver, I2C)"
+      - "Discrete low-side MOSFET + flyback diode (simplest)"
+    selected: false
+
+# ── REGULATORS (peripheral rails) ───────────────────────────────────────────
+regulators:
+  - item: "1.8V rail LDO/buck (if peripherals need VCCIO 1.8V)"
+    requirement: "Confirm whether CM4 supplies 1.8V or carrier must generate it"
+    selected: false
+  - item: "3.3V rail (if needed)"
+    requirement: "For level shifting / codec / IMU if 3.3V parts chosen"
+    selected: false
+
+# ── INDICATORS / DEBUG ──────────────────────────────────────────────────────
+debug:
+  leds:
+    - item: "2× LED (power + status)"
+      requirement: "Software-disable-able to save power; max 2 LEDs"
+      selected: false
+  test_points:
+    - item: "Test points: 5V, 3V3, 1V8, GND, USB D+/D-, UART, I2C, key GPIO, camera power"
+      requirement: "Probe-accessible; NOT stubs on MIPI trunk"
+      selected: false
+  debug_header:
+    - item: "UART debug 3/4-pin header"
+      requirement: "Clearly labeled 1.8V/3.3V level; near board edge"
+      selected: false
+
+# ── DECISION LOG ────────────────────────────────────────────────────────────
+notes:
+  - "All `selected: false` until reviewed. Freeze parts in lockstep with cm4_v1_pin_assignment.yaml."
+  - "Avoid sub-0.5mm BGA on EVT (Section 7.4). Prefer reworkable packages."
+  - "Cross-check every selected part for stock/EOL before gerber release (Section 9.2)."
+
+# ── FROZEN V1 SELECTIONS (locked 2026-06-28) ────────────────────────────────
+frozen_v1:
+  compute_module: {mpn: "RM126-D4E32J0R35W28", desc: "Radxa CM4: RK3576/4GB LPDDR4X/32GB eMMC/Wi-Fi6+BT5.x"}
+  amplifier:      {mpn: "MAX98357AETE+T", lcsc: "C910544", pkg: "TQFN-16 3x3", note: "I2S Class-D, no MCLK"}
+  speaker:        {mpn: "OWS-091630W50A-8", lcsc: "C5840086", spec: "8Ω 1W(1.2W max) 16x9x3mm", mfr: "Ole Wolff"}
+  microphone:     {mpn: "SPH0641LU4H-1", qty: 2, note: "PDM MEMS, VDD 1.8V"}
+  gnss:
+    status: selected
+    manufacturer: u-blox
+    mpn: MAX-M10S-00B-01
+    interface: UART
+    vcc: 3.3V
+    vio: 1.8V
+    rf_impedance: 50ohm
+    antenna_connector: U.FL
+    antenna_type_v1: external_active
+    datasheet_verified: true
+    integration_manual_verified: true
+  camera:
+    sensor_selected: true
+    sensor: IMX415-AAQR-C
+    module_candidate: "Radxa Camera 4K"
+    wired_in_v1: "Radxa Camera 4K 31-pin FPC on CM4 CSI3 4-lane"
+    target_change: "SC3336 20-pin/CSI1 replaced in schematic source; FH35C footprint generated from official 2D drawing; physical check still open"
+    pinout_source: "CM4_IMX415_design_files/Radxa_Camera_4K_31pin_pinout.csv"
+    connector:
+      mpn: "FH35C-31S-0.3SHW(50)"
+      manufacturer: "Hirose"
+      lcsc: "C424662"
+      schematic_gate: "J2 pins 1-31, CSI3 4-lane, P/N, I2C/MCLK/RESET, voltage domains, power and NC are locked by scripts/audit_csi3_camera.py"
+      pre_layout_gate: "DEFERRED_TO_PRE_LAYOUT: AC006 physical validation, FPC contact side, insertion direction, Pin 1 physical check, 1:1 print, coupon test, FPC bend/enclosure path"
+    fpc:
+      mpn: "Radxa AC006"
+      spec: "31P 0.3mm to 31P 0.3mm, opposite side"
+      rejected: "Do not use AC008; it is 31P to 15P"
+    driver_reference: "https://docs.radxa.com/en/rock5/rock5itx/getting-started/interface-usage/camera"
+    official_cm4_io_overlay:
+      file: "radxa-cm4-io-radxa-camera-4k.dtbo"
+      rsetup_title: "Enable Radxa Camera 4K"
+      board_target: "radxa,cm4-io"
+      sensor: "IMX415"
+      i2c_address: "0x1a"
+      mipi_data_lanes: 4
+      dphy: "csi2_dphy3"
+    mipi_lanes_imx415: 4
+    sensor_io_voltage: 1.8V
+    hardware_compatible: likely
+    cm4_driver_overlay_verified: false
+    pwdn: "not connected; Radxa Camera 4K 31-pin pinout has RESET but no PWDN pin"
+    schematic_stage_status: "SCHEMATIC_ELECTRICAL_LOCKED"
+  power_5v:
+    conservative_freeze: true
+    boost_family: "TPS61022-class 1S Li-Po -> 5V"
+    design_current_A: 4.0
+    measurement_point: "R3 0R/shunt footprint on +5V path"
+    final_validation: "bring-up bench current/thermal test"
+  wifi_bt_antenna:
+    conservative_freeze: true
+    source: "CM4 on-module/U.FL antenna path"
+    carrier_rf_routing: false
+    layout_keepout: "reserve CM4 antenna zone; avoid copper, battery, metal hinge/screws, speaker magnet"
+  battery:
+    topology: "1S Li-Po"
+    cell: "35x18x4mm pouch (~250mAh ea by volume)"
+    glasses_pack: "2-3 cells parallel = 500-750mAh / 1.85-2.8Wh"
+    v1_bench:
+      cell: "1S 103450 ~2000mAh (~7.4Wh)"
+      protection: "use cell WITH PCM (over-charge/over-discharge/short)"
+      ntc: "confirm cell has NTC; if none, set R11 to a fixed value (or disable BQ25180 TS), else charger faults"
+      charge: "~1A via BQ25180 (~0.5C)"
+      runtime_bench: "~2.5h @3W typ / ~1.5h @4.8W full / ~9h idle"
+      note: "103450 is a form-factor code (1800-2200mAh by vendor), not a single MPN"
+    runtime_note: ">3-4h target needs AI duty-cycling; glasses pack 500-750mAh = ~30-50min @3W active"
+    must_have: [charger, power_path, fuel_gauge, NTC, protection]

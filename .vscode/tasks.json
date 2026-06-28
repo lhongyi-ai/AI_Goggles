@@ -1,0 +1,93 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Hardware: Check Environment",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "args": [
+        "scripts/check_environment.py"
+      ],
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Hardware: Test KiCad IPC",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "args": [
+        "scripts/check_ipc_connection.py"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Hardware: Generate Test Board",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "args": [
+        "scripts/generate_test_board.py"
+      ],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Hardware: Generate Carrier V1 Skeleton",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "args": [
+        "scripts/generate_carrier_board.py"
+      ],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Hardware: Check Pin Freeze Gate",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "args": [
+        "scripts/check_pin_freeze.py"
+      ],
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Hardware: Run DRC",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "args": [
+        "scripts/run_drc.py"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Hardware: Export Gerbers",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "args": [
+        "scripts/export_manufacturing.py"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Hardware: Generate B2B Fit Check",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "args": [
+        "scripts/generate_b2b_fit_check.py"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Hardware: Run All Checks",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Hardware: Check Environment",
+        "Hardware: Generate Carrier V1 Skeleton",
+        "Hardware: Check Pin Freeze Gate",
+        "Hardware: Run DRC"
+      ],
+      "group": "test",
+      "problemMatcher": []
+    }
+  ]
+}

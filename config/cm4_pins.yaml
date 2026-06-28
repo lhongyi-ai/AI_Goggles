@@ -1,0 +1,384 @@
+# Radxa CM4 (RK3576) signal catalog for ai_glasses_carrier_v1
+# Source: Radxa CM4 Schematic V1.20 + RK3576 Datasheet
+# IMPORTANT: signal names below follow RK3576 datasheet conventions.
+# Pin numbers on J3A / J3B / J1 are in cm4_v1_pin_assignment.yaml.
+# All entries tagged source_verified: false MUST be confirmed against
+# "Radxa CM4 Schematic V1.20 + Pinout" before schematic entry starts.
+
+metadata:
+  module: "Radxa CM4"
+  soc: "RK3576"
+  schematic_ref: "Radxa CM4 Schematic V1.20"
+  pinout_ref: "Radxa CM4 Pinout (official)"
+  source_verified: false     # flip to true only after human review vs official doc
+
+connectors:
+  J3A:
+    description: "GPIO + VCC — power and low-speed interface"
+    pins: 100
+    confirmed_pins:
+      # From requirements doc v1.1, section 3.2 — these are authoritative
+      "+5V_IN": [77, 79, 81, 83, 85, 87]
+
+  J3B:
+    description: "High-Speed Serial — MIPI-CSI, USB2, high-speed signals"
+    pins: 100
+
+  J1:
+    description: "I/O — USB, audio expansion, camera control"
+    pins: 100
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SIGNAL GROUPS
+# Each group lists the RK3576 signal name, which connector it appears on,
+# the voltage domain, and what the carrier board connects it to.
+# Pin numbers are defined in cm4_v1_pin_assignment.yaml.
+# ─────────────────────────────────────────────────────────────────────────────
+
+signals:
+
+  # ── Power ──────────────────────────────────────────────────────────────────
+  power:
+    - signal: "+5V_IN"
+      connector: J3A
+      voltage_domain: "5V"
+      board_net: "+5V_SYS"
+      description: "System 5V input to CM4 module"
+      source_verified: true    # Confirmed: J3A pins 77,79,81,83,85,87
+
+    - signal: GND
+      connector: "J3A, J3B, J1"
+      voltage_domain: GND
+      board_net: GND
+      description: "Ground — all GND pins must be connected"
+      source_verified: false
+
+  # ── MIPI-CSI Camera ────────────────────────────────────────────────────────
+  # Radxa Camera 4K / IMX415 target: CM4 CSI3 4-lane.
+  mipi_csi:
+    - signal: MIPI_DPHY_CSI3_RX_CLKP
+      connector: J3B
+      voltage_domain: "diff_1V8"
+      impedance_ohm: 100
+      board_net: MIPI_CSI3_CLK_P
+      board_connects_to: "Radxa Camera 4K FPC pin 18 MCP"
+      source_verified: true
+
+    - signal: MIPI_DPHY_CSI3_RX_CLKN
+      connector: J3B
+      voltage_domain: "diff_1V8"
+      impedance_ohm: 100
+      board_net: MIPI_CSI3_CLK_N
+      board_connects_to: "Radxa Camera 4K FPC pin 17 MCN"
+      source_verified: true
+
+    - signal: MIPI_DPHY_CSI3_RX_D0P
+      connector: J3B
+      voltage_domain: "diff_1V8"
+      impedance_ohm: 100
+      board_net: MIPI_CSI3_D0_P
+      board_connects_to: "Radxa Camera 4K FPC pin 15 MDP1"
+      source_verified: true
+
+    - signal: MIPI_DPHY_CSI3_RX_D0N
+      connector: J3B
+      voltage_domain: "diff_1V8"
+      impedance_ohm: 100
+      board_net: MIPI_CSI3_D0_N
+      board_connects_to: "Radxa Camera 4K FPC pin 14 MDN1"
+      source_verified: true
+
+    - signal: MIPI_DPHY_CSI3_RX_D1P
+      connector: J3B
+      voltage_domain: "diff_1V8"
+      impedance_ohm: 100
+      board_net: MIPI_CSI3_D1_P
+      board_connects_to: "Radxa Camera 4K FPC pin 12 MDP2"
+      source_verified: true
+
+    - signal: MIPI_DPHY_CSI3_RX_D1N
+      connector: J3B
+      voltage_domain: "diff_1V8"
+      impedance_ohm: 100
+      board_net: MIPI_CSI3_D1_N
+      board_connects_to: "Radxa Camera 4K FPC pin 11 MDN2"
+      source_verified: true
+
+    - signal: MIPI_DPHY_CSI3_RX_D2P
+      connector: J3B
+      voltage_domain: "diff_1V8"
+      impedance_ohm: 100
+      board_net: MIPI_CSI3_D2_P
+      board_connects_to: "Radxa Camera 4K FPC pin 6 MDP3"
+      source_verified: true
+
+    - signal: MIPI_DPHY_CSI3_RX_D2N
+      connector: J3B
+      voltage_domain: "diff_1V8"
+      impedance_ohm: 100
+      board_net: MIPI_CSI3_D2_N
+      board_connects_to: "Radxa Camera 4K FPC pin 5 MDN3"
+      source_verified: true
+
+    - signal: MIPI_DPHY_CSI3_RX_D3P
+      connector: J3B
+      voltage_domain: "diff_1V8"
+      impedance_ohm: 100
+      board_net: MIPI_CSI3_D3_P
+      board_connects_to: "Radxa Camera 4K FPC pin 3 MDP4"
+      source_verified: true
+
+    - signal: MIPI_DPHY_CSI3_RX_D3N
+      connector: J3B
+      voltage_domain: "diff_1V8"
+      impedance_ohm: 100
+      board_net: MIPI_CSI3_D3_N
+      board_connects_to: "Radxa Camera 4K FPC pin 2 MDN4"
+      source_verified: true
+
+  # ── Camera Control (via I2C + GPIO) ────────────────────────────────────────
+  camera_control:
+    - signal: I2C_CAM_SCL
+      connector: J3A
+      voltage_domain: "1V8"
+      board_net: CAM_I2C_SCL
+      board_connects_to: "Radxa Camera 4K FPC pin 24 SCL"
+      pinmux_note: "I2C0_M1"
+      source_verified: true
+
+    - signal: I2C_CAM_SDA
+      connector: J3A
+      voltage_domain: "1V8"
+      board_net: CAM_I2C_SDA
+      board_connects_to: "Radxa Camera 4K FPC pin 25 SDA"
+      source_verified: true
+
+    - signal: CAM_RST_n
+      connector: J3B
+      voltage_domain: "1V8"
+      board_net: CAM_RST_n
+      board_connects_to: "Radxa Camera 4K FPC pin 27 RESET_N; active-low"
+      source_verified: true
+
+    - signal: CAM_MCLK
+      connector: J1
+      voltage_domain: "1V8"
+      board_net: CAM_MCLK
+      board_connects_to: "Radxa Camera 4K FPC pin 20 MCLK"
+      pinmux_note: "CAM_CLK2_OUT_M0 / MIPI_CSI3_CAM_CLKOUT_1V8"
+      source_verified: true
+
+  # ── PDM Microphones ─────────────────────────────────────────────────────────
+  # Signal names from requirements doc v1.1 section 4.2
+  pdm:
+    - signal: PDM1_CLK1_M1
+      connector: J3A
+      voltage_domain: "1V8"     # must match CM4 VCCIO; do NOT assume 3V3
+      board_net: PDM1_CLK
+      board_connects_to: "Both PDM mics CLK input"
+      pinmux_note: "PDM1_CLK1, multiplexed; M1 variant — verify pinmux vs SAI/UART"
+      source_verified: false
+
+    - signal: PDM1_SDI1_M1
+      connector: J3A
+      voltage_domain: "1V8"
+      board_net: PDM1_DATA0
+      board_connects_to: "Mic 0 (L channel) DATA output"
+      pinmux_note: "Verify no conflict with SAI, I2C or UART on same physical pin"
+      source_verified: false
+
+    - signal: PDM1_SDI2_M1
+      connector: J3A
+      voltage_domain: "1V8"
+      board_net: PDM1_DATA1
+      board_connects_to: "Mic 1 (R channel) DATA output"
+      source_verified: false
+
+  # ── SAI / I2S Audio Output ─────────────────────────────────────────────────
+  # SAI = Serial Audio Interface on RK3576 (compatible with I2S/TDM)
+  sai_i2s:
+    - signal: SAI1_SCLK
+      connector: J3A        # or J1; verify
+      voltage_domain: "1V8_or_3V3"
+      board_net: SAI1_BCLK
+      board_connects_to: "Class-D Amp BCLK"
+      pinmux_note: "SAI1 SCLK (bit clock); verify M variant in CM4 pinmux"
+      source_verified: false
+
+    - signal: SAI1_LRCK
+      connector: J3A
+      voltage_domain: "1V8_or_3V3"
+      board_net: SAI1_LRCK
+      board_connects_to: "Class-D Amp LRCLK"
+      source_verified: false
+
+    - signal: SAI1_SDO0
+      connector: J3A
+      voltage_domain: "1V8_or_3V3"
+      board_net: SAI1_SDO
+      board_connects_to: "Class-D Amp DIN (serial audio data)"
+      source_verified: false
+
+    - signal: SAI1_MCLK
+      connector: J3A
+      voltage_domain: "1V8_or_3V3"
+      board_net: SAI1_MCLK
+      board_connects_to: "Unused/DNP for MAX98357A; reserve only for future codec"
+      optional: true
+      source_verified: false
+
+  # ── USB 2.0 OTG ────────────────────────────────────────────────────────────
+  usb2:
+    - signal: USB2_OTG0_DP
+      connector: J3B
+      voltage_domain: "USB_3V3_analog"
+      impedance_ohm: 90
+      board_net: USB_DP
+      board_connects_to: "USB-C D+"
+      source_verified: false
+
+    - signal: USB2_OTG0_DM
+      connector: J3B
+      voltage_domain: "USB_3V3_analog"
+      impedance_ohm: 90
+      board_net: USB_DM
+      board_connects_to: "USB-C D-"
+      source_verified: false
+
+  # ── Debug UART ─────────────────────────────────────────────────────────────
+  # RK3576 debug console is typically UART2 (or UART0 on some variants)
+  uart_debug:
+    - signal: UART2_TX
+      connector: J3A
+      voltage_domain: "1V8_or_3V3"
+      board_net: UART_DBG_TX
+      board_connects_to: "Debug header TX"
+      pinmux_note: "Confirm UART2 vs UART0 for console on CM4; check DT"
+      source_verified: false
+
+    - signal: UART2_RX
+      connector: J3A
+      voltage_domain: "1V8_or_3V3"
+      board_net: UART_DBG_RX
+      board_connects_to: "Debug header RX"
+      source_verified: false
+
+  # ── Recovery / Boot control ─────────────────────────────────────────────────
+  recovery:
+    - signal: RECOVERY_KEY
+      connector: J3A
+      voltage_domain: "1V8_or_3V3"
+      board_net: RECOVERY_n
+      board_connects_to: "RECOVERY button to GND"
+      pinmux_note: "Active-low; pull-up per official reference; check Radxa CM4 schematic"
+      source_verified: false
+
+    - signal: RESET_n
+      connector: J3A
+      voltage_domain: "1V8_or_3V3"
+      board_net: RESET_n
+      board_connects_to: "RESET button to GND; open-drain"
+      source_verified: false
+
+    - signal: POWER_KEY
+      connector: J3A
+      voltage_domain: "1V8_or_3V3"
+      board_net: POWER_KEY
+      board_connects_to: "Power button; active-low"
+      source_verified: false
+
+  # ── Wireless disable ────────────────────────────────────────────────────────
+  wireless_control:
+    - signal: WL_nDIS
+      connector: J3A
+      voltage_domain: "1V8_or_3V3"
+      board_net: WL_nDIS
+      board_connects_to: "Pull-up (active high enables Wi-Fi)"
+      source_verified: false
+
+    - signal: BT_nDIS
+      connector: J3A
+      voltage_domain: "1V8_or_3V3"
+      board_net: BT_nDIS
+      board_connects_to: "Pull-up (active high enables BT)"
+      source_verified: false
+
+  # ── P1 IMU (I2C) ────────────────────────────────────────────────────────────
+  imu:
+    - signal: I2C_IMU_SCL
+      connector: J3A        # low-speed I2C; likely J3A or J1
+      voltage_domain: "1V8_or_3V3"
+      board_net: IMU_I2C_SCL
+      board_connects_to: "IMU I2C clock"
+      pinmux_note: "I2C1 or I2C4 on RK3576; must not conflict with camera I2C"
+      source_verified: false
+
+    - signal: I2C_IMU_SDA
+      connector: J3A
+      voltage_domain: "1V8_or_3V3"
+      board_net: IMU_I2C_SDA
+      board_connects_to: "IMU I2C data"
+      source_verified: false
+
+    - signal: IMU_INT1
+      connector: J3A
+      voltage_domain: "1V8_or_3V3"
+      board_net: IMU_INT1
+      board_connects_to: "IMU interrupt 1 to CM4 GPIO"
+      source_verified: false
+
+  # ── P1 Vibration motor ──────────────────────────────────────────────────────
+  vibration:
+    - signal: VIB_PWM
+      connector: J3A
+      voltage_domain: "1V8_or_3V3"
+      board_net: VIB_PWM
+      board_connects_to: "Vibration driver PWM input"
+      pinmux_note: "PWM capable GPIO on RK3576; avoid conflict with audio"
+      source_verified: false
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PINMUX CONFLICT MAP  (fill in after reviewing CM4 V1.20 schematic)
+# ─────────────────────────────────────────────────────────────────────────────
+pinmux_conflicts_tbd:
+  - "PDM1 CLK/DATA may share physical pins with SAI1 or UART on RK3576"
+  - "Camera I2C and IMU I2C must be on different I2C controllers"
+  - "PWM for vibration must not conflict with PDM or SAI clocks"
+  - "UART2 (debug) may need different mux variant depending on CM4 board version"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# BOARD NETS (not on CM4 — carrier-side only)
+# ─────────────────────────────────────────────────────────────────────────────
+carrier_only_nets:
+  power:
+    - "+5V_SYS"      # USB-C VBUS or 5V boost output
+    - "+3V3"         # If needed for peripherals (level shifter, codec)
+    - "+1V8"         # Regulator output for MIPI/PDM VCCIO
+    - "+CAM_2V8"     # Camera sensor analog supply
+    - "+CAM_1V8"     # Camera sensor IO supply
+    - "+CAM_1V2"     # Camera sensor core supply
+    - "+VBAT"        # P1: battery positive (3.0-4.2V)
+
+  usb_c:
+    - "USB_VBUS"     # 5V from USB-C VBUS
+    - "USB_CC1"      # CC1 pin (5.1k to GND for Sink)
+    - "USB_CC2"      # CC2 pin (5.1k to GND for Sink)
+
+  audio_output:
+    - "SPKR_EN_n"    # GPIO to Class-D Amp enable
+    - "SPK_OUT_P"    # Speaker output
+    - "SPK_OUT_N"
+
+  leds:
+    - "LED_PWR_n"    # Power LED
+    - "LED_STATUS_n" # Status LED
+
+  battery_system:
+    - "VBAT_P"       # P1: Li-Po positive to protection IC
+    - "VBAT_N"       # P1: Li-Po negative
+    - "BAT_NTC"      # P1: NTC thermistor to charger IC
+    - "CHG_INT_n"    # P1: Charger interrupt to CM4
+    - "LOW_BAT_INT_n" # P1: Fuel gauge low-battery interrupt
+    - "FUEL_I2C_SCL" # P1: Fuel gauge I2C clock
+    - "FUEL_I2C_SDA" # P1: Fuel gauge I2C data
+    - "VIB_EN"       # P1: Vibration driver enable GPIO

@@ -1,0 +1,20 @@
+[project]
+name = "ai-glasses-hardware-automation"
+version = "0.1.0"
+description = "KiCad, Python, and VS Code automation skeleton for the AI glasses carrier board."
+requires-python = ">=3.10"
+dependencies = [
+  "PyYAML>=6.0",
+  "pydantic>=2.0",
+  "rich>=13.0",
+  "sexpdata>=1.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+ipc = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-ra"

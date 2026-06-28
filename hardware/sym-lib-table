@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "aiglasses")(type "KiCad")(uri "${KIPRJMOD}/AI_Glasses.kicad_sym")(options "")(descr "Project-generated AI Glasses schematic symbols"))
+)

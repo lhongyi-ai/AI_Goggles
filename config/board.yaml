@@ -1,0 +1,142 @@
+project:
+  name: ai_glasses_carrier_v1
+  revision: v1.0-draft
+  description: "Radxa CM4 (RK3576) Carrier Board for AI Sports Glasses — EVT"
+  document_ref: "AI_Sports_Glasses_PCB_Requirements_v1.1.pdf"
+
+board:
+  # Board outline is driven by CM4 official STEP + B2B connector positions.
+  # Radxa CM4 module: 55 mm × 40 mm; carrier extends 5-10 mm per side.
+  # Values below are design targets — freeze only after official STEP is imported.
+  width_mm: 70
+  height_mm: 55
+  layers: 6
+  thickness_mm: 1.6
+  copper_weight_outer_oz: 1
+  copper_weight_inner_oz: 0.5
+
+features:
+  test_connector: false
+  mounting_holes: 4
+  generate_board_text: true
+  # P0 interfaces
+  mipi_csi_lanes: 4            # Radxa Camera 4K / IMX415 on CM4 CSI3
+  target_camera_mipi_lanes: 4  # target decision: Radxa Camera 4K / IMX415 on CSI3
+  pdm_microphones: 2
+  i2s_audio_output: true
+  usb_c: true
+  debug_uart: true
+  recovery_maskrom: true
+  power_key: true
+  status_leds: 2
+  # P1 interfaces (include footprints; may not be fully loaded on EVT)
+  battery_1s_lipo: true
+  fuel_gauge_i2c: true
+  imu_6axis_i2c: true
+  vibration_driver: true
+
+interfaces:
+  power_input:
+    voltage: 5.0
+    max_continuous_amps: 4.0
+    connector: "USB-C"
+    protection: "TVS + fuse/e-fuse + reverse-current block + bulk cap"
+
+  cm4_b2b:
+    module: "Radxa CM4 (RK3576)"
+    connector_count: 3
+    connectors:
+      J3A:
+        role: "Power + low-speed GPIO"
+        pins: 100
+        plus5v_input_pins: [77, 79, 81, 83, 85, 87]   # confirmed in requirements doc
+      J3B:
+        role: "High-speed serial (MIPI-CSI, USB2)"
+        pins: 100
+      J1:
+        role: "USB, audio, extension I/O"
+        pins: 100
+
+  mipi_csi:
+    enabled: true
+    lanes: 4
+    implementation_status: "schematic source targets Radxa Camera 4K / IMX415 on CSI3 4-lane"
+    target_sensor: "Radxa Camera 4K / IMX415-AAQR-C"
+    target_lanes: 4
+    target_receiver: "CM4 CSI3 4-lane"
+    target_connector: "Hirose FH35C-31S-0.3SHW(50), LCSC C424662"
+    target_fpc: "Radxa AC006 31P 0.3mm opposite-side cable"
+    differential_impedance_ohm: 100
+    signals: ["CLK_P", "CLK_N", "D0_P", "D0_N", "D1_P", "D1_N", "D2_P", "D2_N", "D3_P", "D3_N"]
+    control: ["CAM_I2C_SCL", "CAM_I2C_SDA", "CAM_RST_n", "CAM_MCLK"]
+    no_pwdn_pin: true
+    power_rails: ["+CAM_3V3", "+5V_SYS"]
+
+  pdm_microphones:
+    count: 2
+    type: digital_MEMS_PDM
+    signals: ["PDM1_CLK", "PDM1_DATA0", "PDM1_DATA1"]
+    io_voltage: 1.8     # must match CM4 VCCIO domain — verify before assembly
+
+  audio_output:
+    topology: "SAI/I2S -> Class-D Amp"
+    signals: ["SAI1_BCLK", "SAI1_LRCK", "SAI1_SDO"]
+    mclk_optional: true
+    control: ["SPKR_EN_n"]
+    output: "single-ended speaker or bone-conduction"
+
+  usb_c:
+    standard: "USB 2.0 + 5V Sink only (no USB 3.0, no Alt Mode)"
+    data_signals: ["USB_DP", "USB_DM"]
+    cc_signals: ["USB_CC1", "USB_CC2"]
+    cc_sink_resistors_kohm: 5.1
+    differential_impedance_ohm: 90
+
+  wireless:
+    source: "CM4 on-module Wi-Fi 6 + Bluetooth 5.4"
+    carrier_adds: false
+    control_signals: ["WL_nDIS", "BT_nDIS"]
+    antenna_keepout: true     # no copper/GND/battery/metal in antenna zone
+    conservative_freeze: "Use CM4 on-module/U.FL antenna path; no carrier RF trace for Wi-Fi/BT."
+
+  debug:
+    uart_pins: ["UART_DBG_TX", "UART_DBG_RX"]
+    io_voltage_options: [1.8, 3.3]   # confirm from CM4 VCCIO domain
+    recovery_maskrom: "RECOVERY_n"
+    reset: "RESET_n"
+    power_key: "POWER_KEY"
+
+  i2c:
+    enabled: true
+    voltage: 1.8     # default; confirm VCCIO domain
+
+  battery_system:
+    priority: P1
+    chemistry: "1S Li-Po"
+    voltage_range_V: [3.0, 4.2]
+    power_path: true
+    charger_input: "USB-C 5V"
+    boost_output_V: 5.0
+    plus5v_conservative_current_A: 4.0
+    current_measurement: "R3 0R/shunt footprint on +5V path; final boost peak current from bring-up"
+    fuel_gauge_interface: I2C
+    signals: ["VBAT_P", "VBAT_N", "BAT_NTC", "CHG_INT_n", "LOW_BAT_INT_n",
+              "FUEL_I2C_SCL", "FUEL_I2C_SDA"]
+
+  imu:
+    priority: P1
+    axes: 6
+    interface: I2C
+    signals: ["IMU_I2C_SCL", "IMU_I2C_SDA", "IMU_INT1", "IMU_INT2"]
+
+  vibration:
+    priority: P1
+    driver: "ERM/LRA or low-side MOSFET"
+    signals: ["VIB_PWM", "VIB_EN"]
+
+excluded_v1:
+  - AR display / MIPI-DSI
+  - Dual camera
+  - Bare RK3576 chip-down
+  - 6-10mm final flex legs
+  - RJ45 / HDMI / USB-A / PCIe M.2 / microSD / 3.5mm jack

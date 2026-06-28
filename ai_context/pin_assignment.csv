@@ -1,0 +1,57 @@
+function,signal,connector,pin,cm4_net,cm4_func,voltage_domain,pinmux_conflict,board_connects_to,device_tree_status,priority,source_verified
+Power,+5V_IN,J3A,77,5V_DCIN,power,5V,none,+5V_SYS rail (all 6 paralleled),n/a (power),P0,True
+Power,+5V_IN,J3A,79,5V_DCIN,power,5V,none,+5V_SYS rail (all 6 paralleled),n/a (power),P0,True
+Power,+5V_IN,J3A,81,5V_DCIN,power,5V,none,+5V_SYS rail (all 6 paralleled),n/a (power),P0,True
+Power,+5V_IN,J3A,83,5V_DCIN,power,5V,none,+5V_SYS rail (all 6 paralleled),n/a (power),P0,True
+Power,+5V_IN,J3A,85,5V_DCIN,power,5V,none,+5V_SYS rail (all 6 paralleled),n/a (power),P0,True
+Power,+5V_IN,J3A,87,5V_DCIN,power,5V,none,+5V_SYS rail (all 6 paralleled),n/a (power),P0,True
+Power,GND,J3A/J3B/J1,ALL_GND,GND,power,GND,none,GND plane (connect every GND pin),n/a (power),P0,True
+Power,+3V3_OUT(CM4),J3A,"84,86",VCCIO6,power,3.3V,none,CM4 3V3 out (600mA) — reference only; carrier uses own LDO,n/a,P1,True
+Power,+1V8_OUT(CM4),J3A,"88,90",VCC_1V8_S0,power,1.8V,none,CM4 1V8 out — VCCIO for mics/IMU if budget allows,n/a,P1,True
+Power,GPIO_VREF,J3A,78,GPIO_VREF,power,set=1.8V,none,Tie to +1V8 (sets J3A GPIO bank to 1.8V),n/a (power),P0,True
+Camera,MIPI_DPHY_CSI3_RX_CLKP,J3B,129,MIPI_DPHY_CSI3_RX_CLKP,MIPI_DPHY_CSI3_RX_CLKP,diff_1V8 (100Ω),none (dedicated MIPI),Radxa Camera 4K FPC pin 18 MCP,rkisp/csi3-dphy 4-lane endpoint,P0,True
+Camera,MIPI_DPHY_CSI3_RX_CLKN,J3B,127,MIPI_DPHY_CSI3_RX_CLKN,MIPI_DPHY_CSI3_RX_CLKN,diff_1V8 (100Ω),none,Radxa Camera 4K FPC pin 17 MCN,csi3-dphy,P0,True
+Camera,MIPI_DPHY_CSI3_RX_D0P,J3B,117,MIPI_DPHY_CSI3_RX_D0P,MIPI_DPHY_CSI3_RX_D0P,diff_1V8 (100Ω),none,Radxa Camera 4K FPC pin 15 MDP1,csi3-dphy data-lanes,P0,True
+Camera,MIPI_DPHY_CSI3_RX_D0N,J3B,115,MIPI_DPHY_CSI3_RX_D0N,MIPI_DPHY_CSI3_RX_D0N,diff_1V8 (100Ω),none,Radxa Camera 4K FPC pin 14 MDN1,csi3-dphy data-lanes,P0,True
+Camera,MIPI_DPHY_CSI3_RX_D1P,J3B,123,MIPI_DPHY_CSI3_RX_D1P,MIPI_DPHY_CSI3_RX_D1P,diff_1V8 (100Ω),none,Radxa Camera 4K FPC pin 12 MDP2,csi3-dphy data-lanes,P0,True
+Camera,MIPI_DPHY_CSI3_RX_D1N,J3B,121,MIPI_DPHY_CSI3_RX_D1N,MIPI_DPHY_CSI3_RX_D1N,diff_1V8 (100Ω),none,Radxa Camera 4K FPC pin 11 MDN2,csi3-dphy data-lanes,P0,True
+Camera,MIPI_DPHY_CSI3_RX_D2P,J3B,135,MIPI_DPHY_CSI3_RX_D2P,MIPI_DPHY_CSI3_RX_D2P,diff_1V8 (100Ω),none,Radxa Camera 4K FPC pin 6 MDP3,csi3-dphy data-lanes,P0,True
+Camera,MIPI_DPHY_CSI3_RX_D2N,J3B,133,MIPI_DPHY_CSI3_RX_D2N,MIPI_DPHY_CSI3_RX_D2N,diff_1V8 (100Ω),none,Radxa Camera 4K FPC pin 5 MDN3,csi3-dphy data-lanes,P0,True
+Camera,MIPI_DPHY_CSI3_RX_D3P,J3B,141,MIPI_DPHY_CSI3_RX_D3P,MIPI_DPHY_CSI3_RX_D3P,diff_1V8 (100Ω),none,Radxa Camera 4K FPC pin 3 MDP4,csi3-dphy data-lanes,P0,True
+Camera,MIPI_DPHY_CSI3_RX_D3N,J3B,139,MIPI_DPHY_CSI3_RX_D3N,MIPI_DPHY_CSI3_RX_D3N,diff_1V8 (100Ω),none,Radxa Camera 4K FPC pin 2 MDN4,csi3-dphy data-lanes,P0,True
+Camera,I2C_CAM_SCL,J3A,80,I2C0_SCL_M1_TP,I2C0_SCL_M1,1.8V (PMUIO1),I2C0 — distinct addr from any HAT EEPROM,Radxa Camera 4K FPC pin 24 SCL,i2c0 + imx415 subdev,P0,True
+Camera,I2C_CAM_SDA,J3A,82,I2C0_SDA_M1_TP,I2C0_SDA_M1,1.8V (PMUIO1),I2C0,Radxa Camera 4K FPC pin 25 SDA,i2c0 + imx415 subdev,P0,True
+Camera,CAM_RST_n,J3B,143,MIPI_CAM3_PDN_1V8,GPIO3_C5,1.8V,none,Radxa Camera 4K FPC pin 27 RESET_N; active-low reset,"reset-gpios in imx415 node, GPIO_ACTIVE_LOW",P0,True
+Camera,CAM_MCLK,J1,59,MIPI_CSI3_CAM_CLKOUT_1V8,CAM_CLK2_OUT_M0,1.8V,dedicated CAM_CLK2 for CSI3,Radxa Camera 4K FPC pin 20 MCLK,clocks=<&cru CLK_CAM2_OUT>,P0,True
+PDM,PDM1_CLK1_M1,J3B,96,PDM1_CLK1_M1,PDM1_CLK1_M1 (GPIO4_B0),1.8V (VCCIO_AUDIO),none (dedicated PDM1),Both MEMS mics CLK,pdm controller + clk,P0,True
+PDM,PDM1_SDI1_M1,J3B,94,PDM1_SDI1_M1,PDM1_SDI1_M1 (GPIO4_B2),1.8V (VCCIO_AUDIO),none,Mic 0 (L) DATA,pdm rx channel,P0,True
+PDM,PDM1_SDI2_M1,J3B,111,PDM1_SDI2_M1,PDM1_SDI2_M1 (GPIO4_B1),1.8V (VCCIO_AUDIO),none,Mic 1 (R) DATA,pdm rx channel,P0,True
+SAI,SAI1_SCLK,J1,25,SAI1_SCLK_M0,SAI1_SCLK_M0 (GPIO4_A3),1.8V (VCCIO_AUDIO),none (dedicated SAI1),Class-D Amp BCLK,sai1 / simple-audio-card,P0,True
+SAI,SAI1_LRCK,J1,19,SAI1_LRCK_M0,SAI1_LRCK_M0 (GPIO4_A5),1.8V (VCCIO_AUDIO),none,Class-D Amp LRCLK,sai1,P0,True
+SAI,SAI1_SDO0,J1,29,SAI1_SDO0_M0,SAI1_SDO0_M0 (GPIO4_A7),1.8V (VCCIO_AUDIO),none,Class-D Amp DIN,sai1 playback,P0,True
+SAI,SAI1_MCLK,J1,23,SAI1_MCLK_M0,SAI1_MCLK_M0 (GPIO4_A2),1.8V (VCCIO_AUDIO),none,Unused/DNP: MAX98357A does not require MCLK,unused unless future codec needs mclk,P1,True
+Control,GPIO_SPKR_EN,J1,96,SPK_CTL_H,GPIO2_C6,1.8V (VCCIO6),none (dedicated speaker ctl),Class-D Amp SD/EN,gpio (amp enable),P0,True
+USB,USB2_OTG0_DP,J3B,105,USB2_OTG0_DP,USB2_OTG0_DP,USB 3.3V analog (90Ω),none,USB-C D+ (via ESD),usb2 otg0 / dwc3,P0,True
+USB,USB2_OTG0_DM,J3B,103,USB2_OTG0_DM,USB2_OTG0_DM,USB 3.3V analog (90Ω),none,USB-C D- (via ESD),usb2 otg0 / dwc3,P0,True
+UART,UART0_TX_M0_DEBUG,J3A,55,UART0_TX_M0_DEBUG,UART0_TX_M0,1.8V (VCCIO6),none (dedicated debug),Debug header TX,console UART0,P0,True
+UART,UART0_RX_M0_DEBUG,J3A,51,UART0_RX_M0_DEBUG,UART0_RX_M0,1.8V (VCCIO6),none,Debug header RX,console UART0,P0,True
+GNSS,GNSS_UART_TX,J3A,47,UART7_TX_M0,UART7_TX_M0 (GPIO2_B6),1.8V (VCCIO6),none,GNSS module RXD (CM4→GNSS),uart7 / gnss nmea,P0,True
+GNSS,GNSS_UART_RX,J3A,45,UART7_RX_M0,UART7_RX_M0 (GPIO2_B7),1.8V (VCCIO6),none,GNSS module TXD (GNSS→CM4),uart7 / gnss nmea,P0,True
+GNSS,GNSS_PPS,J3A,40,SPI1_MISO_M0,GPIO1_B6,1.8V (VCCIO6),none (used as GPIO),GNSS PPS to CM4 GPIO,pps-gpio,P0,True
+GNSS,GNSS_RST_n,J3A,44,SPI1_MOSI_M0,GPIO1_B5,1.8V (VCCIO6),none (used as GPIO),GNSS RESET/EN (active-low),gpio,P0,True
+Control,RECOVERY_n,J3A,93,MASKROM,nRPIBOOT / SARADC_IN0_BOOT,1.8V,none (dedicated),RECOVERY button to GND (force USB maskrom),boot select,P0,True
+Control,RESET_n,J3A,92,RESET_L,NPOR,1.8V,none (dedicated),RESET button (open-drain to GND),soc reset,P0,True
+Control,POWER_KEY,J3A,99,PWRON_L,PWRON,1.8V,none (dedicated),Power button (active-low),power key,P0,True
+Control,WL_nDIS,J3A,89,WL_NDIS,WL_NDIS,1.8V,none (dedicated),Pull-up; default Wi-Fi enabled,rfkill,P0,True
+Control,BT_nDIS,J3A,91,BT_NDIS,GPIO2_C1,1.8V,none (dedicated),Pull-up; default BT enabled,rfkill,P0,True
+Control,LED_PWR_n,J3A,95,NPWR_LED,GPIO2_C4,1.8V (VCCIO6),none,Power LED (active-low sink),gpio-leds,P0,True
+Control,LED_STATUS_n,J3A,21,PI_NLED_ACTIVITY,GPIO2_D0,1.8V (VCCIO6),none,Status LED (active-low sink),gpio-leds,P0,True
+I2C,I2C_IMU_SCL,J3A,56,I2C8_SCL_M1,I2C8_SCL_M1 (GPIO1_C6),1.8V (VCCIO6),I2C8 (separate from camera I2C0),IMU SCL,i2c8,P1,True
+I2C,I2C_IMU_SDA,J3A,58,I2C8_SDA_M1,I2C8_SDA_M1 (GPIO1_C7),1.8V (VCCIO6),I2C8,IMU SDA,i2c8,P1,True
+Control,IMU_INT1,J3A,30,GPIO1_C1,GPIO1_C1,1.8V (VCCIO6),none,IMU INT1,interrupt-gpio,P1,True
+Control,VIB_PWM,J3A,48,PWM1_CH0_M2,PWM1_CH0_M2 (GPIO2_C0),1.8V (VCCIO6),PWM-capable pin,Vibration driver IN/PWM,pwm,P1,True
+Control,VIB_EN,J3A,34,CAN1_TX_M3,GPIO3_A2,1.8V (VCCIO6),none,Vibration driver EN,gpio,P1,True
+I2C,FUEL_I2C_SCL,J3A,35,I2C6_SCL_M3,I2C6_SCL_M3 (GPIO4_C6),1.8V (VCCIO6),I2C6 (separate from camera/IMU),Charger+Fuel gauge SCL,i2c6,P1,True
+I2C,FUEL_I2C_SDA,J3A,36,I2C6_SDA_M3,I2C6_SDA_M3 (GPIO4_C7),1.8V (VCCIO6),I2C6,Charger+Fuel gauge SDA,i2c6,P1,True
+Control,CHG_INT_n,J3A,37,SPI1_CSN1_M0,GPIO1_C0,1.8V (VCCIO6),none,Charger interrupt,interrupt-gpio,P1,True
+Control,LOW_BAT_INT_n,J3A,39,SPI1_CSN0_M0,GPIO1_B7,1.8V (VCCIO6),none,Fuel-gauge low-batt alert,interrupt-gpio,P1,True

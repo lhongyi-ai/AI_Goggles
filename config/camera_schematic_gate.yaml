@@ -1,0 +1,61 @@
+metadata:
+  board: ai_glasses_carrier_v1
+  stage: schematic
+  status: SCHEMATIC_ELECTRICAL_LOCKED
+  date: 2026-06-28
+  editable_sources:
+    - scripts/carrier_bom.py
+    - scripts/cm4_pinmap.py
+    - hardware/ai_glasses_carrier.kicad_sch
+  reference_sources:
+    - CM4_IMX415_design_files/Radxa_Camera_4K_31pin_pinout.csv
+    - data/radxa_cm4_pinout_v1.20.xlsx
+    - hardware/datasheets/FH35C-31S-0.3SHW_50_CL0580-2923-7-50_2DDrawing_0001002002.pdf
+
+schematic_gate:
+  j2_pin_1_to_31: PASS
+  mipi_lane_order: PASS
+  mipi_polarity: PASS
+  i2c_mclk_reset: PASS
+  voltage_domains: PASS
+  power_and_nc: PASS
+  reset_polarity: "CAM_RST_n is active-low; J2 pin 27 schematic label is RESET_N."
+  pwdn: "No PWDN connection; Radxa Camera 4K 31-pin pinout exposes RESET but no PWDN pin."
+  erc_warning_policy: "All ERC warnings must be explained. Current gate target is 0 ERC violations."
+
+j2_power:
+  pin_28: "+CAM_3V3"
+  pin_29: "+CAM_3V3"
+  pin_30: "+5V_SYS"
+  pin_31: "+5V_SYS"
+  note: "Both VCC3.3V and VCC5V are connected because the Radxa Camera 4K 31-pin pinout exposes both rails."
+
+j2_nc_pins:
+  - 8
+  - 9
+  - 22
+  - 23
+  - 26
+
+deferred_to_pre_layout:
+  - id: AC006_PHYSICAL_VALIDATION
+    item: "AC006实物验证"
+    status: DEFERRED_TO_PRE_LAYOUT
+  - id: FPC_CONTACT_SIDE
+    item: "FPC接触面"
+    status: DEFERRED_TO_PRE_LAYOUT
+  - id: FPC_INSERTION_DIRECTION
+    item: "插入方向"
+    status: DEFERRED_TO_PRE_LAYOUT
+  - id: J2_PIN1_PHYSICAL_CHECK
+    item: "Pin 1实体核对"
+    status: DEFERRED_TO_PRE_LAYOUT
+  - id: J2_1TO1_PRINT_CHECK
+    item: "1:1打印"
+    status: DEFERRED_TO_PRE_LAYOUT
+  - id: J2_COUPON_TEST
+    item: "Coupon测试"
+    status: DEFERRED_TO_PRE_LAYOUT
+  - id: FPC_BEND_AND_ENCLOSURE_PATH
+    item: "FPC弯折和外壳路径"
+    status: DEFERRED_TO_PRE_LAYOUT

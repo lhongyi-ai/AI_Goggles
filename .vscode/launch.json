@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug KiCad IPC Check",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/check_ipc_connection.py",
+      "console": "integratedTerminal",
+      "python": "${workspaceFolder}/.venv/bin/python"
+    },
+    {
+      "name": "Debug Generate Test Board",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/generate_test_board.py",
+      "console": "integratedTerminal",
+      "python": "${workspaceFolder}/.venv/bin/python"
+    }
+  ]
+}

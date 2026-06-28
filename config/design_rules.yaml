@@ -1,0 +1,131 @@
+# Design rules for ai_glasses_carrier_v1
+# 6-layer stack; impedance targets must be confirmed with PCB fab before ordering.
+# All high-speed and RF constraints require human review — AI content is auxiliary only.
+
+stackup:
+  layers: 6
+  thickness_mm: 1.6
+  layer_order:
+    - name: F.Cu
+      id: 0
+      type: signal
+      notes: "MIPI-CSI, USB2 D+/D-, other high-speed; keep short"
+    - name: In1.Cu
+      id: 1
+      type: plane
+      net: GND
+      notes: "Solid GND reference for F.Cu high-speed signals"
+    - name: In2.Cu
+      id: 2
+      type: plane
+      net: mixed_power
+      notes: "+5V, +3V3, +1V8 pours; split carefully without breaking GND return"
+    - name: In3.Cu
+      id: 3
+      type: signal
+      notes: "Low-speed signals, PDM, I2C, GPIO, power distribution traces"
+    - name: In4.Cu
+      id: 4
+      type: plane
+      net: GND
+      notes: "Solid GND reference for B.Cu; also thermal via target"
+    - name: B.Cu
+      id: 31
+      type: signal
+      notes: "Low-speed signals, battery routing, LED, test point connections"
+  copper_weight_outer_oz: 1
+  copper_weight_inner_oz: 0.5
+  min_finished_hole_mm: 0.20
+  notes: "Verify stack with fab. Confirm dielectric constants for impedance calc."
+
+default:
+  track_width_mm: 0.15
+  clearance_mm: 0.15
+  via_diameter_mm: 0.45
+  via_drill_mm: 0.20
+  courtyard_clearance_mm: 0.25
+
+high_speed:
+  enabled: true
+
+  mipi_csi:
+    topology: "point-to-point, no stub, no test-point on trunk"
+    differential_impedance_ohm: 100
+    single_ended_impedance_ohm: 50
+    trace_width_mm: 0.10          # adjust after fab impedance calc
+    trace_gap_mm: 0.10            # adjust after fab impedance calc
+    max_length_mm: 60
+    intra_pair_skew_ps: 10        # P vs N within one lane
+    inter_lane_skew_ps: 50        # CLK vs DATA lane relative
+    via_strategy: "paired signal vias + adjacent GND return via"
+    layer_changes: "minimize; prefer staying on F.Cu"
+    reference_plane: "In1.Cu GND directly below F.Cu"
+    esd: "low-capacitance ESD array on FPC end; max 0.4 pF per line"
+    keepout: "no inductors, switching nodes, antenna zone or Class-D within 3mm"
+
+  usb2:
+    topology: "point-to-point"
+    differential_impedance_ohm: 90
+    trace_width_mm: 0.13          # adjust after fab impedance calc
+    trace_gap_mm: 0.13            # adjust after fab impedance calc
+    max_length_mm: 80
+    intra_pair_skew_ps: 20
+    esd: "ESD clamp placed within 1mm of USB-C connector"
+    keepout: "avoid crossing switching power nodes"
+
+power:
+  plus5v_input:
+    min_width_mm: 0.80
+    bulk_cap_placement: "within 3mm of B2B J3A +5V pins"
+    high_freq_decoupling: "100nF + 10uF per power cluster, within 0.5mm of B2B"
+    current_sense_option: "0 ohm / shunt resistor footprint in series"
+
+  switching_regulator:
+    sw_node_area: "minimize copper pour; tight loop: inductor-diode/FET-cap"
+    input_cap: "within 1mm of VIN pin"
+    output_cap: "within 1mm of VOUT/inductor"
+    trace_width_mm: 0.5           # scale to actual current
+
+  battery:
+    max_trace_width_mm: 1.0       # 1A+ path; scale to boost inductor current
+    protection_ic: "close to battery connector"
+    ntc: "route to designated ADC pin; short trace"
+
+ground:
+  strategy: "single solid GND; do NOT split GND for high-speed return paths"
+  audio_isolation: "separate analog audio VCC filtering; no GND cut"
+  via_stitching: "GND stitching vias around high-speed regions, 1-2mm pitch"
+  thermal_vias: "array under PMIC, boost IC, Class-D Amp, and CM4 module"
+
+antenna_keepout:
+  # No copper, GND fill, battery, metal hardware, speaker magnet, or hinge metal
+  # inside the CM4 module's antenna area. Verify exact keepout from Radxa datasheet.
+  enforce: true
+  min_clearance_from_module_edge_mm: 10   # placeholder; use official keepout from Radxa
+
+audio:
+  i2s_pdm:
+    keepout: "3mm from Class-D output, switching inductors, and antenna zone"
+    series_damping: "22-33 ohm on CLK lines if >30mm trace"
+    reference_plane: "continuous GND directly below"
+
+dfm:
+  min_trace_width_mm: 0.10
+  min_trace_clearance_mm: 0.10
+  min_via_drill_mm: 0.20
+  min_via_annular_ring_mm: 0.125
+  preferred_bga_pitch_mm: 0.65   # avoid sub-0.5mm BGA on EVT
+  solder_mask_expansion_mm: 0.05
+  silkscreen_min_text_height_mm: 0.8
+
+verification:
+  impedance_simulation: "required before gerber release; confirm with fab"
+  drc_target: "0 errors before release"
+  erc_target: "0 errors before release"
+  human_review_required:
+    - "All MIPI differential routing"
+    - "USB-C CC resistors and TVS placement"
+    - "Battery protection IC wiring"
+    - "5V rail current capacity (trace width + via count)"
+    - "Antenna keepout enforcement"
+    - "Thermal relief strategy"

@@ -1,0 +1,32 @@
+Pin,Definition,Category,Notes
+1,GND,Ground,
+2,MDN4,MIPI data,Data lane 4 negative
+3,MDP4,MIPI data,Data lane 4 positive
+4,GND,Ground,
+5,MDN3,MIPI data,Data lane 3 negative
+6,MDP3,MIPI data,Data lane 3 positive
+7,GND,Ground,
+8,NC,No connect,Leave unconnected
+9,NC,No connect,Leave unconnected
+10,GND,Ground,
+11,MDN2,MIPI data,Data lane 2 negative
+12,MDP2,MIPI data,Data lane 2 positive
+13,GND,Ground,
+14,MDN1,MIPI data,Data lane 1 negative
+15,MDP1,MIPI data,Data lane 1 positive
+16,GND,Ground,
+17,MCN,MIPI clock,Clock negative
+18,MCP,MIPI clock,Clock positive
+19,GND,Ground,
+20,MCLK,Clock,Sensor master clock
+21,GND,Ground,
+22,NC,No connect,Leave unconnected
+23,NC,No connect,Leave unconnected
+24,SCL,I2C,Control clock
+25,SDA,I2C,Control data
+26,NC,No connect,Leave unconnected
+27,RESET,GPIO,Confirm polarity and voltage in module documentation
+28,VCC3.3V,Power,Module supply
+29,VCC3.3V,Power,Module supply
+30,VCC5V,Power,Module supply
+31,VCC5V,Power,Module supply

@@ -1,0 +1,101 @@
+{
+  "source": "Radxa CM4 V1.20 official 2D DXF (mechanical/radxa_cm4_2d_dxf_v1.20)",
+  "source_io_board": "Radxa CM4 IO Board V1.10 official 2D DXF (mechanical/radxa_cm4_io_2d_dxf_v1.10)",
+  "note": "Authoritative CM4 MODULE outline and official CM4 IO Board reference outline. Carrier outline = project decision. B2B connector origins: align in KiCad via DXF/STEP import, do not text-mine.",
+  "cm4_module_outline": {
+    "width_mm": 40.02,
+    "height_mm": 54.98,
+    "min_x_mm": 109.509,
+    "min_y_mm": 97.509,
+    "max_x_mm": 149.529,
+    "max_y_mm": 152.489
+  },
+  "cm4_io_board_outline": {
+    "width_mm": 160.01,
+    "height_mm": 90.02,
+    "min_x_mm": -3.5,
+    "min_y_mm": -3.49,
+    "max_x_mm": 156.51,
+    "max_y_mm": 86.53
+  },
+  "files": {
+    "TOP": {
+      "path": "mechanical/radxa_cm4_2d_dxf_v1.20/Radxa CM4 V1.20 TOP.dxf",
+      "outline": {
+        "width_mm": 40.02,
+        "height_mm": 54.98,
+        "min_x_mm": 109.509,
+        "min_y_mm": 97.509,
+        "max_x_mm": 149.529,
+        "max_y_mm": 152.489
+      }
+    },
+    "BOT": {
+      "path": "mechanical/radxa_cm4_2d_dxf_v1.20/Radxa CM4 V1.20 BOT.dxf",
+      "outline": {
+        "width_mm": 40.02,
+        "height_mm": 54.98,
+        "min_x_mm": 109.509,
+        "min_y_mm": 97.509,
+        "max_x_mm": 149.529,
+        "max_y_mm": 152.489
+      }
+    }
+  },
+  "io_board_files": {
+    "TOP": {
+      "path": "mechanical/radxa_cm4_io_2d_dxf_v1.10/RC126_V1.10_20250526_TOP.dxf",
+      "outline": {
+        "width_mm": 160.01,
+        "height_mm": 90.02,
+        "min_x_mm": -3.5,
+        "min_y_mm": -3.49,
+        "max_x_mm": 156.51,
+        "max_y_mm": 86.53
+      }
+    },
+    "BOT": {
+      "path": "mechanical/radxa_cm4_io_2d_dxf_v1.10/RC126_V1.10_20250526_BOT.dxf",
+      "outline": {
+        "width_mm": 160.01,
+        "height_mm": 90.02,
+        "min_x_mm": -3.5,
+        "min_y_mm": -3.49,
+        "max_x_mm": 156.51,
+        "max_y_mm": 86.53
+      }
+    }
+  },
+  "io_board_reference_labels": [
+    {
+      "text": "Connector_1",
+      "x_mm": 110.55,
+      "y_mm": 57.35,
+      "note": "Text insertion point only; not a connector footprint origin."
+    },
+    {
+      "text": "Connector_2",
+      "x_mm": 83.45,
+      "y_mm": 56.8,
+      "note": "Text insertion point only; not a connector footprint origin."
+    },
+    {
+      "text": "Connector_3",
+      "x_mm": 92.8,
+      "y_mm": 78.85,
+      "note": "Text insertion point only; not a connector footprint origin."
+    },
+    {
+      "text": "J12",
+      "x_mm": 62.748,
+      "y_mm": 56.711,
+      "note": "Text insertion point only; not a connector footprint origin."
+    },
+    {
+      "text": "J12-1",
+      "x_mm": 68.682,
+      "y_mm": 77.559,
+      "note": "Text insertion point only; not a connector footprint origin."
+    }
+  ]
+}

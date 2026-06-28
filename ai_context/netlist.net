@@ -1,0 +1,11158 @@
+(export
+	(version "E")
+	(design
+		(source "/Users/stanley/AI Glasses/hardware/ai_glasses_carrier.kicad_sch")
+		(date "2026-06-28T04:56:52")
+		(tool "Eeschema 10.0.4")
+		(sheet
+			(number "1")
+			(name "/")
+			(tstamps "/")
+			(title_block
+				(title "AI Glasses Carrier V1 (RK3576/CM4) — EVT")
+				(company "AI Glasses Project")
+				(rev "v1.0-draft")
+				(date)
+				(source "ai_glasses_carrier.kicad_sch")
+				(comment
+					(number "1")
+					(value "Radxa CM4 (RK3576) Carrier Board — EVT")
+				)
+				(comment
+					(number "2")
+					(value "Components: scripts/carrier_bom.py | Pin table: config/cm4_v1_pin_assignment.yaml")
+				)
+				(comment
+					(number "3")
+					(value "P0: Camera MIPI-CSI | PDM Mic x2 | I2S Audio | USB-C | Wi-Fi/BT | Debug")
+				)
+				(comment
+					(number "4")
+					(value "P1: 1S Li-Po | Fuel Gauge | IMU | Vibration")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+	)
+	(components
+		(comp
+			(ref "C1")
+			(value "10µF")
+			(footprint "Capacitor_SMD:C_0805_2012Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C1")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "6368bbeb-6c4c-4b43-8176-bd2b81e36c7e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C2")
+			(value "100nF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C2")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "15693482-0552-41eb-8343-7de3f6246ed9")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C3")
+			(value "10µF")
+			(footprint "Capacitor_SMD:C_0805_2012Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C3")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "7e89b6d5-f493-4526-a77b-b28485fcc22e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C4")
+			(value "100nF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C4")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "ad9ed0f9-1658-40c6-8c95-f411a792c5a3")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C5")
+			(value "10µF")
+			(footprint "Capacitor_SMD:C_0805_2012Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C5")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "86bbbd5b-20da-45f7-baa9-9bc75c29f9d5")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C6")
+			(value "100nF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C6")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "c06ee314-4522-4d95-8941-587ff5916091")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C7")
+			(value "22µF")
+			(footprint "Capacitor_SMD:C_0805_2012Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C7")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "13de44ad-601a-4870-9793-2ee72beaa110")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C8")
+			(value "10µF")
+			(footprint "Capacitor_SMD:C_0805_2012Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C8")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "7f54ea78-d3ae-41c0-82f9-1d425958e049")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C9")
+			(value "1µF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C9")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "eeb345cf-32ea-43ea-a057-663689f3ea9e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C10")
+			(value "100nF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C10")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "7c2dcefd-5be6-4789-aa03-8ebc33f68f6f")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C11")
+			(value "1µF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C11")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "d9996c04-8b57-4208-bd41-e362756ab2f0")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C13")
+			(value "100nF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C13")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "f2225723-1af7-48a0-92cc-89468eb61eec")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C14")
+			(value "100nF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C14")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "5e10611b-0fec-486e-9015-e693db8684a6")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C15")
+			(value "10µF")
+			(footprint "Capacitor_SMD:C_0805_2012Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C15")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "5f7bfd1f-04fb-4944-a8f6-39fc84ae5944")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C16")
+			(value "100nF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C16")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "628b77f5-0065-4d65-b6b7-61c913e303d7")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C17")
+			(value "100nF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C17")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "3920ff15-8c7c-47dc-a329-12c2ca4cf8d4")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C18")
+			(value "100nF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C18")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "f50a4402-1a31-441c-b984-a6d72a25c93e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C19")
+			(value "100nF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C19")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "cb3fec0f-ca79-4191-a696-05e3ca229bd8")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C20")
+			(value "100nF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C20")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "58db0753-1fd5-48ea-8d5c-d15824c3d22a")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C21")
+			(value "100nF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C21")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "e4421586-8726-4336-88d2-97d5176a0399")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C22")
+			(value "100nF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C22")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "7a2570ed-4e49-4e6d-8495-98dc28f2017a")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C23")
+			(value "1nF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C23")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "e8c26bc3-6800-4b0b-a6c2-81ee23b21da1")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C24")
+			(value "1nF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C24")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "00a008d4-94c7-4688-84df-633c3f1b40c6")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C25")
+			(value "π shunt (DNP,tune)")
+			(footprint "Capacitor_SMD:C_0402_1005Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0402_1005Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C25")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "881f0394-fdad-4097-99a2-652222d5d737")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C26")
+			(value "π shunt (DNP,tune)")
+			(footprint "Capacitor_SMD:C_0402_1005Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0402_1005Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C26")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "cd76fb7f-c343-4922-bf29-1be469add224")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C27")
+			(value "DC-block (series,tune)")
+			(footprint "Capacitor_SMD:C_0402_1005Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0402_1005Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C27")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "5e9d9a0c-289e-45a2-9f8a-0105b8169e9e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C28")
+			(value "100nF (active-ant)")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C28")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "ac1e8b5f-214b-4243-8336-0cc18c6baa29")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C29")
+			(value "10µF")
+			(footprint "Capacitor_SMD:C_0805_2012Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C29")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "1e7efb87-9502-4fb4-9591-8e6afcf9373e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C30")
+			(value "100nF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "C30")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "5a16330c-d512-4f4a-8520-9d910025339e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "D1")
+			(value "LED Green")
+			(footprint "LED_SMD:LED_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "LED_SMD:LED_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "D1")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "991340cf-8824-4bd8-a9a3-56f479ba5079")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "D2")
+			(value "LED Blue")
+			(footprint "LED_SMD:LED_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "LED_SMD:LED_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "D2")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "530a0804-d6a7-4250-8cfd-eb4bebb2aff6")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "D3")
+			(value "SMAJ5.0A (TVS)")
+			(footprint "Diode_SMD:D_SMA")
+			(fields
+				(field
+					(name "Footprint") "Diode_SMD:D_SMA")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "D3")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "e747c0dc-b55c-4f4b-92c8-0db411093bb5")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "D4")
+			(value "ESD low-cap RF 0.3pF")
+			(footprint "AI_Glasses:RF_ESD_2P_VERIFY")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:RF_ESD_2P_VERIFY")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "D4")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "bdb2633d-b180-46e9-9919-707e7f8fc1fa")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "FB1")
+			(value "Ferrite 600Ω@100MHz")
+			(footprint "Inductor_SMD:L_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Inductor_SMD:L_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "FB1")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "212294fd-61f5-4dea-9134-988ac079e694")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "FB2")
+			(value "Ferrite 600Ω@100MHz")
+			(footprint "Inductor_SMD:L_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Inductor_SMD:L_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "FB2")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "47c8e83b-e3c7-4343-84e0-dfd2b5c12de1")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "J1")
+			(value "DF40C-100DS-0.4V(51)")
+			(footprint "AI_Glasses:VERIFY_B2B_J1_LOGICAL")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_B2B_J1_LOGICAL")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "J1")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "513d91a8-6b14-4502-9b3f-5bfc57be9bd7")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "6")
+						)
+						(pin
+							(num "7")
+						)
+						(pin
+							(num "8")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "J2")
+			(value "FH35C-31S-0.3SHW(50)")
+			(footprint "AI_Glasses:FH35C-31S-0.3SHW_50")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:FH35C-31S-0.3SHW_50")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "J2")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "b25bc9f1-eab0-4284-90cf-cdf0ee92b3dc")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "6")
+						)
+						(pin
+							(num "7")
+						)
+						(pin
+							(num "8")
+						)
+						(pin
+							(num "9")
+						)
+						(pin
+							(num "10")
+						)
+						(pin
+							(num "11")
+						)
+						(pin
+							(num "12")
+						)
+						(pin
+							(num "13")
+						)
+						(pin
+							(num "14")
+						)
+						(pin
+							(num "15")
+						)
+						(pin
+							(num "16")
+						)
+						(pin
+							(num "17")
+						)
+						(pin
+							(num "18")
+						)
+						(pin
+							(num "19")
+						)
+						(pin
+							(num "20")
+						)
+						(pin
+							(num "21")
+						)
+						(pin
+							(num "22")
+						)
+						(pin
+							(num "23")
+						)
+						(pin
+							(num "24")
+						)
+						(pin
+							(num "25")
+						)
+						(pin
+							(num "26")
+						)
+						(pin
+							(num "27")
+						)
+						(pin
+							(num "28")
+						)
+						(pin
+							(num "29")
+						)
+						(pin
+							(num "30")
+						)
+						(pin
+							(num "31")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "J3")
+			(value "JST-SH 2p (spkr)")
+			(footprint "AI_Glasses:VERIFY_2P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_2P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "J3")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "b2e39428-096f-4c08-90ff-ec17097711fd")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "J4")
+			(value "GCT USB4085 (USB2)")
+			(footprint "AI_Glasses:VERIFY_7P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_7P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "J4")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "b443e418-c4b9-4fca-9b43-25f3ebbf6051")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "6")
+						)
+						(pin
+							(num "7")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "J5")
+			(value "JST-PH 3p")
+			(footprint "AI_Glasses:VERIFY_3P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_3P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "J5")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "26818096-f07c-4afa-a03a-9d6d65e1899e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "J6")
+			(value "JST-SH 2p")
+			(footprint "AI_Glasses:VERIFY_2P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_2P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "J6")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "fdc0da87-4b0d-486d-b552-1231895f47fb")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "J7")
+			(value "Header 1x4 2.54mm")
+			(footprint "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical")
+			(fields
+				(field
+					(name "Footprint") "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "J7")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "5f389b76-bae4-4d70-b7ec-6647fe31aaf9")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "J8")
+			(value "U.FL / IPEX")
+			(footprint "AI_Glasses:VERIFY_2P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_2P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "J8")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "f00d62cf-7490-437f-8f1b-d44ff2ff9333")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "J31")
+			(value "DF40C-100DS-0.4V(51)")
+			(footprint "AI_Glasses:VERIFY_B2B_J31_LOGICAL")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_B2B_J31_LOGICAL")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "J31")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "f035027a-3394-4a5d-a14d-7aac311e3a01")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "6")
+						)
+						(pin
+							(num "7")
+						)
+						(pin
+							(num "8")
+						)
+						(pin
+							(num "9")
+						)
+						(pin
+							(num "10")
+						)
+						(pin
+							(num "11")
+						)
+						(pin
+							(num "12")
+						)
+						(pin
+							(num "13")
+						)
+						(pin
+							(num "14")
+						)
+						(pin
+							(num "15")
+						)
+						(pin
+							(num "16")
+						)
+						(pin
+							(num "17")
+						)
+						(pin
+							(num "18")
+						)
+						(pin
+							(num "19")
+						)
+						(pin
+							(num "20")
+						)
+						(pin
+							(num "21")
+						)
+						(pin
+							(num "22")
+						)
+						(pin
+							(num "23")
+						)
+						(pin
+							(num "24")
+						)
+						(pin
+							(num "25")
+						)
+						(pin
+							(num "26")
+						)
+						(pin
+							(num "27")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "J32")
+			(value "DF40C-100DS-0.4V(51)")
+			(footprint "AI_Glasses:VERIFY_B2B_J32_LOGICAL")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_B2B_J32_LOGICAL")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "J32")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "4ccb9ee7-a4ef-4a22-87dc-919cb0e859c9")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "6")
+						)
+						(pin
+							(num "7")
+						)
+						(pin
+							(num "8")
+						)
+						(pin
+							(num "9")
+						)
+						(pin
+							(num "10")
+						)
+						(pin
+							(num "11")
+						)
+						(pin
+							(num "12")
+						)
+						(pin
+							(num "13")
+						)
+						(pin
+							(num "14")
+						)
+						(pin
+							(num "15")
+						)
+						(pin
+							(num "16")
+						)
+						(pin
+							(num "17")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "L1")
+			(value "4.7µH")
+			(footprint "AI_Glasses:POWER_INDUCTOR_7X7_VERIFY")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:POWER_INDUCTOR_7X7_VERIFY")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "L1")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "d85a1e23-2d3a-4f82-9d91-6e1eca1a44ff")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "L2")
+			(value "RF choke (active-ant)")
+			(footprint "Inductor_SMD:L_0402_1005Metric")
+			(fields
+				(field
+					(name "Footprint") "Inductor_SMD:L_0402_1005Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "L2")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "d96a042d-4d75-4abe-a7f9-e1558e805a81")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "MK1")
+			(value "SPH0641LU4H-1")
+			(footprint "AI_Glasses:VERIFY_5P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_5P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "MK1")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "c2c3b740-c1aa-40cc-b56e-098d1b5f3347")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "5")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "MK2")
+			(value "SPH0641LU4H-1")
+			(footprint "AI_Glasses:VERIFY_5P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_5P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "MK2")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "1c05f9d5-7291-4a9a-af91-e81deafe0860")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "5")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R1")
+			(value "5.1k")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "R1")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "362f2bd9-3590-4eed-a590-cbd53a8013c6")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R2")
+			(value "5.1k")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "R2")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "dbcd9238-83c8-4f6a-a951-b1226a27b77c")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R3")
+			(value "0R / shunt")
+			(footprint "Resistor_SMD:R_2512_6332Metric")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_2512_6332Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "R3")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "e3e2fc97-29f2-4a60-b8d8-35296c8ea13b")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R4")
+			(value "1k")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "R4")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "6c1b74c7-10fc-4020-aae6-7478e0490ba2")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R5")
+			(value "1k")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "R5")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "5d35df5c-f3de-485c-a589-63b6d689f89c")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R7")
+			(value "2.2k")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "R7")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "10556aa0-d4be-4430-a74a-f7e82deb5f01")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R8")
+			(value "2.2k")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "R8")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "bb110199-7116-44c2-96c5-66ba476ae639")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R9")
+			(value "2.2k")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "R9")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "6288a81d-930a-481d-ab65-cf7313152e8a")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R10")
+			(value "2.2k")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "R10")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "4ea77837-1858-47da-90a6-c98c1b3ea847")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R11")
+			(value "10k")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "R11")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "9a399911-4d03-4589-be6c-e9741c91efad")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R12")
+			(value "2.2k")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "R12")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "edf2c6c0-8055-4512-98ff-29848112ebde")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R13")
+			(value "2.2k")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "R13")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "3976888d-8b3d-4ee5-8195-2903707cd467")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R14")
+			(value "10k")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "R14")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "3a2d09b2-54b9-4ef4-8683-2e4168971706")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R15")
+			(value "10k")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "R15")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "8dc0f77a-c6c3-49fc-85f9-a65673543f75")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R16")
+			(value "10k")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "R16")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "bde1c315-4927-4f72-95df-aaf57cdff7bb")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R17")
+			(value "10Ω (active-ant)")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "R17")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "4e07c8c0-579c-4a36-82f3-8d3e18333260")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R18")
+			(value "100k")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "R18")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "65ce1476-b0dc-48eb-acd0-71d273a09622")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R19")
+			(value "100k")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "R19")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "ca24397f-05a8-4446-a82a-6369fd64022b")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R20")
+			(value "100k")
+			(footprint "Resistor_SMD:R_0603_1608Metric")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "R20")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "c7f96847-fbe4-4703-888f-038b4148b04c")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "SW1")
+			(value "Tact SW SMD")
+			(footprint "AI_Glasses:VERIFY_2P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_2P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "SW1")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "42d82f78-44a3-40a7-bd09-abf110efa464")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "SW2")
+			(value "Tact SW SMD")
+			(footprint "AI_Glasses:VERIFY_2P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_2P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "SW2")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "e7eba2c5-25e5-425d-af30-a7bbcb9a5e29")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "SW3")
+			(value "Tact SW SMD")
+			(footprint "AI_Glasses:VERIFY_2P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_2P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "SW3")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "96bad4bb-bb8a-47dc-aaa4-c64f3652a81d")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP1")
+			(value "TestPoint 1.0mm")
+			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "TP1")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "6ccb9376-8f70-430d-9a07-6ef15231c15c")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP2")
+			(value "TestPoint 1.0mm")
+			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "TP2")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "3f25b852-3132-4640-ae4a-65f92196b1b7")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP3")
+			(value "TestPoint 1.0mm")
+			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "TP3")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "4f376e03-2bd9-4af9-8a00-eda25bb6b6fa")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP4")
+			(value "TestPoint 1.0mm")
+			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "TP4")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "f5beeac0-8065-49ea-b89f-b50c55cd0742")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP5")
+			(value "TestPoint 1.0mm")
+			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "TP5")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "ff84f621-ff78-423d-9db4-60a77bbc942e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP6")
+			(value "TestPoint 1.0mm")
+			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "TP6")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "8cba9314-ebbf-4278-9b69-ee7c68e8d793")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP7")
+			(value "TestPoint 1.0mm")
+			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "TP7")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "2f88834e-ab9f-4806-9bfe-a061b692a631")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP8")
+			(value "TestPoint 1.0mm")
+			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "TP8")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "049ed687-0c10-4c93-a2cb-413767e8ed5a")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP9")
+			(value "TestPoint 1.0mm")
+			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "TP9")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "b78554d8-d2b9-4a08-a393-b0b4fbc444b2")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP10")
+			(value "TestPoint 1.0mm")
+			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "TP10")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "8ca1d422-cbf2-4018-8c00-cc1a464f5e1f")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP11")
+			(value "TestPoint 1.0mm")
+			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "TP11")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "5a106e14-57c3-4b2c-a77c-8d94e1e4b3c6")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP12")
+			(value "TestPoint 1.0mm")
+			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "TP12")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "64bc145d-a881-4e4f-9363-fe28cbb85221")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP13")
+			(value "TestPoint 1.0mm")
+			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "TP13")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "63824ffb-5f3b-4e1c-863a-d6db0dc5a4ad")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP14")
+			(value "TestPoint 1.0mm")
+			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "TP14")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "0c47f0f6-f25b-4b66-a23d-cc5991eb3ae0")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP15")
+			(value "TestPoint 1.0mm")
+			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "TP15")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "8eaa2c54-e4a1-4cf4-b66a-163f8c1957d8")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP16")
+			(value "TestPoint 1.0mm")
+			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "TP16")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "e132911b-2bcb-4589-93b1-e4cdfc194f49")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U2")
+			(value "TPD4E05U06")
+			(footprint "AI_Glasses:TPD4E05U06_VERIFY")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:TPD4E05U06_VERIFY")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "U2")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "1ad256cd-ef38-466d-beee-ccf608de845d")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "6")
+						)
+						(pin
+							(num "7")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U3")
+			(value "LP5907-3.3 (low-noise LDO)")
+			(footprint "AI_Glasses:VERIFY_4P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_4P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "U3")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "e0d1bb51-1c14-4675-a687-ac93750f529e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U4")
+			(value "MAX98357AETE+T")
+			(footprint "AI_Glasses:VERIFY_9P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_9P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "U4")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "1af4c122-4369-46ba-86b4-58fa3e92e9f5")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "6")
+						)
+						(pin
+							(num "7")
+						)
+						(pin
+							(num "8")
+						)
+						(pin
+							(num "9")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U5")
+			(value "TPD2E009")
+			(footprint "AI_Glasses:TPD2E009_VERIFY")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:TPD2E009_VERIFY")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "U5")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "145011dd-e611-4925-b6b5-c5a26ef5577a")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U6")
+			(value "TPS61022 (Boost)")
+			(footprint "AI_Glasses:VERIFY_5P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_5P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "U6")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "f600221c-6390-484b-9b84-0df22545b742")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "5")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U7")
+			(value "BQ25180")
+			(footprint "AI_Glasses:VERIFY_8P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_8P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "U7")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "eef07839-9cb6-44bf-acdb-394d925fbde6")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "6")
+						)
+						(pin
+							(num "7")
+						)
+						(pin
+							(num "8")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U8")
+			(value "BQ29700")
+			(footprint "AI_Glasses:VERIFY_3P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_3P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "U8")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "4f7cd3ec-7b7b-4737-bfc8-526c71300fb0")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U9")
+			(value "MAX17048")
+			(footprint "AI_Glasses:VERIFY_6P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_6P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "U9")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "8fb42ed4-de69-488b-9c9c-f6db2b6cd331")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "6")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U10")
+			(value "ICM-42688-P")
+			(footprint "AI_Glasses:VERIFY_5P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_5P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "U10")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "c3103db5-952a-43e3-8950-e3b4ce9bdc38")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "5")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U11")
+			(value "DRV2605L")
+			(footprint "AI_Glasses:VERIFY_6P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_6P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "U11")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "f731e4a0-d57b-4755-8bbf-5a9ae48f0272")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "6")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U12")
+			(value "TLV75733 (LDO)")
+			(footprint "AI_Glasses:VERIFY_3P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_3P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "U12")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "153165c6-a788-4f05-aa39-3683298073cc")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U13")
+			(value "TLV75718 (LDO)")
+			(footprint "AI_Glasses:VERIFY_3P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_3P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "U13")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "48ddebff-24ad-4b93-ba23-cc1f2e402811")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U14")
+			(value "MAX-M10S-00B-01")
+			(footprint "AI_Glasses:VERIFY_9P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_9P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "U14")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "42fc66d0-4cf5-4789-ab86-981419450b99")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "6")
+						)
+						(pin
+							(num "7")
+						)
+						(pin
+							(num "8")
+						)
+						(pin
+							(num "9")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U15")
+			(value "TPS25940 (e-fuse, opt)")
+			(footprint "AI_Glasses:VERIFY_4P")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_4P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "U15")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "15a09432-3599-4ffd-9cc5-738e8131cc6b")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U16")
+			(value "TPD4E05U06")
+			(footprint "AI_Glasses:TPD4E05U06_VERIFY")
+			(fields
+				(field
+					(name "Footprint") "AI_Glasses:TPD4E05U06_VERIFY")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "aiglasses")
+				(part "U16")
+				(description "")
+			)
+			(property
+				(name "Sheetname")
+				(value "ai_glasses_carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "ai_glasses_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "3a4b4f41-1610-4e9e-a2ce-7ab30a3e1011")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "5")
+						)
+					)
+				)
+			)
+		)
+	)
+	(groups)
+	(variants)
+	(libparts
+		(libpart
+			(lib "aiglasses")
+			(part "C1")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "10µF")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C10")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "100nF")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C11")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "1µF")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C13")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "100nF")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C14")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "100nF")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C15")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "10µF")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C16")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "100nF")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C17")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "100nF")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C18")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "100nF")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C19")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "100nF")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C2")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "100nF")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C20")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "100nF")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C21")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "100nF")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C22")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "100nF")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C23")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "1nF")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C24")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "1nF")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C25")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "π shunt (DNP,tune)")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0402_1005Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C26")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "π shunt (DNP,tune)")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0402_1005Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C27")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "DC-block (series,tune)")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0402_1005Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C28")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "100nF (active-ant)")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C29")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "10µF")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C3")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "10µF")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C30")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "100nF")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C4")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "100nF")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C5")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "10µF")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C6")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "100nF")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C7")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "22µF")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C8")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "10µF")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "C9")
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "1µF")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "D1")
+			(fields
+				(field
+					(name "Reference") "D")
+				(field
+					(name "Value") "LED Green")
+				(field
+					(name "Footprint") "LED_SMD:LED_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "A")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "K")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "D2")
+			(fields
+				(field
+					(name "Reference") "D")
+				(field
+					(name "Value") "LED Blue")
+				(field
+					(name "Footprint") "LED_SMD:LED_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "A")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "K")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "D3")
+			(fields
+				(field
+					(name "Reference") "D")
+				(field
+					(name "Value") "SMAJ5.0A (TVS)")
+				(field
+					(name "Footprint") "Diode_SMD:D_SMA")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "D4")
+			(fields
+				(field
+					(name "Reference") "D")
+				(field
+					(name "Value") "ESD low-cap RF 0.3pF")
+				(field
+					(name "Footprint") "AI_Glasses:RF_ESD_2P_VERIFY")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "FB1")
+			(fields
+				(field
+					(name "Reference") "FB")
+				(field
+					(name "Value") "Ferrite 600Ω@100MHz")
+				(field
+					(name "Footprint") "Inductor_SMD:L_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "FB2")
+			(fields
+				(field
+					(name "Reference") "FB")
+				(field
+					(name "Value") "Ferrite 600Ω@100MHz")
+				(field
+					(name "Footprint") "Inductor_SMD:L_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "J1")
+			(fields
+				(field
+					(name "Reference") "J")
+				(field
+					(name "Value") "DF40C-100DS-0.4V(51)")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_B2B_J1_LOGICAL")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "P25_SAI_BCLK")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "P19_SAI_LRCK")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "P29_SAI_SDO")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "P23_SAI_MCLK_UNUSED")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "P59_CAM3_MCLK")
+					(type "passive")
+				)
+				(pin
+					(num "6")
+					(name "P96_SPK_EN")
+					(type "passive")
+				)
+				(pin
+					(num "7")
+					(name "+1V8_(P88/90)")
+					(type "passive")
+				)
+				(pin
+					(num "8")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "J2")
+			(fields
+				(field
+					(name "Reference") "J")
+				(field
+					(name "Value") "FH35C-31S-0.3SHW(50)")
+				(field
+					(name "Footprint") "AI_Glasses:FH35C-31S-0.3SHW_50")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1_GND")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2_MDN4")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "3_MDP4")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "4_GND")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "5_MDN3")
+					(type "passive")
+				)
+				(pin
+					(num "6")
+					(name "6_MDP3")
+					(type "passive")
+				)
+				(pin
+					(num "7")
+					(name "7_GND")
+					(type "passive")
+				)
+				(pin
+					(num "8")
+					(name "8_NC")
+					(type "passive")
+				)
+				(pin
+					(num "9")
+					(name "9_NC")
+					(type "passive")
+				)
+				(pin
+					(num "10")
+					(name "10_GND")
+					(type "passive")
+				)
+				(pin
+					(num "11")
+					(name "11_MDN2")
+					(type "passive")
+				)
+				(pin
+					(num "12")
+					(name "12_MDP2")
+					(type "passive")
+				)
+				(pin
+					(num "13")
+					(name "13_GND")
+					(type "passive")
+				)
+				(pin
+					(num "14")
+					(name "14_MDN1")
+					(type "passive")
+				)
+				(pin
+					(num "15")
+					(name "15_MDP1")
+					(type "passive")
+				)
+				(pin
+					(num "16")
+					(name "16_GND")
+					(type "passive")
+				)
+				(pin
+					(num "17")
+					(name "17_MCN")
+					(type "passive")
+				)
+				(pin
+					(num "18")
+					(name "18_MCP")
+					(type "passive")
+				)
+				(pin
+					(num "19")
+					(name "19_GND")
+					(type "passive")
+				)
+				(pin
+					(num "20")
+					(name "20_MCLK")
+					(type "passive")
+				)
+				(pin
+					(num "21")
+					(name "21_GND")
+					(type "passive")
+				)
+				(pin
+					(num "22")
+					(name "22_NC")
+					(type "passive")
+				)
+				(pin
+					(num "23")
+					(name "23_NC")
+					(type "passive")
+				)
+				(pin
+					(num "24")
+					(name "24_SCL")
+					(type "passive")
+				)
+				(pin
+					(num "25")
+					(name "25_SDA")
+					(type "passive")
+				)
+				(pin
+					(num "26")
+					(name "26_NC")
+					(type "passive")
+				)
+				(pin
+					(num "27")
+					(name "27_RESET_N")
+					(type "passive")
+				)
+				(pin
+					(num "28")
+					(name "28_VCC3.3V")
+					(type "passive")
+				)
+				(pin
+					(num "29")
+					(name "29_VCC3.3V")
+					(type "passive")
+				)
+				(pin
+					(num "30")
+					(name "30_VCC5V")
+					(type "passive")
+				)
+				(pin
+					(num "31")
+					(name "31_VCC5V")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "J3")
+			(fields
+				(field
+					(name "Reference") "J")
+				(field
+					(name "Value") "JST-SH 2p (spkr)")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_2P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "SPK+")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "SPK-")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "J31")
+			(fields
+				(field
+					(name "Reference") "J")
+				(field
+					(name "Value") "DF40C-100DS-0.4V(51)")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_B2B_J31_LOGICAL")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "P77-87_+5V")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "P78_VREF→1V8")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "P55_DBG_TX")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "P51_DBG_RX")
+					(type "passive")
+				)
+				(pin
+					(num "6")
+					(name "P47_GNSS_TX")
+					(type "passive")
+				)
+				(pin
+					(num "7")
+					(name "P45_GNSS_RX")
+					(type "passive")
+				)
+				(pin
+					(num "8")
+					(name "P40_GNSS_PPS")
+					(type "passive")
+				)
+				(pin
+					(num "9")
+					(name "P44_GNSS_RST")
+					(type "passive")
+				)
+				(pin
+					(num "10")
+					(name "P80_CAM_SCL")
+					(type "passive")
+				)
+				(pin
+					(num "11")
+					(name "P82_CAM_SDA")
+					(type "passive")
+				)
+				(pin
+					(num "12")
+					(name "P56_IMU_SCL")
+					(type "passive")
+				)
+				(pin
+					(num "13")
+					(name "P58_IMU_SDA")
+					(type "passive")
+				)
+				(pin
+					(num "14")
+					(name "P35_FUEL_SCL")
+					(type "passive")
+				)
+				(pin
+					(num "15")
+					(name "P36_FUEL_SDA")
+					(type "passive")
+				)
+				(pin
+					(num "16")
+					(name "P30_IMU_INT")
+					(type "passive")
+				)
+				(pin
+					(num "17")
+					(name "P48_VIB_PWM")
+					(type "passive")
+				)
+				(pin
+					(num "18")
+					(name "P34_VIB_EN")
+					(type "passive")
+				)
+				(pin
+					(num "19")
+					(name "P37_CHG_INT")
+					(type "passive")
+				)
+				(pin
+					(num "20")
+					(name "P39_LBAT_INT")
+					(type "passive")
+				)
+				(pin
+					(num "21")
+					(name "P95_LED_PWR")
+					(type "passive")
+				)
+				(pin
+					(num "22")
+					(name "P21_LED_STAT")
+					(type "passive")
+				)
+				(pin
+					(num "23")
+					(name "P93_RECOVERY")
+					(type "passive")
+				)
+				(pin
+					(num "24")
+					(name "P92_RESET")
+					(type "passive")
+				)
+				(pin
+					(num "25")
+					(name "P99_PWR_KEY")
+					(type "passive")
+				)
+				(pin
+					(num "26")
+					(name "P89_WL_DIS")
+					(type "passive")
+				)
+				(pin
+					(num "27")
+					(name "P91_BT_DIS")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "J32")
+			(fields
+				(field
+					(name "Reference") "J")
+				(field
+					(name "Value") "DF40C-100DS-0.4V(51)")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_B2B_J32_LOGICAL")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "P129_CSI3_CLKP")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "P127_CSI3_CLKN")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "P117_CSI3_D0P")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "P115_CSI3_D0N")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "P123_CSI3_D1P")
+					(type "passive")
+				)
+				(pin
+					(num "6")
+					(name "P121_CSI3_D1N")
+					(type "passive")
+				)
+				(pin
+					(num "7")
+					(name "P135_CSI3_D2P")
+					(type "passive")
+				)
+				(pin
+					(num "8")
+					(name "P133_CSI3_D2N")
+					(type "passive")
+				)
+				(pin
+					(num "9")
+					(name "P141_CSI3_D3P")
+					(type "passive")
+				)
+				(pin
+					(num "10")
+					(name "P139_CSI3_D3N")
+					(type "passive")
+				)
+				(pin
+					(num "11")
+					(name "P143_CAM3_GPIO")
+					(type "passive")
+				)
+				(pin
+					(num "12")
+					(name "P105_USB_DP")
+					(type "passive")
+				)
+				(pin
+					(num "13")
+					(name "P103_USB_DM")
+					(type "passive")
+				)
+				(pin
+					(num "14")
+					(name "P96_PDM_CLK")
+					(type "passive")
+				)
+				(pin
+					(num "15")
+					(name "P94_PDM_D0")
+					(type "passive")
+				)
+				(pin
+					(num "16")
+					(name "P111_PDM_D1")
+					(type "passive")
+				)
+				(pin
+					(num "17")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "J4")
+			(fields
+				(field
+					(name "Reference") "J")
+				(field
+					(name "Value") "GCT USB4085 (USB2)")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_7P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "VBUS")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "DP")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "DM")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "CC1")
+					(type "passive")
+				)
+				(pin
+					(num "6")
+					(name "CC2")
+					(type "passive")
+				)
+				(pin
+					(num "7")
+					(name "SHLD")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "J5")
+			(fields
+				(field
+					(name "Reference") "J")
+				(field
+					(name "Value") "JST-PH 3p")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_3P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "BAT+")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "BAT-")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "NTC")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "J6")
+			(fields
+				(field
+					(name "Reference") "J")
+				(field
+					(name "Value") "JST-SH 2p")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_2P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "M+")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "M-")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "J7")
+			(fields
+				(field
+					(name "Reference") "J")
+				(field
+					(name "Value") "Header 1x4 2.54mm")
+				(field
+					(name "Footprint") "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "TX")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RX")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "VREF")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "J8")
+			(fields
+				(field
+					(name "Reference") "J")
+				(field
+					(name "Value") "U.FL / IPEX")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_2P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "ANT")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "L1")
+			(fields
+				(field
+					(name "Reference") "L")
+				(field
+					(name "Value") "4.7µH")
+				(field
+					(name "Footprint") "AI_Glasses:POWER_INDUCTOR_7X7_VERIFY")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "L2")
+			(fields
+				(field
+					(name "Reference") "L")
+				(field
+					(name "Value") "RF choke (active-ant)")
+				(field
+					(name "Footprint") "Inductor_SMD:L_0402_1005Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "MK1")
+			(fields
+				(field
+					(name "Reference") "MK")
+				(field
+					(name "Value") "SPH0641LU4H-1")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_5P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "CLK")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "DATA")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "SEL")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "MK2")
+			(fields
+				(field
+					(name "Reference") "MK")
+				(field
+					(name "Value") "SPH0641LU4H-1")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_5P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "CLK")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "DATA")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "SEL")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "R1")
+			(fields
+				(field
+					(name "Reference") "R")
+				(field
+					(name "Value") "5.1k")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "R10")
+			(fields
+				(field
+					(name "Reference") "R")
+				(field
+					(name "Value") "2.2k")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "R11")
+			(fields
+				(field
+					(name "Reference") "R")
+				(field
+					(name "Value") "10k")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "R12")
+			(fields
+				(field
+					(name "Reference") "R")
+				(field
+					(name "Value") "2.2k")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "R13")
+			(fields
+				(field
+					(name "Reference") "R")
+				(field
+					(name "Value") "2.2k")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "R14")
+			(fields
+				(field
+					(name "Reference") "R")
+				(field
+					(name "Value") "10k")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "R15")
+			(fields
+				(field
+					(name "Reference") "R")
+				(field
+					(name "Value") "10k")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "R16")
+			(fields
+				(field
+					(name "Reference") "R")
+				(field
+					(name "Value") "10k")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "R17")
+			(fields
+				(field
+					(name "Reference") "R")
+				(field
+					(name "Value") "10Ω (active-ant)")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "R18")
+			(fields
+				(field
+					(name "Reference") "R")
+				(field
+					(name "Value") "100k")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "R19")
+			(fields
+				(field
+					(name "Reference") "R")
+				(field
+					(name "Value") "100k")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "R2")
+			(fields
+				(field
+					(name "Reference") "R")
+				(field
+					(name "Value") "5.1k")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "R20")
+			(fields
+				(field
+					(name "Reference") "R")
+				(field
+					(name "Value") "100k")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "R3")
+			(fields
+				(field
+					(name "Reference") "R")
+				(field
+					(name "Value") "0R / shunt")
+				(field
+					(name "Footprint") "Resistor_SMD:R_2512_6332Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "R4")
+			(fields
+				(field
+					(name "Reference") "R")
+				(field
+					(name "Value") "1k")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "R5")
+			(fields
+				(field
+					(name "Reference") "R")
+				(field
+					(name "Value") "1k")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "R7")
+			(fields
+				(field
+					(name "Reference") "R")
+				(field
+					(name "Value") "2.2k")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "R8")
+			(fields
+				(field
+					(name "Reference") "R")
+				(field
+					(name "Value") "2.2k")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "R9")
+			(fields
+				(field
+					(name "Reference") "R")
+				(field
+					(name "Value") "2.2k")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "SW1")
+			(fields
+				(field
+					(name "Reference") "SW")
+				(field
+					(name "Value") "Tact SW SMD")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_2P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "SW2")
+			(fields
+				(field
+					(name "Reference") "SW")
+				(field
+					(name "Value") "Tact SW SMD")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_2P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "SW3")
+			(fields
+				(field
+					(name "Reference") "SW")
+				(field
+					(name "Value") "Tact SW SMD")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_2P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "TP1")
+			(fields
+				(field
+					(name "Reference") "TP")
+				(field
+					(name "Value") "TestPoint 1.0mm")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "TP10")
+			(fields
+				(field
+					(name "Reference") "TP")
+				(field
+					(name "Value") "TestPoint 1.0mm")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "TP11")
+			(fields
+				(field
+					(name "Reference") "TP")
+				(field
+					(name "Value") "TestPoint 1.0mm")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "TP12")
+			(fields
+				(field
+					(name "Reference") "TP")
+				(field
+					(name "Value") "TestPoint 1.0mm")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "TP13")
+			(fields
+				(field
+					(name "Reference") "TP")
+				(field
+					(name "Value") "TestPoint 1.0mm")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "TP14")
+			(fields
+				(field
+					(name "Reference") "TP")
+				(field
+					(name "Value") "TestPoint 1.0mm")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "TP15")
+			(fields
+				(field
+					(name "Reference") "TP")
+				(field
+					(name "Value") "TestPoint 1.0mm")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "TP16")
+			(fields
+				(field
+					(name "Reference") "TP")
+				(field
+					(name "Value") "TestPoint 1.0mm")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "TP2")
+			(fields
+				(field
+					(name "Reference") "TP")
+				(field
+					(name "Value") "TestPoint 1.0mm")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "TP3")
+			(fields
+				(field
+					(name "Reference") "TP")
+				(field
+					(name "Value") "TestPoint 1.0mm")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "TP4")
+			(fields
+				(field
+					(name "Reference") "TP")
+				(field
+					(name "Value") "TestPoint 1.0mm")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "TP5")
+			(fields
+				(field
+					(name "Reference") "TP")
+				(field
+					(name "Value") "TestPoint 1.0mm")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "TP6")
+			(fields
+				(field
+					(name "Reference") "TP")
+				(field
+					(name "Value") "TestPoint 1.0mm")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "TP7")
+			(fields
+				(field
+					(name "Reference") "TP")
+				(field
+					(name "Value") "TestPoint 1.0mm")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "TP8")
+			(fields
+				(field
+					(name "Reference") "TP")
+				(field
+					(name "Value") "TestPoint 1.0mm")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "TP9")
+			(fields
+				(field
+					(name "Reference") "TP")
+				(field
+					(name "Value") "TestPoint 1.0mm")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "U10")
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "ICM-42688-P")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_5P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "SCL")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "SDA")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "INT1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "U11")
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "DRV2605L")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_6P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "IN")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "EN")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "OUT+")
+					(type "passive")
+				)
+				(pin
+					(num "6")
+					(name "OUT-")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "U12")
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "TLV75733 (LDO)")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_3P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "VIN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "VOUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "U13")
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "TLV75718 (LDO)")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_3P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "VIN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "VOUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "U14")
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "MAX-M10S-00B-01")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_9P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "VCC")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "V_IO")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "V_BCKP")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "TXD")
+					(type "passive")
+				)
+				(pin
+					(num "6")
+					(name "RXD")
+					(type "passive")
+				)
+				(pin
+					(num "7")
+					(name "TIMEPULSE")
+					(type "passive")
+				)
+				(pin
+					(num "8")
+					(name "RESET_N")
+					(type "passive")
+				)
+				(pin
+					(num "9")
+					(name "RF_IN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "U15")
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "TPS25940 (e-fuse, opt)")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_4P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "IN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "EN")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "OUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "U16")
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "TPD4E05U06")
+				(field
+					(name "Footprint") "AI_Glasses:TPD4E05U06_VERIFY")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "D2_P")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "D2_N")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "D3_P")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "D3_N")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "U2")
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "TPD4E05U06")
+				(field
+					(name "Footprint") "AI_Glasses:TPD4E05U06_VERIFY")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "CLK_P")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "CLK_N")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "D0_P")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "D0_N")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "D1_P")
+					(type "passive")
+				)
+				(pin
+					(num "6")
+					(name "D1_N")
+					(type "passive")
+				)
+				(pin
+					(num "7")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "U3")
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "LP5907-3.3 (low-noise LDO)")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_4P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "VIN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "EN")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "VOUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "U4")
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "MAX98357AETE+T")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_9P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "BCLK")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "LRC")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "DIN")
+					(type "passive")
+				)
+				(pin
+					(num "6")
+					(name "SD")
+					(type "passive")
+				)
+				(pin
+					(num "7")
+					(name "GAIN")
+					(type "passive")
+				)
+				(pin
+					(num "8")
+					(name "OUT+")
+					(type "passive")
+				)
+				(pin
+					(num "9")
+					(name "OUT-")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "U5")
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "TPD2E009")
+				(field
+					(name "Footprint") "AI_Glasses:TPD2E009_VERIFY")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "DP")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "DM")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "U6")
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "TPS61022 (Boost)")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_5P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "VIN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "SW")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "EN")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "FB")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "U7")
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "BQ25180")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_8P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "IN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "SYS")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "BAT")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "TS")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "SCL")
+					(type "passive")
+				)
+				(pin
+					(num "6")
+					(name "SDA")
+					(type "passive")
+				)
+				(pin
+					(num "7")
+					(name "INT")
+					(type "passive")
+				)
+				(pin
+					(num "8")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "U8")
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "BQ29700")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_3P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "VM")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "OUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "aiglasses")
+			(part "U9")
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "MAX17048")
+				(field
+					(name "Footprint") "AI_Glasses:VERIFY_6P")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "CELL")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "SCL")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "SDA")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "ALRT")
+					(type "passive")
+				)
+				(pin
+					(num "6")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+	)
+	(libraries
+		(library
+			(logical "aiglasses")
+			(uri "${KIPRJMOD}/AI_Glasses.kicad_sym")
+		)
+	)
+	(nets
+		(net
+			(code "1")
+			(name "+1V8")
+			(class "Default")
+			(node
+				(ref "C16")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C22")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C5")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C6")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "7")
+				(pinfunction "+1V8_(P88/90)_7")
+				(pintype "passive")
+			)
+			(node
+				(ref "J31")
+				(pin "2")
+				(pinfunction "P78_VREF→1V8_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "MK1")
+				(pin "1")
+				(pinfunction "VDD_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "MK2")
+				(pin "1")
+				(pinfunction "VDD_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "MK2")
+				(pin "4")
+				(pinfunction "SEL_4")
+				(pintype "passive")
+			)
+			(node
+				(ref "R10")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R12")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R13")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R14")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R15")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R16")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R18")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R19")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R7")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R8")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R9")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP4")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U10")
+				(pin "1")
+				(pinfunction "VDD_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U13")
+				(pin "3")
+				(pinfunction "VOUT_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "U14")
+				(pin "2")
+				(pinfunction "V_IO_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "2")
+			(name "+3V3")
+			(class "Default")
+			(node
+				(ref "C14")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C15")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C21")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C3")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C4")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J7")
+				(pin "4")
+				(pinfunction "VREF_4")
+				(pintype "passive")
+			)
+			(node
+				(ref "R17")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R4")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R5")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP3")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U12")
+				(pin "3")
+				(pinfunction "VOUT_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "U13")
+				(pin "1")
+				(pinfunction "VIN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U14")
+				(pin "1")
+				(pinfunction "VCC_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U14")
+				(pin "3")
+				(pinfunction "V_BCKP_3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "3")
+			(name "+5V_SYS")
+			(class "Default")
+			(node
+				(ref "C1")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C13")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C2")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C20")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C29")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C30")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J2")
+				(pin "30")
+				(pinfunction "30_VCC5V_30")
+				(pintype "passive")
+			)
+			(node
+				(ref "J2")
+				(pin "31")
+				(pinfunction "31_VCC5V_31")
+				(pintype "passive")
+			)
+			(node
+				(ref "J31")
+				(pin "1")
+				(pinfunction "P77-87_+5V_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R3")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP2")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U11")
+				(pin "1")
+				(pinfunction "VDD_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U12")
+				(pin "1")
+				(pinfunction "VIN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U3")
+				(pin "1")
+				(pinfunction "VIN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U4")
+				(pin "1")
+				(pinfunction "VDD_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U6")
+				(pin "4")
+				(pinfunction "FB_4")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "4")
+			(name "+CAM_3V3")
+			(class "Default")
+			(node
+				(ref "C10")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C8")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C9")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J2")
+				(pin "28")
+				(pinfunction "28_VCC3.3V_28")
+				(pintype "passive")
+			)
+			(node
+				(ref "J2")
+				(pin "29")
+				(pinfunction "29_VCC3.3V_29")
+				(pintype "passive")
+			)
+			(node
+				(ref "U3")
+				(pin "4")
+				(pinfunction "VOUT_4")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "5")
+			(name "+VBAT")
+			(class "Default")
+			(node
+				(ref "C18")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C19")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C7")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "L1")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R20")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP1")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U6")
+				(pin "1")
+				(pinfunction "VIN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U7")
+				(pin "2")
+				(pinfunction "SYS_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U8")
+				(pin "3")
+				(pinfunction "OUT_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "U9")
+				(pin "1")
+				(pinfunction "VDD_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U9")
+				(pin "2")
+				(pinfunction "CELL_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "6")
+			(name "BAT_NTC")
+			(class "Default")
+			(node
+				(ref "J5")
+				(pin "3")
+				(pinfunction "NTC_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "R11")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U7")
+				(pin "4")
+				(pinfunction "TS_4")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "7")
+			(name "BOOST_EN")
+			(class "Default")
+			(node
+				(ref "R20")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U6")
+				(pin "3")
+				(pinfunction "EN_3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "8")
+			(name "BOOST_SW")
+			(class "Default")
+			(node
+				(ref "L1")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U6")
+				(pin "2")
+				(pinfunction "SW_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "9")
+			(name "BT_nDIS")
+			(class "Default")
+			(node
+				(ref "J31")
+				(pin "27")
+				(pinfunction "P91_BT_DIS_27")
+				(pintype "passive")
+			)
+			(node
+				(ref "R19")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "10")
+			(name "CAM_I2C_SCL")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "24")
+				(pinfunction "24_SCL_24")
+				(pintype "passive")
+			)
+			(node
+				(ref "J31")
+				(pin "10")
+				(pinfunction "P80_CAM_SCL_10")
+				(pintype "passive")
+			)
+			(node
+				(ref "R7")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP8")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "11")
+			(name "CAM_I2C_SDA")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "25")
+				(pinfunction "25_SDA_25")
+				(pintype "passive")
+			)
+			(node
+				(ref "J31")
+				(pin "11")
+				(pinfunction "P82_CAM_SDA_11")
+				(pintype "passive")
+			)
+			(node
+				(ref "R8")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP9")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "12")
+			(name "CAM_MCLK")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "5")
+				(pinfunction "P59_CAM3_MCLK_5")
+				(pintype "passive")
+			)
+			(node
+				(ref "J2")
+				(pin "20")
+				(pinfunction "20_MCLK_20")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "13")
+			(name "CAM_PWR_EN")
+			(class "Default")
+			(node
+				(ref "TP16")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U3")
+				(pin "2")
+				(pinfunction "EN_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "14")
+			(name "CAM_RST_n")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "27")
+				(pinfunction "27_RESET_N_27")
+				(pintype "passive")
+			)
+			(node
+				(ref "J32")
+				(pin "11")
+				(pinfunction "P143_CAM3_GPIO_11")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "15")
+			(name "CHG_INT_n")
+			(class "Default")
+			(node
+				(ref "J31")
+				(pin "19")
+				(pinfunction "P37_CHG_INT_19")
+				(pintype "passive")
+			)
+			(node
+				(ref "U7")
+				(pin "7")
+				(pinfunction "INT_7")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "16")
+			(name "FUEL_I2C_SCL")
+			(class "Default")
+			(node
+				(ref "J31")
+				(pin "14")
+				(pinfunction "P35_FUEL_SCL_14")
+				(pintype "passive")
+			)
+			(node
+				(ref "R12")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP12")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U7")
+				(pin "5")
+				(pinfunction "SCL_5")
+				(pintype "passive")
+			)
+			(node
+				(ref "U9")
+				(pin "3")
+				(pinfunction "SCL_3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "17")
+			(name "FUEL_I2C_SDA")
+			(class "Default")
+			(node
+				(ref "J31")
+				(pin "15")
+				(pinfunction "P36_FUEL_SDA_15")
+				(pintype "passive")
+			)
+			(node
+				(ref "R13")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP13")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U7")
+				(pin "6")
+				(pinfunction "SDA_6")
+				(pintype "passive")
+			)
+			(node
+				(ref "U9")
+				(pin "4")
+				(pinfunction "SDA_4")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "18")
+			(name "GND")
+			(class "Default")
+			(node
+				(ref "C1")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C10")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C11")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C13")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C14")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C15")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C16")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C17")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C18")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C19")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C2")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C20")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C21")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C22")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C23")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C24")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C25")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C26")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C28")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C29")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C3")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C30")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C4")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C5")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C6")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C7")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C8")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C9")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "D3")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "D4")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "8")
+				(pinfunction "GND_8")
+				(pintype "passive")
+			)
+			(node
+				(ref "J2")
+				(pin "1")
+				(pinfunction "1_GND_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J2")
+				(pin "10")
+				(pinfunction "10_GND_10")
+				(pintype "passive")
+			)
+			(node
+				(ref "J2")
+				(pin "13")
+				(pinfunction "13_GND_13")
+				(pintype "passive")
+			)
+			(node
+				(ref "J2")
+				(pin "16")
+				(pinfunction "16_GND_16")
+				(pintype "passive")
+			)
+			(node
+				(ref "J2")
+				(pin "19")
+				(pinfunction "19_GND_19")
+				(pintype "passive")
+			)
+			(node
+				(ref "J2")
+				(pin "21")
+				(pinfunction "21_GND_21")
+				(pintype "passive")
+			)
+			(node
+				(ref "J2")
+				(pin "4")
+				(pinfunction "4_GND_4")
+				(pintype "passive")
+			)
+			(node
+				(ref "J2")
+				(pin "7")
+				(pinfunction "7_GND_7")
+				(pintype "passive")
+			)
+			(node
+				(ref "J31")
+				(pin "3")
+				(pinfunction "GND_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "J32")
+				(pin "17")
+				(pinfunction "GND_17")
+				(pintype "passive")
+			)
+			(node
+				(ref "J4")
+				(pin "2")
+				(pinfunction "GND_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "J4")
+				(pin "7")
+				(pinfunction "SHLD_7")
+				(pintype "passive")
+			)
+			(node
+				(ref "J7")
+				(pin "3")
+				(pinfunction "GND_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "J8")
+				(pin "2")
+				(pinfunction "GND_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "MK1")
+				(pin "4")
+				(pinfunction "SEL_4")
+				(pintype "passive")
+			)
+			(node
+				(ref "MK1")
+				(pin "5")
+				(pinfunction "GND_5")
+				(pintype "passive")
+			)
+			(node
+				(ref "MK2")
+				(pin "5")
+				(pinfunction "GND_5")
+				(pintype "passive")
+			)
+			(node
+				(ref "R1")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R11")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R2")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "SW1")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "SW2")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "SW3")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP5")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U10")
+				(pin "2")
+				(pinfunction "GND_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U11")
+				(pin "2")
+				(pinfunction "GND_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U12")
+				(pin "2")
+				(pinfunction "GND_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U13")
+				(pin "2")
+				(pinfunction "GND_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U14")
+				(pin "4")
+				(pinfunction "GND_4")
+				(pintype "passive")
+			)
+			(node
+				(ref "U15")
+				(pin "3")
+				(pinfunction "GND_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "U16")
+				(pin "5")
+				(pinfunction "GND_5")
+				(pintype "passive")
+			)
+			(node
+				(ref "U2")
+				(pin "7")
+				(pinfunction "GND_7")
+				(pintype "passive")
+			)
+			(node
+				(ref "U3")
+				(pin "3")
+				(pinfunction "GND_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "U4")
+				(pin "2")
+				(pinfunction "GND_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U4")
+				(pin "7")
+				(pinfunction "GAIN_7")
+				(pintype "passive")
+			)
+			(node
+				(ref "U5")
+				(pin "3")
+				(pinfunction "GND_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "U6")
+				(pin "5")
+				(pinfunction "GND_5")
+				(pintype "passive")
+			)
+			(node
+				(ref "U7")
+				(pin "8")
+				(pinfunction "GND_8")
+				(pintype "passive")
+			)
+			(node
+				(ref "U9")
+				(pin "6")
+				(pinfunction "GND_6")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "19")
+			(name "GNSS_ANT")
+			(class "Default")
+			(node
+				(ref "C26")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C27")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "D4")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J8")
+				(pin "1")
+				(pinfunction "ANT_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "L2")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "20")
+			(name "GNSS_PPS")
+			(class "Default")
+			(node
+				(ref "J31")
+				(pin "8")
+				(pinfunction "P40_GNSS_PPS_8")
+				(pintype "passive")
+			)
+			(node
+				(ref "U14")
+				(pin "7")
+				(pinfunction "TIMEPULSE_7")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "21")
+			(name "GNSS_RFIN")
+			(class "Default")
+			(node
+				(ref "C25")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C27")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U14")
+				(pin "9")
+				(pinfunction "RF_IN_9")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "22")
+			(name "GNSS_RST_n")
+			(class "Default")
+			(node
+				(ref "J31")
+				(pin "9")
+				(pinfunction "P44_GNSS_RST_9")
+				(pintype "passive")
+			)
+			(node
+				(ref "U14")
+				(pin "8")
+				(pinfunction "RESET_N_8")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "23")
+			(name "GNSS_UART_RX")
+			(class "Default")
+			(node
+				(ref "J31")
+				(pin "7")
+				(pinfunction "P45_GNSS_RX_7")
+				(pintype "passive")
+			)
+			(node
+				(ref "U14")
+				(pin "5")
+				(pinfunction "TXD_5")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "24")
+			(name "GNSS_UART_TX")
+			(class "Default")
+			(node
+				(ref "J31")
+				(pin "6")
+				(pinfunction "P47_GNSS_TX_6")
+				(pintype "passive")
+			)
+			(node
+				(ref "U14")
+				(pin "6")
+				(pinfunction "RXD_6")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "25")
+			(name "IMU_I2C_SCL")
+			(class "Default")
+			(node
+				(ref "J31")
+				(pin "12")
+				(pinfunction "P56_IMU_SCL_12")
+				(pintype "passive")
+			)
+			(node
+				(ref "R9")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP10")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U10")
+				(pin "3")
+				(pinfunction "SCL_3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "26")
+			(name "IMU_I2C_SDA")
+			(class "Default")
+			(node
+				(ref "J31")
+				(pin "13")
+				(pinfunction "P58_IMU_SDA_13")
+				(pintype "passive")
+			)
+			(node
+				(ref "R10")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP11")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U10")
+				(pin "4")
+				(pinfunction "SDA_4")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "27")
+			(name "IMU_INT1")
+			(class "Default")
+			(node
+				(ref "J31")
+				(pin "16")
+				(pinfunction "P30_IMU_INT_16")
+				(pintype "passive")
+			)
+			(node
+				(ref "U10")
+				(pin "5")
+				(pinfunction "INT1_5")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "28")
+			(name "LED_PWR_A")
+			(class "Default")
+			(node
+				(ref "D1")
+				(pin "1")
+				(pinfunction "A_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R4")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "29")
+			(name "LED_PWR_n")
+			(class "Default")
+			(node
+				(ref "D1")
+				(pin "2")
+				(pinfunction "K_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "J31")
+				(pin "21")
+				(pinfunction "P95_LED_PWR_21")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "30")
+			(name "LED_STATUS_n")
+			(class "Default")
+			(node
+				(ref "D2")
+				(pin "2")
+				(pinfunction "K_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "J31")
+				(pin "22")
+				(pinfunction "P21_LED_STAT_22")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "31")
+			(name "LED_STAT_A")
+			(class "Default")
+			(node
+				(ref "D2")
+				(pin "1")
+				(pinfunction "A_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R5")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "32")
+			(name "LOW_BAT_INT_n")
+			(class "Default")
+			(node
+				(ref "J31")
+				(pin "20")
+				(pinfunction "P39_LBAT_INT_20")
+				(pintype "passive")
+			)
+			(node
+				(ref "U9")
+				(pin "5")
+				(pinfunction "ALRT_5")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "33")
+			(name "MIPI_CSI3_CLK_N")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "17")
+				(pinfunction "17_MCN_17")
+				(pintype "passive")
+			)
+			(node
+				(ref "J32")
+				(pin "2")
+				(pinfunction "P127_CSI3_CLKN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U2")
+				(pin "2")
+				(pinfunction "CLK_N_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "34")
+			(name "MIPI_CSI3_CLK_P")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "18")
+				(pinfunction "18_MCP_18")
+				(pintype "passive")
+			)
+			(node
+				(ref "J32")
+				(pin "1")
+				(pinfunction "P129_CSI3_CLKP_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U2")
+				(pin "1")
+				(pinfunction "CLK_P_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "35")
+			(name "MIPI_CSI3_D0_N")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "14")
+				(pinfunction "14_MDN1_14")
+				(pintype "passive")
+			)
+			(node
+				(ref "J32")
+				(pin "4")
+				(pinfunction "P115_CSI3_D0N_4")
+				(pintype "passive")
+			)
+			(node
+				(ref "U2")
+				(pin "4")
+				(pinfunction "D0_N_4")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "36")
+			(name "MIPI_CSI3_D0_P")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "15")
+				(pinfunction "15_MDP1_15")
+				(pintype "passive")
+			)
+			(node
+				(ref "J32")
+				(pin "3")
+				(pinfunction "P117_CSI3_D0P_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "U2")
+				(pin "3")
+				(pinfunction "D0_P_3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "37")
+			(name "MIPI_CSI3_D1_N")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "11")
+				(pinfunction "11_MDN2_11")
+				(pintype "passive")
+			)
+			(node
+				(ref "J32")
+				(pin "6")
+				(pinfunction "P121_CSI3_D1N_6")
+				(pintype "passive")
+			)
+			(node
+				(ref "U2")
+				(pin "6")
+				(pinfunction "D1_N_6")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "38")
+			(name "MIPI_CSI3_D1_P")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "12")
+				(pinfunction "12_MDP2_12")
+				(pintype "passive")
+			)
+			(node
+				(ref "J32")
+				(pin "5")
+				(pinfunction "P123_CSI3_D1P_5")
+				(pintype "passive")
+			)
+			(node
+				(ref "U2")
+				(pin "5")
+				(pinfunction "D1_P_5")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "39")
+			(name "MIPI_CSI3_D2_N")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "5")
+				(pinfunction "5_MDN3_5")
+				(pintype "passive")
+			)
+			(node
+				(ref "J32")
+				(pin "8")
+				(pinfunction "P133_CSI3_D2N_8")
+				(pintype "passive")
+			)
+			(node
+				(ref "U16")
+				(pin "2")
+				(pinfunction "D2_N_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "40")
+			(name "MIPI_CSI3_D2_P")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "6")
+				(pinfunction "6_MDP3_6")
+				(pintype "passive")
+			)
+			(node
+				(ref "J32")
+				(pin "7")
+				(pinfunction "P135_CSI3_D2P_7")
+				(pintype "passive")
+			)
+			(node
+				(ref "U16")
+				(pin "1")
+				(pinfunction "D2_P_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "41")
+			(name "MIPI_CSI3_D3_N")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "2")
+				(pinfunction "2_MDN4_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "J32")
+				(pin "10")
+				(pinfunction "P139_CSI3_D3N_10")
+				(pintype "passive")
+			)
+			(node
+				(ref "U16")
+				(pin "4")
+				(pinfunction "D3_N_4")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "42")
+			(name "MIPI_CSI3_D3_P")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "3")
+				(pinfunction "3_MDP4_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "J32")
+				(pin "9")
+				(pinfunction "P141_CSI3_D3P_9")
+				(pintype "passive")
+			)
+			(node
+				(ref "U16")
+				(pin "3")
+				(pinfunction "D3_P_3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "43")
+			(name "PDM1_CLK")
+			(class "Default")
+			(node
+				(ref "J32")
+				(pin "14")
+				(pinfunction "P96_PDM_CLK_14")
+				(pintype "passive")
+			)
+			(node
+				(ref "MK1")
+				(pin "2")
+				(pinfunction "CLK_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "MK2")
+				(pin "2")
+				(pinfunction "CLK_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "44")
+			(name "PDM1_DATA0")
+			(class "Default")
+			(node
+				(ref "J32")
+				(pin "15")
+				(pinfunction "P94_PDM_D0_15")
+				(pintype "passive")
+			)
+			(node
+				(ref "MK1")
+				(pin "3")
+				(pinfunction "DATA_3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "45")
+			(name "PDM1_DATA1")
+			(class "Default")
+			(node
+				(ref "J32")
+				(pin "16")
+				(pinfunction "P111_PDM_D1_16")
+				(pintype "passive")
+			)
+			(node
+				(ref "MK2")
+				(pin "3")
+				(pinfunction "DATA_3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "46")
+			(name "POWER_KEY")
+			(class "Default")
+			(node
+				(ref "J31")
+				(pin "25")
+				(pinfunction "P99_PWR_KEY_25")
+				(pintype "passive")
+			)
+			(node
+				(ref "R16")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "SW3")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "47")
+			(name "RECOVERY_n")
+			(class "Default")
+			(node
+				(ref "J31")
+				(pin "23")
+				(pinfunction "P93_RECOVERY_23")
+				(pintype "passive")
+			)
+			(node
+				(ref "R14")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "SW1")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP15")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "48")
+			(name "RESET_n")
+			(class "Default")
+			(node
+				(ref "J31")
+				(pin "24")
+				(pinfunction "P92_RESET_24")
+				(pintype "passive")
+			)
+			(node
+				(ref "R15")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "SW2")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP14")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "49")
+			(name "SAI1_BCLK")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "1")
+				(pinfunction "P25_SAI_BCLK_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U4")
+				(pin "3")
+				(pinfunction "BCLK_3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "50")
+			(name "SAI1_LRCK")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "2")
+				(pinfunction "P19_SAI_LRCK_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U4")
+				(pin "4")
+				(pinfunction "LRC_4")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "51")
+			(name "SAI1_SDO")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "3")
+				(pinfunction "P29_SAI_SDO_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "U4")
+				(pin "5")
+				(pinfunction "DIN_5")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "52")
+			(name "SPKR_EN_n")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "6")
+				(pinfunction "P96_SPK_EN_6")
+				(pintype "passive")
+			)
+			(node
+				(ref "U4")
+				(pin "6")
+				(pinfunction "SD_6")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "53")
+			(name "SPK_N_F")
+			(class "Default")
+			(node
+				(ref "C24")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "FB2")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "J3")
+				(pin "2")
+				(pinfunction "SPK-_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "54")
+			(name "SPK_OUT_N")
+			(class "Default")
+			(node
+				(ref "FB2")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U4")
+				(pin "9")
+				(pinfunction "OUT-_9")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "55")
+			(name "SPK_OUT_P")
+			(class "Default")
+			(node
+				(ref "FB1")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U4")
+				(pin "8")
+				(pinfunction "OUT+_8")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "56")
+			(name "SPK_P_F")
+			(class "Default")
+			(node
+				(ref "C23")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "FB1")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "J3")
+				(pin "1")
+				(pinfunction "SPK+_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "57")
+			(name "UART_DBG_RX")
+			(class "Default")
+			(node
+				(ref "J31")
+				(pin "5")
+				(pinfunction "P51_DBG_RX_5")
+				(pintype "passive")
+			)
+			(node
+				(ref "J7")
+				(pin "2")
+				(pinfunction "RX_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP7")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "58")
+			(name "UART_DBG_TX")
+			(class "Default")
+			(node
+				(ref "J31")
+				(pin "4")
+				(pinfunction "P55_DBG_TX_4")
+				(pintype "passive")
+			)
+			(node
+				(ref "J7")
+				(pin "1")
+				(pinfunction "TX_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP6")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "59")
+			(name "USB_CC1")
+			(class "Default")
+			(node
+				(ref "J4")
+				(pin "5")
+				(pinfunction "CC1_5")
+				(pintype "passive")
+			)
+			(node
+				(ref "R1")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "60")
+			(name "USB_CC2")
+			(class "Default")
+			(node
+				(ref "J4")
+				(pin "6")
+				(pinfunction "CC2_6")
+				(pintype "passive")
+			)
+			(node
+				(ref "R2")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "61")
+			(name "USB_DM")
+			(class "Default")
+			(node
+				(ref "J32")
+				(pin "13")
+				(pinfunction "P103_USB_DM_13")
+				(pintype "passive")
+			)
+			(node
+				(ref "J4")
+				(pin "4")
+				(pinfunction "DM_4")
+				(pintype "passive")
+			)
+			(node
+				(ref "U5")
+				(pin "2")
+				(pinfunction "DM_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "62")
+			(name "USB_DP")
+			(class "Default")
+			(node
+				(ref "J32")
+				(pin "12")
+				(pinfunction "P105_USB_DP_12")
+				(pintype "passive")
+			)
+			(node
+				(ref "J4")
+				(pin "3")
+				(pinfunction "DP_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "U5")
+				(pin "1")
+				(pinfunction "DP_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "63")
+			(name "USB_VBUS")
+			(class "Default")
+			(node
+				(ref "C11")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C17")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "D3")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J4")
+				(pin "1")
+				(pinfunction "VBUS_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U15")
+				(pin "1")
+				(pinfunction "IN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U15")
+				(pin "2")
+				(pinfunction "EN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U7")
+				(pin "1")
+				(pinfunction "IN_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "64")
+			(name "VBAT_N")
+			(class "Default")
+			(node
+				(ref "J5")
+				(pin "2")
+				(pinfunction "BAT-_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U8")
+				(pin "2")
+				(pinfunction "VM_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "65")
+			(name "VBAT_P")
+			(class "Default")
+			(node
+				(ref "J5")
+				(pin "1")
+				(pinfunction "BAT+_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U7")
+				(pin "3")
+				(pinfunction "BAT_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "U8")
+				(pin "1")
+				(pinfunction "VDD_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "66")
+			(name "VBUS_PROT")
+			(class "Default")
+			(node
+				(ref "R3")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U15")
+				(pin "4")
+				(pinfunction "OUT_4")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "67")
+			(name "VIB_EN")
+			(class "Default")
+			(node
+				(ref "J31")
+				(pin "18")
+				(pinfunction "P34_VIB_EN_18")
+				(pintype "passive")
+			)
+			(node
+				(ref "U11")
+				(pin "4")
+				(pinfunction "EN_4")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "68")
+			(name "VIB_OUT_N")
+			(class "Default")
+			(node
+				(ref "J6")
+				(pin "2")
+				(pinfunction "M-_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U11")
+				(pin "6")
+				(pinfunction "OUT-_6")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "69")
+			(name "VIB_OUT_P")
+			(class "Default")
+			(node
+				(ref "J6")
+				(pin "1")
+				(pinfunction "M+_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U11")
+				(pin "5")
+				(pinfunction "OUT+_5")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "70")
+			(name "VIB_PWM")
+			(class "Default")
+			(node
+				(ref "J31")
+				(pin "17")
+				(pinfunction "P48_VIB_PWM_17")
+				(pintype "passive")
+			)
+			(node
+				(ref "U11")
+				(pin "3")
+				(pinfunction "IN_3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "71")
+			(name "V_ANT_BIAS")
+			(class "Default")
+			(node
+				(ref "C28")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "L2")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R17")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "72")
+			(name "WL_nDIS")
+			(class "Default")
+			(node
+				(ref "J31")
+				(pin "26")
+				(pinfunction "P89_WL_DIS_26")
+				(pintype "passive")
+			)
+			(node
+				(ref "R18")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "73")
+			(name "unconnected-(J1-P23_SAI_MCLK_UNUSED-Pad4)")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "4")
+				(pinfunction "P23_SAI_MCLK_UNUSED_4")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "74")
+			(name "unconnected-(J2-8_NC-Pad8)")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "8")
+				(pinfunction "8_NC_8")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "75")
+			(name "unconnected-(J2-9_NC-Pad9)")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "9")
+				(pinfunction "9_NC_9")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "76")
+			(name "unconnected-(J2-22_NC-Pad22)")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "22")
+				(pinfunction "22_NC_22")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "77")
+			(name "unconnected-(J2-23_NC-Pad23)")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "23")
+				(pinfunction "23_NC_23")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "78")
+			(name "unconnected-(J2-26_NC-Pad26)")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "26")
+				(pinfunction "26_NC_26")
+				(pintype "passive+no_connect")
+			)
+		)
+	)
+)

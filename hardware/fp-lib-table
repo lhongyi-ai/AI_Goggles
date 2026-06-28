@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "AI_Glasses")(type "KiCad")(uri "${KIPRJMOD}/AI_Glasses.pretty")(options "")(descr "Project footprints for AI Glasses carrier"))
+)

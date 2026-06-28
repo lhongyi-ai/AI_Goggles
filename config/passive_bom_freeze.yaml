@@ -1,0 +1,391 @@
+metadata:
+  board: ai_glasses_carrier_v1
+  date: 2026-06-28
+  status: PRE_LAYOUT_PASSIVE_BOM_REVIEW
+  source_schematic_bom: scripts/carrier_bom.py
+  rule: "Every R/C/L/FB/D passive and high-speed protection array used before layout must be covered here."
+
+policy:
+  resistor_default:
+    package: "0603 / 1608 metric"
+    footprint: "Resistor_SMD:R_0603_1608Metric"
+    tolerance: "1%"
+    tempco: "100 ppm/C or better"
+    power_rating_W_min: 0.1
+    temp_range_C: "-55..155"
+  mlcc_default:
+    package: "0603 / 1608 metric unless noted"
+    dielectric: "X7R or X5R; C0G/NP0 for RF/timing/tune positions"
+    temp_range_C: "-55..125"
+    dc_bias_rule: "Effective capacitance after DC bias must remain adequate for the rail."
+  procurement_status_meaning:
+    LOCKED_CANDIDATE: "MPN/LCSC candidate URL was checked and can be used for schematic-stage BOM freeze."
+    PROCUREMENT_VERIFY: "MPN/spec is selected, but distributor stock/orderability must be checked before purchase."
+    TUNE_OR_EVT_SELECT: "Footprint/minimum spec is frozen; exact value/MPN must be selected by RF tuning or bench measurement."
+
+families:
+  R_2K2_I2C_PULLUP_1V8:
+    refs: [R7, R8, R9, R10, R12, R13]
+    category: resistor
+    value: "2.2k"
+    role: "1.8V I2C pull-up"
+    package: "0603 / 1608 metric"
+    footprint: "Resistor_SMD:R_0603_1608Metric"
+    tolerance: "1%"
+    tempco: "100 ppm/C"
+    power_rating_W_min: 0.1
+    temp_range_C: "-55..155"
+    manufacturer: YAGEO
+    mpn: "RC0603FR-072K2L"
+    lcsc: "C4190"
+    lcsc_url: "https://www.lcsc.com/product-detail/Chip-Resistor-Surface-Mount_YAGEO-RC0603FR-072K2L_C4190.html"
+    procurement_status: LOCKED_CANDIDATE
+
+  R_5K1_USB_CC:
+    refs: [R1, R2]
+    category: resistor
+    value: "5.1k"
+    role: "USB-C sink CC pull-down"
+    package: "0603 / 1608 metric"
+    footprint: "Resistor_SMD:R_0603_1608Metric"
+    tolerance: "1%"
+    tempco: "100 ppm/C"
+    power_rating_W_min: 0.1
+    temp_range_C: "-55..155"
+    manufacturer: YAGEO
+    mpn: "RC0603FR-075K1L"
+    lcsc: "C23186"
+    lcsc_url: "https://www.lcsc.com/product-detail/Chip-Resistor-Surface-Mount_YAGEO-RC0603FR-075K1L_C23186.html"
+    procurement_status: LOCKED_CANDIDATE
+
+  R_1K_LED_LIMIT:
+    refs: [R4, R5]
+    category: resistor
+    value: "1k"
+    role: "LED current limit"
+    package: "0603 / 1608 metric"
+    footprint: "Resistor_SMD:R_0603_1608Metric"
+    tolerance: "1%"
+    tempco: "100 ppm/C"
+    power_rating_W_min: 0.1
+    temp_range_C: "-55..155"
+    manufacturer: YAGEO
+    mpn: "RC0603FR-071KL"
+    lcsc: "C21190"
+    lcsc_url: "https://www.lcsc.com/product-detail/Chip-Resistor-Surface-Mount_YAGEO-RC0603FR-071KL_C21190.html"
+    procurement_status: LOCKED_CANDIDATE
+
+  R_10K_PULLUP_OR_NTC_BIAS:
+    refs: [R11, R14, R15, R16]
+    category: resistor
+    value: "10k"
+    role: "Reset/recovery/power pull-up and battery NTC placeholder bias"
+    package: "0603 / 1608 metric"
+    footprint: "Resistor_SMD:R_0603_1608Metric"
+    tolerance: "1%"
+    tempco: "100 ppm/C"
+    power_rating_W_min: 0.1
+    temp_range_C: "-55..155"
+    manufacturer: YAGEO
+    mpn: "RC0603FR-0710KL"
+    lcsc: "C25804"
+    lcsc_url: "https://www.lcsc.com/product-detail/Chip-Resistor-Surface-Mount_YAGEO-RC0603FR-0710KL_C25804.html"
+    procurement_status: LOCKED_CANDIDATE
+    note: "If the final battery pack has an actual NTC, R11 may change with charger TS design."
+
+  R_100K_PULLUP:
+    refs: [R18, R19, R20]
+    category: resistor
+    value: "100k"
+    role: "Wireless disable defaults and boost EN default"
+    package: "0603 / 1608 metric"
+    footprint: "Resistor_SMD:R_0603_1608Metric"
+    tolerance: "1%"
+    tempco: "100 ppm/C"
+    power_rating_W_min: 0.1
+    temp_range_C: "-55..155"
+    manufacturer: YAGEO
+    mpn: "RC0603FR-07100KL"
+    lcsc: "C25803"
+    lcsc_url: "https://www.lcsc.com/product-detail/Chip-Resistor-Surface-Mount_YAGEO-RC0603FR-07100KL_C25803.html"
+    procurement_status: LOCKED_CANDIDATE
+
+  R_10R_ACTIVE_ANT_BIAS:
+    refs: [R17]
+    category: resistor
+    value: "10R"
+    role: "Active GNSS antenna bias feed, DNP if passive antenna"
+    package: "0603 / 1608 metric"
+    footprint: "Resistor_SMD:R_0603_1608Metric"
+    tolerance: "1%"
+    tempco: "100 ppm/C"
+    power_rating_W_min: 0.1
+    temp_range_C: "-55..155"
+    manufacturer: YAGEO
+    mpn: "RC0603FR-0710RL"
+    lcsc: "C22859"
+    lcsc_url: "https://www.lcsc.com/product-detail/Chip-Resistor-Surface-Mount_YAGEO-RC0603FR-0710RL_C22859.html"
+    procurement_status: LOCKED_CANDIDATE
+
+  R3_5V_CURRENT_SHUNT:
+    refs: [R3]
+    category: resistor
+    value: "0R / current shunt"
+    role: "Bring-up current measurement in +5V_SYS path"
+    package: "2512 shunt footprint preferred; Kelvin sense pads recommended"
+    footprint: "Resistor_SMD:R_2512_6332Metric"
+    tolerance: "1% if populated as shunt; jumper option allowed for no-measure builds"
+    power_rating_W_min: 1.0
+    temp_range_C: "-55..155"
+    manufacturer: "TBD"
+    mpn: "TUNE_OR_EVT_SELECT"
+    lcsc: "TUNE_OR_EVT_SELECT"
+    procurement_status: TUNE_OR_EVT_SELECT
+    note: "Select 0.005R..0.02R after expected 5V peak current/noise tradeoff is confirmed. Do not use a tiny 0603 0R in the high-current path."
+
+  C_100NF_DECOUPLING:
+    refs: [C2, C4, C6, C10, C13, C14, C16, C17, C18, C19, C20, C21, C22, C28, C30]
+    category: capacitor
+    value: "100nF"
+    role: "Local HF decoupling and antenna-bias decoupling"
+    package: "0603 / 1608 metric"
+    footprint: "Capacitor_SMD:C_0603_1608Metric"
+    dielectric: X7R
+    voltage_rating_V: 50
+    tolerance: "10%"
+    temp_range_C: "-55..125"
+    manufacturer: YAGEO
+    mpn: "CC0603KRX7R9BB104"
+    lcsc: "C14663"
+    lcsc_url: "https://www.lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_YAGEO-CC0603KRX7R9BB104_C14663.html"
+    procurement_status: LOCKED_CANDIDATE
+
+  C_1UF_DECOUPLING:
+    refs: [C9, C11]
+    category: capacitor
+    value: "1uF"
+    role: "Input/local decoupling"
+    package: "0603 / 1608 metric"
+    footprint: "Capacitor_SMD:C_0603_1608Metric"
+    dielectric: X7R
+    voltage_rating_V: 16
+    tolerance: "10%"
+    temp_range_C: "-55..125"
+    manufacturer: "Samsung Electro-Mechanics"
+    mpn: "CL10B105KO8NNNC"
+    lcsc: "C15849"
+    lcsc_url: "https://www.lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_Samsung-Electro-Mechanics-CL10B105KO8NNNC_C15849.html"
+    procurement_status: LOCKED_CANDIDATE
+
+  C_10UF_BULK:
+    refs: [C1, C3, C5, C8, C15, C29]
+    category: capacitor
+    value: "10uF"
+    role: "Rail bulk decoupling"
+    package: "0805 / 2012 metric"
+    footprint: "Capacitor_SMD:C_0805_2012Metric"
+    dielectric: X5R
+    voltage_rating_V: 25
+    tolerance: "10%"
+    temp_range_C: "-55..85"
+    manufacturer: "Samsung Electro-Mechanics"
+    mpn: "CL21A106KAYNNNE"
+    lcsc: "C15850"
+    lcsc_url: "https://www.lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_Samsung-Electro-Mechanics-CL21A106KAYNNNE_C15850.html"
+    procurement_status: LOCKED_CANDIDATE
+    note: "Check effective capacitance under DC bias for 5V rails."
+
+  C_22UF_VBAT_BULK:
+    refs: [C7]
+    category: capacitor
+    value: "22uF"
+    role: "VBAT bulk decoupling"
+    package: "0805 / 2012 metric"
+    footprint: "Capacitor_SMD:C_0805_2012Metric"
+    dielectric: X5R
+    voltage_rating_V: 25
+    tolerance: "20%"
+    temp_range_C: "-55..85"
+    manufacturer: "Samsung Electro-Mechanics"
+    mpn: "CL21A226MAQNNNE"
+    lcsc: "C45783"
+    lcsc_url: "https://www.lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_Samsung-Electro-Mechanics-CL21A226MAQNNNE_C45783.html"
+    procurement_status: LOCKED_CANDIDATE
+
+  C_1NF_SPEAKER_EMI:
+    refs: [C23, C24]
+    category: capacitor
+    value: "1nF"
+    role: "Class-D speaker EMI shunt"
+    package: "0603 / 1608 metric"
+    footprint: "Capacitor_SMD:C_0603_1608Metric"
+    dielectric: X7R
+    voltage_rating_V: 50
+    tolerance: "10%"
+    temp_range_C: "-55..125"
+    manufacturer: YAGEO
+    mpn: "CC0603KRX7R9BB102"
+    lcsc: "C1669"
+    lcsc_url: "https://www.lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_YAGEO-CC0603KRX7R9BB102_C1669.html"
+    procurement_status: LOCKED_CANDIDATE
+
+  C27_GNSS_RF_DC_BLOCK:
+    refs: [C27]
+    category: capacitor
+    value: "100pF initial / tune"
+    role: "GNSS RF DC block or series match"
+    package: "0402 / 1005 metric"
+    footprint: "Capacitor_SMD:C_0402_1005Metric"
+    dielectric: "C0G/NP0"
+    voltage_rating_V_min: 25
+    tolerance: "5% or better"
+    temp_range_C: "-55..125"
+    manufacturer: "TBD"
+    mpn: "TUNE_OR_EVT_SELECT"
+    lcsc: "TUNE_OR_EVT_SELECT"
+    procurement_status: TUNE_OR_EVT_SELECT
+    note: "Exact value is RF-tuned with the selected GNSS antenna/feed."
+
+  C25_C26_GNSS_PI_SHUNT_DNP:
+    refs: [C25, C26]
+    category: capacitor
+    value: "DNP / tune"
+    role: "GNSS pi-match shunt pads"
+    package: "0402 / 1005 metric"
+    footprint: "Capacitor_SMD:C_0402_1005Metric"
+    dielectric: "C0G/NP0"
+    voltage_rating_V_min: 25
+    tolerance: "5% or better"
+    temp_range_C: "-55..125"
+    manufacturer: "TBD"
+    mpn: "DNP_TUNE_KIT"
+    lcsc: "DNP_TUNE_KIT"
+    procurement_status: TUNE_OR_EVT_SELECT
+    note: "Leave DNP unless RF tuning needs shunt capacitance."
+
+  L1_BOOST_INDUCTOR:
+    refs: [L1]
+    category: inductor
+    value: "4.7uH"
+    role: "TPS61022-class 1S to 5V boost inductor"
+    package: "Shielded power inductor, about 7x7mm class"
+    footprint: "AI_Glasses:POWER_INDUCTOR_7X7_VERIFY"
+    saturation_current_A_min: 10
+    rms_current_A_min: 6
+    dcr_mohm_max: 25
+    temp_range_C: "-40..125"
+    manufacturer: "TBD"
+    mpn: "TUNE_OR_EVT_SELECT"
+    lcsc: "TUNE_OR_EVT_SELECT"
+    procurement_status: TUNE_OR_EVT_SELECT
+    note: "Final MPN depends on measured peak current and thermal budget; keep footprint large enough for >=10A saturation-current parts."
+
+  FB_SPEAKER_EMI:
+    refs: [FB1, FB2]
+    category: ferrite_bead
+    value: "600R@100MHz"
+    role: "Class-D speaker output EMI bead"
+    package: "0603 / 1608 metric"
+    footprint: "Inductor_SMD:L_0603_1608Metric"
+    impedance_ohm_at_100MHz: 600
+    current_rating_A_min: 1
+    dc_resistance_ohm_max: 0.5
+    temp_range_C: "-55..125"
+    manufacturer: Murata
+    mpn: "BLM18AG601SN1D"
+    lcsc: "PROCUREMENT_VERIFY"
+    procurement_status: PROCUREMENT_VERIFY
+
+  L2_GNSS_ACTIVE_ANT_CHOKE:
+    refs: [L2]
+    category: rf_inductor
+    value: "RF choke / active antenna bias"
+    role: "GNSS active antenna bias tee, DNP if passive antenna"
+    package: "0402 / 1005 metric"
+    footprint: "Inductor_SMD:L_0402_1005Metric"
+    inductance_initial: "47nH initial / tune"
+    q_requirement: "High-Q at GNSS L1"
+    temp_range_C: "-40..125"
+    manufacturer: "TBD"
+    mpn: "TUNE_OR_EVT_SELECT"
+    lcsc: "TUNE_OR_EVT_SELECT"
+    procurement_status: TUNE_OR_EVT_SELECT
+    note: "Exact value/MPN depends on selected active antenna and RF tuning."
+
+  D3_USB_VBUS_TVS:
+    refs: [D3]
+    category: tvs
+    value: "SMAJ5.0A"
+    role: "USB VBUS surge/ESD clamp"
+    package: "SMA / DO-214AC"
+    footprint: "Diode_SMD:D_SMA"
+    vrwm_V: 5
+    peak_pulse_power_W_min: 400
+    temp_range_C: "-55..150"
+    manufacturer: "Littelfuse/Bourns equivalent"
+    mpn: "SMAJ5.0A"
+    lcsc: "PROCUREMENT_VERIFY"
+    procurement_status: PROCUREMENT_VERIFY
+
+  D4_GNSS_RF_ESD:
+    refs: [D4]
+    category: esd
+    value: "low-cap RF ESD, <=0.3pF"
+    role: "GNSS antenna RF ESD clamp"
+    package: "0402/DFN1006 class"
+    footprint: "AI_Glasses:RF_ESD_2P_VERIFY"
+    capacitance_pF_max: 0.3
+    vrwm_V_min: 5
+    temp_range_C: "-40..125"
+    manufacturer: "TBD"
+    mpn: "PROCUREMENT_VERIFY_LOW_CAP_RF_ESD"
+    lcsc: "PROCUREMENT_VERIFY"
+    procurement_status: PROCUREMENT_VERIFY
+
+  U2_U16_MIPI_ESD:
+    refs: [U2, U16]
+    category: esd_array
+    value: "TPD4E05U06"
+    role: "MIPI CSI3 low-capacitance ESD arrays"
+    package: "USON/QFN class, verify footprint against chosen suffix"
+    footprint: "AI_Glasses:TPD4E05U06_VERIFY"
+    channels: 4
+    capacitance_pF_max: 0.4
+    vrwm_V_min: 5
+    temp_range_C: "-40..125"
+    manufacturer: Texas Instruments
+    mpn: "TPD4E05U06"
+    lcsc: "PROCUREMENT_VERIFY"
+    procurement_status: PROCUREMENT_VERIFY
+    note: "Use exact suffix/footprint from purchasable stock before PCB layout."
+
+  U5_USB2_ESD:
+    refs: [U5]
+    category: esd_array
+    value: "TPD2E009"
+    role: "USB2 D+/D- ESD clamp"
+    package: "WSON/SOT package per selected suffix"
+    footprint: "AI_Glasses:TPD2E009_VERIFY"
+    channels: 2
+    capacitance_pF_max: 1.5
+    vrwm_V_min: 5
+    temp_range_C: "-40..125"
+    manufacturer: Texas Instruments
+    mpn: "TPD2E009"
+    lcsc: "PROCUREMENT_VERIFY"
+    procurement_status: PROCUREMENT_VERIFY
+    note: "Use exact suffix/footprint from purchasable stock before PCB layout."
+
+  D1_D2_INDICATOR_LEDS:
+    refs: [D1, D2]
+    category: led
+    value: "0603 LED, green/blue"
+    role: "Power/status indicators"
+    package: "0603 / 1608 metric"
+    footprint: "LED_SMD:LED_0603_1608Metric"
+    current_mA_nominal: 1
+    temp_range_C: "-40..85"
+    manufacturer: "TBD"
+    mpn: "PROCUREMENT_VERIFY_LED_COLOR"
+    lcsc: "PROCUREMENT_VERIFY"
+    procurement_status: PROCUREMENT_VERIFY

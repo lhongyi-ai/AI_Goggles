@@ -1,0 +1,55 @@
+part:
+  reference: J2
+  manufacturer: Hirose
+  mpn: FH35C-31S-0.3SHW(50)
+  code_number: CL0580-2923-7-50
+  contacts: 31
+
+source_drawing:
+  local_path: "/Users/stanley/Downloads/FH35C-31S-0.3SHW(50)_CL0580-2923-7-50_2DDrawing_0001002002.pdf"
+  drawing_no: EDC3-338903-01
+  hirose_code_no: CL580
+  pdf_pages: 7
+  note: "pdftotext exposes only watermark/copyright text; dimensions were read from rendered drawing pages."
+
+dimension_table_mm:
+  A: 10.9
+  B: 8.4
+  C: 9.0
+  D: 9.63
+  E: 10.33
+  F: 9.6
+  table_page: 4
+
+pcb_mounting_pattern_mm:
+  page: 1
+  same_row_pitch: 0.6
+  odd_even_x_offset: 0.3
+  contact_no2_even_count: 15
+  contact_no1_odd_count: 16
+  contact_no2_even_pad:
+    width_x: 0.20
+    length_y: 0.65
+    center_y: -1.15
+  contact_no1_odd_pad:
+    width_x: 0.20
+    length_y: 0.80
+    center_y: 1.075
+  contact_no1_to_contact_no2_top_edge_y: 2.15
+  metal_fitting_pads:
+    note: "End hold-down pads are placed from the page-1 mounting pattern and remain part of the 1:1 physical check gate."
+    upper:
+      width_x: 0.40
+      length_y: 0.95
+      center_x_abs: 4.95
+      center_y: -1.15
+    lower:
+      width_x: 0.40
+      length_y: 0.80
+      center_x_abs: 5.10
+      center_y: 1.075
+
+markers:
+  pin1: "Pad 1 is lower-left odd-row pad in this footprint orientation; physical Pin 1 check is DEFERRED_TO_PRE_LAYOUT."
+  insertion_direction: "Generated footprint marks FPC insertion direction; physical insertion/contact-side confirmation is DEFERRED_TO_PRE_LAYOUT."
+  fab_gate: "Do not release for fabrication until DEFERRED_TO_PRE_LAYOUT items pass: 1:1 print + real FH35C + AC006 fit/continuity check."

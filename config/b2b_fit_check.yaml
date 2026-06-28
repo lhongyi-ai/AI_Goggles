@@ -1,0 +1,83 @@
+project:
+  name: b2b_fit_check
+  revision: v0.1
+  purpose: "2-layer connector-only fit-check board for Radxa CM4 B2B stack-up"
+
+sources:
+  cm4_module_dxf: mechanical/radxa_cm4_2d_dxf_v1.20/Radxa CM4 V1.20 TOP.dxf
+  cm4_io_board_dxf_top: mechanical/radxa_cm4_io_2d_dxf_v1.10/RC126_V1.10_20250526_TOP.dxf
+  cm4_io_board_dxf_bot: mechanical/radxa_cm4_io_2d_dxf_v1.10/RC126_V1.10_20250526_BOT.dxf
+  cm4_module_step: "required: radxa_cm4_3d_stp_v1.20.zip extracted STEP"
+  cm4_placement_map: /Users/stanley/Downloads/radxa_cm4_components_placement_map_v1.20.pdf
+  connector_drawing: "required: Hirose DF40C-100DS-0.4V(51) 2D drawing"
+  connector_step: "required: Hirose DF40C-100DS-0.4V(51) STEP"
+
+board:
+  layers: 2
+  thickness_mm: 1.6
+  # Oversized mechanical coupon. Final outline may be trimmed after DXF/STEP alignment.
+  width_mm: 50.0
+  height_mm: 65.0
+  note: "Fit-check coupon only; do not add power or functional circuits."
+
+cm4_reference:
+  module_width_mm: 40.02
+  module_height_mm: 54.98
+  coordinate_source: "official CM4 DXF/STEP imported into KiCad/mechanical CAD"
+  official_io_board_width_mm: 160.01
+  official_io_board_height_mm: 90.02
+  io_board_dxf_text_labels:
+    Connector_1:
+      x_mm: 110.55
+      y_mm: 57.35
+      note: "DXF text insertion point only; not a DF40C footprint origin."
+    Connector_2:
+      x_mm: 83.45
+      y_mm: 56.8
+      note: "DXF text insertion point only; not a DF40C footprint origin."
+    Connector_3:
+      x_mm: 92.8
+      y_mm: 78.85
+      note: "DXF text insertion point only; not a DF40C footprint origin."
+
+connectors:
+  J3A:
+    role: "CM4 low-speed/power connector"
+    carrier_mpn: DF40C-100DS-0.4V(51)
+    module_mpn: DF40C-100DP-0.4V(51)
+    mated_height_mm: 1.5
+    x_mm: null
+    y_mm: null
+    rotation_deg: null
+    pin1_orientation: null
+    xy_source: "open: align from official CM4 DXF/STEP, not from PDF/text"
+  J3B:
+    role: "CM4 high-speed connector"
+    carrier_mpn: DF40C-100DS-0.4V(51)
+    module_mpn: DF40C-100DP-0.4V(51)
+    mated_height_mm: 1.5
+    x_mm: null
+    y_mm: null
+    rotation_deg: null
+    pin1_orientation: null
+    xy_source: "open: align from official CM4 DXF/STEP, not from PDF/text"
+  J1:
+    role: "CM4 I/O connector"
+    carrier_mpn: DF40C-100DS-0.4V(51)
+    module_mpn: DF40C-100DP-0.4V(51)
+    mated_height_mm: 1.5
+    x_mm: null
+    y_mm: null
+    rotation_deg: null
+    pin1_orientation: null
+    xy_source: "open: align from official CM4 DXF/STEP, not from PDF/text"
+
+fabrication_gate:
+  allow_fabrication: false
+  reason: "Connector XY/rotation and DF40C footprint are not verified yet."
+  required_to_open:
+    - "Import official CM4 DXF into KiCad as reference geometry."
+    - "Place J3A/J3B/J1 DF40C-100DS footprints from Hirose drawing."
+    - "Record each connector x_mm, y_mm, rotation_deg, and pin1_orientation here."
+    - "Attach/verify official CM4 STEP plus Hirose STEP, confirming 1.5mm mating height."
+    - "Print 1:1 fit-check PDF and verify footprint pads with real DF40C parts."
