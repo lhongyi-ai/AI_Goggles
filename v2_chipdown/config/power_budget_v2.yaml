@@ -1,0 +1,96 @@
+# AI Glasses V2 (chip-down) power-state model — ESTIMATE, pre-measurement.
+#
+# Structure: each subsystem carries a power value (mW) in EACH power state.
+# The script sums per state, checks each total lands inside its target band,
+# then sizes the battery. Values are BATTERY-SIDE draw already — conversion
+# losses are captured in the explicit "*_loss" rows, so battery current =
+# power / V_batt (no extra global efficiency factor).
+#
+# Replace every number with per-island shunt measurements at Phase-2 bench EVT
+# (see docs/03_workflow_phases.md Power Gate), then re-run power_budget_v2.py.
+
+meta:
+  version: "v2-chipdown"
+  note: "AON always-on + RK3576 burst; see docs/02_power_states.md"
+
+constants:
+  v_batt_nominal_V: 3.7      # 1S Li-Po nominal
+  usable_dod: 0.90           # usable depth-of-discharge (cycle-life + cutoff margin)
+
+# Ordered hardware states + the design target bands they must land in.
+states:
+  - key: deep_off
+    label: "Deep Off (AON only, RK3576 down)"
+    target_mW: [20, 50]
+    target_runtime_h: [12, 24]
+    wake: "~2-5 s (RK3576 cold boot) - TBM"
+  - key: quick_standby
+    label: "Quick Standby (DDR retention / light sleep)"
+    target_mW: [80, 200]
+    target_runtime_h: [8, 16]
+    wake: "<500 ms - TBM"
+  - key: phone_assist
+    label: "Phone-assisted safety ID (blended)"
+    target_mW: [250, 450]
+    target_runtime_h: [3, 5]
+    wake: "n/a (average scenario)"
+  - key: mixed_active
+    label: "Mixed motion use (blended)"
+    target_mW: [0, 800]
+    target_display: "<=500-800"
+    target_runtime_h: [3, 4]
+    wake: "n/a (average scenario)"
+  - key: record
+    label: "Record Active (1080p, ISP+encode)"
+    target_mW: [1000, 1500]
+    target_runtime_h: [0.75, 1.5]
+    wake: "running"
+  - key: ai_record
+    label: "AI Burst (NPU + encode + Wi-Fi)"
+    target_mW: [1500, 2500]
+    target_runtime_h: [0.5, 1.0]
+    wake: "running"
+
+# Subsystem draw per state (mW, battery-side). Domain marks the power island.
+subsystems:
+  - name: "BLE MCU (nRF-class, always-on)"
+    domain: AON
+    mW: {deep_off: 2, quick_standby: 3, phone_assist: 8, mixed_active: 6, record: 5, ai_record: 8}
+  - name: "Audio DSP / wake-word (always listening)"
+    domain: AON
+    mW: {deep_off: 12, quick_standby: 12, phone_assist: 15, mixed_active: 15, record: 15, ai_record: 20}
+  - name: "IMU BMI270 (low-power)"
+    domain: AON
+    mW: {deep_off: 1, quick_standby: 1, phone_assist: 1, mixed_active: 1, record: 1, ai_record: 1}
+  - name: "MEMS mic array (wake mic always; array when active)"
+    domain: AON
+    mW: {deep_off: 3, quick_standby: 3, phone_assist: 6, mixed_active: 6, record: 8, ai_record: 10}
+  - name: "Fuel gauge + NTC + protection"
+    domain: AON
+    mW: {deep_off: 1, quick_standby: 1, phone_assist: 1, mixed_active: 1, record: 1, ai_record: 1}
+  - name: "AON Buck quiescent + regulation loss"
+    domain: AON
+    mW: {deep_off: 3, quick_standby: 4, phone_assist: 6, mixed_active: 6, record: 10, ai_record: 15}
+  - name: "RK3576 SoC + LPDDR4X + eMMC + PMIC"
+    domain: COMPUTE
+    mW: {deep_off: 0, quick_standby: 90, phone_assist: 150, mixed_active: 250, record: 850, ai_record: 1500}
+  - name: "Custom 1080p camera (sensor + ISP share)"
+    domain: CAMERA
+    mW: {deep_off: 0, quick_standby: 0, phone_assist: 0, mixed_active: 30, record: 250, ai_record: 300}
+  - name: "Wi-Fi (on-demand)"
+    domain: RADIO
+    mW: {deep_off: 0, quick_standby: 0, phone_assist: 150, mixed_active: 100, record: 80, ai_record: 120}
+  - name: "Audio amp + speaker (avg)"
+    domain: AUDIO
+    mW: {deep_off: 0, quick_standby: 0, phone_assist: 15, mixed_active: 15, record: 30, ai_record: 30}
+  - name: "Compute-island load switches / PMIC loss"
+    domain: COMPUTE
+    mW: {deep_off: 0, quick_standby: 20, phone_assist: 10, mixed_active: 20, record: 40, ai_record: 60}
+
+# Realistic day blends (fraction of time in each state) to prove all-day wear.
+# Fractions must sum to 1.0 per mix.
+day_mixes:
+  - name: "All-day mixed wear"
+    fractions: {deep_off: 0.70, quick_standby: 0.10, phone_assist: 0.12, mixed_active: 0.04, record: 0.025, ai_record: 0.015}
+  - name: "Heavy usage day"
+    fractions: {deep_off: 0.50, quick_standby: 0.15, phone_assist: 0.15, mixed_active: 0.10, record: 0.06, ai_record: 0.04}

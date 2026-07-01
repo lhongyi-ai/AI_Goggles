@@ -13,6 +13,14 @@ Treat them differently.
 - `ai_context/*.pdf .svg .csv .json .net .txt` — schematic/PCB views, netlist, BOM, ERC, DRC, pinout & pin-assignment dumps
 - `config/cm4_v1_pin_assignment.yaml`, `generated/reports/cm4_v1_pin_assignment.{csv,xlsx}` — generated from `scripts/cm4_pinmap.py` via `scripts/build_pin_assignment.py`
 
+## V2 chip-down memory
+- `v2_chipdown/scripts/chipdown_bom.py` is the V2 single source of truth for the generated pre-layout schematic, BOM, nets and `NET_META` signal attributes.
+- Current V2 generated state: **96 components**, **127 declared nets**, **58 Fit / 12 HOLD / 19 DNP / 7 TBD**, KiCad ERC clean.
+- `v2_chipdown/hardware/ai_glasses_v2_chipdown.kicad_sch` is a functional-block review schematic only. It has hidden signal attributes on global labels; it is not a ball-level production schematic and does not release PCB layout.
+- Generated V2 docs: `docs/08_signal_dictionary.md`, `09_power_domain_isolation_matrix.md`, `10_bom_status.md`, `11_footprint_register.md`, `12_layout_entry_gate_status.md`.
+- PCB layout remains **NOT released** until Gate 0 plus HOLD closure passes: NDP120 full data/kit/power, FCU760K HW Design+BSP, LP451165/1S2P validation, custom IMX415 rail/FPC data, real battery-bay fit.
+- V2 default-OFF hardware is intentional: R11-R20 pull down SoC/camera/Wi-Fi/audio enables so high-power domains stay off if nRF resets or firmware hangs.
+
 ## Pipeline
 ```
 hardware/*.kicad_{sch,pcb} ─ kicad-cli ─► ai_context/ {pdf, svg, netlist.net, bom.csv, erc.*, drc.*}
@@ -20,6 +28,14 @@ data/*.xlsx                ─ openpyxl  ─► ai_context/ {*.csv, *.json}
 scripts/cm4_pinmap.py      ─ (pin map) ─► ai_context/ {pin_assignment.csv/json}
 ```
 Regenerate everything with: **`./tools/build_ai_context.sh`** (export-only; never edits native sources).
+
+Regenerate V2 pre-layout artifacts from repo root:
+```
+.venv/bin/python v2_chipdown/scripts/chipdown_bom.py
+.venv/bin/python v2_chipdown/scripts/generate_chipdown_sch.py
+.venv/bin/python v2_chipdown/scripts/generate_gate_docs.py
+.venv/bin/python v2_chipdown/scripts/generate_bom_status.py
+```
 
 ## Division of labor
 - **Claude:** analyse nets/components, cross-check pin assignment vs `data/` pinout, check BOM, run ERC/DRC, edit native sources or helper scripts, write review reports.

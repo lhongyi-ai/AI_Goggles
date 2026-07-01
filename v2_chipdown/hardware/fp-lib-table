@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "AI_Glasses_V2")(type "KiCad")(uri "${KIPRJMOD}/AI_Glasses_V2.pretty")(options "")(descr "AI Glasses V2 footprints (created at layout time)"))
+)

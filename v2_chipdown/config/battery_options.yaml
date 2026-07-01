@@ -1,0 +1,76 @@
+# AI Glasses V2 candidate batteries. 1S distributed (one cell per temple).
+# The script sizes each pack against the power states in power_budget_v2.yaml.
+#
+# Dimensions are cell thickness x width x length in mm. Energy Wh = mAh*3.7/1000.
+# Verify all dims/energy against the supplier datasheet before committing.
+
+constants:
+  usable_dod: 0.90
+
+recommended: "LP451165_1S2P"
+
+cells:
+  - id: LP451165
+    v_nominal_V: 3.7
+    mAh: 300
+    Wh: 1.11
+    dims_mm: {t: 4.5, w: 11, l: 65}
+    weight_g_est: 6
+    features: "slim wearable-camera form factor; 10k NTC option"
+
+# Packs to size against. mAh is the pack (parallel) capacity at 1S.
+packs:
+  - id: LP451165_1S1P
+    label: "LP451165 x1 (one temple only)"
+    cell: LP451165
+    series: 1
+    parallel: 1
+    mAh: 300
+    Wh: 1.11
+    per_temple_mAh: 300
+    weight_g_est: 6
+    note: "300-400 mAh tier: thin temples, phone-assist oriented, short high-perf time"
+
+  - id: LP451165_1S2P
+    label: "LP451165 x2, 1S2P (RECOMMENDED)"
+    cell: LP451165
+    series: 1
+    parallel: 2
+    mAh: 600
+    Wh: 2.22
+    per_temple_mAh: 300
+    weight_g_est: 12
+    note: "500-650 mAh tier: recommended engineering target; one cell per temple"
+
+  - id: generic_500_1S2P
+    label: "Generic 250 mAh x2, 1S2P"
+    cell: null
+    series: 1
+    parallel: 2
+    mAh: 500
+    Wh: 1.85
+    per_temple_mAh: 250
+    weight_g_est: 10
+    note: "lower edge of recommended tier; thinner temples"
+
+  - id: generic_650_1S2P
+    label: "Generic 325 mAh x2, 1S2P"
+    cell: null
+    series: 1
+    parallel: 2
+    mAh: 650
+    Wh: 2.41
+    per_temple_mAh: 325
+    weight_g_est: 13
+    note: "upper edge of recommended tier"
+
+  - id: generic_800_1S2P
+    label: "Generic 400 mAh x2, 1S2P"
+    cell: null
+    series: 1
+    parallel: 2
+    mAh: 800
+    Wh: 2.96
+    per_temple_mAh: 400
+    weight_g_est: 16
+    note: "700-900 mAh tier: closer to 3-4 h heavy mixed, temples visibly thicker/heavier"
