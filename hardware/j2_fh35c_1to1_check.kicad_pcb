@@ -23,10 +23,10 @@
   (setup (pad_to_mask_clearance 0.050))
   (net 0 "")
   (gr_rect (start 0 0) (end 50 30)
-    (stroke (width 0.100) (type default)) (fill none) (layer "Edge.Cuts") (uuid "dc4e5d75-4b5a-4f1d-9d8d-7a5043c523e8"))
-  (gr_text "PRINT 1:1 / 100% ONLY" (at 25 5 0) (layer "F.SilkS") (uuid "040cfdab-429c-4e6a-b34a-03fc0c9dbbbb")
+    (stroke (width 0.100) (type default)) (fill none) (layer "Edge.Cuts") (uuid "0a6a3ed7-607c-41c5-8324-508402776959"))
+  (gr_text "PRINT 1:1 / 100% ONLY" (at 25 5 0) (layer "F.SilkS") (uuid "cc9decf3-c657-4d2d-b9b1-8eaa7cd224df")
     (effects (font (size 1.2 1.2) (thickness 0.15))))
-  (gr_text "FH35C-31S-0.3SHW(50)  Pad1=GND  FPC insert ->" (at 25 24 0) (layer "F.Fab") (uuid "9bf5807e-6e70-43f8-801c-a76af9910724")
+  (gr_text "FH35C-31S-0.3SHW(50)  Pad1=GND  FPC insert ->" (at 25 24 0) (layer "F.Fab") (uuid "b0e6b782-ee2e-4377-9507-eb94ba3aca67")
     (effects (font (size 0.9 0.9) (thickness 0.12))))
 (footprint "FH35C-31S-0.3SHW_50"
   (version 20240108)

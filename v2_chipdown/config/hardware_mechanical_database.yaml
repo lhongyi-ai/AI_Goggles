@@ -1,0 +1,3353 @@
+meta:
+  generated: '2026-07-01'
+  phase: Phase 1 audit-only mechanical freeze database
+  source_of_truth: Current records generated from chipdown_bom.py plus conservative
+    local-source overlays in generate_mechanical_freeze_pack.py
+  status_legend:
+  - FROZEN
+  - PROVISIONAL
+  - RANGE
+  - HOLD
+  - TBD
+  - DNP
+  rule: No exact MPN/package drawing/land pattern means HOLD or TBD, not release-ready.
+sources:
+  schematic:
+    source_document: Current V2 generated schematic/BOM master
+    source_revision: generated 2026-07-01
+    source_page: scripts/chipdown_bom.py
+    source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+    confidence: high for current project intent; not a package drawing
+  dim_v22:
+    source_document: AI Glasses Hardware Dimensions V2.2
+    source_revision: '2026-07-01'
+    source_page: pp. 1-10
+    source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.2
+      (3).pdf
+    confidence: medium; project extraction from BOM PDFs
+  dim_v23:
+    source_document: AI Glasses Hardware Dimensions V2.3
+    source_revision: '2026-07-01'
+    source_page: pp. 1-10
+    source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+    confidence: medium; project extraction from BOM PDFs
+  fcu760k:
+    source_document: Quectel FCU760K Short Specification
+    source_revision: V1.1, Released, 2024
+    source_page: pp. 1-3
+    source_url_or_file: AI_Glasses_HOLD_Closure_Pack/02_WiFi_FCU760K/Quectel_FCU760K_Short_Spec_V1.1.pdf
+    confidence: high for module outline and basic electrical data; land pattern still
+      missing
+  ndp120:
+    source_document: Syntiant NDP120 Product Brief
+    source_revision: V1, 2023
+    source_page: pp. 1-2
+    source_url_or_file: AI_Glasses_HOLD_Closure_Pack/01_NDP120/NDP120_Product_Brief.pdf
+    confidence: medium; product brief, not full datasheet/package drawing
+  imx415:
+    source_document: Sony IMX415-AAQR-C Datasheet E19504
+    source_revision: Official edition, 2019-05-21
+    source_page: pp. 1, 3, 97
+    source_url_or_file: AI_Glasses_HOLD_Closure_Pack/04_IMX415/IMX415-AAQR-C_Datasheet_E19504.pdf
+    confidence: high for bare sensor; low for final module mechanics
+  bq2970:
+    source_document: TI BQ297xx Datasheet SLUSBU9I
+    source_revision: March 2014, revised August 2024
+    source_page: pp. 1, 3, package outline
+    source_url_or_file: AI_Glasses_HOLD_Closure_Pack/03_Battery_LP451165_1S2P/TI_BQ2970_1S_Protection_Datasheet.pdf
+    confidence: high for IC; exact suffix still TBD
+  battery_fit:
+    source_document: LP451165 Battery Bay Fit Check
+    source_revision: project fit-check, 2026-07-01
+    source_page: dimensions.csv + fit-check md
+    source_url_or_file: AI_Glasses_HOLD_Closure_Pack/06_Mechanical_Fit_Check/
+    confidence: medium; CAD clearance envelope, not supplier pack drawing
+  rk3576:
+    source_document: RK3576 Brief Datasheet file
+    source_revision: V1.2, 2024-03-11; PDF metadata title mismatch noted
+    source_page: pp. 1-3
+    source_url_or_file: AI_Glasses_HOLD_Closure_Pack/05_Project_References/RK3576
+      Brief Datasheet V1.2-20240311.pdf
+    confidence: medium; package/HDG/ball map still required
+components:
+- functional_block: EVT Debug Tail
+  reference_designator: J2
+  bom_id: C035
+  manufacturer: TBD
+  exact_mpn: USB-C 16p USB2-only
+  description: EVT USB-C — 5 V sink + USB2 OTG (no USB3/DP). For MaskROM/ADB/firmware/lab
+    supply.
+  board_region: EVT Debug Tail
+  assembly_status: Fit
+  package: AI_Glasses_V2:USB_C_16P_MidMount
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:USB_C_16P_MidMount
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Connector height + shell opening co-freeze
+- functional_block: EVT Debug Tail
+  reference_designator: R1
+  bom_id: C037a
+  manufacturer: TBD
+  exact_mpn: 5.1k 1%
+  description: USB-C CC1 Rd — 5.1k 1% sink pulldown. LOCK value + 1% (V1 audit rule).
+  board_region: EVT Debug Tail
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0402
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0402
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: USB-C spec
+- functional_block: EVT Debug Tail
+  reference_designator: R2
+  bom_id: C037b
+  manufacturer: TBD
+  exact_mpn: 5.1k 1%
+  description: USB-C CC2 Rd — 5.1k 1% sink pulldown.
+  board_region: EVT Debug Tail
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0402
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0402
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: USB-C spec
+- functional_block: EVT Debug Tail
+  reference_designator: SW1
+  bom_id: C042a
+  manufacturer: TBD
+  exact_mpn: Power/PWRKEY
+  description: Power key — RK3576 PWRON via AON/PMIC.
+  board_region: EVT Debug Tail
+  assembly_status: Fit
+  package: Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: First chip-down must recover from boot failure
+- functional_block: EVT Debug Tail
+  reference_designator: SW2
+  bom_id: C042b
+  manufacturer: TBD
+  exact_mpn: Reset
+  description: Reset key — RK3576 RESET_n.
+  board_region: EVT Debug Tail
+  assembly_status: Fit
+  package: Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Bring-up
+- functional_block: EVT Debug Tail
+  reference_designator: SW3
+  bom_id: C042c
+  manufacturer: TBD
+  exact_mpn: MaskROM/Recovery
+  description: MaskROM/recovery key — force USB recovery boot.
+  board_region: EVT Debug Tail
+  assembly_status: Fit
+  package: Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Bring-up (recover from bad boot)
+- functional_block: EVT Debug Tail
+  reference_designator: TP1
+  bom_id: C041
+  manufacturer: TBD
+  exact_mpn: UART/SWD pogo pads
+  description: UART/SWD test pads — RK3576 UART0 + nRF SWD + GND/VREF for bring-up
+    (no connector height).
+  board_region: EVT Debug Tail
+  assembly_status: Fit
+  package: AI_Glasses_V2:TestPad_Set
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:TestPad_Set
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Voltage domain clearly labelled (no 3.3V into 1.8V IO)
+- functional_block: EVT Debug Tail
+  reference_designator: U24
+  bom_id: C036
+  manufacturer: TBD
+  exact_mpn: TPD2E001
+  description: USB2 ESD — low-cap ESD on D+/D- near the connector.
+  board_region: EVT Debug Tail
+  assembly_status: Fit
+  package: Package_TO_SOT_SMD:SOT-23-3
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: Package_TO_SOT_SMD:SOT-23-3
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Keep ~90 ohm diff + continuous ref gnd
+- functional_block: front FPC connector
+  reference_designator: J3
+  bom_id: C038
+  manufacturer: Hirose
+  exact_mpn: FH26W series pin count TBD
+  description: Front<->temple high-speed FPC — carries MIPI CSI + PDM + I2C + control
+    + camera power + GND across to the compute/AON boards. Documents the hinge-FPC
+    pin list.
+  board_region: Front Sensor Board
+  assembly_status: HOLD
+  package: 0.3 mm pitch, 1.0 mm height, bottom-contact/front-flip ZIF
+  body_length_mm: 12.0
+  body_width_mm: 3.5
+  body_height_mm: 1.0
+  land_pattern: AI_Glasses_V2:VERIFY_FPC_FH26W
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: MIPI/PDM/I2C/CAM rails/GND
+  typical_power: passive
+  peak_power: pin-current TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: 35-pin length is only an example. Final pin count and contact orientation
+    are G12 blockers.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: HOLD
+  schematic_status: present in current schematic
+  footprint_status: NOT_FOR_FAB placeholder; not release-ready
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: G12 (pin count from final cam lane/mic/power split)
+- functional_block: camera buck inductor
+  reference_designator: L3
+  bom_id: C020b
+  manufacturer: TBD
+  exact_mpn: cam 1.1 V inductor TBD
+  description: Camera 1.1 V buck inductor — SW->1V1.
+  board_region: Front Sensor Board
+  assembly_status: Fit
+  package: target 1.6 x 0.8 mm class
+  body_length_mm: 1.6
+  body_width_mm: 0.8
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VERIFY_L_1.6x0.8
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: CAM_1V1 buck
+  typical_power: loss TBD
+  peak_power: DVDD current plus ripple
+  thermal_notes: TBD after thermal review
+  placement_notes: MPN, DCR, Isat, height and camera noise impact required.
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: TBD
+  schematic_status: present in current schematic
+  footprint_status: NOT_FOR_FAB placeholder; not release-ready
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Per TPS62840 design
+- functional_block: wake microphone
+  reference_designator: MK1
+  bom_id: C013a
+  manufacturer: TDK InvenSense
+  exact_mpn: T5837
+  description: PDM wake mic — dedicated always-on wake channel into NDP120 (AON audio
+    domain). Deep Off must capture without RK3576.
+  board_region: Front Sensor Board
+  assembly_status: Fit
+  package: bottom-port LGA-5
+  body_length_mm: 3.5
+  body_width_mm: 2.65
+  body_height_mm: 0.98
+  land_pattern: AI_Glasses_V2:LGA-5_3.5x2.65
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: AON microphone rail/PDM
+  typical_power: 3 mW wake-mic budget
+  peak_power: TBD by mode
+  thermal_notes: TBD after thermal review
+  placement_notes: Requires sound port, acoustic keep-out and wind/AEC placement review.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: PROVISIONAL
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: G11 (mic coords/ports/wind/wake + AEC/beamforming)
+- functional_block: array microphone 1
+  reference_designator: MK2
+  bom_id: C013b
+  manufacturer: TDK InvenSense
+  exact_mpn: T5837
+  description: PDM array mic 1 — into RK3576 PDM for beamforming during vision/voice
+    tasks.
+  board_region: Front Sensor Board
+  assembly_status: Fit
+  package: bottom-port LGA-5
+  body_length_mm: 3.5
+  body_width_mm: 2.65
+  body_height_mm: 0.98
+  land_pattern: AI_Glasses_V2:LGA-5_3.5x2.65
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: camera/compute audio PDM rail
+  typical_power: array mic share in active states
+  peak_power: TBD by mode
+  thermal_notes: TBD after thermal review
+  placement_notes: Mic coordinate spacing and port path remain G11.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: PROVISIONAL
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: G11
+- functional_block: array microphone 2
+  reference_designator: MK3
+  bom_id: C013c
+  manufacturer: TDK InvenSense
+  exact_mpn: T5837
+  description: PDM array mic 2 — second array channel (L/R stereo on shared PDM clock).
+  board_region: Front Sensor Board
+  assembly_status: Fit
+  package: bottom-port LGA-5
+  body_length_mm: 3.5
+  body_width_mm: 2.65
+  body_height_mm: 0.98
+  land_pattern: AI_Glasses_V2:LGA-5_3.5x2.65
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: camera/compute audio PDM rail
+  typical_power: array mic share in active states
+  peak_power: TBD by mode
+  thermal_notes: TBD after thermal review
+  placement_notes: Mic coordinate spacing and port path remain G11.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: PROVISIONAL
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: G11
+- functional_block: Front Sensor Board
+  reference_designator: MK4
+  bom_id: C014
+  manufacturer: TBD
+  exact_mpn: T5837 (4th mic)
+  description: 4th array mic — footprint only; on the switchable AON_LSW2 rail (nPM1300
+    load switch, §14 'spare mic') so it can be fully powered down. Not populated until
+    array/wind tests.
+  board_region: Front Sensor Board
+  assembly_status: DNP
+  package: AI_Glasses_V2:LGA-5_3.5x2.65
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:LGA-5_3.5x2.65
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: DNP
+  schematic_status: present in current schematic
+  footprint_status: DNP; do not treat as release BOM
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: G11 (populate only if array sim/proto needs it)
+- functional_block: Front Sensor Board
+  reference_designator: R13
+  bom_id: C046c
+  manufacturer: TBD
+  exact_mpn: 100k
+  description: CAM_1V1_EN pull-down — camera core buck default OFF.
+  board_region: Front Sensor Board
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0402
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0402
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Default OFF (§4)
+- functional_block: Front Sensor Board
+  reference_designator: R14
+  bom_id: C046d
+  manufacturer: TBD
+  exact_mpn: 100k
+  description: CAM_1V8_EN pull-down — camera I/O load switch default OFF.
+  board_region: Front Sensor Board
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0402
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0402
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Default OFF (§4)
+- functional_block: Front Sensor Board
+  reference_designator: R15
+  bom_id: C046e
+  manufacturer: TBD
+  exact_mpn: 100k
+  description: CAM_2V9_EN pull-down — camera analog LDO default OFF.
+  board_region: Front Sensor Board
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0402
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0402
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Default OFF (§4)
+- functional_block: Front Sensor Board
+  reference_designator: R5
+  bom_id: C045c
+  manufacturer: TBD
+  exact_mpn: 2.2k 1%
+  description: Camera I2C SCL pull-up to CAM_1V8_SW.
+  board_region: Front Sensor Board
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0402
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0402
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Confirm vs camera bus capacitance
+- functional_block: Front Sensor Board
+  reference_designator: R6
+  bom_id: C045d
+  manufacturer: TBD
+  exact_mpn: 2.2k 1%
+  description: Camera I2C SDA pull-up to CAM_1V8_SW.
+  board_region: Front Sensor Board
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0402
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0402
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Confirm vs camera bus capacitance
+- functional_block: Front Sensor Board
+  reference_designator: RS7
+  bom_id: C044-RC1
+  manufacturer: TBD
+  exact_mpn: 100 mohm 1%
+  description: Camera DVDD shunt — CAM_1V1 -> CAM_1V1_S (I_CAM_1V1).
+  board_region: Front Sensor Board
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0603_shunt
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0603_shunt
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Per-rail Kelvin (§23/§29); DVDD ~250mA
+- functional_block: Front Sensor Board
+  reference_designator: RS8
+  bom_id: C044-RC8
+  manufacturer: TBD
+  exact_mpn: 100 mohm 1%
+  description: Camera IOVDD shunt — CAM_1V8_SW -> CAM_1V8_S (I_CAM_1V8).
+  board_region: Front Sensor Board
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0402_shunt
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0402_shunt
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Per-rail Kelvin (§23/§29); IOVDD ~3mA
+- functional_block: Front Sensor Board
+  reference_designator: RS9
+  bom_id: C044-RC29
+  manufacturer: TBD
+  exact_mpn: 100 mohm 1%
+  description: Camera AVDD shunt — CAM_2V9 -> CAM_2V9_S (I_CAM_2V9).
+  board_region: Front Sensor Board
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0603_shunt
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0603_shunt
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Per-rail Kelvin (§23/§29); AVDD ~156mA
+- functional_block: camera module
+  reference_designator: U14
+  bom_id: C019
+  manufacturer: Sony / module supplier TBD
+  exact_mpn: IMX415-AAQR custom FPC module; Radxa Camera 4K AS001 is only a candidate
+    mechanical baseline
+  description: 'Main camera module — 8.46 MP, first target 1080p30/60, MIPI CSI. Custom
+    small sensor+lens rigid island + FPC (NOT the dev module). Sensor rails (Sony
+    datasheet): AVDD 2.9V 128/156mA, IOVDD 1.8V 3mA, DVDD 1.1V 187/250mA (~0.58W typ,
+    ~0.77W max).'
+  board_region: Front Sensor Board
+  assembly_status: HOLD
+  package: custom sensor+lens+FPC module
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VERIFY_CAM_MODULE
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: CAM_1V1, CAM_1V8_SW, CAM_2V9
+  typical_power: 250-300 mW camera row in current model
+  peak_power: bare-sensor/module rail currents TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: Current schematic says custom FPC module. The external V2.3 dimensions
+    PDF freezes Radxa AS001 at 32.5 x 32.5 x 18.0 mm, but that is not yet schematic-aligned.
+  source_document: Sony IMX415-AAQR-C Datasheet E19504
+  source_revision: Official edition, 2019-05-21
+  source_page: pp. 1, 3, 97
+  source_url_or_file: AI_Glasses_HOLD_Closure_Pack/04_IMX415/IMX415-AAQR-C_Datasheet_E19504.pdf
+  confidence: high for bare sensor; low for final module mechanics
+  freeze_status: HOLD
+  schematic_status: present in current schematic
+  footprint_status: NOT_FOR_FAB placeholder; not release-ready
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: G10 (module lens/FOV/FPC pinout/lane/supply/timing from vendor)
+- functional_block: camera 1.1 V buck
+  reference_designator: U15
+  bom_id: C020
+  manufacturer: Texas Instruments
+  exact_mpn: TPS62840
+  description: Camera DVDD 1.1 V buck — ultra-low-Iq (~60 nA) buck for the sensor
+    core (DVDD 187/250mA), up to ~750 mA. EN by AON MCU / SoC. True power-down when
+    camera off.
+  board_region: Front Sensor Board
+  assembly_status: Fit
+  package: WSON/VSON/DSBGA variant TBD
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VERIFY_WSON
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: CAM_1V1
+  typical_power: 15-18 mW loss allocation when camera active
+  peak_power: DVDD current plus margin
+  thermal_notes: TBD after thermal review
+  placement_notes: Exact package and inductor/cap choices still need freeze.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: PROVISIONAL
+  schematic_status: present in current schematic
+  footprint_status: NOT_FOR_FAB placeholder; not release-ready
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Output current/noise per final module (DVDD ~250mA max + margin)
+- functional_block: camera 2.9 V LDO
+  reference_designator: U16
+  bom_id: C021
+  manufacturer: Texas Instruments
+  exact_mpn: TLV75529PDRVR
+  description: Camera AVDD 2.9 V LDO — 500 mA low-noise analog supply (AVDD 128/156mA).
+    Low-noise LDO, NOT a series resistor off 3.3V (pack §23).
+  board_region: Front Sensor Board
+  assembly_status: Fit
+  package: WSON-6 2 x 2 mm
+  body_length_mm: 2.0
+  body_width_mm: 2.0
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:WSON-6_2x2
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: CAM_2V9
+  typical_power: 14-16 mW loss allocation when camera active
+  peak_power: IMX415 AVDD current plus thermal
+  thermal_notes: TBD after thermal review
+  placement_notes: Verify package suffix and PSRR/noise versus final camera module.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: PROVISIONAL
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Verify vs IMX415 AVDD peak (156mA) + PSRR
+- functional_block: camera 1.8 V load switch
+  reference_designator: U17
+  bom_id: C022
+  manufacturer: Texas Instruments
+  exact_mpn: TPS22917DBVR
+  description: Camera IOVDD 1.8 V load switch / isolation — low-leak switch from AON_1V8
+    for camera I/O (IOVDD ~3mA); Quick-Output-Discharge kills reverse feed when camera
+    off (§24).
+  board_region: Front Sensor Board
+  assembly_status: Fit
+  package: SOT-23-5
+  body_length_mm: 2.9
+  body_width_mm: 2.8
+  body_height_mm: null
+  land_pattern: Package_TO_SOT_SMD:SOT-23-5
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: AON_1V8 to CAM_1V8_SW
+  typical_power: ~1 mW loss allocation
+  peak_power: IOVDD current, reverse-block/QOD check
+  thermal_notes: TBD after thermal review
+  placement_notes: Confirm QOD/reverse feed when camera off.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: PROVISIONAL
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Check reverse block, ramp, QOD, logic level
+- functional_block: MIPI/FPC ESD array 1
+  reference_designator: U18
+  bom_id: C023a
+  manufacturer: Texas Instruments
+  exact_mpn: TPD4E05U06
+  description: MIPI/FPC ESD (clk + D0) — ultra-low-cap 4-ch ESD at the FPC entry.
+  board_region: Front Sensor Board
+  assembly_status: Fit
+  package: USON low-cap array
+  body_length_mm: 2.5
+  body_width_mm: 1.0
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:USON
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: MIPI/low-cap ESD
+  typical_power: leakage only
+  peak_power: ESD clamp
+  thermal_notes: TBD after thermal review
+  placement_notes: Must be close to FPC entry and not stub MIPI lines.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: PROVISIONAL
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Low-cap array near FPC entry
+- functional_block: MIPI/FPC ESD array 2
+  reference_designator: U19
+  bom_id: C023b
+  manufacturer: Texas Instruments
+  exact_mpn: TPD4E05U06
+  description: MIPI/FPC ESD (D1 + control) — ultra-low-cap ESD for the second lane
+    pair.
+  board_region: Front Sensor Board
+  assembly_status: Fit
+  package: USON low-cap array
+  body_length_mm: 2.5
+  body_width_mm: 1.0
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:USON
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: MIPI/low-cap ESD
+  typical_power: leakage only
+  peak_power: ESD clamp
+  thermal_notes: TBD after thermal review
+  placement_notes: Must be close to FPC entry and not stub MIPI lines.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: PROVISIONAL
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Low-cap array near FPC entry
+- functional_block: Front Sensor Board
+  reference_designator: U31
+  bom_id: C044-IC1
+  manufacturer: TBD
+  exact_mpn: INA238 (I_CAM_1V1)
+  description: Camera DVDD monitor across RS7 — sensor core draw + off-leakage.
+  board_region: Front Sensor Board
+  assembly_status: DNP
+  package: AI_Glasses_V2:VSSOP-10
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VSSOP-10
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: DNP
+  schematic_status: present in current schematic
+  footprint_status: DNP; do not treat as release BOM
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Power Gate — EVT-A only
+- functional_block: Front Sensor Board
+  reference_designator: U32
+  bom_id: C044-IC8
+  manufacturer: TBD
+  exact_mpn: INA238 (I_CAM_1V8)
+  description: Camera IOVDD monitor across RS8 — I/O draw + off-leakage.
+  board_region: Front Sensor Board
+  assembly_status: DNP
+  package: AI_Glasses_V2:VSSOP-10
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VSSOP-10
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: DNP
+  schematic_status: present in current schematic
+  footprint_status: DNP; do not treat as release BOM
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Power Gate — EVT-A only
+- functional_block: Front Sensor Board
+  reference_designator: U33
+  bom_id: C044-IC29
+  manufacturer: TBD
+  exact_mpn: INA238 (I_CAM_2V9)
+  description: Camera AVDD monitor across RS9 — analog draw + off-leakage.
+  board_region: Front Sensor Board
+  assembly_status: DNP
+  package: AI_Glasses_V2:VSSOP-10
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VSSOP-10
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: DNP
+  schematic_status: present in current schematic
+  footprint_status: DNP; do not treat as release BOM
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Power Gate — EVT-A only
+- functional_block: L-Temple AON/Power Board
+  reference_designator: C2
+  bom_id: C032-Cv
+  manufacturer: TBD
+  exact_mpn: 0.1uF
+  description: BQ2970 VDD-VSS decoupling (DNP with protection).
+  board_region: L-Temple AON/Power Board
+  assembly_status: DNP
+  package: AI_Glasses_V2:C_0402
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:C_0402
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: DNP
+  schematic_status: present in current schematic
+  footprint_status: DNP; do not treat as release BOM
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Per BQ2970 app
+- functional_block: optional battery protection MOSFETs
+  reference_designator: Q1
+  bom_id: C032-Q
+  manufacturer: TBD
+  exact_mpn: dual back-to-back N-MOSFET TBD
+  description: Back-to-back protection NMOS — discharge + charge FETs between CELL_NEG
+    and pack GND; gates driven by BQ2970 DO/CO. DNP with U23.
+  board_region: L-Temple AON/Power Board
+  assembly_status: DNP
+  package: DFN dual-FET TBD
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VERIFY_DFN_2FET
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: cell negative protection path
+  typical_power: DNP
+  peak_power: RDS(on), VDS and pulse current TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: Only used with BQ2970 fallback. Must not be populated together
+    with incompatible pack PCM path.
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: DNP
+  schematic_status: present in current schematic
+  footprint_status: NOT_FOR_FAB placeholder; not release-ready
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Vds/RDSon/Vgs/peak per BQ2970 app (§17)
+- functional_block: L-Temple AON/Power Board
+  reference_designator: R21
+  bom_id: C032-BYP
+  manufacturer: TBD
+  exact_mpn: 0R (pack-PCM baseline)
+  description: Cell-negative bypass — ties CELL_NEG to pack GND when the supplier
+    1S2P pack already integrates its PCM. DNP this and populate U23+Q1 only if doing
+    board-level protection.
+  board_region: L-Temple AON/Power Board
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0805
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0805
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Populate 0R OR discrete protection, never both (§17)
+- functional_block: L-Temple AON/Power Board
+  reference_designator: R22
+  bom_id: C032-Rv
+  manufacturer: TBD
+  exact_mpn: 330R
+  description: BQ2970 VDD series R — from BAT_P (DNP with protection).
+  board_region: L-Temple AON/Power Board
+  assembly_status: DNP
+  package: AI_Glasses_V2:R_0402
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0402
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: DNP
+  schematic_status: present in current schematic
+  footprint_status: DNP; do not treat as release BOM
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Per BQ2970 app
+- functional_block: L-Temple AON/Power Board
+  reference_designator: R23
+  bom_id: C032-Rm
+  manufacturer: TBD
+  exact_mpn: 2k
+  description: BQ2970 V- sense R — to pack GND (DNP with protection).
+  board_region: L-Temple AON/Power Board
+  assembly_status: DNP
+  package: AI_Glasses_V2:R_0402
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0402
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: DNP
+  schematic_status: present in current schematic
+  footprint_status: DNP; do not treat as release BOM
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Per BQ2970 app (V- sense)
+- functional_block: L-Temple AON/Power Board
+  reference_designator: R3
+  bom_id: C045a
+  manufacturer: TBD
+  exact_mpn: 2.2k 1%
+  description: AON I2C SCL pull-up to AON_1V8 (nPM1300/BMI270/INA238 bus).
+  board_region: L-Temple AON/Power Board
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0402
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0402
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Confirm vs total AON bus capacitance
+- functional_block: L-Temple AON/Power Board
+  reference_designator: R4
+  bom_id: C045b
+  manufacturer: TBD
+  exact_mpn: 2.2k 1%
+  description: AON I2C SDA pull-up to AON_1V8.
+  board_region: L-Temple AON/Power Board
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0402
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0402
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Confirm vs total AON bus capacitance
+- functional_block: total pack current shunt
+  reference_designator: RS1
+  bom_id: C044-RBAT
+  manufacturer: TBD
+  exact_mpn: 10 milliohm 1% 1 W shunt TBD
+  description: Pack total shunt — BAT_P -> nPM1300 VBAT. Whole-device current (charge
+    + discharge).
+  board_region: L-Temple AON/Power Board
+  assembly_status: Fit
+  package: 1206 shunt candidate
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_1206_shunt
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: BAT_P/NPM_VBAT Kelvin sense
+  typical_power: I^2R loss
+  peak_power: sized for pack current
+  thermal_notes: TBD after thermal review
+  placement_notes: Production-kept sense path; MPN, TCR, surge and pad geometry still
+    need freeze.
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: PROVISIONAL
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: I_BAT_TOTAL; the one production-kept sense path
+- functional_block: IMU
+  reference_designator: U10
+  bom_id: C012
+  manufacturer: Bosch Sensortec
+  exact_mpn: BMI270
+  description: 6-axis IMU — low-power motion detect; motion-interrupt wakes the MCU.
+    Cycling/running state ID for wearables.
+  board_region: L-Temple AON/Power Board
+  assembly_status: Fit
+  package: LGA-14
+  body_length_mm: 2.5
+  body_width_mm: 3.0
+  body_height_mm: 0.8
+  land_pattern: Package_LGA:LGA-14_2.5x3mm_P0.5mm
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: AON_1V8/AON_3V3
+  typical_power: 1 mW low-power motion budget
+  peak_power: TBD by IMU mode
+  thermal_notes: TBD after thermal review
+  placement_notes: Current schematic uses BMI270. Placement must avoid speaker/motor
+    vibration and high-stress zones.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: PROVISIONAL
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Evaluate false-trigger under real frame vibration
+- functional_block: L-Temple AON/Power Board
+  reference_designator: U22
+  bom_id: C027
+  manufacturer: TBD
+  exact_mpn: DRV2605L
+  description: Haptic driver — LRA/ERM driver, I2C, waveform library. Silent safety
+    reminder path.
+  board_region: L-Temple AON/Power Board
+  assembly_status: DNP
+  package: Package_SO:MSOP-10_3x3mm_P0.5mm
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: Package_SO:MSOP-10_3x3mm_P0.5mm
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: DNP
+  schematic_status: present in current schematic
+  footprint_status: DNP; do not treat as release BOM
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Vibration P1 — may DNP on first board (IMU/mic coupling)
+- functional_block: optional 1S battery protection IC
+  reference_designator: U23
+  bom_id: C032
+  manufacturer: Texas Instruments
+  exact_mpn: BQ2970/BQ297xx suffix TBD
+  description: 1S protection IC (fallback) — OV/UV/OC/short via two low-side back-to-back
+    NMOS. DNP if the supplier pack integrates protection (avoid double-protection
+    conflict, §17).
+  board_region: L-Temple AON/Power Board
+  assembly_status: DNP
+  package: DSE WSON-6
+  body_length_mm: 1.5
+  body_width_mm: 1.5
+  body_height_mm: 0.75
+  land_pattern: Package_TO_SOT_SMD:SOT-23-5
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: single-cell Li-ion protection
+  typical_power: 4 uA normal, 100 nA shutdown class
+  peak_power: external FET path handles current
+  thermal_notes: TBD after thermal review
+  placement_notes: DNP if supplier pack has qualified PCM. Exact suffix thresholds
+    must match cell and nPM1300 charger.
+  source_document: TI BQ297xx Datasheet SLUSBU9I
+  source_revision: March 2014, revised August 2024
+  source_page: pp. 1, 3, package outline
+  source_url_or_file: AI_Glasses_HOLD_Closure_Pack/03_Battery_LP451165_1S2P/TI_BQ2970_1S_Protection_Datasheet.pdf
+  confidence: high for IC; exact suffix still TBD
+  freeze_status: DNP
+  schematic_status: present in current schematic
+  footprint_status: DNP; do not treat as release BOM
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Keep ONE protection scheme; confirm suffix OVP/UVP/OCP vs nPM1300/boost
+    UVLO (§17)
+- functional_block: optional total-current monitor
+  reference_designator: U25
+  bom_id: C044a
+  manufacturer: Texas Instruments
+  exact_mpn: INA238
+  description: Whole-device current across RS1 (BAT_P->VBAT). Deep Off total = AON
+    only, so it also backs the AON 20-50 mW check; nPM1300 fuel gauge cross-checks.
+  board_region: L-Temple AON/Power Board
+  assembly_status: DNP
+  package: VSSOP-10
+  body_length_mm: 3.0
+  body_width_mm: 4.9
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VSSOP-10
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: AON I2C / shunt monitor
+  typical_power: 640 uA class when populated
+  peak_power: 5 uA shutdown max class
+  thermal_notes: TBD after thermal review
+  placement_notes: EVT-A only unless power telemetry stays in production.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: DNP
+  schematic_status: present in current schematic
+  footprint_status: DNP; do not treat as release BOM
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Power Gate — EVT-A; production may keep this one
+- functional_block: always-on BLE MCU
+  reference_designator: U7
+  bom_id: C009
+  manufacturer: Nordic Semiconductor
+  exact_mpn: nRF54L15 QFN48 candidate
+  description: Low-power BLE MCU — ALWAYS ON. Owns the system state machine; controls
+    RK3576/camera/Wi-Fi/audio power ENs; talks IMU/buttons/gauge; UART to RK3576,
+    SPI to NDP120. Turns RK3576 from an always-on host into a demand accelerator.
+  board_region: L-Temple AON/Power Board
+  assembly_status: Fit
+  package: QFN48, 0.4 mm pitch
+  body_length_mm: 6.0
+  body_width_mm: 6.0
+  body_height_mm: 0.85
+  land_pattern: AI_Glasses_V2:QFN-48_6x6
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: AON_1V8/AON_3V3
+  typical_power: 2-8 mW allocation depending state
+  peak_power: radio peak TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: EVT QFN chosen for bring-up. RF layout, SDK and official package
+    drawing still must be checked before fab.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: PROVISIONAL
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: EVT-frozen (RF layout/SDK/package to freeze early)
+- functional_block: AON PMIC/charger/fuel gauge
+  reference_designator: U8
+  bom_id: C010
+  manufacturer: Nordic Semiconductor
+  exact_mpn: nPM1300
+  description: AON PMIC — 1S charger + Power-Path + Fuel Gauge + dual Buck + LDO/Load-Switch
+    + Ship/Hibernate. Powers the small AON world ONLY; NOT the RK3576 peak path.
+  board_region: L-Temple AON/Power Board
+  assembly_status: HOLD
+  package: QFN32 5 x 5 mm EVT candidate
+  body_length_mm: 5.0
+  body_width_mm: 5.0
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:QFN_5x5
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: BAT_P/USB_5V in; AON_1V8/AON_3V3 out
+  typical_power: 3-15 mW AON buck/quiescent allocation
+  peak_power: charge/PMIC thermal TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: nPM PowerUP config and measured AON <=25/50 mW target must close
+    G08.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: HOLD
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: G08 (AON <=25/50mW) — configure via nPM PowerUP on EK before board
+- functional_block: always-on audio DSP
+  reference_designator: U9
+  bom_id: C011
+  manufacturer: Syntiant
+  exact_mpn: NDP120 QFN40 candidate
+  description: Always-on Audio DSP — ultra-low-power wake-word + audio front-end;
+    wakes the MCU over GPIO. Moves voice listening off RK3576. Keep bypass + DNP capability.
+  board_region: L-Temple AON/Power Board
+  assembly_status: HOLD
+  package: 5 x 5 mm 40-pin QFN, 0.4 mm pitch; WLBGA also exists
+  body_length_mm: 5.0
+  body_width_mm: 5.0
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VERIFY_QFN_5x5
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: AON rails, reset/wake to nRF54L15
+  typical_power: 12-20 mW project listening allocation
+  peak_power: TBD by dev kit measurement
+  thermal_notes: TBD after thermal review
+  placement_notes: Product brief confirms packages and capability; full datasheet,
+    rail map, reset straps, SDK/licensing and measured listening current still needed.
+  source_document: Syntiant NDP120 Product Brief
+  source_revision: V1, 2023
+  source_page: pp. 1-2
+  source_url_or_file: AI_Glasses_HOLD_Closure_Pack/01_NDP120/NDP120_Product_Brief.pdf
+  confidence: medium; product brief, not full datasheet/package drawing
+  freeze_status: HOLD
+  schematic_status: present in current schematic
+  footprint_status: NOT_FOR_FAB placeholder; not release-ready
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Full datasheet + dev kit + measured listening power + NDA/licensing
+- functional_block: R-Temple Compute Board
+  reference_designator: C1
+  bom_id: C015-C
+  manufacturer: TBD
+  exact_mpn: 47uF 6.3V X5R
+  description: 'FCU760K VBAT bulk storage — 47 uF local reservoir next to the module
+    (pack: 47uF + 1uF + 100nF). Rides the 353 mA TX burst.'
+  board_region: R-Temple Compute Board
+  assembly_status: Fit
+  package: AI_Glasses_V2:C_0805
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:C_0805
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Local bulk per Quectel HW Design
+- functional_block: main boost inductor
+  reference_designator: L1
+  bom_id: C008
+  manufacturer: TBD
+  exact_mpn: shielded low-DCR power inductor TBD
+  description: Boost inductor for TPS61088 — low-DCR shielded, value per TPS61088
+    design. Do not freeze before transient sim/measurement.
+  board_region: R-Temple Compute Board
+  assembly_status: TBD
+  package: target <=5 x 5 x 2 mm
+  body_length_mm: 5.0
+  body_width_mm: 5.0
+  body_height_mm: 2.0
+  land_pattern: AI_Glasses_V2:VERIFY_L_5x5
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: SOC_5V boost switch node
+  typical_power: loss TBD by DCR/RMS current
+  peak_power: Isat must cover boot/AI peak
+  thermal_notes: TBD after thermal review
+  placement_notes: Target envelope only. Final MPN may grow after Isat/DCR/temperature
+    validation.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: TBD
+  schematic_status: present in current schematic
+  footprint_status: NOT_FOR_FAB placeholder; not release-ready
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: G06/G13 (Isat covers boot+AI peak; height <=2mm; thermal)
+- functional_block: Wi-Fi buck inductor
+  reference_designator: L2
+  bom_id: C016c
+  manufacturer: TBD
+  exact_mpn: 470 nH class inductor TBD
+  description: Wi-Fi buck inductor — SW->3V3, value per TPS62825 design.
+  board_region: R-Temple Compute Board
+  assembly_status: Fit
+  package: target 2 x 2 mm class
+  body_length_mm: 2.0
+  body_width_mm: 2.0
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VERIFY_L_2x2
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: WIFI_3V3 buck
+  typical_power: loss TBD
+  peak_power: sized for FCU760K Tx current
+  thermal_notes: TBD after thermal review
+  placement_notes: MPN, DCR, Isat and height required.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: TBD
+  schematic_status: present in current schematic
+  footprint_status: NOT_FOR_FAB placeholder; not release-ready
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Per TPS62825 peak+ripple
+- functional_block: R-Temple Compute Board
+  reference_designator: R10
+  bom_id: C045f
+  manufacturer: TBD
+  exact_mpn: 2.2k 1%
+  description: SoC-PMIC I2C SDA pull-up to VCCIO_1V8.
+  board_region: R-Temple Compute Board
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0402
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0402
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Confirm vs SoC PMIC bus
+- functional_block: R-Temple Compute Board
+  reference_designator: R11
+  bom_id: C046a
+  manufacturer: TBD
+  exact_mpn: 100k
+  description: SOC_PWR_EN pull-down — RK3576 boost default OFF (main SoC off at boot).
+  board_region: R-Temple Compute Board
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0402
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0402
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Default OFF (§4)
+- functional_block: R-Temple Compute Board
+  reference_designator: R12
+  bom_id: C046b
+  manufacturer: TBD
+  exact_mpn: 100k
+  description: PMIC_PWRON pull-down — RK806 stays off until AON MCU sequences it.
+  board_region: R-Temple Compute Board
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0402
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0402
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Default OFF (§4)
+- functional_block: R-Temple Compute Board
+  reference_designator: R16
+  bom_id: C046f
+  manufacturer: TBD
+  exact_mpn: 100k
+  description: WIFI_BUCK_EN pull-down — Wi-Fi buck default OFF.
+  board_region: R-Temple Compute Board
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0402
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0402
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Default OFF (§4)
+- functional_block: R-Temple Compute Board
+  reference_designator: R17
+  bom_id: C046g
+  manufacturer: TBD
+  exact_mpn: 100k
+  description: WIFI_LS_EN pull-down — Wi-Fi load switch default OFF.
+  board_region: R-Temple Compute Board
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0402
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0402
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Default OFF (§4)
+- functional_block: R-Temple Compute Board
+  reference_designator: R18
+  bom_id: C046h
+  manufacturer: TBD
+  exact_mpn: 100k
+  description: WIFI_CHIP_EN pull-down — FCU760K held off until AON MCU enables it
+    (pack §9).
+  board_region: R-Temple Compute Board
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0402
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0402
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: 'Default OFF (§4/§9: FCU760K CHIP_EN default low)'
+- functional_block: R-Temple Compute Board
+  reference_designator: R19
+  bom_id: C046i
+  manufacturer: TBD
+  exact_mpn: 100k
+  description: AUDIO_LS_EN pull-down — audio amp load switch default OFF.
+  board_region: R-Temple Compute Board
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0402
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0402
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Default OFF (§4)
+- functional_block: R-Temple Compute Board
+  reference_designator: R20
+  bom_id: C046j
+  manufacturer: TBD
+  exact_mpn: 100k
+  description: AUDIO_AMP_SD pull-down — MAX98360A shutdown default (amp muted at boot).
+  board_region: R-Temple Compute Board
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0402
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0402
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Default OFF (§4)
+- functional_block: R-Temple Compute Board
+  reference_designator: R9
+  bom_id: C045e
+  manufacturer: TBD
+  exact_mpn: 2.2k 1%
+  description: SoC-PMIC I2C SCL pull-up to VCCIO_1V8 (RK3576<->RK806).
+  board_region: R-Temple Compute Board
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0402
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0402
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Confirm vs SoC PMIC bus
+- functional_block: R-Temple Compute Board
+  reference_designator: RS4
+  bom_id: C044-RSOC
+  manufacturer: TBD
+  exact_mpn: 10 mohm 1%
+  description: RK3576 island shunt — VSYS -> SOC_IN (I_SOC_5V).
+  board_region: R-Temple Compute Board
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0805_shunt
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0805_shunt
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: 5-20 mohm (2A x 10m=20mV; avoid boost UVLO)
+- functional_block: R-Temple Compute Board
+  reference_designator: RS5
+  bom_id: C044-RWIFI
+  manufacturer: TBD
+  exact_mpn: 50 mohm 1%
+  description: Wi-Fi island shunt — VSYS -> WIFI_IN (I_WIFI).
+  board_region: R-Temple Compute Board
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0603_shunt
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0603_shunt
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: 20-100 mohm
+- functional_block: R-Temple Compute Board
+  reference_designator: RS6
+  bom_id: C044-RAUD
+  manufacturer: TBD
+  exact_mpn: 50 mohm 1%
+  description: Audio island shunt — VSYS -> AUDIO_IN (I_AUDIO).
+  board_region: R-Temple Compute Board
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0603_shunt
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0603_shunt
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: 20-100 mohm
+- functional_block: R-Temple Compute Board
+  reference_designator: RT3
+  bom_id: C043
+  manufacturer: TBD
+  exact_mpn: 10k NTC B=3435
+  description: SoC/enclosure temp monitor — 10k NTC on SoC heat-spreader + skin side.
+    Wearable must watch both die and skin temp.
+  board_region: R-Temple Compute Board
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0402
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0402
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Probe position per thermal sim
+- functional_block: main compute SoC
+  reference_designator: U1
+  bom_id: C001
+  manufacturer: Rockchip
+  exact_mpn: RK3576
+  description: 'Main SoC — 8-core, 6 TOPS NPU, ISP, MIPI CSI, H.264/265. Demand-started
+    compute island (NOT always-on). Functional block: interface pins only.'
+  board_region: R-Temple Compute Board
+  assembly_status: Fit
+  package: FCCSP698L, 0.6 mm pitch
+  body_length_mm: 16.1
+  body_width_mm: 17.2
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VERIFY_FCCSP698L_16x17
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: RK806S rails from SOC_5V
+  typical_power: included in compute model
+  peak_power: part of AI-burst compute row
+  thermal_notes: TBD after thermal review
+  placement_notes: Body outline known from project BOM/PDF; full datasheet, HDG, ball
+    map, max height, DDR guide and official land pattern still required.
+  source_document: RK3576 Brief Datasheet file
+  source_revision: V1.2, 2024-03-11; PDF metadata title mismatch noted
+  source_page: pp. 1-3
+  source_url_or_file: AI_Glasses_HOLD_Closure_Pack/05_Project_References/RK3576 Brief
+    Datasheet V1.2-20240311.pdf
+  confidence: medium; package/HDG/ball map still required
+  freeze_status: HOLD
+  schematic_status: present in current schematic
+  footprint_status: NOT_FOR_FAB placeholder; not release-ready
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: G01 (RK3576 datasheet/HDG/ballmap/DDR guide)
+- functional_block: Wi-Fi/Bluetooth module
+  reference_designator: U11
+  bom_id: C015
+  manufacturer: Quectel
+  exact_mpn: FCU760KAAMD
+  description: Wi-Fi 6 + BT 5.4 module — Quectel FCU760K, LCC 13.0x12.2x2.0mm. USB2
+    to RK3576 host; PCM for BT audio; VBAT 3.0-3.6V (typ 3.3V), max TX 353 mA. On-demand,
+    load-switched off.
+  board_region: R-Temple Compute Board
+  assembly_status: HOLD
+  package: LCC module
+  body_length_mm: 13.0
+  body_width_mm: 12.2
+  body_height_mm: 2.0
+  land_pattern: AI_Glasses_V2:VERIFY_LCC_13x12.2_Quectel
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: 0.62
+  operating_voltage: VBAT 3.0-3.6 V, typ 3.3 V
+  typical_power: 'radio average: 80-150 mW in current model'
+  peak_power: 353 mA @ 3.3 V max Tx current in short spec
+  thermal_notes: TBD after thermal review
+  placement_notes: Module outline is known. Official hardware design guide, land pattern/3D
+    and RK3576 driver enumeration still close G05.
+  source_document: Quectel FCU760K Short Specification
+  source_revision: V1.1, Released, 2024
+  source_page: pp. 1-3
+  source_url_or_file: AI_Glasses_HOLD_Closure_Pack/02_WiFi_FCU760K/Quectel_FCU760K_Short_Spec_V1.1.pdf
+  confidence: high for module outline and basic electrical data; land pattern still
+    missing
+  freeze_status: HOLD
+  schematic_status: present in current schematic
+  footprint_status: NOT_FOR_FAB placeholder; not release-ready
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: G05 (Quectel HW Design + RK3576 BSP driver/firmware/enum) + official
+    LCC land pattern
+- functional_block: Wi-Fi buck regulator
+  reference_designator: U12
+  bom_id: C016
+  manufacturer: Texas Instruments
+  exact_mpn: TPS62825
+  description: Wi-Fi dedicated 3.3 V buck — feeds FCU760K VBAT; >=500 mA capability
+    for the 353 mA TX peak (pack note). EN by AON MCU. Avoids routing the radio through
+    5 V (Phase-3 rule).
+  board_region: R-Temple Compute Board
+  assembly_status: Fit
+  package: QFN 1.5 x 1.5 mm
+  body_length_mm: 1.5
+  body_width_mm: 1.5
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:QFN_1.5x1.5
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: VSYS to WIFI_3V3
+  typical_power: ~5 mW loss allocation
+  peak_power: sized for FCU760K Tx current
+  thermal_notes: TBD after thermal review
+  placement_notes: Needs final inductor/cap derating and land-pattern check.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: PROVISIONAL
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: G05/G06 (inductor/caps per module 353mA TX peak + ripple)
+- functional_block: R-Temple Compute Board
+  reference_designator: U13
+  bom_id: C016b
+  manufacturer: TBD
+  exact_mpn: TPS22917DBVR
+  description: Wi-Fi load switch — gates WIFI_3V3 -> FCU760K VBAT with QOD + reverse
+    block. EN by AON MCU.
+  board_region: R-Temple Compute Board
+  assembly_status: Fit
+  package: Package_TO_SOT_SMD:SOT-23-5
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: Package_TO_SOT_SMD:SOT-23-5
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: G05 (turn-on sequence w/ module)
+- functional_block: SoC PMIC
+  reference_designator: U2
+  bom_id: C002
+  manufacturer: Rockchip
+  exact_mpn: RK806S-5
+  description: SoC PMIC — generates CPU/GPU/NPU/DDR/IO rails + power sequencing for
+    RK3576. Reuse verified RK3576 power architecture; NOT for AON.
+  board_region: R-Temple Compute Board
+  assembly_status: HOLD
+  package: TBD QFN/BGA variant
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VERIFY_QFN
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: SOC_5V input; generates RK3576/DDR rails
+  typical_power: regulation loss included in compute model
+  peak_power: TBD after rail-current budget
+  thermal_notes: TBD after thermal review
+  placement_notes: Exact package, height, land pattern and rail sequence are not frozen.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: HOLD
+  schematic_status: present in current schematic
+  footprint_status: NOT_FOR_FAB placeholder; not release-ready
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: G03 (RK806S MPN/inductors/caps/timing per Radxa/Rockchip FAE)
+- functional_block: digital class-D speaker amplifier
+  reference_designator: U20
+  bom_id: C024
+  manufacturer: Analog Devices
+  exact_mpn: MAX98360A
+  description: Digital Class-D amp — I2S in, mono, low-power shutdown. Direct digital
+    audio chain, no analog codec. Fully power-downable via load switch.
+  board_region: R-Temple Compute Board
+  assembly_status: Fit
+  package: WLP or FC2QFN version TBD
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VERIFY_WLP_QFN
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: AUDIO_PWR / I2S control
+  typical_power: audio average 2-3 mW electronics plus speaker output
+  peak_power: depends on speaker impedance and acoustic target
+  thermal_notes: TBD after thermal review
+  placement_notes: Exact package and EMI/thermal/acoustic layout still need closure.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: PROVISIONAL
+  schematic_status: present in current schematic
+  footprint_status: NOT_FOR_FAB placeholder; not release-ready
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Verify Z/cavity/EMI/peak power
+- functional_block: R-Temple Compute Board
+  reference_designator: U21
+  bom_id: C024b
+  manufacturer: TBD
+  exact_mpn: TPS22917DBVR
+  description: Audio load switch — gates AUDIO_PWR to the amp; EN by AON MCU / SoC.
+  board_region: R-Temple Compute Board
+  assembly_status: Fit
+  package: Package_TO_SOT_SMD:SOT-23-5
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: Package_TO_SOT_SMD:SOT-23-5
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Amp must be fully power-downable (V1 lesson)
+- functional_block: R-Temple Compute Board
+  reference_designator: U28
+  bom_id: C044c
+  manufacturer: TBD
+  exact_mpn: INA238 (I_SOC_5V)
+  description: RK3576 island monitor across RS4 — record/AI curves + wake energy.
+  board_region: R-Temple Compute Board
+  assembly_status: DNP
+  package: AI_Glasses_V2:VSSOP-10
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VSSOP-10
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: DNP
+  schematic_status: present in current schematic
+  footprint_status: DNP; do not treat as release BOM
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Power Gate — EVT-A only
+- functional_block: R-Temple Compute Board
+  reference_designator: U29
+  bom_id: C044e
+  manufacturer: TBD
+  exact_mpn: INA238 (I_WIFI)
+  description: Wi-Fi island monitor across RS5 — FCU760K TX avg vs 353mA peak.
+  board_region: R-Temple Compute Board
+  assembly_status: DNP
+  package: AI_Glasses_V2:VSSOP-10
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VSSOP-10
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: DNP
+  schematic_status: present in current schematic
+  footprint_status: DNP; do not treat as release BOM
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Power Gate — EVT-A only
+- functional_block: system memory
+  reference_designator: U3
+  bom_id: C003
+  manufacturer: TBD
+  exact_mpn: LPDDR4X 4 GB MPN TBD
+  description: System memory — 4 GB LPDDR4X x32, placed adjacent to RK3576. Reuse
+    a Rockchip/Radxa-verified MPN to lower first chip-down risk vs LPDDR5.
+  board_region: R-Temple Compute Board
+  assembly_status: HOLD
+  package: TBD BGA
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VERIFY_BGA
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: RK806 DDR rails
+  typical_power: included in compute model
+  peak_power: TBD by selected MPN
+  thermal_notes: TBD after thermal review
+  placement_notes: Needs exact AVL MPN, package drawing, ball map and DDR length/escape
+    review.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: HOLD
+  schematic_status: present in current schematic
+  footprint_status: NOT_FOR_FAB placeholder; not release-ready
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: G02 (LPDDR4X MPN/topology/placement, DDR review + length report)
+- functional_block: R-Temple Compute Board
+  reference_designator: U30
+  bom_id: C044f
+  manufacturer: TBD
+  exact_mpn: INA238 (I_AUDIO)
+  description: Audio island monitor across RS6 — speech avg vs music peak.
+  board_region: R-Temple Compute Board
+  assembly_status: DNP
+  package: AI_Glasses_V2:VSSOP-10
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VSSOP-10
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: DNP
+  schematic_status: present in current schematic
+  footprint_status: DNP; do not treat as release BOM
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Power Gate — EVT-A only
+- functional_block: boot/system storage
+  reference_designator: U4
+  bom_id: C004
+  manufacturer: TBD
+  exact_mpn: 32 GB eMMC 5.1 MPN TBD
+  description: System storage — 32 GB eMMC 5.1 (HS200/HS400 per BSP). Small + reliable;
+    no microSD. Holds OS, models, event clips.
+  board_region: R-Temple Compute Board
+  assembly_status: HOLD
+  package: BGA153 candidate
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VERIFY_BGA153
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: VCC/VCCQ from RK806 rails
+  typical_power: included in compute model
+  peak_power: TBD by selected MPN
+  thermal_notes: TBD after thermal review
+  placement_notes: Common eMMC sizes are not freeze data; final MPN and package drawing
+    required.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: HOLD
+  schematic_status: present in current schematic
+  footprint_status: NOT_FOR_FAB placeholder; not release-ready
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: G04 (eMMC MPN + BSP/bootloader; cold-boot + power-loss recovery)
+- functional_block: optional boot flash
+  reference_designator: U5
+  bom_id: C006
+  manufacturer: Macronix
+  exact_mpn: MX25U6432F
+  description: Backup boot flash — 64 Mbit 1.8 V serial NOR on FSPI. Reserved for
+    recovery / factory test / alt-boot; not populated on first EVT.
+  board_region: R-Temple Compute Board
+  assembly_status: DNP
+  package: USON/XSON/SOP option
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:USON-8
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: 1.8 V SPI/QSPI
+  typical_power: DNP
+  peak_power: DNP
+  thermal_notes: TBD after thermal review
+  placement_notes: Footprint kept only if boot flow needs external NOR.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: DNP
+  schematic_status: present in current schematic
+  footprint_status: DNP; do not treat as release BOM
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Boot flow decides whether production needs it
+- functional_block: main SoC boost
+  reference_designator: U6
+  bom_id: C007
+  manufacturer: Texas Instruments
+  exact_mpn: TPS61088
+  description: Main SoC 5 V boost — 1S -> SOC_5V for the compute island. High-current
+    sync boost; EN from nRF54L15, PG back to nRF. Candidate/HOLD until peak measured.
+  board_region: R-Temple Compute Board
+  assembly_status: HOLD
+  package: VQFN-22 4.5 x 3.5 mm
+  body_length_mm: 4.5
+  body_width_mm: 3.5
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VQFN-22_4.5x3.5
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: VSYS in, SOC_5V out
+  typical_power: conversion loss in compute-island loss row
+  peak_power: TBD from RK3576 boot/AI current
+  thermal_notes: TBD after thermal review
+  placement_notes: Chip size alone is insufficient; L1, input/output caps, current
+    loop and thermal rise are the real footprint.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: HOLD
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: G06/G09 (measured RK3576 boot+AI peak, soft-start, droop, thermal)
+- functional_block: main clock
+  reference_designator: Y1
+  bom_id: C005
+  manufacturer: TBD
+  exact_mpn: 24 MHz 10 ppm crystal TBD
+  description: Main clock — 24 MHz, 10 ppm; load per Rockchip reference layout.
+  board_region: R-Temple Compute Board
+  assembly_status: Fit
+  package: 3225 or smaller
+  body_length_mm: 3.2
+  body_width_mm: 2.5
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:Crystal_SMD_3225
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: oscillator pins on RK3576
+  typical_power: passive
+  peak_power: passive
+  thermal_notes: TBD after thermal review
+  placement_notes: Reference load capacitance/ESR/placement must follow RK3576 HDG.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: PROVISIONAL
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: G01 (reuse reference CL/ESR + placement distance per HDG)
+- functional_block: right battery cell
+  reference_designator: BT1
+  bom_id: C029
+  manufacturer: cell supplier TBD
+  exact_mpn: LP451165 300 mAh
+  description: Right cell — 3.7 V 300 mAh, 4.5x11x65 mm, high-rate custom. Right-temple
+    weight.
+  board_region: Temple Rears (batt/spkr/ant)
+  assembly_status: HOLD
+  package: pouch cell with tabs/NTC/pack options
+  body_length_mm: 70.0
+  body_width_mm: 12.8
+  body_height_mm: 5.6
+  land_pattern: AI_Glasses_V2:VERIFY_CELL_4.5x11x65
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: 6.0
+  operating_voltage: 1S Li-Po nominal 3.7 V
+  typical_power: source
+  peak_power: branch current TBD by 1S2P validation
+  thermal_notes: TBD after thermal review
+  placement_notes: Use 70 x 12.8 x 5.6 mm CAD clearance envelope, not nominal 65 x
+    11 x 4.5 mm. Supplier drawing still required.
+  source_document: LP451165 Battery Bay Fit Check
+  source_revision: project fit-check, 2026-07-01
+  source_page: dimensions.csv + fit-check md
+  source_url_or_file: AI_Glasses_HOLD_Closure_Pack/06_Mechanical_Fit_Check/
+  confidence: medium; CAD clearance envelope, not supplier pack drawing
+  freeze_status: HOLD
+  schematic_status: present in current schematic
+  footprint_status: NOT_FOR_FAB placeholder; not release-ready
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: G07 (full datasheet, >=2C, IR, cycles, cert)
+- functional_block: left battery cell
+  reference_designator: BT2
+  bom_id: C030
+  manufacturer: cell supplier TBD
+  exact_mpn: LP451165 300 mAh
+  description: Left cell — same batch/capacity/IR-matched to the right cell. Left-temple
+    weight. 1S2P parallel only after supplier pairing (OCV<=20mV, cap<=3%, DCIR<=10%,
+    same lot, §20).
+  board_region: Temple Rears (batt/spkr/ant)
+  assembly_status: HOLD
+  package: pouch cell with tabs/NTC/pack options
+  body_length_mm: 70.0
+  body_width_mm: 12.8
+  body_height_mm: 5.6
+  land_pattern: AI_Glasses_V2:VERIFY_CELL_70x12.8x5.6_maxenv
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: 6.0
+  operating_voltage: 1S Li-Po nominal 3.7 V
+  typical_power: source
+  peak_power: branch current TBD by 1S2P validation
+  thermal_notes: TBD after thermal review
+  placement_notes: Must be lot/capacity/DCIR matched to BT1; one cell per temple,
+    1S2P.
+  source_document: LP451165 Battery Bay Fit Check
+  source_revision: project fit-check, 2026-07-01
+  source_page: dimensions.csv + fit-check md
+  source_url_or_file: AI_Glasses_HOLD_Closure_Pack/06_Mechanical_Fit_Check/
+  confidence: medium; CAD clearance envelope, not supplier pack drawing
+  freeze_status: HOLD
+  schematic_status: present in current schematic
+  footprint_status: NOT_FOR_FAB placeholder; not release-ready
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: G07
+- functional_block: Temple Rears (batt/spkr/ant)
+  reference_designator: F1
+  bom_id: C031a
+  manufacturer: TBD
+  exact_mpn: PTC/fuse (R branch)
+  description: Right branch protection — resettable PTC / fusible link in the right
+    cell branch. Limits a single-cell / FPC short (§7).
+  board_region: Temple Rears (batt/spkr/ant)
+  assembly_status: TBD
+  package: AI_Glasses_V2:VERIFY_FUSE
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VERIFY_FUSE
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: TBD
+  schematic_status: present in current schematic
+  footprint_status: NOT_FOR_FAB placeholder; not release-ready
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Rating from peak-current calc (> branch peak, < FPC rating)
+- functional_block: Temple Rears (batt/spkr/ant)
+  reference_designator: F2
+  bom_id: C031b
+  manufacturer: TBD
+  exact_mpn: PTC/fuse (L branch)
+  description: Left branch protection — resettable PTC / fusible link in the left
+    cell branch.
+  board_region: Temple Rears (batt/spkr/ant)
+  assembly_status: TBD
+  package: AI_Glasses_V2:VERIFY_FUSE
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VERIFY_FUSE
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: TBD
+  schematic_status: present in current schematic
+  footprint_status: NOT_FOR_FAB placeholder; not release-ready
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Rating from peak-current calc
+- functional_block: magnetic pogo charge/service
+  reference_designator: J1
+  bom_id: C034
+  manufacturer: TBD
+  exact_mpn: magnetic pogo 4-6 pin TBD
+  description: Charge/data interface — magnetic pogo (5 V charge, optional USB2).
+    Thinner + more waterproof than a temple USB-C.
+  board_region: Temple Rears (batt/spkr/ant)
+  assembly_status: TBD
+  package: target about 10 x 3 mm
+  body_length_mm: 10.0
+  body_width_mm: 3.0
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VERIFY_POGO
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: USB_5V, GND, optional USB2/ID
+  typical_power: passive; contact I2R loss
+  peak_power: charge/fault current rating TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: Needs pin count, contact resistance, magnet polarity, corrosion,
+    short and mating-life data.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: TBD
+  schematic_status: present in current schematic
+  footprint_status: NOT_FOR_FAB placeholder; not release-ready
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Magnet direction, sweat corrosion, short, cycle life
+- functional_block: left-right interconnect / future hinge FPC
+  reference_designator: J4
+  bom_id: C039
+  manufacturer: FPC supplier TBD
+  exact_mpn: custom 6-10 mm FPC / rigid-flex TBD
+  description: Hinge FPC (L<->R) — carries battery power path, AON UART, control lines
+    and GND between the two temples. Enables the split-and-fold structure.
+  board_region: Temple Rears (batt/spkr/ant)
+  assembly_status: HOLD
+  package: 0.10-0.18 mm target thickness
+  body_length_mm: null
+  body_width_mm: 6-10
+  body_height_mm: 0.10-0.18
+  land_pattern: AI_Glasses_V2:VERIFY_HINGE_FPC
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: BAT_P/VSYS, GND, AON UART, EN/PGOOD/fault/status
+  typical_power: passive; I2R loss
+  peak_power: must carry peak and fault current safely
+  thermal_notes: TBD after thermal review
+  placement_notes: EVT-A can be fixed-temple cable/FPC. Folding hinge life, bend radius,
+    stack-up and pin count remain open.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: HOLD
+  schematic_status: present in current schematic
+  footprint_status: NOT_FOR_FAB placeholder; not release-ready
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: G12 (impedance, bend radius, life, hinge interference)
+- functional_block: Temple Rears (batt/spkr/ant)
+  reference_designator: J5
+  bom_id: C040
+  manufacturer: TBD
+  exact_mpn: U.FL / I-PEX MHF
+  description: Micro RF connector — 50 ohm, Wi-Fi & BLE antenna debug/attach for EVT.
+  board_region: Temple Rears (batt/spkr/ant)
+  assembly_status: Fit
+  package: Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Connector height + mating life
+- functional_block: BLE antenna
+  reference_designator: J6
+  bom_id: C018
+  manufacturer: TBD
+  exact_mpn: 2.4 GHz FPC/PCB antenna TBD
+  description: BLE antenna — 50 ohm, always-on. Physically separate from the Wi-Fi
+    antenna.
+  board_region: Temple Rears (batt/spkr/ant)
+  assembly_status: TBD
+  package: custom antenna/keep-out
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VERIFY_ANT
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: RF passive, 50 ohm
+  typical_power: passive
+  peak_power: radio-dependent
+  thermal_notes: TBD after thermal review
+  placement_notes: Requires left-temple tail keep-out, matching and worn-state tune.
+    Must clear battery/copper/screws/magnets.
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: TBD
+  schematic_status: present in current schematic
+  footprint_status: NOT_FOR_FAB placeholder; not release-ready
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Worn-state tuning; clear of battery/metal
+- functional_block: Wi-Fi antenna
+  reference_designator: J7
+  bom_id: C017
+  manufacturer: TBD
+  exact_mpn: 2.4/5 GHz FPC or LDS antenna TBD
+  description: Wi-Fi dual-band antenna — 50 ohm, worn-state tuned. Away from SoC/battery/speaker
+    magnet/hinge.
+  board_region: Temple Rears (batt/spkr/ant)
+  assembly_status: TBD
+  package: custom antenna/keep-out
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VERIFY_ANT
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: RF passive, 50 ohm
+  typical_power: passive; radiated from U11
+  peak_power: TBD by RF path
+  thermal_notes: TBD after thermal review
+  placement_notes: Requires antenna SKU, keep-out, matching and worn-state tuning.
+    Must clear battery, copper, screws, speaker magnet and boost loop.
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: TBD
+  schematic_status: present in current schematic
+  footprint_status: NOT_FOR_FAB placeholder; not release-ready
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Head-loaded RSSI/throughput/SAR; keep-out
+- functional_block: main speaker
+  reference_designator: LS1
+  bom_id: C025
+  manufacturer: TBD
+  exact_mpn: 8 ohm 0.5-1 W micro speaker TBD
+  description: Main speaker — first version single speaker; open acoustic unit set
+    by temple cavity.
+  board_region: Temple Rears (batt/spkr/ant)
+  assembly_status: TBD
+  package: speaker/cavity TBD
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VERIFY_SPK
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: driven by MAX98360A
+  typical_power: 13-27 mW average in model
+  peak_power: 0.5-1 W acoustic part class
+  thermal_notes: TBD after thermal review
+  placement_notes: Must choose speaker MPN, magnet size, port, cavity, leak path and
+    antenna exclusion.
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: TBD
+  schematic_status: present in current schematic
+  footprint_status: NOT_FOR_FAB placeholder; not release-ready
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: MPN after acoustic cavity/volume/leak test
+- functional_block: Temple Rears (batt/spkr/ant)
+  reference_designator: LS2
+  bom_id: C026
+  manufacturer: TBD
+  exact_mpn: 2nd speaker pad
+  description: Second speaker land — reserved for productization; not populated first
+    version.
+  board_region: Temple Rears (batt/spkr/ant)
+  assembly_status: DNP
+  package: AI_Glasses_V2:VERIFY_SPK
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VERIFY_SPK
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: DNP
+  schematic_status: present in current schematic
+  footprint_status: NOT_FOR_FAB placeholder; not release-ready
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Decide dual-speaker at EVT-B
+- functional_block: Temple Rears (batt/spkr/ant)
+  reference_designator: M1
+  bom_id: C028
+  manufacturer: TBD
+  exact_mpn: LRA/ERM motor
+  description: LRA/ERM motor — short haptic alerts; can be replaced by phone vibration
+    first version.
+  board_region: Temple Rears (batt/spkr/ant)
+  assembly_status: DNP
+  package: AI_Glasses_V2:VERIFY_LRA
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VERIFY_LRA
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: DNP
+  schematic_status: present in current schematic
+  footprint_status: NOT_FOR_FAB placeholder; not release-ready
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Vibration P1
+- functional_block: Temple Rears (batt/spkr/ant)
+  reference_designator: RS2
+  bom_id: C044-RCL
+  manufacturer: TBD
+  exact_mpn: 10 mohm 1%
+  description: Left branch shunt — BATL_F -> BAT_P; I_CELL_L for current-share monitoring.
+  board_region: Temple Rears (batt/spkr/ant)
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0805_shunt
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0805_shunt
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Branch current-share (§7/§29)
+- functional_block: Temple Rears (batt/spkr/ant)
+  reference_designator: RS3
+  bom_id: C044-RCR
+  manufacturer: TBD
+  exact_mpn: 10 mohm 1%
+  description: Right branch shunt — BATR_F -> BAT_P; I_CELL_R for current-share monitoring.
+  board_region: Temple Rears (batt/spkr/ant)
+  assembly_status: Fit
+  package: AI_Glasses_V2:R_0805_shunt
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0805_shunt
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Branch current-share (§7/§29)
+- functional_block: right-cell NTC
+  reference_designator: RT1
+  bom_id: C033a
+  manufacturer: TBD
+  exact_mpn: 10k NTC curve TBD
+  description: Right cell temperature — 10k NTC at the cell into nPM1300 NTC/AON ADC.
+    Per-cell NTC (§15).
+  board_region: Temple Rears (batt/spkr/ant)
+  assembly_status: Fit
+  package: 0402 or film probe
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0402
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: AON analog / nPM1300 temperature input
+  typical_power: uW class divider
+  peak_power: uW class
+  thermal_notes: TBD after thermal review
+  placement_notes: 'Location matters more than package: place against cell body, not
+    charger IC.'
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: PROVISIONAL
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: NTC curve matched to nPM1300 charger config
+- functional_block: left-cell NTC
+  reference_designator: RT2
+  bom_id: C033b
+  manufacturer: TBD
+  exact_mpn: 10k NTC curve TBD
+  description: Left cell temperature — 10k NTC at the cell into nPM1300 NTC/AON ADC.
+  board_region: Temple Rears (batt/spkr/ant)
+  assembly_status: Fit
+  package: 0402 or film probe
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:R_0402
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: AON analog / nPM1300 temperature input
+  typical_power: uW class divider
+  peak_power: uW class
+  thermal_notes: TBD after thermal review
+  placement_notes: Needs JEITA/nPM1300 charger config match.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: PROVISIONAL
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: NTC curve matched to nPM1300 charger config
+- functional_block: Temple Rears (batt/spkr/ant)
+  reference_designator: TP2
+  bom_id: C033-TP
+  manufacturer: TBD
+  exact_mpn: Battery test points
+  description: Battery Kelvin test points — Cell-L+, Cell-R+, Pack+, Cell-neg, both
+    NTCs for pairing / current-share / temperature verification.
+  board_region: Temple Rears (batt/spkr/ant)
+  assembly_status: Fit
+  package: AI_Glasses_V2:TestPad_Set
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:TestPad_Set
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: Fit
+  schematic_status: present in current schematic
+  footprint_status: candidate; verify official drawing/land pattern/height before
+    layout
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Cell/pack voltage + NTC probe access (§21)
+- functional_block: Temple Rears (batt/spkr/ant)
+  reference_designator: U26
+  bom_id: C044-ICL
+  manufacturer: TBD
+  exact_mpn: INA238 (I_CELL_L)
+  description: Left branch current across RS2 — cell current-share vs SOC/temp.
+  board_region: Temple Rears (batt/spkr/ant)
+  assembly_status: DNP
+  package: AI_Glasses_V2:VSSOP-10
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VSSOP-10
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: DNP
+  schematic_status: present in current schematic
+  footprint_status: DNP; do not treat as release BOM
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Power Gate — EVT-A only (current-share)
+- functional_block: Temple Rears (batt/spkr/ant)
+  reference_designator: U27
+  bom_id: C044-ICR
+  manufacturer: TBD
+  exact_mpn: INA238 (I_CELL_R)
+  description: Right branch current across RS3 — cell current-share vs SOC/temp.
+  board_region: Temple Rears (batt/spkr/ant)
+  assembly_status: DNP
+  package: AI_Glasses_V2:VSSOP-10
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: AI_Glasses_V2:VSSOP-10
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: TBD
+  typical_power: TBD
+  peak_power: TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: ''
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: DNP
+  schematic_status: present in current schematic
+  footprint_status: DNP; do not treat as release BOM
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: Power Gate — EVT-A only (current-share)
+- functional_block: camera FPC tail
+  reference_designator: CAM_FPC
+  bom_id: VIRTUAL
+  manufacturer: camera/FPC supplier TBD
+  exact_mpn: custom camera FPC TBD
+  description: ''
+  board_region: Virtual mechanical item
+  assembly_status: HOLD
+  package: 0.2 mm class FPC candidate
+  body_length_mm: null
+  body_width_mm: null
+  body_height_mm: null
+  land_pattern: ''
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: MIPI CSI, I2C, rails, GND
+  typical_power: passive; I2R/insertion loss
+  peak_power: pin-current TBD
+  thermal_notes: TBD after thermal review
+  placement_notes: Virtual mechanical item; final exit direction, stiffener, contact
+    side and bend radius required.
+  source_document: Current V2 generated schematic/BOM master
+  source_revision: generated 2026-07-01
+  source_page: scripts/chipdown_bom.py
+  source_url_or_file: v2_chipdown/scripts/chipdown_bom.py
+  confidence: high for current project intent; not a package drawing
+  freeze_status: HOLD
+  schematic_status: virtual mechanical note
+  footprint_status: virtual; no KiCad footprint
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: close gate/source data before PCB layout
+- functional_block: camera lens stack
+  reference_designator: CAM_LENS
+  bom_id: VIRTUAL
+  manufacturer: Radxa/Sony module candidate
+  exact_mpn: Radxa Camera 4K AS001 lens candidate
+  description: ''
+  board_region: Virtual mechanical item
+  assembly_status: HOLD
+  package: M12 x 0.5 lens, approx OD 14 mm
+  body_length_mm: 32.5
+  body_width_mm: 32.5
+  body_height_mm: 18.0
+  land_pattern: ''
+  courtyard: TBD; use official package drawing before layout
+  keepout: TBD; see placement notes
+  pin_pitch: TBD
+  mass_g: TBD
+  operating_voltage: mechanical/optical
+  typical_power: passive
+  peak_power: passive
+  thermal_notes: TBD after thermal review
+  placement_notes: Virtual mechanical item, not in schematic. Must not replace U14
+    custom module unless EE/CAD approve that architecture.
+  source_document: AI Glasses Hardware Dimensions V2.3
+  source_revision: '2026-07-01'
+  source_page: pp. 1-10
+  source_url_or_file: /Users/stanley/Downloads/AI_Glasses_Hardware_Dimensions_V2.3.pdf
+  confidence: medium; project extraction from BOM PDFs
+  freeze_status: HOLD
+  schematic_status: virtual mechanical note
+  footprint_status: virtual; no KiCad footprint
+  3d_model_status: HOLD/TBD; no verified aligned STEP in V2 KiCad
+  next_action: close gate/source data before PCB layout

@@ -332,8 +332,8 @@ families:
     category: esd
     value: "low-cap RF ESD, <=0.3pF"
     role: "GNSS antenna RF ESD clamp"
-    package: "0402/DFN1006 class"
-    footprint: "AI_Glasses:RF_ESD_2P_VERIFY"
+    package: "SOD-882 (DFN1006-2) low-cap RF ESD"
+    footprint: "Diode_SMD:D_SOD-882"
     capacitance_pF_max: 0.3
     vrwm_V_min: 5
     temp_range_C: "-40..125"
@@ -347,8 +347,8 @@ families:
     category: esd_array
     value: "TPD4E05U06"
     role: "MIPI CSI3 low-capacitance ESD arrays"
-    package: "USON/QFN class, verify footprint against chosen suffix"
-    footprint: "AI_Glasses:TPD4E05U06_VERIFY"
+    package: "USON-10 (DQA) 2.5x1.0mm, 0.5mm pitch (TI DQA0010A)"
+    footprint: "Package_SON:USON-10_2.5x1.0mm_P0.5mm"
     channels: 4
     capacitance_pF_max: 0.4
     vrwm_V_min: 5
@@ -364,8 +364,8 @@ families:
     category: esd_array
     value: "TPD2E009"
     role: "USB2 D+/D- ESD clamp"
-    package: "WSON/SOT package per selected suffix"
-    footprint: "AI_Glasses:TPD2E009_VERIFY"
+    package: "SOT-553 (DRL); confirm pad map vs symbol when real symbol added"
+    footprint: "Package_TO_SOT_SMD:SOT-553"
     channels: 2
     capacitance_pF_max: 1.5
     vrwm_V_min: 5

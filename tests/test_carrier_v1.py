@@ -65,7 +65,7 @@ def test_generated_schematic_has_no_empty_footprint_fields():
     assert 'property "Footprint" ""' not in sym
     assert 'Resistor_SMD:R_0603_1608Metric' in sch
     assert 'Capacitor_SMD:C_0805_2012Metric' in sch
-    assert 'AI_Glasses:VERIFY_B2B_J31_LOGICAL' in sch
+    assert 'Connector_Hirose_DF40:Hirose_DF40C-100DS-0.4V_2x50_P0.4mm' in sch
 
 
 def test_project_symbol_library_is_configured_for_generated_symbols():
@@ -74,8 +74,9 @@ def test_project_symbol_library_is_configured_for_generated_symbols():
     assert Path("hardware/fp-lib-table").exists()
     assert Path("hardware/AI_Glasses.kicad_sym").exists()
     assert Path("hardware/AI_Glasses.pretty/FH35C-31S-0.3SHW_50.kicad_mod").exists()
-    assert Path("hardware/AI_Glasses.pretty/VERIFY_B2B_J31_LOGICAL.kicad_mod").exists()
-    assert Path("hardware/AI_Glasses.pretty/VERIFY_TP_1P.kicad_mod").exists()
+    # Only the boost inductor (L1) remains a placeholder (part-dependent). B2B, the
+    # ESD arrays and TPS61022 now use real KiCad TI-official library footprints.
+    assert Path("hardware/AI_Glasses.pretty/POWER_INDUCTOR_7X7_VERIFY.kicad_mod").exists()
     table = Path("hardware/sym-lib-table").read_text(encoding="utf-8")
     fp_table = Path("hardware/fp-lib-table").read_text(encoding="utf-8")
     lib = Path("hardware/AI_Glasses.kicad_sym").read_text(encoding="utf-8")

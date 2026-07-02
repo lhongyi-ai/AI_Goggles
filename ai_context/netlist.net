@@ -2,7 +2,7 @@
 	(version "E")
 	(design
 		(source "/Users/stanley/AI Glasses/hardware/ai_glasses_carrier.kicad_sch")
-		(date "2026-06-28T04:56:52")
+		(date "2026-06-30T03:10:58")
 		(tool "Eeschema 10.0.4")
 		(sheet
 			(number "1")
@@ -85,7 +85,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "6368bbeb-6c4c-4b43-8176-bd2b81e36c7e")
+			(tstamps "72dadb5e-968e-4fe6-a007-501c5696ee06")
 			(units
 				(unit
 					(name "A")
@@ -131,7 +131,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "15693482-0552-41eb-8343-7de3f6246ed9")
+			(tstamps "e64c6d30-ea81-47e7-9ae1-1ce584de01cf")
 			(units
 				(unit
 					(name "A")
@@ -177,7 +177,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "7e89b6d5-f493-4526-a77b-b28485fcc22e")
+			(tstamps "6b3ce129-772c-4a45-9ddb-76693ceaa5ad")
 			(units
 				(unit
 					(name "A")
@@ -223,7 +223,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "ad9ed0f9-1658-40c6-8c95-f411a792c5a3")
+			(tstamps "c7695588-d14e-4eda-a3c4-bf9ef22583e8")
 			(units
 				(unit
 					(name "A")
@@ -269,7 +269,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "86bbbd5b-20da-45f7-baa9-9bc75c29f9d5")
+			(tstamps "c7d86cbb-daaf-479d-9814-9f464154633a")
 			(units
 				(unit
 					(name "A")
@@ -315,7 +315,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "c06ee314-4522-4d95-8941-587ff5916091")
+			(tstamps "06f9f3b1-4a4c-4c7a-aa3a-62ebf7c3076e")
 			(units
 				(unit
 					(name "A")
@@ -361,7 +361,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "13de44ad-601a-4870-9793-2ee72beaa110")
+			(tstamps "84849949-918f-4636-adb2-2cd082f84870")
 			(units
 				(unit
 					(name "A")
@@ -407,7 +407,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "7f54ea78-d3ae-41c0-82f9-1d425958e049")
+			(tstamps "f1eae40f-86a0-47eb-8c54-15c7bb6ab3df")
 			(units
 				(unit
 					(name "A")
@@ -453,7 +453,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "eeb345cf-32ea-43ea-a057-663689f3ea9e")
+			(tstamps "cd4aa34d-7c8a-43f3-a01b-63c7c7035e2b")
 			(units
 				(unit
 					(name "A")
@@ -499,7 +499,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "7c2dcefd-5be6-4789-aa03-8ebc33f68f6f")
+			(tstamps "0247a28e-fa2b-4929-bba7-87a3495ff188")
 			(units
 				(unit
 					(name "A")
@@ -545,7 +545,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "d9996c04-8b57-4208-bd41-e362756ab2f0")
+			(tstamps "74b87077-e0eb-452f-9e5b-0da4ec329965")
 			(units
 				(unit
 					(name "A")
@@ -591,7 +591,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "f2225723-1af7-48a0-92cc-89468eb61eec")
+			(tstamps "d6c12f09-429a-440b-95dc-ea9908d9e230")
 			(units
 				(unit
 					(name "A")
@@ -637,7 +637,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "5e10611b-0fec-486e-9015-e693db8684a6")
+			(tstamps "720b635f-ebe1-42d9-9a97-bf38dcc2ec2d")
 			(units
 				(unit
 					(name "A")
@@ -683,7 +683,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "5f7bfd1f-04fb-4944-a8f6-39fc84ae5944")
+			(tstamps "503e17fe-7122-445d-b8b4-78d794f5040a")
 			(units
 				(unit
 					(name "A")
@@ -729,7 +729,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "628b77f5-0065-4d65-b6b7-61c913e303d7")
+			(tstamps "9605414b-2c56-440f-a027-e55224fb4add")
 			(units
 				(unit
 					(name "A")
@@ -775,7 +775,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "3920ff15-8c7c-47dc-a329-12c2ca4cf8d4")
+			(tstamps "82d58eaa-4789-4502-abff-a4144a3fbf73")
 			(units
 				(unit
 					(name "A")
@@ -821,7 +821,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "f50a4402-1a31-441c-b984-a6d72a25c93e")
+			(tstamps "a051c27c-a1c7-41a8-8e88-f168d9710b64")
 			(units
 				(unit
 					(name "A")
@@ -867,7 +867,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "cb3fec0f-ca79-4191-a696-05e3ca229bd8")
+			(tstamps "26d5a586-3372-47a8-b168-c23c89fb6143")
 			(units
 				(unit
 					(name "A")
@@ -913,7 +913,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "58db0753-1fd5-48ea-8d5c-d15824c3d22a")
+			(tstamps "5ff0d0af-da9c-4110-8bfb-f1f92ec622dc")
 			(units
 				(unit
 					(name "A")
@@ -959,7 +959,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "e4421586-8726-4336-88d2-97d5176a0399")
+			(tstamps "cad68a43-3018-4052-a93e-6ba243c65da6")
 			(units
 				(unit
 					(name "A")
@@ -1005,7 +1005,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "7a2570ed-4e49-4e6d-8495-98dc28f2017a")
+			(tstamps "8de24207-9865-45cc-be22-3a516ffc4f7c")
 			(units
 				(unit
 					(name "A")
@@ -1051,7 +1051,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "e8c26bc3-6800-4b0b-a6c2-81ee23b21da1")
+			(tstamps "22bc6e06-1c93-4b89-bc15-848efd0b5943")
 			(units
 				(unit
 					(name "A")
@@ -1097,7 +1097,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "00a008d4-94c7-4688-84df-633c3f1b40c6")
+			(tstamps "469e52b3-808b-461d-b98e-71defb4b0e41")
 			(units
 				(unit
 					(name "A")
@@ -1143,7 +1143,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "881f0394-fdad-4097-99a2-652222d5d737")
+			(tstamps "ab109491-0df8-44c9-aa0f-6a8d98a6d011")
 			(units
 				(unit
 					(name "A")
@@ -1189,7 +1189,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "cd76fb7f-c343-4922-bf29-1be469add224")
+			(tstamps "9625dee0-7496-441e-ab41-e6dbf8089837")
 			(units
 				(unit
 					(name "A")
@@ -1235,7 +1235,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "5e9d9a0c-289e-45a2-9f8a-0105b8169e9e")
+			(tstamps "2685a1e0-b6fd-4a4c-988d-e0c0e52c2255")
 			(units
 				(unit
 					(name "A")
@@ -1281,7 +1281,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "ac1e8b5f-214b-4243-8336-0cc18c6baa29")
+			(tstamps "fccd8d97-315a-4a5c-a87a-5b29638db89f")
 			(units
 				(unit
 					(name "A")
@@ -1327,7 +1327,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "1e7efb87-9502-4fb4-9591-8e6afcf9373e")
+			(tstamps "00ce702a-8c8f-4375-864b-c507b3a7bcee")
 			(units
 				(unit
 					(name "A")
@@ -1373,7 +1373,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "5a16330c-d512-4f4a-8520-9d910025339e")
+			(tstamps "5cf79002-3faf-4f73-a3b2-07307c28308e")
 			(units
 				(unit
 					(name "A")
@@ -1419,7 +1419,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "991340cf-8824-4bd8-a9a3-56f479ba5079")
+			(tstamps "c2cc87fe-ba55-40da-8f21-49c5f6f85d9c")
 			(units
 				(unit
 					(name "A")
@@ -1465,7 +1465,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "530a0804-d6a7-4250-8cfd-eb4bebb2aff6")
+			(tstamps "7e5c463e-d08e-4d5c-946a-8e5a157db35c")
 			(units
 				(unit
 					(name "A")
@@ -1511,7 +1511,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "e747c0dc-b55c-4f4b-92c8-0db411093bb5")
+			(tstamps "b2523b6c-90ca-4de9-b715-db5022bd1235")
 			(units
 				(unit
 					(name "A")
@@ -1529,10 +1529,10 @@
 		(comp
 			(ref "D4")
 			(value "ESD low-cap RF 0.3pF")
-			(footprint "AI_Glasses:RF_ESD_2P_VERIFY")
+			(footprint "Diode_SMD:D_SOD-882")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:RF_ESD_2P_VERIFY")
+					(name "Footprint") "Diode_SMD:D_SOD-882")
 				(field
 					(name "Datasheet")
 				)
@@ -1557,7 +1557,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "bdb2633d-b180-46e9-9919-707e7f8fc1fa")
+			(tstamps "f01ce1e6-14e2-4ab9-9f09-03d7e3041cef")
 			(units
 				(unit
 					(name "A")
@@ -1603,7 +1603,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "212294fd-61f5-4dea-9134-988ac079e694")
+			(tstamps "9d3e63ba-e035-4b8d-802f-54e456cf8bcc")
 			(units
 				(unit
 					(name "A")
@@ -1649,7 +1649,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "47c8e83b-e3c7-4343-84e0-dfd2b5c12de1")
+			(tstamps "7397f5a6-966a-433f-bf1d-05741aab8427")
 			(units
 				(unit
 					(name "A")
@@ -1667,10 +1667,10 @@
 		(comp
 			(ref "J1")
 			(value "DF40C-100DS-0.4V(51)")
-			(footprint "AI_Glasses:VERIFY_B2B_J1_LOGICAL")
+			(footprint "Connector_Hirose_DF40:Hirose_DF40C-100DS-0.4V_2x50_P0.4mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_B2B_J1_LOGICAL")
+					(name "Footprint") "Connector_Hirose_DF40:Hirose_DF40C-100DS-0.4V_2x50_P0.4mm")
 				(field
 					(name "Datasheet")
 				)
@@ -1695,7 +1695,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "513d91a8-6b14-4502-9b3f-5bfc57be9bd7")
+			(tstamps "d97becc2-1e06-46b6-b602-fac3240d83f9")
 			(units
 				(unit
 					(name "A")
@@ -1759,7 +1759,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "b25bc9f1-eab0-4284-90cf-cdf0ee92b3dc")
+			(tstamps "acd021fd-8fa6-40c9-93e4-0a994336e32b")
 			(units
 				(unit
 					(name "A")
@@ -1864,10 +1864,10 @@
 		(comp
 			(ref "J3")
 			(value "JST-SH 2p (spkr)")
-			(footprint "AI_Glasses:VERIFY_2P")
+			(footprint "Connector_JST:JST_SH_BM02B-SRSS-TB_1x02-1MP_P1.00mm_Vertical")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_2P")
+					(name "Footprint") "Connector_JST:JST_SH_BM02B-SRSS-TB_1x02-1MP_P1.00mm_Vertical")
 				(field
 					(name "Datasheet")
 				)
@@ -1892,7 +1892,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "b2e39428-096f-4c08-90ff-ec17097711fd")
+			(tstamps "68982629-dae0-4276-b21a-4b0cead30a9b")
 			(units
 				(unit
 					(name "A")
@@ -1910,10 +1910,10 @@
 		(comp
 			(ref "J4")
 			(value "GCT USB4085 (USB2)")
-			(footprint "AI_Glasses:VERIFY_7P")
+			(footprint "Connector_USB:USB_C_Receptacle_GCT_USB4085")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_7P")
+					(name "Footprint") "Connector_USB:USB_C_Receptacle_GCT_USB4085")
 				(field
 					(name "Datasheet")
 				)
@@ -1938,7 +1938,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "b443e418-c4b9-4fca-9b43-25f3ebbf6051")
+			(tstamps "bd5856b4-5280-418c-83f1-99e453a76206")
 			(units
 				(unit
 					(name "A")
@@ -1971,10 +1971,10 @@
 		(comp
 			(ref "J5")
 			(value "JST-PH 3p")
-			(footprint "AI_Glasses:VERIFY_3P")
+			(footprint "Connector_JST:JST_PH_S3B-PH-SM4-TB_1x03-1MP_P2.00mm_Horizontal")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_3P")
+					(name "Footprint") "Connector_JST:JST_PH_S3B-PH-SM4-TB_1x03-1MP_P2.00mm_Horizontal")
 				(field
 					(name "Datasheet")
 				)
@@ -1999,7 +1999,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "26818096-f07c-4afa-a03a-9d6d65e1899e")
+			(tstamps "84ffaa66-c9de-4bfe-9128-82c790c4c7ee")
 			(units
 				(unit
 					(name "A")
@@ -2020,10 +2020,10 @@
 		(comp
 			(ref "J6")
 			(value "JST-SH 2p")
-			(footprint "AI_Glasses:VERIFY_2P")
+			(footprint "Connector_JST:JST_SH_BM02B-SRSS-TB_1x02-1MP_P1.00mm_Vertical")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_2P")
+					(name "Footprint") "Connector_JST:JST_SH_BM02B-SRSS-TB_1x02-1MP_P1.00mm_Vertical")
 				(field
 					(name "Datasheet")
 				)
@@ -2048,7 +2048,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "fdc0da87-4b0d-486d-b552-1231895f47fb")
+			(tstamps "7b5f7bc0-cf84-4665-a0a2-9db0b010e6e6")
 			(units
 				(unit
 					(name "A")
@@ -2094,7 +2094,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "5f389b76-bae4-4d70-b7ec-6647fe31aaf9")
+			(tstamps "8d8f2025-4d94-4967-bbcd-7bab3fbe313a")
 			(units
 				(unit
 					(name "A")
@@ -2118,10 +2118,10 @@
 		(comp
 			(ref "J8")
 			(value "U.FL / IPEX")
-			(footprint "AI_Glasses:VERIFY_2P")
+			(footprint "Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_2P")
+					(name "Footprint") "Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical")
 				(field
 					(name "Datasheet")
 				)
@@ -2146,7 +2146,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "f00d62cf-7490-437f-8f1b-d44ff2ff9333")
+			(tstamps "430accbd-9f8b-4292-80d8-2e22ab3798e6")
 			(units
 				(unit
 					(name "A")
@@ -2164,10 +2164,10 @@
 		(comp
 			(ref "J31")
 			(value "DF40C-100DS-0.4V(51)")
-			(footprint "AI_Glasses:VERIFY_B2B_J31_LOGICAL")
+			(footprint "Connector_Hirose_DF40:Hirose_DF40C-100DS-0.4V_2x50_P0.4mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_B2B_J31_LOGICAL")
+					(name "Footprint") "Connector_Hirose_DF40:Hirose_DF40C-100DS-0.4V_2x50_P0.4mm")
 				(field
 					(name "Datasheet")
 				)
@@ -2192,7 +2192,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "f035027a-3394-4a5d-a14d-7aac311e3a01")
+			(tstamps "2c2d5dc7-7f45-4b54-8347-4346cae4bedc")
 			(units
 				(unit
 					(name "A")
@@ -2285,10 +2285,10 @@
 		(comp
 			(ref "J32")
 			(value "DF40C-100DS-0.4V(51)")
-			(footprint "AI_Glasses:VERIFY_B2B_J32_LOGICAL")
+			(footprint "Connector_Hirose_DF40:Hirose_DF40C-100DS-0.4V_2x50_P0.4mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_B2B_J32_LOGICAL")
+					(name "Footprint") "Connector_Hirose_DF40:Hirose_DF40C-100DS-0.4V_2x50_P0.4mm")
 				(field
 					(name "Datasheet")
 				)
@@ -2313,7 +2313,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "4ccb9ee7-a4ef-4a22-87dc-919cb0e859c9")
+			(tstamps "1ae942b8-7d71-4fb0-9447-c51e6d4ab39b")
 			(units
 				(unit
 					(name "A")
@@ -2404,7 +2404,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "d85a1e23-2d3a-4f82-9d91-6e1eca1a44ff")
+			(tstamps "77238ef5-893b-456d-9d16-96a0a7ec1441")
 			(units
 				(unit
 					(name "A")
@@ -2450,7 +2450,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "d96a042d-4d75-4abe-a7f9-e1558e805a81")
+			(tstamps "fbe31f10-b9e0-4326-9ea7-a5b913a16928")
 			(units
 				(unit
 					(name "A")
@@ -2468,10 +2468,10 @@
 		(comp
 			(ref "MK1")
 			(value "SPH0641LU4H-1")
-			(footprint "AI_Glasses:VERIFY_5P")
+			(footprint "Sensor_Audio:Knowles_LGA-5_3.5x2.65mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_5P")
+					(name "Footprint") "Sensor_Audio:Knowles_LGA-5_3.5x2.65mm")
 				(field
 					(name "Datasheet")
 				)
@@ -2496,7 +2496,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "c2c3b740-c1aa-40cc-b56e-098d1b5f3347")
+			(tstamps "874a5d0e-6d8b-4da5-8598-b9c780a1c5bd")
 			(units
 				(unit
 					(name "A")
@@ -2523,10 +2523,10 @@
 		(comp
 			(ref "MK2")
 			(value "SPH0641LU4H-1")
-			(footprint "AI_Glasses:VERIFY_5P")
+			(footprint "Sensor_Audio:Knowles_LGA-5_3.5x2.65mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_5P")
+					(name "Footprint") "Sensor_Audio:Knowles_LGA-5_3.5x2.65mm")
 				(field
 					(name "Datasheet")
 				)
@@ -2551,7 +2551,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "1c05f9d5-7291-4a9a-af91-e81deafe0860")
+			(tstamps "82cff99d-1d32-4d1a-97cb-d0b447ff0218")
 			(units
 				(unit
 					(name "A")
@@ -2606,7 +2606,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "362f2bd9-3590-4eed-a590-cbd53a8013c6")
+			(tstamps "b193ac84-449f-41c4-ba81-cdf311f3111c")
 			(units
 				(unit
 					(name "A")
@@ -2652,7 +2652,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "dbcd9238-83c8-4f6a-a951-b1226a27b77c")
+			(tstamps "f3c43245-6350-4cb7-ad78-a2473be34b28")
 			(units
 				(unit
 					(name "A")
@@ -2698,7 +2698,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "e3e2fc97-29f2-4a60-b8d8-35296c8ea13b")
+			(tstamps "1dcac2fa-bea8-483e-851e-a7545e8b199e")
 			(units
 				(unit
 					(name "A")
@@ -2744,7 +2744,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "6c1b74c7-10fc-4020-aae6-7478e0490ba2")
+			(tstamps "681637ea-b6d3-4273-935a-7a6c73e267da")
 			(units
 				(unit
 					(name "A")
@@ -2790,7 +2790,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "5d35df5c-f3de-485c-a589-63b6d689f89c")
+			(tstamps "7373f646-57c6-4aec-b070-5c026d3937a8")
 			(units
 				(unit
 					(name "A")
@@ -2836,7 +2836,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "10556aa0-d4be-4430-a74a-f7e82deb5f01")
+			(tstamps "d517f4a6-d1e4-4d25-b02b-c05bc32d1e94")
 			(units
 				(unit
 					(name "A")
@@ -2882,7 +2882,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "bb110199-7116-44c2-96c5-66ba476ae639")
+			(tstamps "41bab9ef-ba28-46ab-9362-1e710b781ca9")
 			(units
 				(unit
 					(name "A")
@@ -2928,7 +2928,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "6288a81d-930a-481d-ab65-cf7313152e8a")
+			(tstamps "22e29822-269d-4e7b-80d6-fb7b2c0356c5")
 			(units
 				(unit
 					(name "A")
@@ -2974,7 +2974,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "4ea77837-1858-47da-90a6-c98c1b3ea847")
+			(tstamps "91c4ceb3-39fa-435a-8482-eda6555f1fc8")
 			(units
 				(unit
 					(name "A")
@@ -3020,7 +3020,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "9a399911-4d03-4589-be6c-e9741c91efad")
+			(tstamps "78c06654-9580-4956-a905-6b183f685b2d")
 			(units
 				(unit
 					(name "A")
@@ -3066,7 +3066,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "edf2c6c0-8055-4512-98ff-29848112ebde")
+			(tstamps "b37c9e73-df20-4bcd-9b02-77ad1c1ba923")
 			(units
 				(unit
 					(name "A")
@@ -3112,7 +3112,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "3976888d-8b3d-4ee5-8195-2903707cd467")
+			(tstamps "7c9910a9-ae66-4d9d-a44b-6ea0e5937c51")
 			(units
 				(unit
 					(name "A")
@@ -3158,7 +3158,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "3a2d09b2-54b9-4ef4-8683-2e4168971706")
+			(tstamps "4af14951-b6bd-4aec-a6e6-b86f57144ca2")
 			(units
 				(unit
 					(name "A")
@@ -3204,7 +3204,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "8dc0f77a-c6c3-49fc-85f9-a65673543f75")
+			(tstamps "affea128-1d35-40c0-89e2-02f6c62907ee")
 			(units
 				(unit
 					(name "A")
@@ -3250,7 +3250,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "bde1c315-4927-4f72-95df-aaf57cdff7bb")
+			(tstamps "c34c87e6-d755-4710-ace1-ed16fa7de683")
 			(units
 				(unit
 					(name "A")
@@ -3296,7 +3296,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "4e07c8c0-579c-4a36-82f3-8d3e18333260")
+			(tstamps "aa3b1409-ba80-4539-b812-ec027d616e7e")
 			(units
 				(unit
 					(name "A")
@@ -3342,7 +3342,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "65ce1476-b0dc-48eb-acd0-71d273a09622")
+			(tstamps "0d1a1d19-29ce-4124-a10e-a3c6b8a51b3a")
 			(units
 				(unit
 					(name "A")
@@ -3388,7 +3388,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "ca24397f-05a8-4446-a82a-6369fd64022b")
+			(tstamps "0efcf0c2-03b0-4595-91c2-a7faf119dbb0")
 			(units
 				(unit
 					(name "A")
@@ -3434,7 +3434,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "c7f96847-fbe4-4703-888f-038b4148b04c")
+			(tstamps "e8dbea4d-418f-49c2-adc1-6a6fd9a9ce1a")
 			(units
 				(unit
 					(name "A")
@@ -3452,10 +3452,10 @@
 		(comp
 			(ref "SW1")
 			(value "Tact SW SMD")
-			(footprint "AI_Glasses:VERIFY_2P")
+			(footprint "Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_2P")
+					(name "Footprint") "Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2")
 				(field
 					(name "Datasheet")
 				)
@@ -3480,7 +3480,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "42d82f78-44a3-40a7-bd09-abf110efa464")
+			(tstamps "ca3e1f68-5abc-4ed9-80e3-2d8aee76d8d9")
 			(units
 				(unit
 					(name "A")
@@ -3498,10 +3498,10 @@
 		(comp
 			(ref "SW2")
 			(value "Tact SW SMD")
-			(footprint "AI_Glasses:VERIFY_2P")
+			(footprint "Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_2P")
+					(name "Footprint") "Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2")
 				(field
 					(name "Datasheet")
 				)
@@ -3526,7 +3526,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "e7eba2c5-25e5-425d-af30-a7bbcb9a5e29")
+			(tstamps "a1d69b9e-8b86-4dd9-9136-4416be706bbb")
 			(units
 				(unit
 					(name "A")
@@ -3544,10 +3544,10 @@
 		(comp
 			(ref "SW3")
 			(value "Tact SW SMD")
-			(footprint "AI_Glasses:VERIFY_2P")
+			(footprint "Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_2P")
+					(name "Footprint") "Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2")
 				(field
 					(name "Datasheet")
 				)
@@ -3572,7 +3572,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "96bad4bb-bb8a-47dc-aaa4-c64f3652a81d")
+			(tstamps "b70596ad-fd87-4b1b-9afc-967ce0837c7b")
 			(units
 				(unit
 					(name "A")
@@ -3590,10 +3590,10 @@
 		(comp
 			(ref "TP1")
 			(value "TestPoint 1.0mm")
-			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(footprint "TestPoint:TestPoint_Pad_D1.5mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -3618,7 +3618,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "6ccb9376-8f70-430d-9a07-6ef15231c15c")
+			(tstamps "37962d3e-23a3-42a2-9bf5-dd8c6bb885d5")
 			(units
 				(unit
 					(name "A")
@@ -3633,10 +3633,10 @@
 		(comp
 			(ref "TP2")
 			(value "TestPoint 1.0mm")
-			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(footprint "TestPoint:TestPoint_Pad_D1.5mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -3661,7 +3661,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "3f25b852-3132-4640-ae4a-65f92196b1b7")
+			(tstamps "7503ec54-0df8-4403-886d-fcce0160efd7")
 			(units
 				(unit
 					(name "A")
@@ -3676,10 +3676,10 @@
 		(comp
 			(ref "TP3")
 			(value "TestPoint 1.0mm")
-			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(footprint "TestPoint:TestPoint_Pad_D1.5mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -3704,7 +3704,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "4f376e03-2bd9-4af9-8a00-eda25bb6b6fa")
+			(tstamps "18d68262-8799-4094-9b76-bb7f18ff4489")
 			(units
 				(unit
 					(name "A")
@@ -3719,10 +3719,10 @@
 		(comp
 			(ref "TP4")
 			(value "TestPoint 1.0mm")
-			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(footprint "TestPoint:TestPoint_Pad_D1.5mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -3747,7 +3747,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "f5beeac0-8065-49ea-b89f-b50c55cd0742")
+			(tstamps "d646d65a-ec1b-42ce-ac60-fcbe7c1358dc")
 			(units
 				(unit
 					(name "A")
@@ -3762,10 +3762,10 @@
 		(comp
 			(ref "TP5")
 			(value "TestPoint 1.0mm")
-			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(footprint "TestPoint:TestPoint_Pad_D1.5mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -3790,7 +3790,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "ff84f621-ff78-423d-9db4-60a77bbc942e")
+			(tstamps "2e70a26f-2e5e-433e-aaa1-914de5a1271c")
 			(units
 				(unit
 					(name "A")
@@ -3805,10 +3805,10 @@
 		(comp
 			(ref "TP6")
 			(value "TestPoint 1.0mm")
-			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(footprint "TestPoint:TestPoint_Pad_D1.5mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -3833,7 +3833,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "8cba9314-ebbf-4278-9b69-ee7c68e8d793")
+			(tstamps "08995761-cc98-447b-822e-402165184499")
 			(units
 				(unit
 					(name "A")
@@ -3848,10 +3848,10 @@
 		(comp
 			(ref "TP7")
 			(value "TestPoint 1.0mm")
-			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(footprint "TestPoint:TestPoint_Pad_D1.5mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -3876,7 +3876,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "2f88834e-ab9f-4806-9bfe-a061b692a631")
+			(tstamps "2437a1a2-452e-4ee2-b310-1ecf8745b659")
 			(units
 				(unit
 					(name "A")
@@ -3891,10 +3891,10 @@
 		(comp
 			(ref "TP8")
 			(value "TestPoint 1.0mm")
-			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(footprint "TestPoint:TestPoint_Pad_D1.5mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -3919,7 +3919,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "049ed687-0c10-4c93-a2cb-413767e8ed5a")
+			(tstamps "0b93544a-55b7-4458-9237-b0717e79e46c")
 			(units
 				(unit
 					(name "A")
@@ -3934,10 +3934,10 @@
 		(comp
 			(ref "TP9")
 			(value "TestPoint 1.0mm")
-			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(footprint "TestPoint:TestPoint_Pad_D1.5mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -3962,7 +3962,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "b78554d8-d2b9-4a08-a393-b0b4fbc444b2")
+			(tstamps "ba78bfdd-d160-417a-929d-2d85e8ec6ae8")
 			(units
 				(unit
 					(name "A")
@@ -3977,10 +3977,10 @@
 		(comp
 			(ref "TP10")
 			(value "TestPoint 1.0mm")
-			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(footprint "TestPoint:TestPoint_Pad_D1.5mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -4005,7 +4005,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "8ca1d422-cbf2-4018-8c00-cc1a464f5e1f")
+			(tstamps "d07fee8c-c789-4cc0-a9f1-1612a849fefa")
 			(units
 				(unit
 					(name "A")
@@ -4020,10 +4020,10 @@
 		(comp
 			(ref "TP11")
 			(value "TestPoint 1.0mm")
-			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(footprint "TestPoint:TestPoint_Pad_D1.5mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -4048,7 +4048,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "5a106e14-57c3-4b2c-a77c-8d94e1e4b3c6")
+			(tstamps "eaf23895-08d8-464a-bd88-b0aca7613a63")
 			(units
 				(unit
 					(name "A")
@@ -4063,10 +4063,10 @@
 		(comp
 			(ref "TP12")
 			(value "TestPoint 1.0mm")
-			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(footprint "TestPoint:TestPoint_Pad_D1.5mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -4091,7 +4091,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "64bc145d-a881-4e4f-9363-fe28cbb85221")
+			(tstamps "8ba88699-25f6-492a-a237-5f4eef506a64")
 			(units
 				(unit
 					(name "A")
@@ -4106,10 +4106,10 @@
 		(comp
 			(ref "TP13")
 			(value "TestPoint 1.0mm")
-			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(footprint "TestPoint:TestPoint_Pad_D1.5mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -4134,7 +4134,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "63824ffb-5f3b-4e1c-863a-d6db0dc5a4ad")
+			(tstamps "72e78cbe-544b-4e9d-8d35-dbaef68a3014")
 			(units
 				(unit
 					(name "A")
@@ -4149,10 +4149,10 @@
 		(comp
 			(ref "TP14")
 			(value "TestPoint 1.0mm")
-			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(footprint "TestPoint:TestPoint_Pad_D1.5mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -4177,7 +4177,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "0c47f0f6-f25b-4b66-a23d-cc5991eb3ae0")
+			(tstamps "836bebd2-44b3-4e66-af53-20eed1c10cd6")
 			(units
 				(unit
 					(name "A")
@@ -4192,10 +4192,10 @@
 		(comp
 			(ref "TP15")
 			(value "TestPoint 1.0mm")
-			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(footprint "TestPoint:TestPoint_Pad_D1.5mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -4220,7 +4220,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "8eaa2c54-e4a1-4cf4-b66a-163f8c1957d8")
+			(tstamps "14a40e16-4e49-495f-b4d8-5853c94b5f6c")
 			(units
 				(unit
 					(name "A")
@@ -4235,10 +4235,10 @@
 		(comp
 			(ref "TP16")
 			(value "TestPoint 1.0mm")
-			(footprint "AI_Glasses:VERIFY_TP_1P")
+			(footprint "TestPoint:TestPoint_Pad_D1.5mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -4263,7 +4263,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "e132911b-2bcb-4589-93b1-e4cdfc194f49")
+			(tstamps "a70ee672-e631-463e-9e5f-5759742bcd91")
 			(units
 				(unit
 					(name "A")
@@ -4278,10 +4278,10 @@
 		(comp
 			(ref "U2")
 			(value "TPD4E05U06")
-			(footprint "AI_Glasses:TPD4E05U06_VERIFY")
+			(footprint "Package_SON:USON-10_2.5x1.0mm_P0.5mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:TPD4E05U06_VERIFY")
+					(name "Footprint") "Package_SON:USON-10_2.5x1.0mm_P0.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -4306,7 +4306,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "1ad256cd-ef38-466d-beee-ccf608de845d")
+			(tstamps "379266aa-0ebc-451a-be2f-73e9b0b6b8f2")
 			(units
 				(unit
 					(name "A")
@@ -4339,10 +4339,10 @@
 		(comp
 			(ref "U3")
 			(value "LP5907-3.3 (low-noise LDO)")
-			(footprint "AI_Glasses:VERIFY_4P")
+			(footprint "Package_TO_SOT_SMD:SOT-23-5")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_4P")
+					(name "Footprint") "Package_TO_SOT_SMD:SOT-23-5")
 				(field
 					(name "Datasheet")
 				)
@@ -4367,7 +4367,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "e0d1bb51-1c14-4675-a687-ac93750f529e")
+			(tstamps "048f14fa-9f94-45b3-8351-462da6e414b7")
 			(units
 				(unit
 					(name "A")
@@ -4391,10 +4391,10 @@
 		(comp
 			(ref "U4")
 			(value "MAX98357AETE+T")
-			(footprint "AI_Glasses:VERIFY_9P")
+			(footprint "Package_DFN_QFN:QFN-16-1EP_3x3mm_P0.5mm_EP1.45x1.45mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_9P")
+					(name "Footprint") "Package_DFN_QFN:QFN-16-1EP_3x3mm_P0.5mm_EP1.45x1.45mm")
 				(field
 					(name "Datasheet")
 				)
@@ -4419,7 +4419,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "1af4c122-4369-46ba-86b4-58fa3e92e9f5")
+			(tstamps "8d9e0bfc-d991-44ef-a2f4-f4b995a9d487")
 			(units
 				(unit
 					(name "A")
@@ -4458,10 +4458,10 @@
 		(comp
 			(ref "U5")
 			(value "TPD2E009")
-			(footprint "AI_Glasses:TPD2E009_VERIFY")
+			(footprint "Package_TO_SOT_SMD:SOT-553")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:TPD2E009_VERIFY")
+					(name "Footprint") "Package_TO_SOT_SMD:SOT-553")
 				(field
 					(name "Datasheet")
 				)
@@ -4486,7 +4486,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "145011dd-e611-4925-b6b5-c5a26ef5577a")
+			(tstamps "bcb0e27e-d280-4f1d-991e-66acfe83e044")
 			(units
 				(unit
 					(name "A")
@@ -4507,10 +4507,10 @@
 		(comp
 			(ref "U6")
 			(value "TPS61022 (Boost)")
-			(footprint "AI_Glasses:VERIFY_5P")
+			(footprint "Package_DFN_QFN:Texas_RWU0007A_VQFN-7_2x2mm_P0.5mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_5P")
+					(name "Footprint") "Package_DFN_QFN:Texas_RWU0007A_VQFN-7_2x2mm_P0.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -4535,7 +4535,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "f600221c-6390-484b-9b84-0df22545b742")
+			(tstamps "ef1818ad-aa76-4fac-a5e3-caa441b4c90b")
 			(units
 				(unit
 					(name "A")
@@ -4562,10 +4562,10 @@
 		(comp
 			(ref "U7")
 			(value "BQ25180")
-			(footprint "AI_Glasses:VERIFY_8P")
+			(footprint "Package_BGA:Texas_DSBGA-12_1.36x1.86mm_Layout3x4_P0.5mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_8P")
+					(name "Footprint") "Package_BGA:Texas_DSBGA-12_1.36x1.86mm_Layout3x4_P0.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -4590,7 +4590,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "eef07839-9cb6-44bf-acdb-394d925fbde6")
+			(tstamps "991c34ae-d9c0-4b4e-ba1e-6ae8a46fb885")
 			(units
 				(unit
 					(name "A")
@@ -4626,10 +4626,10 @@
 		(comp
 			(ref "U8")
 			(value "BQ29700")
-			(footprint "AI_Glasses:VERIFY_3P")
+			(footprint "Package_TO_SOT_SMD:SOT-23-5")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_3P")
+					(name "Footprint") "Package_TO_SOT_SMD:SOT-23-5")
 				(field
 					(name "Datasheet")
 				)
@@ -4654,7 +4654,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "4f7cd3ec-7b7b-4737-bfc8-526c71300fb0")
+			(tstamps "921315f8-c3db-4a98-8192-95cf38ca7834")
 			(units
 				(unit
 					(name "A")
@@ -4675,10 +4675,10 @@
 		(comp
 			(ref "U9")
 			(value "MAX17048")
-			(footprint "AI_Glasses:VERIFY_6P")
+			(footprint "Package_DFN_QFN:DFN-8-1EP_2x3mm_P0.5mm_EP0.61x2.2mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_6P")
+					(name "Footprint") "Package_DFN_QFN:DFN-8-1EP_2x3mm_P0.5mm_EP0.61x2.2mm")
 				(field
 					(name "Datasheet")
 				)
@@ -4703,7 +4703,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "8fb42ed4-de69-488b-9c9c-f6db2b6cd331")
+			(tstamps "53ffe835-21ac-4f92-b7d0-3b40fa230fd8")
 			(units
 				(unit
 					(name "A")
@@ -4733,10 +4733,10 @@
 		(comp
 			(ref "U10")
 			(value "ICM-42688-P")
-			(footprint "AI_Glasses:VERIFY_5P")
+			(footprint "Package_LGA:LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_5P")
+					(name "Footprint") "Package_LGA:LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y")
 				(field
 					(name "Datasheet")
 				)
@@ -4761,7 +4761,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "c3103db5-952a-43e3-8950-e3b4ce9bdc38")
+			(tstamps "0bf4e0ca-60c1-4ec1-acde-2b4d886bbb4c")
 			(units
 				(unit
 					(name "A")
@@ -4788,10 +4788,10 @@
 		(comp
 			(ref "U11")
 			(value "DRV2605L")
-			(footprint "AI_Glasses:VERIFY_6P")
+			(footprint "Package_SO:MSOP-10_3x3mm_P0.5mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_6P")
+					(name "Footprint") "Package_SO:MSOP-10_3x3mm_P0.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -4816,7 +4816,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "f731e4a0-d57b-4755-8bbf-5a9ae48f0272")
+			(tstamps "11000e8b-4e07-4078-ad38-cf8181d87ccf")
 			(units
 				(unit
 					(name "A")
@@ -4846,10 +4846,10 @@
 		(comp
 			(ref "U12")
 			(value "TLV75733 (LDO)")
-			(footprint "AI_Glasses:VERIFY_3P")
+			(footprint "Package_TO_SOT_SMD:SOT-23-5")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_3P")
+					(name "Footprint") "Package_TO_SOT_SMD:SOT-23-5")
 				(field
 					(name "Datasheet")
 				)
@@ -4874,7 +4874,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "153165c6-a788-4f05-aa39-3683298073cc")
+			(tstamps "a772ccad-a1ed-4d33-8c98-03c727ef611b")
 			(units
 				(unit
 					(name "A")
@@ -4895,10 +4895,10 @@
 		(comp
 			(ref "U13")
 			(value "TLV75718 (LDO)")
-			(footprint "AI_Glasses:VERIFY_3P")
+			(footprint "Package_TO_SOT_SMD:SOT-23-5")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_3P")
+					(name "Footprint") "Package_TO_SOT_SMD:SOT-23-5")
 				(field
 					(name "Datasheet")
 				)
@@ -4923,7 +4923,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "48ddebff-24ad-4b93-ba23-cc1f2e402811")
+			(tstamps "895ddb5f-55fe-431e-a86f-40dd7f2bc471")
 			(units
 				(unit
 					(name "A")
@@ -4944,10 +4944,10 @@
 		(comp
 			(ref "U14")
 			(value "MAX-M10S-00B-01")
-			(footprint "AI_Glasses:VERIFY_9P")
+			(footprint "RF_GPS:ublox_MAX")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_9P")
+					(name "Footprint") "RF_GPS:ublox_MAX")
 				(field
 					(name "Datasheet")
 				)
@@ -4972,7 +4972,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "42fc66d0-4cf5-4789-ab86-981419450b99")
+			(tstamps "96fca131-7c32-4544-9354-f77e60792e48")
 			(units
 				(unit
 					(name "A")
@@ -5011,10 +5011,10 @@
 		(comp
 			(ref "U15")
 			(value "TPS25940 (e-fuse, opt)")
-			(footprint "AI_Glasses:VERIFY_4P")
+			(footprint "Package_DFN_QFN:Texas_RGP0020H_VQFN-20-1EP_4x4mm_P0.5mm_EP2.4x2.4mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_4P")
+					(name "Footprint") "Package_DFN_QFN:Texas_RGP0020H_VQFN-20-1EP_4x4mm_P0.5mm_EP2.4x2.4mm")
 				(field
 					(name "Datasheet")
 				)
@@ -5039,7 +5039,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "15a09432-3599-4ffd-9cc5-738e8131cc6b")
+			(tstamps "085133c3-022e-48e7-9568-93fed26bd9fd")
 			(units
 				(unit
 					(name "A")
@@ -5063,10 +5063,10 @@
 		(comp
 			(ref "U16")
 			(value "TPD4E05U06")
-			(footprint "AI_Glasses:TPD4E05U06_VERIFY")
+			(footprint "Package_SON:USON-10_2.5x1.0mm_P0.5mm")
 			(fields
 				(field
-					(name "Footprint") "AI_Glasses:TPD4E05U06_VERIFY")
+					(name "Footprint") "Package_SON:USON-10_2.5x1.0mm_P0.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -5091,7 +5091,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "3a4b4f41-1610-4e9e-a2ce-7ab30a3e1011")
+			(tstamps "b4889912-c472-44ca-89d3-bd06f1b296d2")
 			(units
 				(unit
 					(name "A")
@@ -6088,7 +6088,7 @@
 				(field
 					(name "Value") "ESD low-cap RF 0.3pF")
 				(field
-					(name "Footprint") "AI_Glasses:RF_ESD_2P_VERIFY")
+					(name "Footprint") "Diode_SMD:D_SOD-882")
 				(field
 					(name "Datasheet")
 				)
@@ -6178,7 +6178,7 @@
 				(field
 					(name "Value") "DF40C-100DS-0.4V(51)")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_B2B_J1_LOGICAL")
+					(name "Footprint") "Connector_Hirose_DF40:Hirose_DF40C-100DS-0.4V_2x50_P0.4mm")
 				(field
 					(name "Datasheet")
 				)
@@ -6413,7 +6413,7 @@
 				(field
 					(name "Value") "JST-SH 2p (spkr)")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_2P")
+					(name "Footprint") "Connector_JST:JST_SH_BM02B-SRSS-TB_1x02-1MP_P1.00mm_Vertical")
 				(field
 					(name "Datasheet")
 				)
@@ -6443,7 +6443,7 @@
 				(field
 					(name "Value") "DF40C-100DS-0.4V(51)")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_B2B_J31_LOGICAL")
+					(name "Footprint") "Connector_Hirose_DF40:Hirose_DF40C-100DS-0.4V_2x50_P0.4mm")
 				(field
 					(name "Datasheet")
 				)
@@ -6598,7 +6598,7 @@
 				(field
 					(name "Value") "DF40C-100DS-0.4V(51)")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_B2B_J32_LOGICAL")
+					(name "Footprint") "Connector_Hirose_DF40:Hirose_DF40C-100DS-0.4V_2x50_P0.4mm")
 				(field
 					(name "Datasheet")
 				)
@@ -6703,7 +6703,7 @@
 				(field
 					(name "Value") "GCT USB4085 (USB2)")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_7P")
+					(name "Footprint") "Connector_USB:USB_C_Receptacle_GCT_USB4085")
 				(field
 					(name "Datasheet")
 				)
@@ -6758,7 +6758,7 @@
 				(field
 					(name "Value") "JST-PH 3p")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_3P")
+					(name "Footprint") "Connector_JST:JST_PH_S3B-PH-SM4-TB_1x03-1MP_P2.00mm_Horizontal")
 				(field
 					(name "Datasheet")
 				)
@@ -6793,7 +6793,7 @@
 				(field
 					(name "Value") "JST-SH 2p")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_2P")
+					(name "Footprint") "Connector_JST:JST_SH_BM02B-SRSS-TB_1x02-1MP_P1.00mm_Vertical")
 				(field
 					(name "Datasheet")
 				)
@@ -6863,7 +6863,7 @@
 				(field
 					(name "Value") "U.FL / IPEX")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_2P")
+					(name "Footprint") "Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical")
 				(field
 					(name "Datasheet")
 				)
@@ -6953,7 +6953,7 @@
 				(field
 					(name "Value") "SPH0641LU4H-1")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_5P")
+					(name "Footprint") "Sensor_Audio:Knowles_LGA-5_3.5x2.65mm")
 				(field
 					(name "Datasheet")
 				)
@@ -6998,7 +6998,7 @@
 				(field
 					(name "Value") "SPH0641LU4H-1")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_5P")
+					(name "Footprint") "Sensor_Audio:Knowles_LGA-5_3.5x2.65mm")
 				(field
 					(name "Datasheet")
 				)
@@ -7613,7 +7613,7 @@
 				(field
 					(name "Value") "Tact SW SMD")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_2P")
+					(name "Footprint") "Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2")
 				(field
 					(name "Datasheet")
 				)
@@ -7643,7 +7643,7 @@
 				(field
 					(name "Value") "Tact SW SMD")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_2P")
+					(name "Footprint") "Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2")
 				(field
 					(name "Datasheet")
 				)
@@ -7673,7 +7673,7 @@
 				(field
 					(name "Value") "Tact SW SMD")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_2P")
+					(name "Footprint") "Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2")
 				(field
 					(name "Datasheet")
 				)
@@ -7703,7 +7703,7 @@
 				(field
 					(name "Value") "TestPoint 1.0mm")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -7728,7 +7728,7 @@
 				(field
 					(name "Value") "TestPoint 1.0mm")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -7753,7 +7753,7 @@
 				(field
 					(name "Value") "TestPoint 1.0mm")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -7778,7 +7778,7 @@
 				(field
 					(name "Value") "TestPoint 1.0mm")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -7803,7 +7803,7 @@
 				(field
 					(name "Value") "TestPoint 1.0mm")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -7828,7 +7828,7 @@
 				(field
 					(name "Value") "TestPoint 1.0mm")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -7853,7 +7853,7 @@
 				(field
 					(name "Value") "TestPoint 1.0mm")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -7878,7 +7878,7 @@
 				(field
 					(name "Value") "TestPoint 1.0mm")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -7903,7 +7903,7 @@
 				(field
 					(name "Value") "TestPoint 1.0mm")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -7928,7 +7928,7 @@
 				(field
 					(name "Value") "TestPoint 1.0mm")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -7953,7 +7953,7 @@
 				(field
 					(name "Value") "TestPoint 1.0mm")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -7978,7 +7978,7 @@
 				(field
 					(name "Value") "TestPoint 1.0mm")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -8003,7 +8003,7 @@
 				(field
 					(name "Value") "TestPoint 1.0mm")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -8028,7 +8028,7 @@
 				(field
 					(name "Value") "TestPoint 1.0mm")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -8053,7 +8053,7 @@
 				(field
 					(name "Value") "TestPoint 1.0mm")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -8078,7 +8078,7 @@
 				(field
 					(name "Value") "TestPoint 1.0mm")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_TP_1P")
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -8103,7 +8103,7 @@
 				(field
 					(name "Value") "ICM-42688-P")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_5P")
+					(name "Footprint") "Package_LGA:LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y")
 				(field
 					(name "Datasheet")
 				)
@@ -8148,7 +8148,7 @@
 				(field
 					(name "Value") "DRV2605L")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_6P")
+					(name "Footprint") "Package_SO:MSOP-10_3x3mm_P0.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -8198,7 +8198,7 @@
 				(field
 					(name "Value") "TLV75733 (LDO)")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_3P")
+					(name "Footprint") "Package_TO_SOT_SMD:SOT-23-5")
 				(field
 					(name "Datasheet")
 				)
@@ -8233,7 +8233,7 @@
 				(field
 					(name "Value") "TLV75718 (LDO)")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_3P")
+					(name "Footprint") "Package_TO_SOT_SMD:SOT-23-5")
 				(field
 					(name "Datasheet")
 				)
@@ -8268,7 +8268,7 @@
 				(field
 					(name "Value") "MAX-M10S-00B-01")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_9P")
+					(name "Footprint") "RF_GPS:ublox_MAX")
 				(field
 					(name "Datasheet")
 				)
@@ -8333,7 +8333,7 @@
 				(field
 					(name "Value") "TPS25940 (e-fuse, opt)")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_4P")
+					(name "Footprint") "Package_DFN_QFN:Texas_RGP0020H_VQFN-20-1EP_4x4mm_P0.5mm_EP2.4x2.4mm")
 				(field
 					(name "Datasheet")
 				)
@@ -8373,7 +8373,7 @@
 				(field
 					(name "Value") "TPD4E05U06")
 				(field
-					(name "Footprint") "AI_Glasses:TPD4E05U06_VERIFY")
+					(name "Footprint") "Package_SON:USON-10_2.5x1.0mm_P0.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -8418,7 +8418,7 @@
 				(field
 					(name "Value") "TPD4E05U06")
 				(field
-					(name "Footprint") "AI_Glasses:TPD4E05U06_VERIFY")
+					(name "Footprint") "Package_SON:USON-10_2.5x1.0mm_P0.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -8473,7 +8473,7 @@
 				(field
 					(name "Value") "LP5907-3.3 (low-noise LDO)")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_4P")
+					(name "Footprint") "Package_TO_SOT_SMD:SOT-23-5")
 				(field
 					(name "Datasheet")
 				)
@@ -8513,7 +8513,7 @@
 				(field
 					(name "Value") "MAX98357AETE+T")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_9P")
+					(name "Footprint") "Package_DFN_QFN:QFN-16-1EP_3x3mm_P0.5mm_EP1.45x1.45mm")
 				(field
 					(name "Datasheet")
 				)
@@ -8578,7 +8578,7 @@
 				(field
 					(name "Value") "TPD2E009")
 				(field
-					(name "Footprint") "AI_Glasses:TPD2E009_VERIFY")
+					(name "Footprint") "Package_TO_SOT_SMD:SOT-553")
 				(field
 					(name "Datasheet")
 				)
@@ -8613,7 +8613,7 @@
 				(field
 					(name "Value") "TPS61022 (Boost)")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_5P")
+					(name "Footprint") "Package_DFN_QFN:Texas_RWU0007A_VQFN-7_2x2mm_P0.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -8658,7 +8658,7 @@
 				(field
 					(name "Value") "BQ25180")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_8P")
+					(name "Footprint") "Package_BGA:Texas_DSBGA-12_1.36x1.86mm_Layout3x4_P0.5mm")
 				(field
 					(name "Datasheet")
 				)
@@ -8718,7 +8718,7 @@
 				(field
 					(name "Value") "BQ29700")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_3P")
+					(name "Footprint") "Package_TO_SOT_SMD:SOT-23-5")
 				(field
 					(name "Datasheet")
 				)
@@ -8753,7 +8753,7 @@
 				(field
 					(name "Value") "MAX17048")
 				(field
-					(name "Footprint") "AI_Glasses:VERIFY_6P")
+					(name "Footprint") "Package_DFN_QFN:DFN-8-1EP_2x3mm_P0.5mm_EP0.61x2.2mm")
 				(field
 					(name "Datasheet")
 				)

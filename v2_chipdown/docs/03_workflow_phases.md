@@ -26,6 +26,30 @@ Validate: BLE-connected power; IMU motion-interrupt power; continuous wake-word 
 ### Gate 1
 AON total ≤ **50 mW**; no meaningful compute-island leakage when RK3576 is off; BLE/button/IMU/voice all produce reliable wake; **100 consecutive** SoC on/off cycles with no lock-up.
 
+## Phase 1.5 — Mechanical/Electrical Floorplan (after schematic, before PCB layout)
+
+This is the required bridge between an ERC-clean schematic and formal PCB layout.
+The output is **not** a routed board. It is a dimensioned floorplan with top/side
+views, board outlines, placement envelopes, height envelopes, keep-outs and FPC
+corridors.
+
+Minimum deliverables:
+
+| Area | Required dimensions / checks |
+|---|---|
+| Right temple | usable internal length/width/height; Compute PCB outline; RK3576/LPDDR/RK806/eMMC/Wi-Fi/boost-inductor zones; battery envelope; speaker envelope; antenna keep-out; pogo/service area; shell/foam/swell allowance |
+| Left temple | usable internal length/width/height; AON/power PCB outline; nRF/nPM/NDP/BMI270 zones; battery envelope; BLE antenna keep-out; pogo/FPC corridor; shell/foam/swell allowance |
+| KiCad no-route floorplan | board frames plus RK3576, LPDDR, RK806, eMMC, Wi-Fi, boost inductor, FPC connectors, battery 3D/envelope blocks, speaker and antenna keep-outs |
+
+**Do not route.** Only prove the product volume can physically contain the
+current schematic architecture. If it does not fit, change the architecture now:
+shorter battery, different board split, delete DNP features, move Wi-Fi, widen a
+local temple pod, reduce connectors, or split into multiple rigid boards plus
+FPC. Do not discover this during routing.
+
+See [13_mechanical_electrical_floorplan.md](13_mechanical_electrical_floorplan.md)
+for the floorplan template and pass/fail checklist.
+
 ## Phase 2 — Truly-powerdownable RK3576 minimum core
 
 **Keep:** RK3576; 4 GB LPDDR4X; 32 GB eMMC; RK806S-5 PMIC; 24 MHz clock; USB2 MaskROM; UART debug; **one** MIPI CSI; PDM/SAI; Wi-Fi/BT (module or discrete); AON-MCU comms link; SoC master power switch; **per-domain current-sense points**.
@@ -72,14 +96,15 @@ AON boot → BLE connect + IMU LP detect + wake-word listen + read buttons/fuel
 3 finish L/R temple battery + board mechanical layout   ◄ Gate 0
 4 design AON MCU + Audio DSP prototype
 5 verify 20–50 mW standby + SoC power control           ◄ Gate 1
-6 design RK3576 minimum chip-down core
-7 build AON / camera / Wi-Fi / audio / SoC power islands
-8 bench EVT: Linux + power measurement on external supply ◄ Gate 2
-9 re-compute battery capacity from measured data
-10 design split rigid PCBs + hinge FPC
-11 add real battery, charging, fuel gauge, pogo pins
-12 worn-condition runtime / thermal / RF / wind validation
-13 decide whether to shrink battery or narrow temples further
+6 design RK3576 minimum chip-down core / system schematic
+7 Phase 1.5 no-route mechanical/electrical floorplan     ◄ Floorplan Gate
+8 build AON / camera / Wi-Fi / audio / SoC power islands
+9 bench EVT: Linux + power measurement on external supply ◄ Gate 2
+10 re-compute battery capacity from measured data
+11 design split rigid PCBs + hinge FPC
+12 add real battery, charging, fuel gauge, pogo pins
+13 worn-condition runtime / thermal / RF / wind validation
+14 decide whether to shrink battery or narrow temples further
 ```
 
 ## Gates for every revision

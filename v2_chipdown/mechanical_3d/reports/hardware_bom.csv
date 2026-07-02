@@ -1,0 +1,99 @@
+ref,bom_id,value,board,assembly,render_id,body_dims,envelope_dims,status,gate
+U1,C001,RK3576,R-Temple Compute Board,Fit,C01,16.1x17.2xH TBD,"SoC body, not full circuit",Candidate/HOLD,G01 (RK3576 datasheet/HDG/ballmap/DDR guide)
+U2,C002,RK806S-5 QFN68 7x7x0.90mm,R-Temple Compute Board,HOLD,C03,7.0x7.0x0.90,QFN68 ePad,Candidate/HOLD,"G03 (official RK806S-5 datasheet, OTP/default rails, sequence, layout guide)"
+U3,C003,Samsung K4U6E3S4AA-MGCL,R-Temple Compute Board,HOLD,C02,TBD package drawing,orange DDR placement envelope,HOLD,G02 (Samsung datasheet/ball map/IBIS + Rockchip DDR AVL/init + length report)
+U4,C004,Samsung KLMAG1JENB-B041,R-Temple Compute Board,HOLD,C04,11.5x13.0x0.8,153-FBGA,Candidate/HOLD,G04 (official Samsung datasheet/package + BSP boot/HS200 then HS400 validation)
+Y1,C005,24 MHz 10 ppm XTAL,R-Temple Compute Board,Fit,P04,3.2x2.5xH TBD,3225 crystal,Fit,G01 (reuse reference CL/ESR + placement distance per HDG)
+U5,C006,MX25U6432F,R-Temple Compute Board,DNP,,see schematic / TBD or passive,,DNP,Boot flow decides whether production needs it
+U6,C007,TPS61088,R-Temple Compute Board,HOLD,P02,4.5x3.5xH TBD,boost IC body,Candidate/HOLD,"G06/G09 (measured RK3576 boot+AI peak, soft-start, droop, thermal)"
+L1,C008,Coilcraft XGL4020-102MEC 1.0uH,R-Temple Compute Board,HOLD,P03,4.0x4.0x2.0,high-current magnetic,Candidate/HOLD,G06/G13 (Isat/DCR/thermal pass for 5.1V 3A continuous / 4A peak boost)
+U11,C015,FCU760KAAMD,R-Temple Compute Board,HOLD,RF01,13.0x12.2x2.0,LCC module,HOLD,G05 (Quectel HW Design + RK3576 BSP driver/firmware/enum) + official LCC land pattern
+U12,C016,TPS62825,R-Temple Compute Board,Fit,,see schematic / TBD or passive,,Fit,G05/G06 (inductor/caps per module 353mA TX peak + ripple)
+L2,C016c,Wi-Fi buck inductor (TBD),R-Temple Compute Board,Fit,,see schematic / TBD or passive,,Fit,Per TPS62825 peak+ripple
+U13,C016b,TPS22917DBVR,R-Temple Compute Board,Fit,,see schematic / TBD or passive,,Fit,G05 (turn-on sequence w/ module)
+C1,C015-C,47uF 6.3V X5R,R-Temple Compute Board,Fit,,see schematic / TBD or passive,,Fit,Local bulk per Quectel HW Design
+RT3,C043,10k NTC B=3435,R-Temple Compute Board,Fit,,see schematic / TBD or passive,,Fit,Probe position per thermal sim
+U35,C010b,BQ25895,R-Temple Compute Board,HOLD,P01,TBD official package,charger placement envelope,HOLD,"Charger/power-path config, TS thresholds, 1S2P charge profile, thermal/current validation"
+U36,C034b,5V input eFuse/OVP (MPN TBD),R-Temple Compute Board,HOLD,,see schematic / TBD or passive,,HOLD,"Select MPN for pogo/USB VBUS surge, reverse, OVP, current limit and thermal fault"
+U7,C009,nRF54L15-QFN48,L-Temple AON/Power Board,Fit,A01,6x6x0.85,QFN48,Fit,EVT-frozen (RF layout/SDK/package to freeze early)
+U8,C010,nPM1300,L-Temple AON/Power Board,HOLD,A02,5x5xH TBD,AON rails/gauge,HOLD,G08 (AON <=25/50mW) — configure via nPM PowerUP on EK before board
+U9,C011,NDP120,L-Temple AON/Power Board,HOLD,A03,5x5xH TBD,QFN40 target,HOLD,Full datasheet + dev kit + measured listening power + NDA/licensing
+U10,C012,BMI270,L-Temple AON/Power Board,Fit,A04,2.5x3.0x0.8,LGA14,Fit,Evaluate false-trigger under real frame vibration
+J6,C018,FCU760K ANT_BT DNP test pad,Temple Rears (batt/spkr/ant),DNP,,see schematic / TBD or passive,,DNP,Only populate if Quectel FAE + coexistence test requires the second RF port
+J7,C017,Taoglas FXP840.07.0055B,Temple Rears (batt/spkr/ant),HOLD,RF02,14x5x0.1,plastic window keep-out,HOLD,G14 (worn-state tune + antenna keep-out in full shell with battery/speaker)
+U14,C019,Sony IMX415-AAQR-C custom module,Front Sensor Board,HOLD,CAM01,sensor PCB <=15x15; total Z <=9.5 target,lens+IR+PCB+FPC TBD envelope,HOLD/TBD,G10 (module lens/FOV/FPC pinout/lane/supply/timing from vendor)
+U15,C020,TPS62840,Front Sensor Board,Fit,,see schematic / TBD or passive,,Fit,Output current/noise per final module (DVDD ~250mA max + margin)
+L3,C020b,Cam 1V1 buck inductor (TBD),Front Sensor Board,Fit,,see schematic / TBD or passive,,Fit,Per TPS62840 design
+U16,C021,TLV75529PDRVR,Front Sensor Board,Fit,,see schematic / TBD or passive,,Fit,Verify vs IMX415 AVDD peak (156mA) + PSRR
+U17,C022,TPS22917DBVR,Front Sensor Board,Fit,,see schematic / TBD or passive,,Fit,"Check reverse block, ramp, QOD, logic level"
+U18,C023a,TPD4E05U06,Front Sensor Board,Fit,,see schematic / TBD or passive,,Fit,Low-cap array near FPC entry
+U19,C023b,TPD4E05U06,Front Sensor Board,Fit,,see schematic / TBD or passive,,Fit,Low-cap array near FPC entry
+U34,C023c,TPD4E05U06,Front Sensor Board,Fit,,see schematic / TBD or passive,,Fit,Low-cap array near FPC entry for 4-lane CSI
+MK1,C013a,T5837 (wake mic),Front Sensor Board,Fit,MIC1,3.50x2.65x0.98,bottom-port MEMS,Fit,G11 (mic coords/ports/wind/wake + AEC/beamforming)
+MK2,C013b,T5837 (array mic 1),Front Sensor Board,Fit,MIC2,3.50x2.65x0.98,bottom-port MEMS,Fit,G11
+MK3,C013c,T5837 (array mic 2),Front Sensor Board,Fit,MIC3,3.50x2.65x0.98,bottom-port MEMS,Fit,G11
+MK4,C014,T5837 (4th mic),Front Sensor Board,DNP,,see schematic / TBD or passive,,DNP,G11 (populate only if array sim/proto needs it)
+U20,C024,MAX98360A,R-Temple Compute Board,Fit,,see schematic / TBD or passive,,Fit,Verify Z/cavity/EMI/peak power
+U21,C024b,TPS22917DBVR,R-Temple Compute Board,Fit,,see schematic / TBD or passive,,Fit,Amp must be fully power-downable (V1 lesson)
+LS1,C025,CUI CMS-15113-078SP-67,Temple Rears (batt/spkr/ant),HOLD,SPK-R,15x11x3,0.3-0.5cc cavity,HOLD,"Acoustic EVT: 0.3-0.5cc cavity, port/foam seal, magnet-to-antenna clearance, leak test"
+LS2,C026,2nd speaker pad,Temple Rears (batt/spkr/ant),DNP,,see schematic / TBD or passive,,DNP,Decide dual-speaker at EVT-B
+U22,C027,DRV2605L,L-Temple AON/Power Board,DNP,,see schematic / TBD or passive,,DNP,Vibration P1 — may DNP on first board (IMU/mic coupling)
+M1,C028,LRA/ERM motor,Temple Rears (batt/spkr/ant),DNP,,see schematic / TBD or passive,,DNP,Vibration P1
+BT1,C029,LP451165 300mAh (R),Temple Rears (batt/spkr/ant),HOLD,BAT-R,70x12.8x5.6 max,cell+seal+PCM+foam+swell,HOLD,"G07 (full datasheet, >=2C, IR, cycles, cert)"
+BT2,C030,LP451165 300mAh (L),Temple Rears (batt/spkr/ant),HOLD,BAT-L,70x12.8x5.6 max,cell+seal+PCM+foam+swell,HOLD,G07
+F1,C031a,PTC/fuse (R branch),Temple Rears (batt/spkr/ant),TBD,,see schematic / TBD or passive,,TBD,"Rating from peak-current calc (> branch peak, < FPC rating)"
+F2,C031b,PTC/fuse (L branch),Temple Rears (batt/spkr/ant),TBD,,see schematic / TBD or passive,,TBD,Rating from peak-current calc
+RS2,C044-RCL,10 mohm 1%,Temple Rears (batt/spkr/ant),Fit,,see schematic / TBD or passive,,Fit,Branch current-share (§7/§29)
+RS3,C044-RCR,10 mohm 1%,Temple Rears (batt/spkr/ant),Fit,,see schematic / TBD or passive,,Fit,Branch current-share (§7/§29)
+RS1,C044-RBAT,10 mohm 1% 1W,L-Temple AON/Power Board,Fit,,see schematic / TBD or passive,,Fit,I_BAT_TOTAL; the one production-kept sense path
+R21,C032-BYP,0R (pack-PCM baseline),L-Temple AON/Power Board,Fit,,see schematic / TBD or passive,,Fit,"Populate 0R OR discrete protection, never both (§17)"
+U23,C032,BQ2970,L-Temple AON/Power Board,DNP,,see schematic / TBD or passive,,DNP,Keep ONE protection scheme; confirm suffix OVP/UVP/OCP vs nPM1300/boost UVLO (§17)
+Q1,C032-Q,Dual N-MOSFET (b2b),L-Temple AON/Power Board,DNP,,see schematic / TBD or passive,,DNP,Vds/RDSon/Vgs/peak per BQ2970 app (§17)
+R22,C032-Rv,330R,L-Temple AON/Power Board,DNP,,see schematic / TBD or passive,,DNP,Per BQ2970 app
+C2,C032-Cv,0.1uF,L-Temple AON/Power Board,DNP,,see schematic / TBD or passive,,DNP,Per BQ2970 app
+R23,C032-Rm,2k,L-Temple AON/Power Board,DNP,,see schematic / TBD or passive,,DNP,Per BQ2970 app (V- sense)
+RT1,C033a,10k NTC B=3435 1% (R cell),Temple Rears (batt/spkr/ant),Fit,,see schematic / TBD or passive,,Fit,NTC curve/package/placement matched to pack supplier + BQ25895/nPM1300 config
+RT2,C033b,10k NTC B=3435 1% (L cell),Temple Rears (batt/spkr/ant),Fit,,see schematic / TBD or passive,,Fit,NTC curve/package/placement matched to pack supplier + ADC/config
+TP2,C033-TP,Battery test points,Temple Rears (batt/spkr/ant),Fit,,see schematic / TBD or passive,,Fit,Cell/pack voltage + NTC probe access (§21)
+J1,C034,CCP P2578MP01-06C180HT,Temple Rears (batt/spkr/ant),HOLD,J01,target 10x3x1,6 pins: GND D- D+ GND VBUS VBUS,HOLD,"USB2 eye/contact validation, current/fault/ESD, mating STEP, corrosion/cycle life"
+J2,C035,USB-C 16p USB2-only,EVT Debug Tail,Fit,,see schematic / TBD or passive,,Fit,Connector height + shell opening co-freeze
+U24,C036,TPD2E001,EVT Debug Tail,Fit,,see schematic / TBD or passive,,Fit,Keep ~90 ohm diff + continuous ref gnd
+R1,C037a,5.1k 1%,EVT Debug Tail,Fit,,see schematic / TBD or passive,,Fit,USB-C spec
+R2,C037b,5.1k 1%,EVT Debug Tail,Fit,,see schematic / TBD or passive,,Fit,USB-C spec
+J3,C038,Hirose FH26W-33S-0.3SHW(97),Front Sensor Board,HOLD,J03,11.4x3.2x1.0 approx,33-pin 0.3mm pitch,HOLD,"G10/G12 (camera module vendor signs 33-pin pinout, contact orientation, impedance)"
+J5,C040,U.FL / I-PEX MHF RF test connector,Temple Rears (batt/spkr/ant),DNP,,see schematic / TBD or passive,,DNP,EVT RF debug only; production prefers direct coax or soldered antenna pigtail
+TP1,C041,UART/SWD pogo pads,EVT Debug Tail,Fit,,see schematic / TBD or passive,,Fit,Voltage domain clearly labelled (no 3.3V into 1.8V IO)
+SW1,C042a,Power/PWRKEY,EVT Debug Tail,Fit,,see schematic / TBD or passive,,Fit,First chip-down must recover from boot failure
+SW2,C042b,Reset,EVT Debug Tail,Fit,,see schematic / TBD or passive,,Fit,Bring-up
+SW3,C042c,MaskROM/Recovery,EVT Debug Tail,Fit,,see schematic / TBD or passive,,Fit,Bring-up (recover from bad boot)
+RS4,C044-RSOC,10 mohm 1%,R-Temple Compute Board,Fit,,see schematic / TBD or passive,,Fit,5-20 mohm (2A x 10m=20mV; avoid boost UVLO)
+RS5,C044-RWIFI,50 mohm 1%,R-Temple Compute Board,Fit,,see schematic / TBD or passive,,Fit,20-100 mohm
+RS6,C044-RAUD,50 mohm 1%,R-Temple Compute Board,Fit,,see schematic / TBD or passive,,Fit,20-100 mohm
+RS7,C044-RC1,100 mohm 1%,Front Sensor Board,Fit,,see schematic / TBD or passive,,Fit,Per-rail Kelvin (§23/§29); DVDD ~250mA
+RS8,C044-RC8,100 mohm 1%,Front Sensor Board,Fit,,see schematic / TBD or passive,,Fit,Per-rail Kelvin (§23/§29); IOVDD ~3mA
+RS9,C044-RC29,100 mohm 1%,Front Sensor Board,Fit,,see schematic / TBD or passive,,Fit,Per-rail Kelvin (§23/§29); AVDD ~156mA
+U25,C044a,INA238 (I_BAT_TOTAL),L-Temple AON/Power Board,DNP,,see schematic / TBD or passive,,DNP,Power Gate — EVT-A; production may keep this one
+U26,C044-ICL,INA238 (I_CELL_L),Temple Rears (batt/spkr/ant),DNP,,see schematic / TBD or passive,,DNP,Power Gate — EVT-A only (current-share)
+U27,C044-ICR,INA238 (I_CELL_R),Temple Rears (batt/spkr/ant),DNP,,see schematic / TBD or passive,,DNP,Power Gate — EVT-A only (current-share)
+U28,C044c,INA238 (I_SOC_5V),R-Temple Compute Board,DNP,,see schematic / TBD or passive,,DNP,Power Gate — EVT-A only
+U29,C044e,INA238 (I_WIFI),R-Temple Compute Board,DNP,,see schematic / TBD or passive,,DNP,Power Gate — EVT-A only
+U30,C044f,INA238 (I_AUDIO),R-Temple Compute Board,DNP,,see schematic / TBD or passive,,DNP,Power Gate — EVT-A only
+U31,C044-IC1,INA238 (I_CAM_1V1),Front Sensor Board,DNP,,see schematic / TBD or passive,,DNP,Power Gate — EVT-A only
+U32,C044-IC8,INA238 (I_CAM_1V8),Front Sensor Board,DNP,,see schematic / TBD or passive,,DNP,Power Gate — EVT-A only
+U33,C044-IC29,INA238 (I_CAM_2V9),Front Sensor Board,DNP,,see schematic / TBD or passive,,DNP,Power Gate — EVT-A only
+R11,C046a,100k,R-Temple Compute Board,Fit,,see schematic / TBD or passive,,Fit,Default OFF (§4)
+R12,C046b,100k,R-Temple Compute Board,Fit,,see schematic / TBD or passive,,Fit,Default OFF (§4)
+R13,C046c,100k,Front Sensor Board,Fit,,see schematic / TBD or passive,,Fit,Default OFF (§4)
+R14,C046d,100k,Front Sensor Board,Fit,,see schematic / TBD or passive,,Fit,Default OFF (§4)
+R15,C046e,100k,Front Sensor Board,Fit,,see schematic / TBD or passive,,Fit,Default OFF (§4)
+R16,C046f,100k,R-Temple Compute Board,Fit,,see schematic / TBD or passive,,Fit,Default OFF (§4)
+R17,C046g,100k,R-Temple Compute Board,Fit,,see schematic / TBD or passive,,Fit,Default OFF (§4)
+R18,C046h,100k,R-Temple Compute Board,Fit,,see schematic / TBD or passive,,Fit,Default OFF (§4/§9: FCU760K CHIP_EN default low)
+R19,C046i,100k,R-Temple Compute Board,Fit,,see schematic / TBD or passive,,Fit,Default OFF (§4)
+R20,C046j,100k,R-Temple Compute Board,Fit,,see schematic / TBD or passive,,Fit,Default OFF (§4)
+R3,C045a,2.2k 1%,L-Temple AON/Power Board,Fit,,see schematic / TBD or passive,,Fit,Confirm vs total AON bus capacitance
+R4,C045b,2.2k 1%,L-Temple AON/Power Board,Fit,,see schematic / TBD or passive,,Fit,Confirm vs total AON bus capacitance
+R5,C045c,2.2k 1%,Front Sensor Board,Fit,,see schematic / TBD or passive,,Fit,Confirm vs camera bus capacitance
+R6,C045d,2.2k 1%,Front Sensor Board,Fit,,see schematic / TBD or passive,,Fit,Confirm vs camera bus capacitance
+R9,C045e,2.2k 1%,R-Temple Compute Board,Fit,,see schematic / TBD or passive,,Fit,Confirm vs SoC PMIC bus
+R10,C045f,2.2k 1%,R-Temple Compute Board,Fit,,see schematic / TBD or passive,,Fit,Confirm vs SoC PMIC bus

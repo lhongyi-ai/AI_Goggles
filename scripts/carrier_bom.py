@@ -63,20 +63,65 @@ def _fp(ref: str, fallback: str = "") -> str:
 
 
 FALLBACK_FOOTPRINTS = {
-    # CM4 B2B connectors: schematic/logical refs; replace with verified Hirose DF40 footprint before layout.
-    "J31": "AI_Glasses:VERIFY_B2B_J31_LOGICAL",
-    "J32": "AI_Glasses:VERIFY_B2B_J32_LOGICAL",
-    "J1": "AI_Glasses:VERIFY_B2B_J1_LOGICAL",
+    # CM4 B2B connectors: exact Hirose carrier-side receptacle, shipped in KiCad's
+    # Connector_Hirose_DF40 library. The footprint geometry is authoritative; the
+    # relative XY placement of the 3 connectors still needs the mechanical
+    # fit-check (official CM4 STEP + 2-layer coupon) before layout — see §8.
+    "J31": "Connector_Hirose_DF40:Hirose_DF40C-100DS-0.4V_2x50_P0.4mm",
+    "J32": "Connector_Hirose_DF40:Hirose_DF40C-100DS-0.4V_2x50_P0.4mm",
+    "J1":  "Connector_Hirose_DF40:Hirose_DF40C-100DS-0.4V_2x50_P0.4mm",
 
-    # Debug header footprint is low-risk and useful during bring-up.
-    "J7": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+    # GNSS module + IMU: authoritative KiCad library footprints for these packages.
+    "U14": "RF_GPS:ublox_MAX",                                   # MAX-M10S (u-blox MAX form factor, LGA-18)
+    "U10": "Package_LGA:LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y",  # ICM-42688-P LGA-14 (verify pin1/map)
+
+    # Other ICs with confirmed packages mapped to KiCad library footprints.
+    "U7":  "Package_BGA:Texas_DSBGA-12_1.36x1.86mm_Layout3x4_P0.5mm",       # BQ25180 DSBGA-12
+    "U9":  "Package_DFN_QFN:DFN-8-1EP_2x3mm_P0.5mm_EP0.61x2.2mm",           # MAX17048 TDFN-8
+    "U15": "Package_DFN_QFN:Texas_RGP0020H_VQFN-20-1EP_4x4mm_P0.5mm_EP2.4x2.4mm",  # TPS25940 VQFN-20 (DNP)
+    "U8":  "Package_TO_SOT_SMD:SOT-23-5",                                   # BQ29700 (confirm vs ordered suffix)
+    "U6":  "Package_DFN_QFN:Texas_RWU0007A_VQFN-7_2x2mm_P0.5mm",            # TPS61022 (TI RWU0007A drawing)
+
+    # Confirmed real footprints from the installed KiCad 10 standard libraries.
+    # Package verified per each part's datasheet; replaces VERIFY placeholders.
+    "J7": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",      # UART debug 1x4
+    "J4": "Connector_USB:USB_C_Receptacle_GCT_USB4085",                      # USB-C (GCT USB4085)
+    "J3": "Connector_JST:JST_SH_BM02B-SRSS-TB_1x02-1MP_P1.00mm_Vertical",    # speaker SH 2p
+    "J6": "Connector_JST:JST_SH_BM02B-SRSS-TB_1x02-1MP_P1.00mm_Vertical",    # vibration SH 2p
+    "J5": "Connector_JST:JST_PH_S3B-PH-SM4-TB_1x03-1MP_P2.00mm_Horizontal",  # battery PH 3p
+    "J8": "Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical",            # GNSS U.FL
+    "U3": "Package_TO_SOT_SMD:SOT-23-5",                                     # LP5907 LDO
+    "U12": "Package_TO_SOT_SMD:SOT-23-5",                                    # TLV75733 LDO
+    "U13": "Package_TO_SOT_SMD:SOT-23-5",                                    # TLV75718 LDO
+    "U4": "Package_DFN_QFN:QFN-16-1EP_3x3mm_P0.5mm_EP1.45x1.45mm",           # MAX98357A TQFN-16
+    "U11": "Package_SO:MSOP-10_3x3mm_P0.5mm",                                # DRV2605L VSSOP/MSOP-10
+    "MK1": "Sensor_Audio:Knowles_LGA-5_3.5x2.65mm",                          # SPH0641LU4H-1
+    "MK2": "Sensor_Audio:Knowles_LGA-5_3.5x2.65mm",                          # SPH0641LU4H-1
+    "SW1": "Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2",                      # RECOVERY
+    "SW2": "Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2",                      # RESET
+    "SW3": "Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2",                      # POWER
+    "D4": "Diode_SMD:D_0201_0603Metric",                                     # GNSS RF low-cap ESD
+}
+
+# Candidate base manufacturer part numbers for the active devices (the part name
+# already appears in each Component.value). LCSC + full orderable suffix are
+# pending procurement lock, so they are intentionally left empty here.
+ACTIVE_MPN = {
+    "U2": "TPD4E05U06", "U16": "TPD4E05U06", "U5": "TPD2E009",
+    "U3": "LP5907MFX-3.3", "U6": "TPS61022", "U7": "BQ25180", "U8": "BQ29700",
+    "U9": "MAX17048", "U10": "ICM-42688-P", "U11": "DRV2605L",
+    "U12": "TLV75733", "U13": "TLV75718", "U15": "TPS25940",
+    "MK1": "SPH0641LU4H-1", "MK2": "SPH0641LU4H-1", "D3": "SMAJ5.0A",
+    "J4": "USB4085-GF-A", "J3": "SM02B-SRSS-TB", "J6": "SM02B-SRSS-TB",
+    "J5": "S3B-PH-SM4-TB", "J8": "U.FL-R-SMT-1",
+    "J31": "DF40C-100DS-0.4V(51)", "J32": "DF40C-100DS-0.4V(51)", "J1": "DF40C-100DS-0.4V(51)",
 }
 
 
 def _fallback_footprint(comp: Component) -> str:
     ref = comp.ref
     if ref.startswith("TP") and ref[2:].isdigit():
-        return "AI_Glasses:VERIFY_TP_1P"
+        return "TestPoint:TestPoint_Pad_D1.5mm"
     explicit = FALLBACK_FOOTPRINTS.get(ref)
     if explicit:
         return explicit
@@ -493,6 +538,8 @@ def _apply_footprints() -> None:
     for comp in COMPONENTS:
         if not comp.footprint:
             comp.footprint = _fp(comp.ref, _fallback_footprint(comp))
+        if not comp.mpn and comp.ref in ACTIVE_MPN:
+            comp.mpn = ACTIVE_MPN[comp.ref]
 
 
 _apply_footprints()

@@ -1,0 +1,1 @@
+FreeCAD/freecadcmd command not found; STEP export cannot be generated on this machine.

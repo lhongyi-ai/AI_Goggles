@@ -43,7 +43,8 @@ def main() -> int:
     w("Related generated gates: [08 signal dictionary](08_signal_dictionary.md), "
       "[09 power-domain isolation](09_power_domain_isolation_matrix.md), "
       "[11 footprint register](11_footprint_register.md), "
-      "[12 layout-entry status](12_layout_entry_gate_status.md).")
+      "[12 layout-entry status](12_layout_entry_gate_status.md), plus "
+      "[13 Phase 1.5 floorplan](13_mechanical_electrical_floorplan.md).")
     w("")
     for board in BOARDS:
         rows = sorted((c for c in COMPONENTS if c.board == board), key=bom_key)

@@ -13,7 +13,7 @@ SCOPE — this is deliberately the *pre-PCB-layout* system schematic only:
   * power domains + power tree topology (which rail comes from which regulator)
   * the AON control plane (every EN / PG / PWRON / WAKE / READY / FAULT / RESET
     handshake between nRF54L15, nPM1300, RK3576, NDP120 and the load switches)
-  * the interface buses that are already knowable (MIPI CSI 2-lane, PDM, I2S,
+  * the interface buses that are already knowable (MIPI CSI 4-lane, PDM, I2S,
     USB2 x2 [external + FCU760K], PCM, AON I2C/SPI/UART, SWD, current-sense I2C)
 It is NOT a ball-level netlist. Parts whose datasheet / ball-map is not yet in
 hand (RK3576, RK806S, LPDDR4X, eMMC, NDP120, the custom IMX415 module, the
@@ -64,9 +64,10 @@ EVT = "EVT Debug Tail"
 #
 # Power path / rails:
 #   BATR_P, BATL_P  raw cell + terminals (right / left temple)
-#   BAT_P           protected pack + (out of branch protection, into nPM1300 VBAT)
+#   BAT_P           supplier-pack protected 1S2P pack +, into BQ25895/nPM1300
 #   VSYS            nPM1300 power-path system node — main distribution rail
-#   USB_5V          VBUS from USB-C / pogo (charger input)
+#   VBUS_RAW       VBUS from USB-C / pogo before input protection/eFuse
+#   USB_5V          protected 5 V into BQ25895 / charger input
 #   AON_1V8         nPM1300 BUCK1  (always on)
 #   AON_3V3         nPM1300 BUCK2  (always on / mode)
 #   SOC_5V          TPS61088 boost out -> RK806S input
@@ -91,12 +92,12 @@ EVT = "EVT Debug Tail"
 #   NTC_R, NTC_L
 #
 # Interfaces:
-#   MIPI  CSI_CLK_P/N, CSI_D0_P/N, CSI_D1_P/N (2-lane 1080p) + CAM_I2C_SCL/SDA,
+#   MIPI  CSI_CLK_P/N, CSI_D0/1/2/3_P/N (4-lane IMX415 target) + CAM_I2C_SCL/SDA,
 #         CAM_RST_L, CAM_PWDN_L, CAM_MCLK
 #   Audio PDM_WAKE_CLK/DATA (wake mic->DSP), PDM_ARRAY_CLK/D0/D1 (array->RK3576),
 #         I2S_BCLK/LRCLK/DIN (RK3576->amp)
 #   Radio FCU760K over USB2: WIFI_USB_DP/DM, WIFI_PCM_CLK/SYNC/DIN/DOUT,
-#         WIFI_CHIP_EN, WIFI_WAKE_L, WIFI_ANT, BLE_ANT
+#         WIFI_CHIP_EN, WIFI_WAKE_L, WIFI_ANT, BLE_ANT_DNP
 #   USB2  USB2_DP/DM (external), CC1, CC2
 #   Debug SOC_DBG_TX/RX, NRF_SWDIO/SWDCLK, SOC_MASKROM_L, SOC_RESET_L, SOC_PWRKEY
 # Active level is in the name: _L = active low, EN/PGOOD = active high.
@@ -117,7 +118,8 @@ NET_META: dict[str, dict] = {
     # power rails
     "BAT_P":       dict(dom="Vbat", kind="power", default="live", note="protected 1S2P pack +"),
     "VSYS":        dict(dom="Vbat", kind="power", default="live", note="nPM1300 power-path system node"),
-    "USB_5V":      dict(dom="5V",   kind="power", default="ext",  note="VBUS present only when charging"),
+    "VBUS_RAW":    dict(dom="5V",   kind="power", default="ext",  note="raw pogo/USB-C VBUS before eFuse/OVP"),
+    "USB_5V":      dict(dom="5V",   kind="power", default="ext",  note="protected VBUS into BQ25895/nPM1300 sense"),
     "AON_1V8":     dict(dom="1.8V", kind="power", default="on",   note="always-on nPM1300 BUCK1"),
     "AON_3V3":     dict(dom="3.3V", kind="power", default="on",   note="always-on nPM1300 BUCK2"),
     "SOC_5V":      dict(dom="5V",   kind="power", default="off",  note="TPS61088 boost, gated"),
@@ -167,10 +169,10 @@ NET_META: dict[str, dict] = {
     "CAM_MCLK":    dict(dom="1.8V", kind="control", direction="RK3576->cam", default="off", note="INCK; enable only after rails stable (§24)"),
     "PDM_WAKE_CLK":dict(dom="AON",  kind="bus", direction="NDP120->mic", default="off", note="wake mic PDM; 0R/22R debug pos; single master"),
     "PDM_ARRAY_CLK":dict(dom="AON", kind="bus", direction="RK3576->mic", default="off", note="array PDM; 0R to select NDP120/RK3576 path"),
-    "WIFI_ANT":    dict(dom="RF",   kind="analog", default="-", note="50R; pi-match; keep-out; away from battery/magnet/hinge"),
-    "BLE_ANT":     dict(dom="RF",   kind="analog", default="-", note="50R; separated from Wi-Fi antenna"),
+    "WIFI_ANT":    dict(dom="RF",   kind="analog", default="-", note="50R; pi-match; shared Wi-Fi/BLE FPC antenna; keep out from battery/magnet/shield/copper"),
+    "BLE_ANT":     dict(dom="RF",   kind="analog", default="-", note="DNP optional FCU760K ANT_BT test/matching node; no separate BLE antenna fitted in EVT V2.0"),
     # battery / protection
-    "CELL_NEG":    dict(dom="Vbat", kind="power", default="live", note="cells- ; 0R bypass OR protection FETs (§17)"),
+    "CELL_NEG":    dict(dom="Vbat", kind="power", default="live", note="internal cell negative into supplier pack PCM; no board BQ2970"),
     "NPM_VBAT":    dict(dom="Vbat", kind="power", default="live", note="nPM1300 VBAT (after RS1 total shunt)"),
     "NTC_R":       dict(dom="analog", kind="analog", default="-", note="per-cell NTC (§15)"),
     "NTC_L":       dict(dom="analog", kind="analog", default="-", note="per-cell NTC (§15)"),
@@ -192,6 +194,7 @@ POWER_SOURCE_HINTS = {
     "NPM_VBAT": "RS1 pack-total shunt",
     "VSYS": "nPM1300 power-path output",
     "USB_5V": "USB-C or magnetic pogo VBUS",
+    "VBUS_RAW": "USB-C or magnetic pogo before input protection",
     "AON_1V8": "nPM1300 BUCK1",
     "AON_3V3": "nPM1300 BUCK2",
     "AON_LSW2": "nPM1300 load switch 2",
@@ -216,13 +219,14 @@ POWER_SOURCE_HINTS = {
     "VCC_DDRIO": "RK806S rail",
     "VCCIO_1V8": "RK806S rail",
     "VCC_3V3": "RK806S rail",
-    "PROT_VDD": "BQ2970 VDD RC network (DNP fallback)",
 }
 
 _DIFF_PAIR_MATES = {
     "CSI_CLK_P": "CSI_CLK_N", "CSI_CLK_N": "CSI_CLK_P",
     "CSI_D0_P": "CSI_D0_N", "CSI_D0_N": "CSI_D0_P",
     "CSI_D1_P": "CSI_D1_N", "CSI_D1_N": "CSI_D1_P",
+    "CSI_D2_P": "CSI_D2_N", "CSI_D2_N": "CSI_D2_P",
+    "CSI_D3_P": "CSI_D3_N", "CSI_D3_N": "CSI_D3_P",
     "USB2_DP": "USB2_DM", "USB2_DM": "USB2_DP",
     "WIFI_USB_DP": "WIFI_USB_DM", "WIFI_USB_DM": "WIFI_USB_DP",
     "SPK_P": "SPK_N", "SPK_N": "SPK_P",
@@ -249,7 +253,7 @@ _FULL_NAMES = {
     "PDM_ARRAY_D0": "Array-mic PDM data 0",
     "PDM_ARRAY_D1": "Array-mic PDM data 1",
     "WIFI_ANT": "Wi-Fi/BT shared RF antenna feed",
-    "BLE_ANT": "BLE RF antenna feed",
+    "BLE_ANT": "Optional FCU760K ANT_BT DNP RF test feed",
 }
 
 
@@ -288,7 +292,7 @@ def _infer_kind(net: str, explicit: str | None) -> str:
         return "power"
     if n.endswith(("_P", "_N", "_DP", "_DM")) and n in _DIFF_PAIR_MATES:
         return "diff"
-    if "ANT" in n or n.startswith(("NTC", "SOC_NTC", "PROT_")):
+    if "ANT" in n or n.startswith(("NTC", "SOC_NTC")):
         return "analog"
     if any(s in n for s in ("I2C", "SPI", "UART", "PDM", "I2S", "PCM", "DDR", "EMMC", "FSPI", "SWD", "USB_CC")):
         return "bus"
@@ -317,7 +321,7 @@ def _infer_domain(net: str, kind: str, explicit: str | None) -> str:
         return "3.3V"
     if n.startswith(("VDD_CPU", "VDD_GPU", "VDD_NPU", "VDD_LOGIC", "VDD_DDR")):
         return "RK806 rail (TBD)"
-    if n.startswith(("BAT", "CELL", "NPM", "VSYS", "SOC_IN", "WIFI_IN", "AUDIO_IN", "PROT_")):
+    if n.startswith(("BAT", "CELL", "NPM", "VSYS", "SOC_IN", "WIFI_IN", "AUDIO_IN")):
         return "Vbat"
     if "CSI_" in n:
         return "MIPI D-PHY"
@@ -551,6 +555,8 @@ COMPUTE_BOARD = [
           ("CSI_CLK_P", "CSI_CLK_P"), ("CSI_CLK_N", "CSI_CLK_N"),
           ("CSI_D0_P", "CSI_D0_P"), ("CSI_D0_N", "CSI_D0_N"),
           ("CSI_D1_P", "CSI_D1_P"), ("CSI_D1_N", "CSI_D1_N"),
+          ("CSI_D2_P", "CSI_D2_P"), ("CSI_D2_N", "CSI_D2_N"),
+          ("CSI_D3_P", "CSI_D3_P"), ("CSI_D3_N", "CSI_D3_N"),
           ("CAM_I2C_SCL", "CAM_I2C_SCL"), ("CAM_I2C_SDA", "CAM_I2C_SDA"),
           ("CAM_RST_L", "CAM_RST_L"), ("CAM_PWDN_L", "CAM_PWDN_L"), ("CAM_MCLK", "CAM_MCLK"),
           # audio
@@ -568,13 +574,15 @@ COMPUTE_BOARD = [
           ("DBG_UART_TX", "SOC_DBG_TX"), ("DBG_UART_RX", "SOC_DBG_RX"),
           ("MASKROM_n", "SOC_MASKROM_L"), ("RESET_n", "SOC_RESET_L"), ("PWRKEY", "SOC_PWRKEY"),
       ]),
-    C(ref="U2", bom_id="C002", value="RK806S-5", board=COMPUTE, assembly="HOLD",
-      gate="G03 (RK806S MPN/inductors/caps/timing per Radxa/Rockchip FAE)",
-      footprint="AI_Glasses_V2:VERIFY_QFN",
+    C(ref="U2", bom_id="C002", value="RK806S-5 QFN68 7x7x0.90mm", board=COMPUTE, assembly="HOLD",
+      gate="G03 (official RK806S-5 datasheet, OTP/default rails, sequence, layout guide)",
+      footprint="AI_Glasses_V2:VERIFY_QFN68_7x7_EP5.49_P0.35",
       desc="SoC PMIC — generates CPU/GPU/NPU/DDR/IO rails + power sequencing for RK3576. "
            "Reuse verified RK3576 power architecture; NOT for AON.",
-      note="Input SOC_5V from TPS61088. Rail names are the Radxa RK806S reference set; "
-           "exact rail count/voltages freeze at G02/G03.",
+      note="Package envelope can be used for placement: QFN68 + exposed thermal pad, body "
+           "7.0x7.0mm, max height 0.90mm, 0.35mm pitch, ePad about 5.49x5.49mm, MSL3. "
+           "Power sequence, OTP/default voltage table and compensation parts remain HOLD "
+           "until complete Rockchip/Radxa reference collateral is reviewed.",
       pins=[
           ("VIN", "SOC_5V"), ("GND", "GND"),
           ("PWRON", "PMIC_PWRON"), ("SLEEP", "PMIC_SLEEP"),
@@ -584,18 +592,22 @@ COMPUTE_BOARD = [
           ("VDD_LOGIC", "VDD_LOGIC"), ("VDD_DDR", "VDD_DDR"), ("VCC_DDRIO", "VCC_DDRIO"),
           ("VCCIO_1V8", "VCCIO_1V8"), ("VCC_3V3", "VCC_3V3"),
       ]),
-    C(ref="U3", bom_id="C003", value="LPDDR4X 4GB (MPN TBD)", board=COMPUTE, assembly="HOLD",
-      gate="G02 (LPDDR4X MPN/topology/placement, DDR review + length report)",
-      footprint="AI_Glasses_V2:VERIFY_BGA",
-      desc="System memory — 4 GB LPDDR4X x32, placed adjacent to RK3576. Reuse a "
-           "Rockchip/Radxa-verified MPN to lower first chip-down risk vs LPDDR5.",
+    C(ref="U3", bom_id="C003", value="Samsung K4U6E3S4AA-MGCL", board=COMPUTE, assembly="HOLD",
+      gate="G02 (Samsung datasheet/ball map/IBIS + Rockchip DDR AVL/init + length report)",
+      footprint="AI_Glasses_V2:VERIFY_FBGA200_0.65",
+      desc="EVT system memory baseline — Samsung K4U6E3S4AA-MGCL, 16Gb / 2GB, x32, "
+           "200-ball FBGA 0.65mm, LPDDR4X-4266 class. Use this Radxa reference MPN for "
+           "first chip-down boot risk reduction; 4GB is a later BOM variant only.",
+      note="Do not substitute the 32Gb/4GB K4UBE3D4AB-MGCL unless Rockchip confirms DDR AVL, "
+           "training binary/init parameters, rank/capacity config and ball assignment compatibility.",
       pins=[("VDD_DDR", "VDD_DDR"), ("VDDQ", "VCC_DDRIO"), ("GND", "GND"),
             ("DDR_BUS", "DDR_BUS")]),
-    C(ref="U4", bom_id="C004", value="eMMC 5.1 32GB (MPN TBD)", board=COMPUTE, assembly="HOLD",
-      gate="G04 (eMMC MPN + BSP/bootloader; cold-boot + power-loss recovery)",
+    C(ref="U4", bom_id="C004", value="Samsung KLMAG1JENB-B041", board=COMPUTE, assembly="HOLD",
+      gate="G04 (official Samsung datasheet/package + BSP boot/HS200 then HS400 validation)",
       footprint="AI_Glasses_V2:VERIFY_BGA153",
-      desc="System storage — 32 GB eMMC 5.1 (HS200/HS400 per BSP). Small + reliable; "
-           "no microSD. Holds OS, models, event clips.",
+      desc="EVT system storage baseline — Samsung KLMAG1JENB-B041, 16GB eMMC 5.1, "
+           "153-FBGA, 11.5x13.0x0.8mm, 0.5mm pitch, 8-bit, HS400 capable. VCC 2.7-3.6V, "
+           "VCCQ uses 1.8V in this project. 32GB upgrade is a later BSP/supply variant.",
       pins=[("VCC", "VCC_3V3"), ("VCCQ", "VCCIO_1V8"), ("GND", "GND"),
             ("EMMC_BUS", "EMMC_BUS")]),
     C(ref="Y1", bom_id="C005", value="24 MHz 10 ppm XTAL", board=COMPUTE, assembly="Fit",
@@ -619,11 +631,12 @@ COMPUTE_BOARD = [
       pins=[("VIN", "SOC_IN"), ("SW", "SOC_BOOST_SW"), ("GND", "GND"),
             ("EN", "SOC_PWR_EN"), ("PG", "SOC_5V_PGOOD"),
             ("VOUT", "SOC_5V")]),
-    C(ref="L1", bom_id="C008", value="Boost inductor (TBD)", board=COMPUTE, assembly="TBD",
-      gate="G06/G13 (Isat covers boot+AI peak; height <=2mm; thermal)",
-      footprint="AI_Glasses_V2:VERIFY_L_5x5",
-      desc="Boost inductor for TPS61088 — low-DCR shielded, value per TPS61088 design. "
-           "Do not freeze before transient sim/measurement.",
+    C(ref="L1", bom_id="C008", value="Coilcraft XGL4020-102MEC 1.0uH", board=COMPUTE, assembly="HOLD",
+      gate="G06/G13 (Isat/DCR/thermal pass for 5.1V 3A continuous / 4A peak boost)",
+      footprint="AI_Glasses_V2:VERIFY_L_4x4x2_XGL4020",
+      desc="Boost inductor for TPS61088 — Coilcraft XGL4020-102MEC candidate, 1.0uH, "
+           "4.0x4.0x2.0mm, low DCR, high-current shielded inductor. Keep SW copper small; "
+           "do not route DDR/MIPI/audio/RF under the inductor.",
       pins=[("A", "SOC_IN"), ("B", "SOC_BOOST_SW")]),
     C(ref="U11", bom_id="C015", value="FCU760KAAMD", board=COMPUTE, assembly="HOLD",
       gate="G05 (Quectel HW Design + RK3576 BSP driver/firmware/enum) + official LCC land pattern",
@@ -631,14 +644,15 @@ COMPUTE_BOARD = [
       desc="Wi-Fi 6 + BT 5.4 module — Quectel FCU760K, LCC 13.0x12.2x2.0mm. USB2 to RK3576 host; "
            "PCM for BT audio; VBAT 3.0-3.6V (typ 3.3V), max TX 353 mA. On-demand, load-switched off.",
       note="CONFIRMED on Radxa CM4 V1.20 p20; interface = USB2 (NOT SDIO). Single-antenna SKU "
-           "FCU760KAAMD shares Wi-Fi/BT on ANT_WIFI_BT. Exact LCC pinout/land pattern + Linux "
-           "driver/firmware stay HOLD pending Quectel Hardware Design (see pack 02_WiFi_FCU760K).",
+           "FCU760KAAMD shares Wi-Fi/BT on ANT_WIFI_BT. Optional ANT_BT is kept only as a DNP "
+           "test/matching node until Quectel FAE confirms its use. Exact LCC pinout/land pattern "
+           "+ Linux driver/firmware stay HOLD pending Quectel Hardware Design.",
       pins=[("VBAT", "WIFI_VBAT_3V3"), ("GND", "GND"),
             ("USB_DP", "WIFI_USB_DP"), ("USB_DM", "WIFI_USB_DM"),
             ("CHIP_EN", "WIFI_CHIP_EN"),
             ("PCM_CLK", "WIFI_PCM_CLK"), ("PCM_SYNC", "WIFI_PCM_SYNC"),
             ("PCM_IN", "WIFI_PCM_DOUT"), ("PCM_OUT", "WIFI_PCM_DIN"),
-            ("WAKE", "WIFI_WAKE_L"), ("ANT_WIFI_BT", "WIFI_ANT")]),
+            ("WAKE", "WIFI_WAKE_L"), ("ANT_WIFI_BT", "WIFI_ANT"), ("ANT_BT_DNP", "BLE_ANT")]),
     C(ref="U12", bom_id="C016", value="TPS62825", board=COMPUTE, assembly="Fit",
       gate="G05/G06 (inductor/caps per module 353mA TX peak + ripple)",
       footprint="AI_Glasses_V2:QFN_1.5x1.5",
@@ -669,6 +683,25 @@ COMPUTE_BOARD = [
       desc="SoC/enclosure temp monitor — 10k NTC on SoC heat-spreader + skin side. "
            "Wearable must watch both die and skin temp.",
       pins=[("A", "SOC_NTC"), ("B", "GND")]),
+    C(ref="U35", bom_id="C010b", value="BQ25895", board=COMPUTE, assembly="HOLD",
+      gate="Charger/power-path config, TS thresholds, 1S2P charge profile, thermal/current validation",
+      footprint="AI_Glasses_V2:VERIFY_WQFN_24_BQ25895",
+      desc="Primary 1S charger + Power Path — protected 5V input to SYS/VSYS and 1S2P pack. "
+           "Use with pack-internal PCM, BQ25895 TS temperature protection, input current limit, "
+           "and software charge-profile control. First bring-up must prove low-battery boost droop "
+           "and charge/boost coexistence.",
+      note="This is the board-level charger/power-path block for EVT V2.0. nPM1300 remains the "
+           "AON buck/fuel-gauge/low-power PMIC; do not also populate board-level BQ2970 protection "
+           "when the pack includes PCM.",
+      pins=[("VBUS", "USB_5V"), ("SYS", "VSYS"), ("BAT", "NPM_VBAT"), ("GND", "GND"),
+            ("SCL", "I2C_AON_SCL"), ("SDA", "I2C_AON_SDA"),
+            ("TS", "NTC_R"), ("INT_L", "CHG_INT_L"), ("CE_L", "CHG_CE_L"), ("PG_L", "CHG_PG_L")]),
+    C(ref="U36", bom_id="C034b", value="5V input eFuse/OVP (MPN TBD)", board=COMPUTE, assembly="HOLD",
+      gate="Select MPN for pogo/USB VBUS surge, reverse, OVP, current limit and thermal fault",
+      footprint="AI_Glasses_V2:VERIFY_EFUSE_OVP",
+      desc="5V input protection between magnetic pogo/EVT USB-C and charger input. Required: "
+           "VBUS TVS/OVP/eFuse/current limit, fault indication and layout close to the connector path.",
+      pins=[("IN", "VBUS_RAW"), ("OUT", "USB_5V"), ("GND", "GND"), ("FLT_L", "VBUS_FAULT_L")]),
 ]
 
 # ── C009–C012, C010, C017–C018: L-Temple AON/Power Board ─────────────────────
@@ -680,10 +713,12 @@ AON_BOARD = [
            "RK3576/camera/Wi-Fi/audio power ENs; talks IMU/buttons/gauge; UART to RK3576, "
            "SPI to NDP120. Turns RK3576 from an always-on host into a demand accelerator.",
       note="nRF54L15 (not nRF52/53): 1.5MB NVM / 256KB RAM headroom, long-life platform, "
-           "later WLCSP shrink. QFN48 for the debuggable EVT board.",
+           "later WLCSP shrink. QFN48 for the debuggable EVT board. EVT V2.0 does not fit a "
+           "separate nRF BLE antenna; phone/BLE data path is assigned to FCU760K shared RF unless "
+           "RF coexistence testing reopens the DNP ANT_BT option.",
       pins=[
           ("VDD_1V8", "AON_1V8"), ("VDD_3V3", "AON_3V3"), ("GND", "GND"),
-          ("ANT", "BLE_ANT"),
+          ("ANT_DNP", "NC"),
           # power control (outputs)
           ("SOC_PWR_EN", "SOC_PWR_EN"), ("SOC_5V_PGOOD", "SOC_5V_PGOOD"),
           ("PMIC_PWRON", "PMIC_PWRON"),
@@ -697,6 +732,8 @@ AON_BOARD = [
           # AON buses
           ("I2C_SCL", "I2C_AON_SCL"), ("I2C_SDA", "I2C_AON_SDA"),
           ("PMIC_INT_L", "PMIC_INT_L"), ("PMIC_SHPHLD", "PMIC_SHPHLD"),
+          ("CHG_INT_L", "CHG_INT_L"), ("CHG_CE_L", "CHG_CE_L"),
+          ("CHG_PG_L", "CHG_PG_L"), ("VBUS_FAULT_L", "VBUS_FAULT_L"),
           ("IMU_INT1", "IMU_INT1"), ("IMU_INT2", "IMU_INT2"),
           # NDP120 link
           ("DSP_SCK", "DSP_SPI_SCK"), ("DSP_MOSI", "DSP_SPI_MOSI"), ("DSP_MISO", "DSP_SPI_MISO"),
@@ -708,10 +745,11 @@ AON_BOARD = [
     C(ref="U8", bom_id="C010", value="nPM1300", board=AON, assembly="HOLD",
       gate="G08 (AON <=25/50mW) — configure via nPM PowerUP on EK before board",
       footprint="AI_Glasses_V2:QFN_5x5",
-      desc="AON PMIC — 1S charger + Power-Path + Fuel Gauge + dual Buck + LDO/Load-Switch + "
-           "Ship/Hibernate. Powers the small AON world ONLY; NOT the RK3576 peak path.",
-      note="VSYS is the power-path system node feeding the boost + gated bucks. Fuel gauge "
-           "configured for the paralleled 600 mAh, not 300.",
+      desc="AON PMIC / low-power rail manager — fuel-gauge support, dual Buck, LDO/Load-Switch "
+           "and Ship/Hibernate for the small AON world ONLY; NOT the RK3576 peak path.",
+      note="BQ25895 is the primary charger + power-path block in EVT V2.0. nPM1300 stays in the "
+           "AON domain for low-Iq rails/gauge/support functions and must be configured for the "
+           "supplier-built 1S2P pack, not a single 300mAh cell.",
       pins=[
           ("VBAT", "NPM_VBAT"), ("VBUS", "USB_5V"), ("VSYS", "VSYS"), ("GND", "GND"),
           ("BUCK1", "AON_1V8"), ("BUCK2", "AON_3V3"),
@@ -743,37 +781,44 @@ AON_BOARD = [
       pins=[("VDD", "AON_1V8"), ("VDDIO", "AON_1V8"), ("GND", "GND"),
             ("SCL", "I2C_AON_SCL"), ("SDA", "I2C_AON_SDA"),
             ("INT1", "IMU_INT1"), ("INT2", "IMU_INT2")]),
-    C(ref="J6", bom_id="C018", value="BLE 2.4 GHz FPC/PCB ant", board=REAR, assembly="TBD",
-      gate="Worn-state tuning; clear of battery/metal",
+    C(ref="J6", bom_id="C018", value="FCU760K ANT_BT DNP test pad", board=REAR, assembly="DNP",
+      gate="Only populate if Quectel FAE + coexistence test requires the second RF port",
       footprint="AI_Glasses_V2:VERIFY_ANT",
-      desc="BLE antenna — 50 ohm, always-on. Physically separate from the Wi-Fi antenna.",
+      desc="Optional second RF feed for FCU760K ANT_BT — DNP/test only. EVT V2.0 does not fit a "
+           "separate BLE antenna; Wi-Fi/BLE share the main dual-band FPC antenna on WIFI_ANT.",
       pins=[("ANT", "BLE_ANT"), ("GND", "GND")]),
-    C(ref="J7", bom_id="C017", value="Wi-Fi 2.4/5 GHz FPC ant", board=REAR, assembly="TBD",
-      gate="Head-loaded RSSI/throughput/SAR; keep-out",
-      footprint="AI_Glasses_V2:VERIFY_ANT",
-      desc="Wi-Fi dual-band antenna — 50 ohm, worn-state tuned. Away from SoC/battery/"
-           "speaker magnet/hinge.",
+    C(ref="J7", bom_id="C017", value="Taoglas FXP840.07.0055B", board=REAR, assembly="HOLD",
+      gate="G14 (worn-state tune + antenna keep-out in full shell with battery/speaker)",
+      footprint="AI_Glasses_V2:VERIFY_FPC_ANT_14x5",
+      desc="Shared Wi-Fi/BLE dual-band FPC antenna candidate — Taoglas FXP840.07.0055B, "
+           "about 14x5x0.1mm with 55mm coax/MHF-style termination. Place at temple end or "
+           "non-metal window; keep away from battery, speaker magnet, pogo magnet, shields and copper.",
       pins=[("ANT", "WIFI_ANT"), ("GND", "GND")]),
 ]
 
 # ── C013–C014, C019–C023: Front Sensor Board ─────────────────────────────────
 FRONT_BOARD = [
-    C(ref="U14", bom_id="C019", value="IMX415-AAQR module (custom FPC)", board=FRONT, assembly="HOLD",
+    C(ref="U14", bom_id="C019", value="Sony IMX415-AAQR-C custom module", board=FRONT, assembly="HOLD",
       gate="G10 (module lens/FOV/FPC pinout/lane/supply/timing from vendor)",
       footprint="AI_Glasses_V2:VERIFY_CAM_MODULE",
-      desc="Main camera module — 8.46 MP, first target 1080p30/60, MIPI CSI. Custom small "
-           "sensor+lens rigid island + FPC (NOT the dev module). Sensor rails (Sony datasheet): "
+      desc="Main camera module target — Sony IMX415-AAQR-C, 8.46 MP, 3840x2160 30fps baseline, "
+           "RAW10 first, 4-lane MIPI CSI-2. Custom small sensor+lens rigid island + FPC "
+           "(NOT a dev module). Sensor PCB target <=15x15mm, total camera Z target <=9.5mm. "
+           "Sensor rails (Sony datasheet): "
            "AVDD 2.9V 128/156mA, IOVDD 1.8V 3mA, DVDD 1.1V 187/250mA (~0.58W typ, ~0.77W max).",
-      note="2-lane CSI drawn for 1080p (sensor supports 4). Rails fed from per-rail Kelvin-sense "
-           "nodes (_S). Custom-module FPC pinout/lane/module-power-tree freezes at G10; sensor "
-           "chip currents are Sony datasheet, module adds LDO/clock/FPC losses (pack 04_IMX415).",
+      note="IMX415 mechanical stack is still TBD: lens MPN, IR-cut, PCB, glue, FPC exit, mount, "
+           "TTL/BFL/CRA/MTF/distortion/relative illumination and module STEP must come from the "
+           "module vendor. Use orange TBD mechanical envelope; not released for tooling.",
       pins=[
           ("DVDD_1V1", "CAM_1V1_S"), ("IOVDD_1V8", "CAM_1V8_S"), ("AVDD_2V9", "CAM_2V9_S"), ("GND", "GND"),
           ("CSI_CLK_P", "CSI_CLK_P"), ("CSI_CLK_N", "CSI_CLK_N"),
           ("CSI_D0_P", "CSI_D0_P"), ("CSI_D0_N", "CSI_D0_N"),
           ("CSI_D1_P", "CSI_D1_P"), ("CSI_D1_N", "CSI_D1_N"),
+          ("CSI_D2_P", "CSI_D2_P"), ("CSI_D2_N", "CSI_D2_N"),
+          ("CSI_D3_P", "CSI_D3_P"), ("CSI_D3_N", "CSI_D3_N"),
           ("SCL", "CAM_I2C_SCL"), ("SDA", "CAM_I2C_SDA"),
           ("XCLR_L", "CAM_RST_L"), ("PWDN_L", "CAM_PWDN_L"), ("INCK", "CAM_MCLK"),
+          ("MODULE_ID", "CAM_MODULE_ID"),
       ]),
     C(ref="U15", bom_id="C020", value="TPS62840", board=FRONT, assembly="Fit",
       gate="Output current/noise per final module (DVDD ~250mA max + margin)",
@@ -808,9 +853,15 @@ FRONT_BOARD = [
     C(ref="U19", bom_id="C023b", value="TPD4E05U06", board=FRONT, assembly="Fit",
       gate="Low-cap array near FPC entry",
       footprint="AI_Glasses_V2:USON",
-      desc="MIPI/FPC ESD (D1 + control) — ultra-low-cap ESD for the second lane pair.",
+      desc="MIPI/FPC ESD (D1 + control) — ultra-low-cap ESD for the second lane pair and critical control.",
       pins=[("D1_P", "CSI_D1_P"), ("D1_N", "CSI_D1_N"),
             ("RST", "CAM_RST_L"), ("MCLK", "CAM_MCLK"), ("GND", "GND")]),
+    C(ref="U34", bom_id="C023c", value="TPD4E05U06", board=FRONT, assembly="Fit",
+      gate="Low-cap array near FPC entry for 4-lane CSI",
+      footprint="AI_Glasses_V2:USON",
+      desc="MIPI/FPC ESD (D2 + D3) — adds the two lane pairs required by the 4-lane IMX415 EVT target.",
+      pins=[("D2_P", "CSI_D2_P"), ("D2_N", "CSI_D2_N"),
+            ("D3_P", "CSI_D3_P"), ("D3_N", "CSI_D3_N"), ("GND", "GND")]),
     C(ref="MK1", bom_id="C013a", value="T5837 (wake mic)", board=FRONT, assembly="Fit",
       gate="G11 (mic coords/ports/wind/wake + AEC/beamforming)",
       footprint="AI_Glasses_V2:LGA-5_3.5x2.65",
@@ -855,10 +906,12 @@ AUDIO_BOARD = [
       footprint="Package_TO_SOT_SMD:SOT-23-5",
       desc="Audio load switch — gates AUDIO_PWR to the amp; EN by AON MCU / SoC.",
       pins=[("VIN", "AUDIO_IN"), ("VOUT", "AUDIO_PWR"), ("EN", "AUDIO_LS_EN"), ("GND", "GND")]),
-    C(ref="LS1", bom_id="C025", value="8 ohm 0.5-1 W speaker", board=REAR, assembly="TBD",
-      gate="MPN after acoustic cavity/volume/leak test",
-      footprint="AI_Glasses_V2:VERIFY_SPK",
-      desc="Main speaker — first version single speaker; open acoustic unit set by temple cavity.",
+    C(ref="LS1", bom_id="C025", value="CUI CMS-15113-078SP-67", board=REAR, assembly="HOLD",
+      gate="Acoustic EVT: 0.3-0.5cc cavity, port/foam seal, magnet-to-antenna clearance, leak test",
+      footprint="AI_Glasses_V2:VERIFY_SPK_15x11x3",
+      desc="Main speaker EVT baseline — CUI CMS-15113-078SP-67, 15x11x3mm, 8 ohm, "
+           "0.7W rated / 1W max, about 91dB sensitivity, front IP67. Drive as mono differential "
+           "speaker from the digital Class-D amp; limit first firmware to 0.5-0.7W RMS.",
       pins=[("P", "SPK_P"), ("N", "SPK_N")]),
     C(ref="LS2", bom_id="C026", value="2nd speaker pad", board=REAR, assembly="DNP", pri="P1",
       gate="Decide dual-speaker at EVT-B",
@@ -879,21 +932,24 @@ AUDIO_BOARD = [
       pins=[("P", "HAPTIC_P"), ("N", "HAPTIC_N")]),
 ]
 
-# ── C029–C033: Battery + protection + temperature ────────────────────────────
+# ── C029–C033: Battery pack, supplier PCM + temperature ──────────────────────
 BATTERY = [
     C(ref="BT1", bom_id="C029", value="LP451165 300mAh (R)", board=REAR, assembly="HOLD",
       gate="G07 (full datasheet, >=2C, IR, cycles, cert)",
       footprint="AI_Glasses_V2:VERIFY_CELL_4.5x11x65",
-      desc="Right cell — 3.7 V 300 mAh, 4.5x11x65 mm, high-rate custom. Right-temple weight.",
-      note="One cell per temple, 1S2P = 600 mAh. Cell is a mechanical-size candidate; not a "
-           "confirmed production battery until G07 datasheet + discharge curves land. Mechanical: "
-           "use the 70x12.8x5.6 mm max clearance envelope, NOT the nominal 65x11x4.5 (pack 06).",
+      desc="Right-side element of the supplier-built 1S2P pack — LP451165 nominal cell candidate, "
+           "one per temple. Mechanical control envelope per side is 70x12.8x5.6mm including tabs, "
+           "PCM/insulation allowance, foam and swelling space.",
+      note="Do not parallel two independent protected cells on the PCB. G07 must close with one "
+           "pack supplier building a matched 1S2P pack, common PCM, branch fusing/fusible links, "
+           "two NTCs, official 2D/STEP, tab/cable exit, UN38.3/MSDS/IEC62133-equivalent data.",
       pins=[("+", "BATR_P"), ("-", "CELL_NEG")]),
     C(ref="BT2", bom_id="C030", value="LP451165 300mAh (L)", board=REAR, assembly="HOLD",
       gate="G07",
       footprint="AI_Glasses_V2:VERIFY_CELL_70x12.8x5.6_maxenv",
-      desc="Left cell — same batch/capacity/IR-matched to the right cell. Left-temple weight. "
-           "1S2P parallel only after supplier pairing (OCV<=20mV, cap<=3%, DCIR<=10%, same lot, §20).",
+      desc="Left-side element of the supplier-built 1S2P pack — same batch/capacity/IR-matched "
+           "to the right side. Use the same 70x12.8x5.6mm mechanical control envelope and pack "
+           "supplier cable/tab/PCM drawing.",
       pins=[("+", "BATL_P"), ("-", "CELL_NEG")]),
     C(ref="F1", bom_id="C031a", value="PTC/fuse (R branch)", board=REAR, assembly="TBD",
       gate="Rating from peak-current calc (> branch peak, < FPC rating)",
@@ -919,48 +975,29 @@ BATTERY = [
       gate="I_BAT_TOTAL; the one production-kept sense path", footprint="AI_Glasses_V2:R_1206_shunt",
       desc="Pack total shunt — BAT_P -> nPM1300 VBAT. Whole-device current (charge + discharge).",
       pins=[("A", "BAT_P"), ("B", "NPM_VBAT")]),
-    # discrete 1S protection (DNP fallback; supplier pack PCM is the baseline)
-    C(ref="R21", bom_id="C032-BYP", value="0R (pack-PCM baseline)", board=AON, assembly="Fit",
-      gate="Populate 0R OR discrete protection, never both (§17)",
-      footprint="AI_Glasses_V2:R_0805",
-      desc="Cell-negative bypass — ties CELL_NEG to pack GND when the supplier 1S2P pack already "
-           "integrates its PCM. DNP this and populate U23+Q1 only if doing board-level protection.",
-      pins=[("A", "CELL_NEG"), ("B", "GND")]),
-    C(ref="U23", bom_id="C032", value="BQ2970", board=AON, assembly="DNP",
-      gate="Keep ONE protection scheme; confirm suffix OVP/UVP/OCP vs nPM1300/boost UVLO (§17)",
-      footprint="Package_TO_SOT_SMD:SOT-23-5",
-      desc="1S protection IC (fallback) — OV/UV/OC/short via two low-side back-to-back NMOS. "
-           "DNP if the supplier pack integrates protection (avoid double-protection conflict, §17).",
-      note="Wired per TI BQ2970 typical app (pack 03_Battery TI datasheet): VDD via Rvdd from "
-           "BAT_P with 0.1uF to VSS(=CELL_NEG); V- via Rvm to pack GND; DO/CO drive Q1.",
-      pins=[("VDD", "PROT_VDD"), ("VSS", "CELL_NEG"), ("V-", "PROT_VM"),
-            ("DO", "PROT_DO"), ("CO", "PROT_CO")]),
-    C(ref="Q1", bom_id="C032-Q", value="Dual N-MOSFET (b2b)", board=AON, assembly="DNP",
-      gate="Vds/RDSon/Vgs/peak per BQ2970 app (§17)", footprint="AI_Glasses_V2:VERIFY_DFN_2FET",
-      desc="Back-to-back protection NMOS — discharge + charge FETs between CELL_NEG and pack GND; "
-           "gates driven by BQ2970 DO/CO. DNP with U23.",
-      pins=[("D_CELL", "CELL_NEG"), ("G_DIS", "PROT_DO"), ("D_PACK", "GND"), ("G_CHG", "PROT_CO")]),
-    C(ref="R22", bom_id="C032-Rv", value="330R", board=AON, assembly="DNP",
-      gate="Per BQ2970 app", footprint="AI_Glasses_V2:R_0402",
-      desc="BQ2970 VDD series R — from BAT_P (DNP with protection).",
-      pins=[("A", "BAT_P"), ("B", "PROT_VDD")]),
-    C(ref="C2", bom_id="C032-Cv", value="0.1uF", board=AON, assembly="DNP",
-      gate="Per BQ2970 app", footprint="AI_Glasses_V2:C_0402",
-      desc="BQ2970 VDD-VSS decoupling (DNP with protection).",
-      pins=[("A", "PROT_VDD"), ("B", "CELL_NEG")]),
-    C(ref="R23", bom_id="C032-Rm", value="2k", board=AON, assembly="DNP",
-      gate="Per BQ2970 app (V- sense)", footprint="AI_Glasses_V2:R_0402",
-      desc="BQ2970 V- sense R — to pack GND (DNP with protection).",
-      pins=[("A", "GND"), ("B", "PROT_VM")]),
-    C(ref="RT1", bom_id="C033a", value="10k NTC (R cell)", board=REAR, assembly="Fit",
-      gate="NTC curve matched to nPM1300 charger config",
+    C(ref="PCM1", bom_id="C032", value="Supplier 1S2P pack PCM + protection FETs", board=REAR, assembly="HOLD",
+      gate="Pack supplier drawing: OVP/UVP/OCP/SCP thresholds, FET Rds(on), current rating, NTC placement, UN38.3/MSDS/IEC62133",
+      footprint="AI_Glasses_V2:PACK_INTERNAL_NO_BOARD_FOOTPRINT",
+      desc="Pack-internal protection baseline — the supplier builds both matched LP451165 cells "
+           "as one complete 1S2P pack with common PCM, branch fusing/fusible links, over-charge, "
+           "over-discharge, over-current, short-circuit and FET cutoff. The main PCB does NOT "
+           "populate a second BQ2970 + dual-MOSFET protection stage.",
+      note="Board-level battery protection is intentionally limited to BQ25895 charger/power-path, "
+           "5V input eFuse/OVP, software low-battery shutdown and test access. Battery exits via "
+           "fixed harness/direct solder pads near the power board; no battery wiring crosses a hinge.",
+      pins=[("PACK_PLUS", "BAT_P"), ("PACK_MINUS", "GND"), ("CELL_MINUS", "CELL_NEG"),
+            ("NTC1", "NTC_R"), ("NTC2_OR_ID", "NTC_L")]),
+    C(ref="RT1", bom_id="C033a", value="10k NTC B=3435 1% (R cell)", board=REAR, assembly="Fit",
+      gate="NTC curve/package/placement matched to pack supplier + BQ25895/nPM1300 config",
       footprint="AI_Glasses_V2:R_0402",
-      desc="Right cell temperature — 10k NTC at the cell into nPM1300 NTC/AON ADC. Per-cell NTC (§15).",
+      desc="Right cell temperature — 10k NTC at 25C, B=3435K, 1% or better, bonded to the cell "
+           "large face near center, not to the PCM. Route with ESD/filtering and battery-sense ground.",
       pins=[("A", "NTC_R"), ("B", "GND")]),
-    C(ref="RT2", bom_id="C033b", value="10k NTC (L cell)", board=REAR, assembly="Fit",
-      gate="NTC curve matched to nPM1300 charger config",
+    C(ref="RT2", bom_id="C033b", value="10k NTC B=3435 1% (L cell)", board=REAR, assembly="Fit",
+      gate="NTC curve/package/placement matched to pack supplier + ADC/config",
       footprint="AI_Glasses_V2:R_0402",
-      desc="Left cell temperature — 10k NTC at the cell into nPM1300 NTC/AON ADC.",
+      desc="Left cell temperature — second per-cell NTC for software/safety monitoring; firmware "
+           "must stop charging if either cell is out of the supplier temperature window.",
       pins=[("A", "NTC_L"), ("B", "GND")]),
     C(ref="TP2", bom_id="C033-TP", value="Battery test points", board=REAR, assembly="Fit",
       gate="Cell/pack voltage + NTC probe access (§21)",
@@ -973,17 +1010,20 @@ BATTERY = [
 
 # ── C034–C042: Charge/data interface, USB2, debug, buttons ───────────────────
 INTERFACE = [
-    C(ref="J1", bom_id="C034", value="Magnetic pogo 4-6p", board=REAR, assembly="TBD",
-      gate="Magnet direction, sweat corrosion, short, cycle life",
-      footprint="AI_Glasses_V2:VERIFY_POGO",
-      desc="Charge/data interface — magnetic pogo (5 V charge, optional USB2). Thinner + more "
-           "waterproof than a temple USB-C.",
-      pins=[("VBUS", "USB_5V"), ("GND", "GND"), ("DP", "USB2_DP"), ("DM", "USB2_DM")]),
+    C(ref="J1", bom_id="C034", value="CCP P2578MP01-06C180HT", board=REAR, assembly="HOLD",
+      gate="USB2 eye/contact validation, current/fault/ESD, mating STEP, corrosion/cycle life",
+      footprint="AI_Glasses_V2:VERIFY_POGO_6P_1.8MM",
+      desc="6-pin magnetic pogo EVT candidate — 1.8mm pitch, working height about 1.0mm, "
+           "target outline about 10x3mm. Pins carry 5V charge input, USB2 D+/D-, and dual GND/VBUS "
+           "contacts for lower resistance. Add VBUS TVS/eFuse/OVP, D+/D- low-cap ESD, USB CMC DNP, "
+           "VBUS insert detect and MaskROM/UART fallback pads.",
+      pins=[("GND1", "GND"), ("USB_DN", "USB2_DM"), ("USB_DP", "USB2_DP"),
+            ("GND2", "GND"), ("VBUS1", "VBUS_RAW"), ("VBUS2", "VBUS_RAW")]),
     C(ref="J2", bom_id="C035", value="USB-C 16p USB2-only", board=EVT, assembly="Fit",
       gate="Connector height + shell opening co-freeze",
       footprint="AI_Glasses_V2:USB_C_16P_MidMount",
       desc="EVT USB-C — 5 V sink + USB2 OTG (no USB3/DP). For MaskROM/ADB/firmware/lab supply.",
-      pins=[("VBUS", "USB_5V"), ("GND", "GND"),
+      pins=[("VBUS", "VBUS_RAW"), ("GND", "GND"),
             ("DP", "USB2_DP"), ("DM", "USB2_DM"), ("CC1", "USB_CC1"), ("CC2", "USB_CC2")]),
     C(ref="U24", bom_id="C036", value="TPD2E001", board=EVT, assembly="Fit",
       gate="Keep ~90 ohm diff + continuous ref gnd",
@@ -1000,43 +1040,33 @@ INTERFACE = [
       footprint="AI_Glasses_V2:R_0402",
       desc="USB-C CC2 Rd — 5.1k 1% sink pulldown.",
       pins=[("A", "USB_CC2"), ("B", "GND")]),
-    C(ref="J3", bom_id="C038", value="Hirose FH26W 0.3mm FPC", board=FRONT, assembly="HOLD",
-      gate="G12 (pin count from final cam lane/mic/power split)",
-      footprint="AI_Glasses_V2:VERIFY_FPC_FH26W",
-      desc="Front<->temple high-speed FPC — carries MIPI CSI + PDM + I2C + control + camera "
-           "power + GND across to the compute/AON boards. Documents the hinge-FPC pin list.",
-      note="Pass-through connector: each pin taps the crossing net so the FPC pin count is "
-           "explicit (G12). Two independent FPCs may split camera vs audio at layout.",
+    C(ref="J3", bom_id="C038", value="Hirose FH26W-33S-0.3SHW(97)", board=FRONT, assembly="HOLD",
+      gate="G10/G12 (camera module vendor signs 33-pin pinout, contact orientation, impedance)",
+      footprint="AI_Glasses_V2:VERIFY_FH26W_33S_0.3SHW",
+      desc="33-pin camera FPC connector — Hirose FH26W-33S-0.3SHW(97), 0.3mm pitch, "
+           "bottom contact, horizontal, about 1.0mm height, for 0.2mm FPC. Carries IMX415 "
+           "4-lane CSI, rails, I2C, reset/powerdown and module ID. Assembly/service connector only, "
+           "not a user-cycle connector.",
+      note="Pinout below follows the current project proposal and must be signed by the camera "
+           "module vendor. Hinge electrical interconnect is out of scope for Chip-down EVT V2.0.",
       pins=[
-          ("CSI_CLK_P", "CSI_CLK_P"), ("CSI_CLK_N", "CSI_CLK_N"),
-          ("CSI_D0_P", "CSI_D0_P"), ("CSI_D0_N", "CSI_D0_N"),
-          ("CSI_D1_P", "CSI_D1_P"), ("CSI_D1_N", "CSI_D1_N"),
-          ("CAM_I2C_SCL", "CAM_I2C_SCL"), ("CAM_I2C_SDA", "CAM_I2C_SDA"),
-          ("CAM_RST_L", "CAM_RST_L"), ("CAM_PWDN_L", "CAM_PWDN_L"), ("CAM_MCLK", "CAM_MCLK"),
-          ("PDM_WAKE_CLK", "PDM_WAKE_CLK"), ("PDM_WAKE_DATA", "PDM_WAKE_DATA"),
-          ("PDM_ARR_CLK", "PDM_ARRAY_CLK"), ("PDM_ARR_D0", "PDM_ARRAY_D0"), ("PDM_ARR_D1", "PDM_ARRAY_D1"),
-          # power IN to the front board (camera regs live on the front board), + EN controls
-          ("VSYS", "VSYS"), ("AON_1V8", "AON_1V8"), ("AON_3V3", "AON_3V3"), ("GND", "GND"),
-          ("CAM_1V1_EN", "CAM_1V1_EN"), ("CAM_1V8_EN", "CAM_1V8_EN"), ("CAM_2V9_EN", "CAM_2V9_EN"),
+          ("1_GND", "GND"), ("2_DVDD", "CAM_1V1_S"), ("3_GND", "GND"),
+          ("4_AVDD", "CAM_2V9_S"), ("5_GND", "GND"), ("6_IOVDD", "CAM_1V8_S"),
+          ("7_GND", "GND"), ("8_MCLK", "CAM_MCLK"), ("9_GND", "GND"),
+          ("10_I2C_SCL", "CAM_I2C_SCL"), ("11_I2C_SDA", "CAM_I2C_SDA"),
+          ("12_RESET_N", "CAM_RST_L"), ("13_PWDN", "CAM_PWDN_L"), ("14_FSYNC_NC", "NC"),
+          ("15_GND", "GND"), ("16_MIPI_CLK_N", "CSI_CLK_N"), ("17_MIPI_CLK_P", "CSI_CLK_P"),
+          ("18_GND", "GND"), ("19_MIPI_D0_N", "CSI_D0_N"), ("20_MIPI_D0_P", "CSI_D0_P"),
+          ("21_GND", "GND"), ("22_MIPI_D1_N", "CSI_D1_N"), ("23_MIPI_D1_P", "CSI_D1_P"),
+          ("24_GND", "GND"), ("25_MIPI_D2_N", "CSI_D2_N"), ("26_MIPI_D2_P", "CSI_D2_P"),
+          ("27_GND", "GND"), ("28_MIPI_D3_N", "CSI_D3_N"), ("29_MIPI_D3_P", "CSI_D3_P"),
+          ("30_GND", "GND"), ("31_MODULE_ID", "CAM_MODULE_ID"), ("32_NC", "NC"), ("33_GND", "GND"),
       ]),
-    C(ref="J4", bom_id="C039", value="Custom hinge FPC 6-10mm", board=REAR, assembly="HOLD",
-      gate="G12 (impedance, bend radius, life, hinge interference)",
-      footprint="AI_Glasses_V2:VERIFY_HINGE_FPC",
-      desc="Hinge FPC (L<->R) — carries battery power path, AON UART, control lines and GND "
-           "between the two temples. Enables the split-and-fold structure.",
-      note="Pass-through: taps the L<->R crossing nets so the hinge pin/power budget is explicit.",
-      pins=[
-          ("BAT_P", "BAT_P"), ("VSYS", "VSYS"), ("GND", "GND"),
-          ("SOC_PWR_EN", "SOC_PWR_EN"), ("SOC_5V_PGOOD", "SOC_5V_PGOOD"), ("PMIC_PWRON", "PMIC_PWRON"),
-          ("AON_UART_TX", "AON_UART_TX"), ("AON_UART_RX", "AON_UART_RX"),
-          ("SOC_SHDN_REQ", "SOC_SHUTDOWN_REQ"), ("SOC_SAFE_OFF", "SOC_SAFE_TO_OFF"),
-          ("SOC_ALIVE", "SOC_ALIVE"), ("SOC_FAULT", "SOC_FAULT"),
-          ("WIFI_BUCK_EN", "WIFI_BUCK_EN"), ("AUDIO_LS_EN", "AUDIO_LS_EN"),
-      ]),
-    C(ref="J5", bom_id="C040", value="U.FL / I-PEX MHF", board=REAR, assembly="Fit",
-      gate="Connector height + mating life",
+    C(ref="J5", bom_id="C040", value="U.FL / I-PEX MHF RF test connector", board=REAR, assembly="DNP",
+      gate="EVT RF debug only; production prefers direct coax or soldered antenna pigtail",
       footprint="Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical",
-      desc="Micro RF connector — 50 ohm, Wi-Fi & BLE antenna debug/attach for EVT.",
+      desc="Micro RF connector — DNP RF debug/attach option on the shared Wi-Fi/BLE antenna feed. "
+           "Do not consume production Z-height unless RF bring-up requires it.",
       pins=[("SIG", "WIFI_ANT"), ("GND", "GND")]),
     C(ref="TP1", bom_id="C041", value="UART/SWD pogo pads", board=EVT, assembly="Fit",
       gate="Voltage domain clearly labelled (no 3.3V into 1.8V IO)",

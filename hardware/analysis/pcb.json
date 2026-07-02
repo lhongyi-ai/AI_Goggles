@@ -1,0 +1,701 @@
+{
+  "analyzer_type": "pcb",
+  "schema_version": "1.3.0",
+  "file": "/Users/stanley/AI Glasses/hardware/ai_glasses_carrier.kicad_pcb",
+  "kicad_version": "unknown",
+  "file_version": "20221018",
+  "statistics": {
+    "footprint_count": 4,
+    "front_side": 4,
+    "back_side": 0,
+    "smd_count": 0,
+    "tht_count": 0,
+    "copper_layers_used": 0,
+    "copper_layer_names": [],
+    "track_segments": 0,
+    "via_count": 0,
+    "zone_count": 0,
+    "total_track_length_mm": 0,
+    "board_width_mm": 70.0,
+    "board_height_mm": 55.0,
+    "board_area_mm2": 3850.0,
+    "net_count": 58,
+    "routing_complete": true,
+    "unrouted_net_count": 0
+  },
+  "layers": [
+    {
+      "number": 0,
+      "name": "F.Cu",
+      "type": "signal",
+      "alias": null
+    },
+    {
+      "number": 1,
+      "name": "In1.Cu",
+      "type": "power",
+      "alias": null
+    },
+    {
+      "number": 2,
+      "name": "In2.Cu",
+      "type": "power",
+      "alias": null
+    },
+    {
+      "number": 3,
+      "name": "In3.Cu",
+      "type": "signal",
+      "alias": null
+    },
+    {
+      "number": 4,
+      "name": "In4.Cu",
+      "type": "power",
+      "alias": null
+    },
+    {
+      "number": 31,
+      "name": "B.Cu",
+      "type": "signal",
+      "alias": null
+    },
+    {
+      "number": 32,
+      "name": "B.Adhes",
+      "type": "user",
+      "alias": null
+    },
+    {
+      "number": 33,
+      "name": "F.Adhes",
+      "type": "user",
+      "alias": null
+    },
+    {
+      "number": 34,
+      "name": "B.Paste",
+      "type": "user",
+      "alias": null
+    },
+    {
+      "number": 35,
+      "name": "F.Paste",
+      "type": "user",
+      "alias": null
+    },
+    {
+      "number": 36,
+      "name": "B.SilkS",
+      "type": "user",
+      "alias": null
+    },
+    {
+      "number": 37,
+      "name": "F.SilkS",
+      "type": "user",
+      "alias": null
+    },
+    {
+      "number": 38,
+      "name": "B.Mask",
+      "type": "user",
+      "alias": null
+    },
+    {
+      "number": 39,
+      "name": "F.Mask",
+      "type": "user",
+      "alias": null
+    },
+    {
+      "number": 44,
+      "name": "Edge.Cuts",
+      "type": "user",
+      "alias": null
+    },
+    {
+      "number": 45,
+      "name": "Margin",
+      "type": "user",
+      "alias": null
+    },
+    {
+      "number": 46,
+      "name": "B.CrtYd",
+      "type": "user",
+      "alias": null
+    },
+    {
+      "number": 47,
+      "name": "F.CrtYd",
+      "type": "user",
+      "alias": null
+    },
+    {
+      "number": 48,
+      "name": "B.Fab",
+      "type": "user",
+      "alias": null
+    },
+    {
+      "number": 49,
+      "name": "F.Fab",
+      "type": "user",
+      "alias": null
+    }
+  ],
+  "setup": {
+    "board_thickness_mm": 1.6,
+    "pad_to_mask_clearance": 0.05
+  },
+  "nets": {
+    "1": "GND",
+    "2": "+5V_SYS",
+    "3": "MIPI_CSI3_CLK_P",
+    "4": "MIPI_CSI3_CLK_N",
+    "5": "MIPI_CSI3_D0_P",
+    "6": "MIPI_CSI3_D0_N",
+    "7": "MIPI_CSI3_D1_P",
+    "8": "MIPI_CSI3_D1_N",
+    "9": "MIPI_CSI3_D2_P",
+    "10": "MIPI_CSI3_D2_N",
+    "11": "MIPI_CSI3_D3_P",
+    "12": "MIPI_CSI3_D3_N",
+    "13": "CAM_I2C_SCL",
+    "14": "CAM_I2C_SDA",
+    "15": "CAM_RST_n",
+    "16": "CAM_MCLK",
+    "17": "PDM1_CLK",
+    "18": "PDM1_DATA0",
+    "19": "PDM1_DATA1",
+    "20": "SAI1_BCLK",
+    "21": "SAI1_LRCK",
+    "22": "SAI1_SDO",
+    "23": "SAI1_MCLK",
+    "24": "USB_DP",
+    "25": "USB_DM",
+    "26": "UART_DBG_TX",
+    "27": "UART_DBG_RX",
+    "28": "RECOVERY_n",
+    "29": "RESET_n",
+    "30": "POWER_KEY",
+    "31": "WL_nDIS",
+    "32": "BT_nDIS",
+    "33": "IMU_I2C_SCL",
+    "34": "IMU_I2C_SDA",
+    "35": "IMU_INT1",
+    "36": "VIB_PWM",
+    "37": "+3V3",
+    "38": "+1V8",
+    "39": "+CAM_2V8",
+    "40": "+CAM_1V8",
+    "41": "+CAM_1V2",
+    "42": "+VBAT",
+    "43": "USB_VBUS",
+    "44": "USB_CC1",
+    "45": "USB_CC2",
+    "46": "SPKR_EN_n",
+    "47": "SPK_OUT_P",
+    "48": "SPK_OUT_N",
+    "49": "LED_PWR_n",
+    "50": "LED_STATUS_n",
+    "51": "VBAT_P",
+    "52": "VBAT_N",
+    "53": "BAT_NTC",
+    "54": "CHG_INT_n",
+    "55": "LOW_BAT_INT_n",
+    "56": "FUEL_I2C_SCL",
+    "57": "FUEL_I2C_SDA",
+    "58": "VIB_EN"
+  },
+  "net_name_to_id": {
+    "GND": 1,
+    "+5V_SYS": 2,
+    "MIPI_CSI3_CLK_P": 3,
+    "MIPI_CSI3_CLK_N": 4,
+    "MIPI_CSI3_D0_P": 5,
+    "MIPI_CSI3_D0_N": 6,
+    "MIPI_CSI3_D1_P": 7,
+    "MIPI_CSI3_D1_N": 8,
+    "MIPI_CSI3_D2_P": 9,
+    "MIPI_CSI3_D2_N": 10,
+    "MIPI_CSI3_D3_P": 11,
+    "MIPI_CSI3_D3_N": 12,
+    "CAM_I2C_SCL": 13,
+    "CAM_I2C_SDA": 14,
+    "CAM_RST_n": 15,
+    "CAM_MCLK": 16,
+    "PDM1_CLK": 17,
+    "PDM1_DATA0": 18,
+    "PDM1_DATA1": 19,
+    "SAI1_BCLK": 20,
+    "SAI1_LRCK": 21,
+    "SAI1_SDO": 22,
+    "SAI1_MCLK": 23,
+    "USB_DP": 24,
+    "USB_DM": 25,
+    "UART_DBG_TX": 26,
+    "UART_DBG_RX": 27,
+    "RECOVERY_n": 28,
+    "RESET_n": 29,
+    "POWER_KEY": 30,
+    "WL_nDIS": 31,
+    "BT_nDIS": 32,
+    "IMU_I2C_SCL": 33,
+    "IMU_I2C_SDA": 34,
+    "IMU_INT1": 35,
+    "VIB_PWM": 36,
+    "+3V3": 37,
+    "+1V8": 38,
+    "+CAM_2V8": 39,
+    "+CAM_1V8": 40,
+    "+CAM_1V2": 41,
+    "+VBAT": 42,
+    "USB_VBUS": 43,
+    "USB_CC1": 44,
+    "USB_CC2": 45,
+    "SPKR_EN_n": 46,
+    "SPK_OUT_P": 47,
+    "SPK_OUT_N": 48,
+    "LED_PWR_n": 49,
+    "LED_STATUS_n": 50,
+    "VBAT_P": 51,
+    "VBAT_N": 52,
+    "BAT_NTC": 53,
+    "CHG_INT_n": 54,
+    "LOW_BAT_INT_n": 55,
+    "FUEL_I2C_SCL": 56,
+    "FUEL_I2C_SDA": 57,
+    "VIB_EN": 58
+  },
+  "board_outline": {
+    "edge_count": 4,
+    "edges": [
+      {
+        "type": "line",
+        "start": [
+          0.0,
+          0.0
+        ],
+        "end": [
+          70.0,
+          0.0
+        ]
+      },
+      {
+        "type": "line",
+        "start": [
+          70.0,
+          0.0
+        ],
+        "end": [
+          70.0,
+          55.0
+        ]
+      },
+      {
+        "type": "line",
+        "start": [
+          70.0,
+          55.0
+        ],
+        "end": [
+          0.0,
+          55.0
+        ]
+      },
+      {
+        "type": "line",
+        "start": [
+          0.0,
+          55.0
+        ],
+        "end": [
+          0.0,
+          0.0
+        ]
+      }
+    ],
+    "bounding_box": {
+      "min_x": 0.0,
+      "min_y": 0.0,
+      "max_x": 70.0,
+      "max_y": 55.0,
+      "width": 70.0,
+      "height": 55.0
+    }
+  },
+  "component_groups": {
+    "H": {
+      "count": 4,
+      "references": [
+        "H1",
+        "H2",
+        "H3",
+        "H4"
+      ]
+    }
+  },
+  "footprints": [
+    {
+      "library": "MountingHole:MountingHole_2.2mm_M2",
+      "reference": "H1",
+      "value": "MountingHole_2.2mm_M2",
+      "mpn": "",
+      "x": 4.0,
+      "y": 4.0,
+      "angle": 0.0,
+      "layer": "F.Cu",
+      "type": "exclude_from_pos_files",
+      "pad_count": 1,
+      "exclude_from_bom": true,
+      "exclude_from_pos": true,
+      "courtyard": {
+        "min_x": 4.0,
+        "min_y": 4.0,
+        "max_x": 6.45,
+        "max_y": 4.0
+      },
+      "footprint": "MountingHole:MountingHole_2.2mm_M2",
+      "pad_nets": {},
+      "connected_nets": []
+    },
+    {
+      "library": "MountingHole:MountingHole_2.2mm_M2",
+      "reference": "H2",
+      "value": "MountingHole_2.2mm_M2",
+      "mpn": "",
+      "x": 66.0,
+      "y": 4.0,
+      "angle": 0.0,
+      "layer": "F.Cu",
+      "type": "exclude_from_pos_files",
+      "pad_count": 1,
+      "exclude_from_bom": true,
+      "exclude_from_pos": true,
+      "courtyard": {
+        "min_x": 66.0,
+        "min_y": 4.0,
+        "max_x": 68.45,
+        "max_y": 4.0
+      },
+      "footprint": "MountingHole:MountingHole_2.2mm_M2",
+      "pad_nets": {},
+      "connected_nets": []
+    },
+    {
+      "library": "MountingHole:MountingHole_2.2mm_M2",
+      "reference": "H3",
+      "value": "MountingHole_2.2mm_M2",
+      "mpn": "",
+      "x": 4.0,
+      "y": 51.0,
+      "angle": 0.0,
+      "layer": "F.Cu",
+      "type": "exclude_from_pos_files",
+      "pad_count": 1,
+      "exclude_from_bom": true,
+      "exclude_from_pos": true,
+      "courtyard": {
+        "min_x": 4.0,
+        "min_y": 51.0,
+        "max_x": 6.45,
+        "max_y": 51.0
+      },
+      "footprint": "MountingHole:MountingHole_2.2mm_M2",
+      "pad_nets": {},
+      "connected_nets": []
+    },
+    {
+      "library": "MountingHole:MountingHole_2.2mm_M2",
+      "reference": "H4",
+      "value": "MountingHole_2.2mm_M2",
+      "mpn": "",
+      "x": 66.0,
+      "y": 51.0,
+      "angle": 0.0,
+      "layer": "F.Cu",
+      "type": "exclude_from_pos_files",
+      "pad_count": 1,
+      "exclude_from_bom": true,
+      "exclude_from_pos": true,
+      "courtyard": {
+        "min_x": 66.0,
+        "min_y": 51.0,
+        "max_x": 68.45,
+        "max_y": 51.0
+      },
+      "footprint": "MountingHole:MountingHole_2.2mm_M2",
+      "pad_nets": {},
+      "connected_nets": []
+    }
+  ],
+  "tracks": {
+    "segment_count": 0,
+    "arc_count": 0,
+    "width_distribution": {},
+    "layer_distribution": {}
+  },
+  "vias": {
+    "count": 0,
+    "size_distribution": {}
+  },
+  "zones": [],
+  "keepout_zones": [],
+  "connectivity": {
+    "total_nets_with_pads": 0,
+    "routed_nets": 0,
+    "unrouted_count": 0,
+    "routing_complete": true
+  },
+  "net_lengths": [],
+  "ground_domains": {
+    "domain_count": 1,
+    "domains": [
+      {
+        "net": "GND",
+        "net_number": 1,
+        "component_count": 0,
+        "components": [],
+        "has_zone": false,
+        "zone_layers": []
+      }
+    ],
+    "multi_domain_components": []
+  },
+  "silkscreen": {
+    "board_text_count": 1,
+    "refs_visible_on_silk": 4,
+    "refs_hidden_on_silk": 0,
+    "board_texts": [
+      {
+        "text": "rev v1.0-draft  DO NOT FAB",
+        "layer": "F.SilkS",
+        "x": 35.0,
+        "y": 30.5
+      }
+    ],
+    "fab_texts": [
+      {
+        "text": "AI Glasses Carrier V1 (RK3576/CM4) - PRE-LAYOUT SKELETON",
+        "layer": "F.Fab"
+      }
+    ],
+    "fab_notes_completeness": {
+      "checks": {
+        "ipc_class": false,
+        "surface_finish": false,
+        "board_thickness": false,
+        "copper_weight": false,
+        "solder_mask": false,
+        "material": false
+      },
+      "missing": [
+        "ipc class",
+        "surface finish",
+        "board thickness",
+        "copper weight",
+        "solder mask",
+        "material"
+      ],
+      "completeness_pct": 0,
+      "status": "warning"
+    },
+    "silkscreen_completeness": {
+      "checks": {
+        "revision_marking": true,
+        "board_name": true,
+        "ref_designators_visible": true,
+        "connector_labels": true,
+        "polarity_markers": true
+      },
+      "missing": [],
+      "completeness_pct": 100,
+      "status": "pass"
+    }
+  },
+  "board_metadata": {
+    "paper": "A4",
+    "title": "AI Glasses Carrier V1 (RK3576/CM4) - PRE-LAYOUT SKELETON",
+    "rev": "v1.0-draft",
+    "comments": {
+      "1": "Outline is placeholder until official Radxa CM4 STEP is imported.",
+      "2": "No B2B/USB/camera footprints: pin assignment not FROZEN (Sec 3.3)."
+    }
+  },
+  "project_settings": {
+    "source": "j2_fh35c_1to1_check.kicad_pro",
+    "footprint_libs": [
+      {
+        "name": "AI_Glasses",
+        "type": "KiCad",
+        "uri": "${KIPRJMOD}/AI_Glasses.pretty",
+        "descr": "Project footprints for AI Glasses carrier"
+      }
+    ]
+  },
+  "dfm_summary": {
+    "dfm_tier": "standard",
+    "metrics": {
+      "board_width_mm": 70.0,
+      "board_height_mm": 55.0
+    },
+    "violation_count": 0
+  },
+  "placement_density": {
+    "board_area_cm2": 38.5,
+    "front_density_per_cm2": 0.1
+  },
+  "findings": [
+    {
+      "total_signal_nets": 50,
+      "nets_with_test_points": 0,
+      "coverage_pct": 0.0,
+      "test_point_count": 0,
+      "detector": "analyze_test_point_coverage",
+      "rule_id": "TE-001",
+      "category": "testability",
+      "severity": "warning",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "Test point coverage: 0/50 nets (0%)",
+      "description": "0 of 50 signal nets have test points (0% coverage).",
+      "components": [],
+      "nets": [],
+      "pins": [],
+      "recommendation": "Add test points to improve ICT/flying probe coverage.",
+      "report_context": {
+        "section": "Testability",
+        "impact": "ICT accessibility",
+        "standard_ref": ""
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    }
+  ],
+  "trust_summary": {
+    "total_findings": 1,
+    "trust_level": "high",
+    "by_confidence": {
+      "deterministic": 1,
+      "heuristic": 0,
+      "datasheet-backed": 0
+    },
+    "by_evidence_source": {
+      "datasheet": 0,
+      "topology": 1,
+      "heuristic_rule": 0,
+      "symbol_footprint": 0,
+      "bom": 0,
+      "geometry": 0,
+      "api_lookup": 0
+    },
+    "provenance_coverage_pct": 0.0
+  },
+  "summary": {
+    "total_findings": 1,
+    "by_severity": {
+      "error": 0,
+      "warning": 1,
+      "info": 0
+    }
+  },
+  "design_intent": {
+    "product_class": "production",
+    "ipc_class": 2,
+    "target_market": "consumer",
+    "expected_lifetime_years": 5,
+    "operating_temp_range": [
+      -10,
+      70
+    ],
+    "preferred_passive_size": "0603",
+    "test_coverage_target": 0.85,
+    "approved_manufacturers": [],
+    "confidence": 0.6,
+    "detection_signals": [
+      "7-layer board detected",
+      "fab notes text present on PCB"
+    ],
+    "source": {
+      "ipc_class": "auto",
+      "product_class": "auto",
+      "target_market": "auto",
+      "expected_lifetime_years": "auto",
+      "operating_temp_range": "auto",
+      "preferred_passive_size": "auto",
+      "test_coverage_target": "auto",
+      "approved_manufacturers": "auto"
+    }
+  },
+  "audience_summary": {
+    "designer": {
+      "total_findings": 1,
+      "by_severity": {
+        "error": 0,
+        "warning": 1,
+        "info": 0
+      },
+      "by_category": {
+        "testability": 1
+      },
+      "top_issues": [
+        {
+          "total_signal_nets": 50,
+          "nets_with_test_points": 0,
+          "coverage_pct": 0.0,
+          "test_point_count": 0,
+          "detector": "analyze_test_point_coverage",
+          "rule_id": "TE-001",
+          "category": "testability",
+          "severity": "warning",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "summary": "Test point coverage: 0/50 nets (0%)",
+          "description": "0 of 50 signal nets have test points (0% coverage).",
+          "components": [],
+          "nets": [],
+          "pins": [],
+          "recommendation": "Add test points to improve ICT/flying probe coverage.",
+          "report_context": {
+            "section": "Testability",
+            "impact": "ICT accessibility",
+            "standard_ref": ""
+          },
+          "stages": [
+            "pre_fab"
+          ]
+        }
+      ]
+    },
+    "reviewer": {
+      "total_findings": 1,
+      "by_category": {
+        "testability": 1
+      },
+      "top_issues": [
+        {
+          "rule_id": "TE-001",
+          "severity": "warning",
+          "summary": "Test point coverage: 0/50 nets (0%)",
+          "recommendation": "Add test points to improve ICT/flying probe coverage.",
+          "category": "testability"
+        }
+      ]
+    },
+    "manager": {
+      "risk_level": "low",
+      "blocker_count": 0,
+      "warning_count": 1,
+      "stage_readiness": {
+        "schematic": "pass",
+        "layout": "pass",
+        "pre_fab": "needs_review",
+        "bring_up": "pass"
+      },
+      "one_liner": "1 warning across 1 category."
+    }
+  }
+}

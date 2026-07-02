@@ -34,12 +34,18 @@ Generated gate docs are [08](../docs/08_signal_dictionary.md),
 ## Still NOT here: PCB layout (by design)
 
 No `.kicad_pcb`, no assigned footprints, no placement/copper. **PCB layout stays
-gated behind Gate 0 and the HOLD closure matrix** — batteries proven to fit L/R
-temples with swell/foam/FPC room, not stacked over RK3576/PMIC, antenna keep-out
-respected, and NDP120/Wi-Fi/battery/camera/FPC data closed (see
-[../docs/12_layout_entry_gate_status.md](../docs/12_layout_entry_gate_status.md)).
+gated behind Gate 0, the Phase 1.5 floorplan, and the HOLD closure matrix** —
+batteries proven to fit L/R temples with swell/foam/FPC room, not stacked over
+RK3576/PMIC, antenna keep-out respected, and NDP120/Wi-Fi/battery/camera/FPC
+data closed (see [../docs/12_layout_entry_gate_status.md](../docs/12_layout_entry_gate_status.md)
+and [../docs/13_mechanical_electrical_floorplan.md](../docs/13_mechanical_electrical_floorplan.md)).
 The Footprint field is intentionally empty; intended packages live in the
 `Package` field only and are tracked in [../docs/11_footprint_register.md](../docs/11_footprint_register.md).
+
+The next KiCad mechanical deliverable is a **no-route floorplan**: board frames,
+RK3576/LPDDR/RK806/eMMC/Wi-Fi/boost-inductor/FPC placement envelopes, battery
+3D/envelope blocks, speaker and antenna keep-outs. It proves fit before routing;
+it is not a formal routed PCB.
 
 ## Intended board split at layout (Phase 4)
 

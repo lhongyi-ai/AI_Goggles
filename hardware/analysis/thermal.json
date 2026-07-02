@@ -1,0 +1,156 @@
+{
+  "analyzer_type": "thermal",
+  "schema_version": "1.3.0",
+  "summary": {
+    "total_findings": 2,
+    "components_assessed": 1,
+    "active": 2,
+    "suppressed": 0,
+    "by_severity": {
+      "error": 0,
+      "warning": 0,
+      "info": 2
+    },
+    "thermal_score": 100,
+    "total_board_dissipation_w": 0.189,
+    "hottest_component": {
+      "ref": "U3",
+      "tj_estimated_c": 53.4
+    },
+    "components_analyzed": 1,
+    "components_above_85c": 0,
+    "components_above_tjmax": 0,
+    "ambient_c": 25.0
+  },
+  "findings": [
+    {
+      "category": "thermal_safety",
+      "severity": "info",
+      "rule_id": "TS-005",
+      "confidence": "heuristic",
+      "title": "U3 (LP5907-3.3 (low-noise LDO)) Tj 53\u00b0C, margin 72\u00b0C",
+      "description": "ldo dissipates 0.189W in unknown \u2014 within safe thermal limits.",
+      "components": [
+        "U3"
+      ],
+      "recommendation": "",
+      "detector": "analyze_thermal",
+      "summary": "U3 (LP5907-3.3 (low-noise LDO)) Tj 53\u00b0C, margin 72\u00b0C",
+      "nets": [],
+      "pins": [],
+      "evidence_source": "heuristic_rule",
+      "report_context": {
+        "section": "Thermal Safety",
+        "impact": "Component reliability",
+        "standard_ref": ""
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ]
+    },
+    {
+      "ref": "U3",
+      "value": "LP5907-3.3 (low-noise LDO)",
+      "component_type": "ldo",
+      "pdiss_w": 0.189,
+      "pdiss_source": "(5.0V - 3.3V) \u00d7 0.111A",
+      "pdiss_confidence": "heuristic",
+      "package": "unknown",
+      "rtheta_ja_raw": 150.0,
+      "rtheta_ja_source": "default",
+      "pcb_correction": 1.0,
+      "pcb_correction_notes": [],
+      "rtheta_ja_effective": 150.0,
+      "ambient_c": 25.0,
+      "tj_estimated_c": 53.4,
+      "tj_max_c": 125.0,
+      "tj_max_source": "default_125",
+      "margin_c": 71.7,
+      "position": null,
+      "detector": "analyze_thermal",
+      "rule_id": "TH-DET",
+      "category": "thermal",
+      "severity": "info",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "summary": "Thermal: U3 Tj=53.4C (margin 71.7C)",
+      "description": "Component U3 in unknown package: Tj=53.4C, margin 71.7C to Tj_max (125.0C).",
+      "components": [
+        "U3"
+      ],
+      "nets": [],
+      "pins": [],
+      "recommendation": "",
+      "report_context": {
+        "section": "Thermal",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "stages": [
+        "layout"
+      ]
+    }
+  ],
+  "elapsed_s": 0.0,
+  "missing_info": {
+    "default_rtheta_ja": [
+      "U3"
+    ],
+    "default_tj_max": [
+      "U3"
+    ]
+  },
+  "trust_summary": {
+    "total_findings": 2,
+    "trust_level": "low",
+    "by_confidence": {
+      "deterministic": 0,
+      "heuristic": 2,
+      "datasheet-backed": 0
+    },
+    "by_evidence_source": {
+      "datasheet": 0,
+      "topology": 0,
+      "heuristic_rule": 2,
+      "symbol_footprint": 0,
+      "bom": 0,
+      "geometry": 0,
+      "api_lookup": 0
+    },
+    "provenance_coverage_pct": 0.0
+  },
+  "audience_summary": {
+    "designer": {
+      "total_findings": 2,
+      "by_severity": {
+        "error": 0,
+        "warning": 0,
+        "info": 2
+      },
+      "by_category": {
+        "thermal_safety": 1,
+        "thermal": 1
+      },
+      "top_issues": []
+    },
+    "reviewer": {
+      "total_findings": 0,
+      "by_category": {},
+      "top_issues": []
+    },
+    "manager": {
+      "risk_level": "none",
+      "blocker_count": 0,
+      "warning_count": 0,
+      "stage_readiness": {
+        "schematic": "pass",
+        "layout": "pass",
+        "pre_fab": "pass",
+        "bring_up": "pass"
+      },
+      "one_liner": "No errors or warnings \u2014 all stages ready."
+    }
+  }
+}

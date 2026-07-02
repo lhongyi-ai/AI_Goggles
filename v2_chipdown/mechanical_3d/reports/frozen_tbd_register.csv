@@ -1,0 +1,29 @@
+id,ref,mpn,status,frozen,body_dims,blocker
+R-PCB,PCB-R,rigid PCB envelope,Candidate,True,62x18x1.0,
+C01,U1,RK3576,Candidate/HOLD,False,16.1x17.2xH TBD,H from official package drawing still required
+C02,U3,Samsung K4U6E3S4AA-MGCL,HOLD,False,TBD package drawing,MPN selected for EVT; official package/ball map still required
+C03,U2,RK806S-5,Candidate/HOLD,True,7.0x7.0x0.90,
+C04,U4,Samsung KLMAG1JENB-B041,Candidate/HOLD,True,11.5x13.0x0.8,
+P01,U35,BQ25895,HOLD,False,TBD official package,Primary 1S charger + power path
+P02,U6,TPS61088,Candidate/HOLD,False,4.5x3.5xH TBD,Thermal/droop gate open
+P03,L1,Coilcraft XGL4020-102MEC,Candidate/HOLD,True,4.0x4.0x2.0,
+P04,Y1,24MHz 10ppm,Fit,False,3.2x2.5xH TBD,Near SoC oscillator
+RF01,U11,Quectel FCU760K,HOLD,True,13.0x12.2x2.0,
+TH01,HS1,outer-wall path,Candidate,True,58x0.35x0.2,
+SH01,SH1,RF/PMIC shield TBD,TBD,False,TBD,Do not let antenna sit against shield
+BAT-R,BT1,LP451165 in 1S2P pack,HOLD,False,70x12.8x5.6 max,Supplier pack drawing and fit test required
+SPK-R,LS1,CUI CMS-15113-078SP-67,HOLD,True,15x11x3,
+RF02,J7,Taoglas FXP840.07.0055B,HOLD,True,14x5x0.1,
+J01,J1,CCP P2578MP01-06C180HT,HOLD,False,target 10x3x1,USB2 eye/contact validation required
+L-PCB,PCB-L,rigid PCB envelope,Candidate,True,46x13x1.0,
+A01,U7,nRF54L15-QFN48,Fit,True,6x6x0.85,
+A02,U8,nPM1300,HOLD,False,5x5xH TBD,BQ25895 is primary charger
+A03,U9,NDP120,HOLD,False,5x5xH TBD,Full datasheet/dev kit required
+A04,U10,BMI270,Fit,True,2.5x3.0x0.8,
+BAT-L,BT2,LP451165 in 1S2P pack,HOLD,False,70x12.8x5.6 max,Supplier pack drawing and fit test required
+J02,J1-L,mechanical keep space,Candidate,True,9x3x1,
+CAM01,U14,Sony IMX415-AAQR-C,HOLD/TBD,False,sensor PCB <=15x15; total Z <=9.5 target,TBD - NOT RELEASED FOR TOOLING
+J03,J3,FH26W-33S-0.3SHW(97),HOLD,False,11.4x3.2x1.0 approx,Vendor pinout sign-off required
+MIC1,MK1,T5837,Fit,True,3.50x2.65x0.98,
+MIC2,MK2,T5837,Fit,True,3.50x2.65x0.98,
+MIC3,MK3,T5837,Fit,True,3.50x2.65x0.98,

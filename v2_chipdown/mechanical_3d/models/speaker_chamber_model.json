@@ -1,0 +1,27 @@
+{
+  "units": "mm",
+  "parts": [
+    {
+      "id": "SPK-R",
+      "ref": "LS1",
+      "name": "Main speaker",
+      "mpn": "CUI CMS-15113-078SP-67",
+      "board": "Right temple",
+      "zone": "Audio",
+      "x": 108.0,
+      "y": 0.6,
+      "z": 4.6,
+      "l": 15.0,
+      "w": 11.0,
+      "h": 3.0,
+      "color": "#f6c343",
+      "status": "HOLD",
+      "body_dims": "15x11x3",
+      "envelope_dims": "0.3-0.5cc cavity",
+      "clearance_mm": 0.3,
+      "note": "Port must not face microphones",
+      "frozen": true,
+      "hatch": ""
+    }
+  ]
+}

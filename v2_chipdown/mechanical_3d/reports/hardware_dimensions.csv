@@ -1,0 +1,29 @@
+id,ref,name,mpn,board,zone,body_dims,envelope_dims,status,clearance_mm,note
+R-PCB,PCB-R,Compute PCB,rigid PCB envelope,Right temple,PCB,62x18x1.0,local 20mm compute pod,Candidate,0.3,No-route placement envelope
+C01,U1,RK3576,RK3576,Right temple,SoC/high-speed,16.1x17.2xH TBD,"SoC body, not full circuit",Candidate/HOLD,0.3,H from official package drawing still required
+C02,U3,LPDDR4X,Samsung K4U6E3S4AA-MGCL,Right temple,SoC/high-speed,TBD package drawing,orange DDR placement envelope,HOLD,0.3,MPN selected for EVT; official package/ball map still required
+C03,U2,RK806S-5,RK806S-5,Right temple,PMIC,7.0x7.0x0.90,QFN68 ePad,Candidate/HOLD,0.3,Package frozen; power sequence still HOLD
+C04,U4,eMMC,Samsung KLMAG1JENB-B041,Right temple,Storage,11.5x13.0x0.8,153-FBGA,Candidate/HOLD,0.3,BSP boot validation required
+P01,U35,Charger/Power Path,BQ25895,Right temple,Power,TBD official package,charger placement envelope,HOLD,0.3,Primary 1S charger + power path
+P02,U6,Boost IC,TPS61088,Right temple,Boost,4.5x3.5xH TBD,boost IC body,Candidate/HOLD,0.3,Thermal/droop gate open
+P03,L1,Boost inductor,Coilcraft XGL4020-102MEC,Right temple,Boost,4.0x4.0x2.0,high-current magnetic,Candidate/HOLD,0.3,No DDR/MIPI/audio/RF below
+P04,Y1,24 MHz crystal,24MHz 10ppm,Right temple,Clock,3.2x2.5xH TBD,3225 crystal,Fit,0.3,Near SoC oscillator
+RF01,U11,Wi-Fi/BT module,Quectel FCU760K,Right temple,RF,13.0x12.2x2.0,LCC module,HOLD,0.3,USB2 host; shared antenna
+TH01,HS1,Heat spreader path,outer-wall path,Right temple,Thermal,58x0.35x0.2,outer wall heat path,Candidate,0.3,Keep battery longitudinally separated
+SH01,SH1,Shield can,RF/PMIC shield TBD,Right temple,Shield,TBD,orange shield envelope,TBD,0.3,Do not let antenna sit against shield
+BAT-R,BT1,Right battery envelope,LP451165 in 1S2P pack,Right temple,Battery,70x12.8x5.6 max,cell+seal+PCM+foam+swell,HOLD,0.5,Supplier pack drawing and fit test required
+SPK-R,LS1,Main speaker,CUI CMS-15113-078SP-67,Right temple,Audio,15x11x3,0.3-0.5cc cavity,HOLD,0.3,Port must not face microphones
+RF02,J7,Shared Wi-Fi/BLE antenna,Taoglas FXP840.07.0055B,Right temple,RF,14x5x0.1,plastic window keep-out,HOLD,0.3,No battery/speaker magnet/shield/copper in keep-out
+J01,J1,6-pin magnetic pogo,CCP P2578MP01-06C180HT,Right temple,Pogo,target 10x3x1,6 pins: GND D- D+ GND VBUS VBUS,HOLD,0.3,USB2 eye/contact validation required
+L-PCB,PCB-L,AON/power PCB,rigid PCB envelope,Left temple,PCB,46x13x1.0,15mm straight temple target,Candidate,0.3,No-route placement envelope
+A01,U7,AON MCU,nRF54L15-QFN48,Left temple,AON,6x6x0.85,QFN48,Fit,0.3,No separate BLE antenna in EVT
+A02,U8,AON PMIC/gauge,nPM1300,Left temple,Power,5x5xH TBD,AON rails/gauge,HOLD,0.3,BQ25895 is primary charger
+A03,U9,Audio DSP,NDP120,Left temple,AON audio,5x5xH TBD,QFN40 target,HOLD,0.3,Full datasheet/dev kit required
+A04,U10,IMU,BMI270,Left temple,Motion,2.5x3.0x0.8,LGA14,Fit,0.3,Avoid high stress/vibration
+BAT-L,BT2,Left battery envelope,LP451165 in 1S2P pack,Left temple,Battery,70x12.8x5.6 max,cell+seal+PCM+foam+swell,HOLD,0.5,Supplier pack drawing and fit test required
+J02,J1-L,Left service/pogo area,mechanical keep space,Left temple,Service,9x3x1,service keep space,Candidate,0.3,"If duplicated pogo is deleted, use as strain relief"
+CAM01,U14,IMX415 module envelope,Sony IMX415-AAQR-C,Front frame,Camera,sensor PCB <=15x15; total Z <=9.5 target,lens+IR+PCB+FPC TBD envelope,HOLD/TBD,0.3,TBD - NOT RELEASED FOR TOOLING
+J03,J3,33-pin camera FPC,FH26W-33S-0.3SHW(97),Front frame,FPC,11.4x3.2x1.0 approx,33-pin 0.3mm pitch,HOLD,0.3,Vendor pinout sign-off required
+MIC1,MK1,Wake microphone,T5837,Front frame,Audio,3.50x2.65x0.98,bottom-port MEMS,Fit,0.3,Sound hole + keep-out
+MIC2,MK2,Array microphone 1,T5837,Front frame,Audio,3.50x2.65x0.98,bottom-port MEMS,Fit,0.3,Sound hole + keep-out
+MIC3,MK3,Array microphone 2,T5837,Front frame,Audio,3.50x2.65x0.98,bottom-port MEMS,Fit,0.3,Sound hole + keep-out

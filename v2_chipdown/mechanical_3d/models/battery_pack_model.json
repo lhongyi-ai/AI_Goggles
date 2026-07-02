@@ -1,0 +1,49 @@
+{
+  "units": "mm",
+  "parts": [
+    {
+      "id": "BAT-R",
+      "ref": "BT1",
+      "name": "Right battery envelope",
+      "mpn": "LP451165 in 1S2P pack",
+      "board": "Right temple",
+      "zone": "Battery",
+      "x": 76.0,
+      "y": 1.0,
+      "z": 1.0,
+      "l": 70.0,
+      "w": 12.8,
+      "h": 5.6,
+      "color": "#e84d3d",
+      "status": "HOLD",
+      "body_dims": "70x12.8x5.6 max",
+      "envelope_dims": "cell+seal+PCM+foam+swell",
+      "clearance_mm": 0.5,
+      "note": "Supplier pack drawing and fit test required",
+      "frozen": false,
+      "hatch": "//"
+    },
+    {
+      "id": "BAT-L",
+      "ref": "BT2",
+      "name": "Left battery envelope",
+      "mpn": "LP451165 in 1S2P pack",
+      "board": "Left temple",
+      "zone": "Battery",
+      "x": 61.0,
+      "y": 1.0,
+      "z": 1.0,
+      "l": 70.0,
+      "w": 12.8,
+      "h": 5.6,
+      "color": "#e84d3d",
+      "status": "HOLD",
+      "body_dims": "70x12.8x5.6 max",
+      "envelope_dims": "cell+seal+PCM+foam+swell",
+      "clearance_mm": 0.5,
+      "note": "Supplier pack drawing and fit test required",
+      "frozen": false,
+      "hatch": "//"
+    }
+  ]
+}

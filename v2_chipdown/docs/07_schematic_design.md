@@ -193,6 +193,11 @@ in this schematic and must not be treated as done:
   90 Ω), stack-up, DRC. Gated behind **Gate 0 (mechanical)**: prove the two
   LP451165 cells fit L/R temples with swell/foam/FPC room, not stacked over
   RK3576/PMIC, antenna keep-out respected.
+- **Phase 1.5 floorplan before routing** — create a no-route mechanical/electrical
+  KiCad floorplan with board outlines, RK3576/LPDDR/RK806/eMMC/Wi-Fi/boost
+  inductor/FPC connector placement envelopes, LP451165 3D/envelope blocks,
+  speaker and antenna keep-outs. If it does not fit, change architecture before
+  PCB layout. See [13_mechanical_electrical_floorplan.md](13_mechanical_electrical_floorplan.md).
 - **No footprints assigned** (Footprint field empty; intended package in the
   `Package` field only). Real footprints are created at layout.
 - **Ball-level nets** for RK3576/RK806S/LPDDR4X/eMMC/NDP120/IMX415-module/Wi-Fi

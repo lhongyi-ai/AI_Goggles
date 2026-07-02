@@ -1,0 +1,99 @@
+ref,value,assembly,package_register,freeze_status,body_size,footprint_status,not_for_fab_required,next_action
+J2,USB-C 16p USB2-only,Fit,AI_Glasses_V2:USB_C_16P_MidMount,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Connector height + shell opening co-freeze
+R1,5.1k 1%,Fit,AI_Glasses_V2:R_0402,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,USB-C spec
+R2,5.1k 1%,Fit,AI_Glasses_V2:R_0402,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,USB-C spec
+SW1,Power/PWRKEY,Fit,Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,First chip-down must recover from boot failure
+SW2,Reset,Fit,Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Bring-up
+SW3,MaskROM/Recovery,Fit,Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Bring-up (recover from bad boot)
+TP1,UART/SWD pogo pads,Fit,AI_Glasses_V2:TestPad_Set,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Voltage domain clearly labelled (no 3.3V into 1.8V IO)
+U24,TPD2E001,Fit,Package_TO_SOT_SMD:SOT-23-3,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Keep ~90 ohm diff + continuous ref gnd
+J3,Hirose FH26W 0.3mm FPC,HOLD,AI_Glasses_V2:VERIFY_FPC_FH26W,HOLD,12.0 x 3.5 x 1.0,NOT_FOR_FAB placeholder; not release-ready,YES,G12 (pin count from final cam lane/mic/power split)
+L3,Cam 1V1 buck inductor (TBD),Fit,AI_Glasses_V2:VERIFY_L_1.6x0.8,TBD,1.6 x 0.8 x None,NOT_FOR_FAB placeholder; not release-ready,YES,Per TPS62840 design
+MK1,T5837 (wake mic),Fit,AI_Glasses_V2:LGA-5_3.5x2.65,PROVISIONAL,3.5 x 2.65 x 0.98,candidate; verify official drawing/land pattern/height before layout,CHECK,G11 (mic coords/ports/wind/wake + AEC/beamforming)
+MK2,T5837 (array mic 1),Fit,AI_Glasses_V2:LGA-5_3.5x2.65,PROVISIONAL,3.5 x 2.65 x 0.98,candidate; verify official drawing/land pattern/height before layout,CHECK,G11
+MK3,T5837 (array mic 2),Fit,AI_Glasses_V2:LGA-5_3.5x2.65,PROVISIONAL,3.5 x 2.65 x 0.98,candidate; verify official drawing/land pattern/height before layout,CHECK,G11
+MK4,T5837 (4th mic),DNP,AI_Glasses_V2:LGA-5_3.5x2.65,DNP,None x None x None,DNP; do not treat as release BOM,YES,G11 (populate only if array sim/proto needs it)
+R13,100k,Fit,AI_Glasses_V2:R_0402,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Default OFF (§4)
+R14,100k,Fit,AI_Glasses_V2:R_0402,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Default OFF (§4)
+R15,100k,Fit,AI_Glasses_V2:R_0402,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Default OFF (§4)
+R5,2.2k 1%,Fit,AI_Glasses_V2:R_0402,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Confirm vs camera bus capacitance
+R6,2.2k 1%,Fit,AI_Glasses_V2:R_0402,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Confirm vs camera bus capacitance
+RS7,100 mohm 1%,Fit,AI_Glasses_V2:R_0603_shunt,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Per-rail Kelvin (§23/§29); DVDD ~250mA
+RS8,100 mohm 1%,Fit,AI_Glasses_V2:R_0402_shunt,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Per-rail Kelvin (§23/§29); IOVDD ~3mA
+RS9,100 mohm 1%,Fit,AI_Glasses_V2:R_0603_shunt,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Per-rail Kelvin (§23/§29); AVDD ~156mA
+U14,IMX415-AAQR module (custom FPC),HOLD,AI_Glasses_V2:VERIFY_CAM_MODULE,HOLD,None x None x None,NOT_FOR_FAB placeholder; not release-ready,YES,G10 (module lens/FOV/FPC pinout/lane/supply/timing from vendor)
+U15,TPS62840,Fit,AI_Glasses_V2:VERIFY_WSON,PROVISIONAL,None x None x None,NOT_FOR_FAB placeholder; not release-ready,YES,Output current/noise per final module (DVDD ~250mA max + margin)
+U16,TLV75529PDRVR,Fit,AI_Glasses_V2:WSON-6_2x2,PROVISIONAL,2.0 x 2.0 x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Verify vs IMX415 AVDD peak (156mA) + PSRR
+U17,TPS22917DBVR,Fit,Package_TO_SOT_SMD:SOT-23-5,PROVISIONAL,2.9 x 2.8 x None,candidate; verify official drawing/land pattern/height before layout,CHECK,"Check reverse block, ramp, QOD, logic level"
+U18,TPD4E05U06,Fit,AI_Glasses_V2:USON,PROVISIONAL,2.5 x 1.0 x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Low-cap array near FPC entry
+U19,TPD4E05U06,Fit,AI_Glasses_V2:USON,PROVISIONAL,2.5 x 1.0 x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Low-cap array near FPC entry
+U31,INA238 (I_CAM_1V1),DNP,AI_Glasses_V2:VSSOP-10,DNP,None x None x None,DNP; do not treat as release BOM,YES,Power Gate — EVT-A only
+U32,INA238 (I_CAM_1V8),DNP,AI_Glasses_V2:VSSOP-10,DNP,None x None x None,DNP; do not treat as release BOM,YES,Power Gate — EVT-A only
+U33,INA238 (I_CAM_2V9),DNP,AI_Glasses_V2:VSSOP-10,DNP,None x None x None,DNP; do not treat as release BOM,YES,Power Gate — EVT-A only
+C2,0.1uF,DNP,AI_Glasses_V2:C_0402,DNP,None x None x None,DNP; do not treat as release BOM,YES,Per BQ2970 app
+Q1,Dual N-MOSFET (b2b),DNP,AI_Glasses_V2:VERIFY_DFN_2FET,DNP,None x None x None,NOT_FOR_FAB placeholder; not release-ready,YES,Vds/RDSon/Vgs/peak per BQ2970 app (§17)
+R21,0R (pack-PCM baseline),Fit,AI_Glasses_V2:R_0805,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,"Populate 0R OR discrete protection, never both (§17)"
+R22,330R,DNP,AI_Glasses_V2:R_0402,DNP,None x None x None,DNP; do not treat as release BOM,YES,Per BQ2970 app
+R23,2k,DNP,AI_Glasses_V2:R_0402,DNP,None x None x None,DNP; do not treat as release BOM,YES,Per BQ2970 app (V- sense)
+R3,2.2k 1%,Fit,AI_Glasses_V2:R_0402,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Confirm vs total AON bus capacitance
+R4,2.2k 1%,Fit,AI_Glasses_V2:R_0402,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Confirm vs total AON bus capacitance
+RS1,10 mohm 1% 1W,Fit,AI_Glasses_V2:R_1206_shunt,PROVISIONAL,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,I_BAT_TOTAL; the one production-kept sense path
+U10,BMI270,Fit,Package_LGA:LGA-14_2.5x3mm_P0.5mm,PROVISIONAL,2.5 x 3.0 x 0.8,candidate; verify official drawing/land pattern/height before layout,CHECK,Evaluate false-trigger under real frame vibration
+U22,DRV2605L,DNP,Package_SO:MSOP-10_3x3mm_P0.5mm,DNP,None x None x None,DNP; do not treat as release BOM,YES,Vibration P1 — may DNP on first board (IMU/mic coupling)
+U23,BQ2970,DNP,Package_TO_SOT_SMD:SOT-23-5,DNP,1.5 x 1.5 x 0.75,DNP; do not treat as release BOM,YES,Keep ONE protection scheme; confirm suffix OVP/UVP/OCP vs nPM1300/boost UVLO (§17)
+U25,INA238 (I_BAT_TOTAL),DNP,AI_Glasses_V2:VSSOP-10,DNP,3.0 x 4.9 x None,DNP; do not treat as release BOM,YES,Power Gate — EVT-A; production may keep this one
+U7,nRF54L15-QFN48,Fit,AI_Glasses_V2:QFN-48_6x6,PROVISIONAL,6.0 x 6.0 x 0.85,candidate; verify official drawing/land pattern/height before layout,CHECK,EVT-frozen (RF layout/SDK/package to freeze early)
+U8,nPM1300,HOLD,AI_Glasses_V2:QFN_5x5,HOLD,5.0 x 5.0 x None,candidate; verify official drawing/land pattern/height before layout,YES,G08 (AON <=25/50mW) — configure via nPM PowerUP on EK before board
+U9,NDP120,HOLD,AI_Glasses_V2:VERIFY_QFN_5x5,HOLD,5.0 x 5.0 x None,NOT_FOR_FAB placeholder; not release-ready,YES,Full datasheet + dev kit + measured listening power + NDA/licensing
+C1,47uF 6.3V X5R,Fit,AI_Glasses_V2:C_0805,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Local bulk per Quectel HW Design
+L1,Boost inductor (TBD),TBD,AI_Glasses_V2:VERIFY_L_5x5,TBD,5.0 x 5.0 x 2.0,NOT_FOR_FAB placeholder; not release-ready,YES,G06/G13 (Isat covers boot+AI peak; height <=2mm; thermal)
+L2,Wi-Fi buck inductor (TBD),Fit,AI_Glasses_V2:VERIFY_L_2x2,TBD,2.0 x 2.0 x None,NOT_FOR_FAB placeholder; not release-ready,YES,Per TPS62825 peak+ripple
+R10,2.2k 1%,Fit,AI_Glasses_V2:R_0402,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Confirm vs SoC PMIC bus
+R11,100k,Fit,AI_Glasses_V2:R_0402,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Default OFF (§4)
+R12,100k,Fit,AI_Glasses_V2:R_0402,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Default OFF (§4)
+R16,100k,Fit,AI_Glasses_V2:R_0402,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Default OFF (§4)
+R17,100k,Fit,AI_Glasses_V2:R_0402,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Default OFF (§4)
+R18,100k,Fit,AI_Glasses_V2:R_0402,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Default OFF (§4/§9: FCU760K CHIP_EN default low)
+R19,100k,Fit,AI_Glasses_V2:R_0402,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Default OFF (§4)
+R20,100k,Fit,AI_Glasses_V2:R_0402,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Default OFF (§4)
+R9,2.2k 1%,Fit,AI_Glasses_V2:R_0402,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Confirm vs SoC PMIC bus
+RS4,10 mohm 1%,Fit,AI_Glasses_V2:R_0805_shunt,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,5-20 mohm (2A x 10m=20mV; avoid boost UVLO)
+RS5,50 mohm 1%,Fit,AI_Glasses_V2:R_0603_shunt,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,20-100 mohm
+RS6,50 mohm 1%,Fit,AI_Glasses_V2:R_0603_shunt,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,20-100 mohm
+RT3,10k NTC B=3435,Fit,AI_Glasses_V2:R_0402,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Probe position per thermal sim
+U1,RK3576,Fit,AI_Glasses_V2:VERIFY_FCCSP698L_16x17,HOLD,16.1 x 17.2 x None,NOT_FOR_FAB placeholder; not release-ready,YES,G01 (RK3576 datasheet/HDG/ballmap/DDR guide)
+U11,FCU760KAAMD,HOLD,AI_Glasses_V2:VERIFY_LCC_13x12.2_Quectel,HOLD,13.0 x 12.2 x 2.0,NOT_FOR_FAB placeholder; not release-ready,YES,G05 (Quectel HW Design + RK3576 BSP driver/firmware/enum) + official LCC land pattern
+U12,TPS62825,Fit,AI_Glasses_V2:QFN_1.5x1.5,PROVISIONAL,1.5 x 1.5 x None,candidate; verify official drawing/land pattern/height before layout,CHECK,G05/G06 (inductor/caps per module 353mA TX peak + ripple)
+U13,TPS22917DBVR,Fit,Package_TO_SOT_SMD:SOT-23-5,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,G05 (turn-on sequence w/ module)
+U2,RK806S-5,HOLD,AI_Glasses_V2:VERIFY_QFN,HOLD,None x None x None,NOT_FOR_FAB placeholder; not release-ready,YES,G03 (RK806S MPN/inductors/caps/timing per Radxa/Rockchip FAE)
+U20,MAX98360A,Fit,AI_Glasses_V2:VERIFY_WLP_QFN,PROVISIONAL,None x None x None,NOT_FOR_FAB placeholder; not release-ready,YES,Verify Z/cavity/EMI/peak power
+U21,TPS22917DBVR,Fit,Package_TO_SOT_SMD:SOT-23-5,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Amp must be fully power-downable (V1 lesson)
+U28,INA238 (I_SOC_5V),DNP,AI_Glasses_V2:VSSOP-10,DNP,None x None x None,DNP; do not treat as release BOM,YES,Power Gate — EVT-A only
+U29,INA238 (I_WIFI),DNP,AI_Glasses_V2:VSSOP-10,DNP,None x None x None,DNP; do not treat as release BOM,YES,Power Gate — EVT-A only
+U3,LPDDR4X 4GB (MPN TBD),HOLD,AI_Glasses_V2:VERIFY_BGA,HOLD,None x None x None,NOT_FOR_FAB placeholder; not release-ready,YES,"G02 (LPDDR4X MPN/topology/placement, DDR review + length report)"
+U30,INA238 (I_AUDIO),DNP,AI_Glasses_V2:VSSOP-10,DNP,None x None x None,DNP; do not treat as release BOM,YES,Power Gate — EVT-A only
+U4,eMMC 5.1 32GB (MPN TBD),HOLD,AI_Glasses_V2:VERIFY_BGA153,HOLD,None x None x None,NOT_FOR_FAB placeholder; not release-ready,YES,G04 (eMMC MPN + BSP/bootloader; cold-boot + power-loss recovery)
+U5,MX25U6432F,DNP,AI_Glasses_V2:USON-8,DNP,None x None x None,DNP; do not treat as release BOM,YES,Boot flow decides whether production needs it
+U6,TPS61088,HOLD,AI_Glasses_V2:VQFN-22_4.5x3.5,HOLD,4.5 x 3.5 x None,candidate; verify official drawing/land pattern/height before layout,YES,"G06/G09 (measured RK3576 boot+AI peak, soft-start, droop, thermal)"
+Y1,24 MHz 10 ppm XTAL,Fit,AI_Glasses_V2:Crystal_SMD_3225,PROVISIONAL,3.2 x 2.5 x None,candidate; verify official drawing/land pattern/height before layout,CHECK,G01 (reuse reference CL/ESR + placement distance per HDG)
+BT1,LP451165 300mAh (R),HOLD,AI_Glasses_V2:VERIFY_CELL_4.5x11x65,HOLD,70.0 x 12.8 x 5.6,NOT_FOR_FAB placeholder; not release-ready,YES,"G07 (full datasheet, >=2C, IR, cycles, cert)"
+BT2,LP451165 300mAh (L),HOLD,AI_Glasses_V2:VERIFY_CELL_70x12.8x5.6_maxenv,HOLD,70.0 x 12.8 x 5.6,NOT_FOR_FAB placeholder; not release-ready,YES,G07
+F1,PTC/fuse (R branch),TBD,AI_Glasses_V2:VERIFY_FUSE,TBD,None x None x None,NOT_FOR_FAB placeholder; not release-ready,YES,"Rating from peak-current calc (> branch peak, < FPC rating)"
+F2,PTC/fuse (L branch),TBD,AI_Glasses_V2:VERIFY_FUSE,TBD,None x None x None,NOT_FOR_FAB placeholder; not release-ready,YES,Rating from peak-current calc
+J1,Magnetic pogo 4-6p,TBD,AI_Glasses_V2:VERIFY_POGO,TBD,10.0 x 3.0 x None,NOT_FOR_FAB placeholder; not release-ready,YES,"Magnet direction, sweat corrosion, short, cycle life"
+J4,Custom hinge FPC 6-10mm,HOLD,AI_Glasses_V2:VERIFY_HINGE_FPC,HOLD,None x 6-10 x 0.10-0.18,NOT_FOR_FAB placeholder; not release-ready,YES,"G12 (impedance, bend radius, life, hinge interference)"
+J5,U.FL / I-PEX MHF,Fit,Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Connector height + mating life
+J6,BLE 2.4 GHz FPC/PCB ant,TBD,AI_Glasses_V2:VERIFY_ANT,TBD,None x None x None,NOT_FOR_FAB placeholder; not release-ready,YES,Worn-state tuning; clear of battery/metal
+J7,Wi-Fi 2.4/5 GHz FPC ant,TBD,AI_Glasses_V2:VERIFY_ANT,TBD,None x None x None,NOT_FOR_FAB placeholder; not release-ready,YES,Head-loaded RSSI/throughput/SAR; keep-out
+LS1,8 ohm 0.5-1 W speaker,TBD,AI_Glasses_V2:VERIFY_SPK,TBD,None x None x None,NOT_FOR_FAB placeholder; not release-ready,YES,MPN after acoustic cavity/volume/leak test
+LS2,2nd speaker pad,DNP,AI_Glasses_V2:VERIFY_SPK,DNP,None x None x None,NOT_FOR_FAB placeholder; not release-ready,YES,Decide dual-speaker at EVT-B
+M1,LRA/ERM motor,DNP,AI_Glasses_V2:VERIFY_LRA,DNP,None x None x None,NOT_FOR_FAB placeholder; not release-ready,YES,Vibration P1
+RS2,10 mohm 1%,Fit,AI_Glasses_V2:R_0805_shunt,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Branch current-share (§7/§29)
+RS3,10 mohm 1%,Fit,AI_Glasses_V2:R_0805_shunt,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Branch current-share (§7/§29)
+RT1,10k NTC (R cell),Fit,AI_Glasses_V2:R_0402,PROVISIONAL,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,NTC curve matched to nPM1300 charger config
+RT2,10k NTC (L cell),Fit,AI_Glasses_V2:R_0402,PROVISIONAL,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,NTC curve matched to nPM1300 charger config
+TP2,Battery test points,Fit,AI_Glasses_V2:TestPad_Set,Fit,None x None x None,candidate; verify official drawing/land pattern/height before layout,CHECK,Cell/pack voltage + NTC probe access (§21)
+U26,INA238 (I_CELL_L),DNP,AI_Glasses_V2:VSSOP-10,DNP,None x None x None,DNP; do not treat as release BOM,YES,Power Gate — EVT-A only (current-share)
+U27,INA238 (I_CELL_R),DNP,AI_Glasses_V2:VSSOP-10,DNP,None x None x None,DNP; do not treat as release BOM,YES,Power Gate — EVT-A only (current-share)
+CAM_FPC,custom camera FPC TBD,HOLD,,HOLD,None x None x None,virtual; no KiCad footprint,YES,close gate/source data before PCB layout
+CAM_LENS,Radxa Camera 4K AS001 lens candidate,HOLD,,HOLD,32.5 x 32.5 x 18.0,virtual; no KiCad footprint,YES,close gate/source data before PCB layout

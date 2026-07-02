@@ -5,7 +5,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "J" (at 0 24.130 0) (effects (font (size 1.270 1.270))))
       (property "Value" "DF40C-100DS-0.4V(51)" (at 0 -24.130 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_B2B_J31_LOGICAL" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Connector_Hirose_DF40:Hirose_DF40C-100DS-0.4V_2x50_P0.4mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "J31_0_1"
       (rectangle (start -12.700 21.590) (end 12.700 -21.590)
@@ -126,7 +126,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "J" (at 0 17.780 0) (effects (font (size 1.270 1.270))))
       (property "Value" "DF40C-100DS-0.4V(51)" (at 0 -17.780 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_B2B_J32_LOGICAL" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Connector_Hirose_DF40:Hirose_DF40C-100DS-0.4V_2x50_P0.4mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "J32_0_1"
       (rectangle (start -12.700 15.240) (end 12.700 -15.240)
@@ -207,7 +207,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "J" (at 0 11.430 0) (effects (font (size 1.270 1.270))))
       (property "Value" "DF40C-100DS-0.4V(51)" (at 0 -11.430 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_B2B_J1_LOGICAL" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Connector_Hirose_DF40:Hirose_DF40C-100DS-0.4V_2x50_P0.4mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "J1_0_1"
       (rectangle (start -12.700 8.890) (end 12.700 -8.890)
@@ -389,7 +389,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (at 0 11.430 0) (effects (font (size 1.270 1.270))))
       (property "Value" "TPD4E05U06" (at 0 -11.430 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:TPD4E05U06_VERIFY" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Package_SON:USON-10_2.5x1.0mm_P0.5mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "U2_0_1"
       (rectangle (start -12.700 8.890) (end 12.700 -8.890)
@@ -430,7 +430,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (at 0 10.160 0) (effects (font (size 1.270 1.270))))
       (property "Value" "TPD4E05U06" (at 0 -10.160 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:TPD4E05U06_VERIFY" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Package_SON:USON-10_2.5x1.0mm_P0.5mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "U16_0_1"
       (rectangle (start -12.700 7.620) (end 12.700 -7.620)
@@ -463,7 +463,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (at 0 8.890 0) (effects (font (size 1.270 1.270))))
       (property "Value" "LP5907-3.3 (low-noise LDO)" (at 0 -8.890 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_4P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "U3_0_1"
       (rectangle (start -12.700 6.350) (end 12.700 -6.350)
@@ -639,7 +639,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "MK" (at 0 10.160 0) (effects (font (size 1.270 1.270))))
       (property "Value" "SPH0641LU4H-1" (at 0 -10.160 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_5P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Sensor_Audio:Knowles_LGA-5_3.5x2.65mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "MK1_0_1"
       (rectangle (start -12.700 7.620) (end 12.700 -7.620)
@@ -672,7 +672,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "MK" (at 0 10.160 0) (effects (font (size 1.270 1.270))))
       (property "Value" "SPH0641LU4H-1" (at 0 -10.160 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_5P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Sensor_Audio:Knowles_LGA-5_3.5x2.65mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "MK2_0_1"
       (rectangle (start -12.700 7.620) (end 12.700 -7.620)
@@ -705,7 +705,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (at 0 12.700 0) (effects (font (size 1.270 1.270))))
       (property "Value" "MAX98357AETE+T" (at 0 -12.700 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_9P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Package_DFN_QFN:QFN-16-1EP_3x3mm_P0.5mm_EP1.45x1.45mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "U4_0_1"
       (rectangle (start -12.700 10.160) (end 12.700 -10.160)
@@ -838,7 +838,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "J" (at 0 7.620 0) (effects (font (size 1.270 1.270))))
       (property "Value" "JST-SH 2p (spkr)" (at 0 -7.620 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_2P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Connector_JST:JST_SH_BM02B-SRSS-TB_1x02-1MP_P1.00mm_Vertical" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "J3_0_1"
       (rectangle (start -12.700 5.080) (end 12.700 -5.080)
@@ -880,7 +880,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "J" (at 0 11.430 0) (effects (font (size 1.270 1.270))))
       (property "Value" "GCT USB4085 (USB2)" (at 0 -11.430 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_7P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Connector_USB:USB_C_Receptacle_GCT_USB4085" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "J4_0_1"
       (rectangle (start -12.700 8.890) (end 12.700 -8.890)
@@ -921,7 +921,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (at 0 8.890 0) (effects (font (size 1.270 1.270))))
       (property "Value" "TPD2E009" (at 0 -8.890 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:TPD2E009_VERIFY" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-553" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "U5_0_1"
       (rectangle (start -12.700 6.350) (end 12.700 -6.350)
@@ -1009,7 +1009,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (at 0 8.890 0) (effects (font (size 1.270 1.270))))
       (property "Value" "TPS25940 (e-fuse, opt)" (at 0 -8.890 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_4P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Package_DFN_QFN:Texas_RGP0020H_VQFN-20-1EP_4x4mm_P0.5mm_EP2.4x2.4mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "U15_0_1"
       (rectangle (start -12.700 6.350) (end 12.700 -6.350)
@@ -1080,7 +1080,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (at 0 8.890 0) (effects (font (size 1.270 1.270))))
       (property "Value" "TLV75733 (LDO)" (at 0 -8.890 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_3P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "U12_0_1"
       (rectangle (start -12.700 6.350) (end 12.700 -6.350)
@@ -1105,7 +1105,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (at 0 8.890 0) (effects (font (size 1.270 1.270))))
       (property "Value" "TLV75718 (LDO)" (at 0 -8.890 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_3P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "U13_0_1"
       (rectangle (start -12.700 6.350) (end 12.700 -6.350)
@@ -1256,7 +1256,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (at 0 10.160 0) (effects (font (size 1.270 1.270))))
       (property "Value" "TPS61022 (Boost)" (at 0 -10.160 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_5P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Package_DFN_QFN:Texas_RWU0007A_VQFN-7_2x2mm_P0.5mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "U6_0_1"
       (rectangle (start -12.700 7.620) (end 12.700 -7.620)
@@ -1331,7 +1331,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (at 0 11.430 0) (effects (font (size 1.270 1.270))))
       (property "Value" "BQ25180" (at 0 -11.430 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_8P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Package_BGA:Texas_DSBGA-12_1.36x1.86mm_Layout3x4_P0.5mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "U7_0_1"
       (rectangle (start -12.700 8.890) (end 12.700 -8.890)
@@ -1376,7 +1376,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (at 0 8.890 0) (effects (font (size 1.270 1.270))))
       (property "Value" "BQ29700" (at 0 -8.890 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_3P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "U8_0_1"
       (rectangle (start -12.700 6.350) (end 12.700 -6.350)
@@ -1401,7 +1401,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (at 0 10.160 0) (effects (font (size 1.270 1.270))))
       (property "Value" "MAX17048" (at 0 -10.160 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_6P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Package_DFN_QFN:DFN-8-1EP_2x3mm_P0.5mm_EP0.61x2.2mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "U9_0_1"
       (rectangle (start -12.700 7.620) (end 12.700 -7.620)
@@ -1438,7 +1438,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "J" (at 0 8.890 0) (effects (font (size 1.270 1.270))))
       (property "Value" "JST-PH 3p" (at 0 -8.890 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_3P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Connector_JST:JST_PH_S3B-PH-SM4-TB_1x03-1MP_P2.00mm_Horizontal" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "J5_0_1"
       (rectangle (start -12.700 6.350) (end 12.700 -6.350)
@@ -1505,7 +1505,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (at 0 10.160 0) (effects (font (size 1.270 1.270))))
       (property "Value" "ICM-42688-P" (at 0 -10.160 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_5P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Package_LGA:LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "U10_0_1"
       (rectangle (start -12.700 7.620) (end 12.700 -7.620)
@@ -1580,7 +1580,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (at 0 10.160 0) (effects (font (size 1.270 1.270))))
       (property "Value" "DRV2605L" (at 0 -10.160 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_6P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Package_SO:MSOP-10_3x3mm_P0.5mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "U11_0_1"
       (rectangle (start -12.700 7.620) (end 12.700 -7.620)
@@ -1617,7 +1617,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "J" (at 0 7.620 0) (effects (font (size 1.270 1.270))))
       (property "Value" "JST-SH 2p" (at 0 -7.620 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_2P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Connector_JST:JST_SH_BM02B-SRSS-TB_1x02-1MP_P1.00mm_Vertical" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "J6_0_1"
       (rectangle (start -12.700 5.080) (end 12.700 -5.080)
@@ -1638,7 +1638,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (at 0 12.700 0) (effects (font (size 1.270 1.270))))
       (property "Value" "MAX-M10S-00B-01" (at 0 -12.700 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_9P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "RF_GPS:ublox_MAX" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "U14_0_1"
       (rectangle (start -12.700 10.160) (end 12.700 -10.160)
@@ -1813,7 +1813,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "J" (at 0 7.620 0) (effects (font (size 1.270 1.270))))
       (property "Value" "U.FL / IPEX" (at 0 -7.620 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_2P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "J8_0_1"
       (rectangle (start -12.700 5.080) (end 12.700 -5.080)
@@ -1989,7 +1989,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "TP" (at 0 7.620 0) (effects (font (size 1.270 1.270))))
       (property "Value" "TestPoint 1.0mm" (at 0 -7.620 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_TP_1P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "TP1_0_1"
       (rectangle (start -12.700 5.080) (end 12.700 -5.080)
@@ -2006,7 +2006,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "TP" (at 0 7.620 0) (effects (font (size 1.270 1.270))))
       (property "Value" "TestPoint 1.0mm" (at 0 -7.620 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_TP_1P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "TP2_0_1"
       (rectangle (start -12.700 5.080) (end 12.700 -5.080)
@@ -2023,7 +2023,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "TP" (at 0 7.620 0) (effects (font (size 1.270 1.270))))
       (property "Value" "TestPoint 1.0mm" (at 0 -7.620 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_TP_1P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "TP3_0_1"
       (rectangle (start -12.700 5.080) (end 12.700 -5.080)
@@ -2040,7 +2040,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "TP" (at 0 7.620 0) (effects (font (size 1.270 1.270))))
       (property "Value" "TestPoint 1.0mm" (at 0 -7.620 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_TP_1P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "TP4_0_1"
       (rectangle (start -12.700 5.080) (end 12.700 -5.080)
@@ -2057,7 +2057,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "TP" (at 0 7.620 0) (effects (font (size 1.270 1.270))))
       (property "Value" "TestPoint 1.0mm" (at 0 -7.620 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_TP_1P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "TP5_0_1"
       (rectangle (start -12.700 5.080) (end 12.700 -5.080)
@@ -2074,7 +2074,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "TP" (at 0 7.620 0) (effects (font (size 1.270 1.270))))
       (property "Value" "TestPoint 1.0mm" (at 0 -7.620 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_TP_1P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "TP6_0_1"
       (rectangle (start -12.700 5.080) (end 12.700 -5.080)
@@ -2091,7 +2091,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "TP" (at 0 7.620 0) (effects (font (size 1.270 1.270))))
       (property "Value" "TestPoint 1.0mm" (at 0 -7.620 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_TP_1P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "TP7_0_1"
       (rectangle (start -12.700 5.080) (end 12.700 -5.080)
@@ -2108,7 +2108,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "TP" (at 0 7.620 0) (effects (font (size 1.270 1.270))))
       (property "Value" "TestPoint 1.0mm" (at 0 -7.620 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_TP_1P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "TP8_0_1"
       (rectangle (start -12.700 5.080) (end 12.700 -5.080)
@@ -2125,7 +2125,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "TP" (at 0 7.620 0) (effects (font (size 1.270 1.270))))
       (property "Value" "TestPoint 1.0mm" (at 0 -7.620 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_TP_1P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "TP9_0_1"
       (rectangle (start -12.700 5.080) (end 12.700 -5.080)
@@ -2142,7 +2142,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "TP" (at 0 7.620 0) (effects (font (size 1.270 1.270))))
       (property "Value" "TestPoint 1.0mm" (at 0 -7.620 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_TP_1P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "TP10_0_1"
       (rectangle (start -12.700 5.080) (end 12.700 -5.080)
@@ -2159,7 +2159,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "TP" (at 0 7.620 0) (effects (font (size 1.270 1.270))))
       (property "Value" "TestPoint 1.0mm" (at 0 -7.620 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_TP_1P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "TP11_0_1"
       (rectangle (start -12.700 5.080) (end 12.700 -5.080)
@@ -2176,7 +2176,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "TP" (at 0 7.620 0) (effects (font (size 1.270 1.270))))
       (property "Value" "TestPoint 1.0mm" (at 0 -7.620 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_TP_1P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "TP12_0_1"
       (rectangle (start -12.700 5.080) (end 12.700 -5.080)
@@ -2193,7 +2193,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "TP" (at 0 7.620 0) (effects (font (size 1.270 1.270))))
       (property "Value" "TestPoint 1.0mm" (at 0 -7.620 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_TP_1P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "TP13_0_1"
       (rectangle (start -12.700 5.080) (end 12.700 -5.080)
@@ -2210,7 +2210,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "TP" (at 0 7.620 0) (effects (font (size 1.270 1.270))))
       (property "Value" "TestPoint 1.0mm" (at 0 -7.620 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_TP_1P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "TP14_0_1"
       (rectangle (start -12.700 5.080) (end 12.700 -5.080)
@@ -2227,7 +2227,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "TP" (at 0 7.620 0) (effects (font (size 1.270 1.270))))
       (property "Value" "TestPoint 1.0mm" (at 0 -7.620 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_TP_1P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "TP15_0_1"
       (rectangle (start -12.700 5.080) (end 12.700 -5.080)
@@ -2244,7 +2244,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "TP" (at 0 7.620 0) (effects (font (size 1.270 1.270))))
       (property "Value" "TestPoint 1.0mm" (at 0 -7.620 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_TP_1P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "TP16_0_1"
       (rectangle (start -12.700 5.080) (end 12.700 -5.080)
@@ -2261,7 +2261,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "SW" (at 0 7.620 0) (effects (font (size 1.270 1.270))))
       (property "Value" "Tact SW SMD" (at 0 -7.620 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_2P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "SW1_0_1"
       (rectangle (start -12.700 5.080) (end 12.700 -5.080)
@@ -2282,7 +2282,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "SW" (at 0 7.620 0) (effects (font (size 1.270 1.270))))
       (property "Value" "Tact SW SMD" (at 0 -7.620 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_2P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "SW2_0_1"
       (rectangle (start -12.700 5.080) (end 12.700 -5.080)
@@ -2303,7 +2303,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "SW" (at 0 7.620 0) (effects (font (size 1.270 1.270))))
       (property "Value" "Tact SW SMD" (at 0 -7.620 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:VERIFY_2P" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "SW3_0_1"
       (rectangle (start -12.700 5.080) (end 12.700 -5.080)
@@ -2618,7 +2618,7 @@
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "D" (at 0 7.620 0) (effects (font (size 1.270 1.270))))
       (property "Value" "ESD low-cap RF 0.3pF" (at 0 -7.620 0) (effects (font (size 1.270 1.270))))
-      (property "Footprint" "AI_Glasses:RF_ESD_2P_VERIFY" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
+      (property "Footprint" "Diode_SMD:D_SOD-882" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.270 1.270)) hide))
     (symbol "D4_0_1"
       (rectangle (start -12.700 5.080) (end 12.700 -5.080)

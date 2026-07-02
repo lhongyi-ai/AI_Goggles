@@ -1,0 +1,519 @@
+{
+  "analyzer_type": "emc",
+  "schema_version": "1.3.0",
+  "summary": {
+    "total_findings": 8,
+    "categories_checked": 4,
+    "active": 8,
+    "suppressed": 0,
+    "by_severity": {
+      "error": 1,
+      "warning": 2,
+      "info": 5
+    },
+    "emc_risk_score": 85.0
+  },
+  "target_standard": "fcc-class-b",
+  "findings": [
+    {
+      "category": "ground_plane",
+      "severity": "info",
+      "rule_id": "GP-001",
+      "confidence": "deterministic",
+      "title": "Return path analysis data not available",
+      "description": "PCB analysis did not include return path continuity data. Run the PCB analyzer with --full flag to enable GP-001 reference plane coverage checking.",
+      "components": [],
+      "nets": [],
+      "recommendation": "Re-run PCB analysis with: python3 analyze_pcb.py <file> --full",
+      "detector": "emc_ground_plane",
+      "summary": "Return path analysis data not available",
+      "pins": [],
+      "evidence_source": "topology",
+      "report_context": {
+        "section": "Ground Plane",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ]
+    },
+    {
+      "category": "ground_plane",
+      "severity": "error",
+      "rule_id": "GP-002",
+      "confidence": "deterministic",
+      "title": "No ground plane zones detected",
+      "description": "Board has 6 copper layers but no ground plane zones were found. A solid ground plane is the single most important EMC design feature.",
+      "components": [],
+      "nets": [],
+      "recommendation": "Add a solid ground pour on at least one inner layer.",
+      "detector": "emc_ground_plane",
+      "summary": "No ground plane zones detected",
+      "pins": [],
+      "evidence_source": "topology",
+      "report_context": {
+        "section": "Ground Plane",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ]
+    },
+    {
+      "category": "via_stitching",
+      "severity": "warning",
+      "rule_id": "VS-001",
+      "confidence": "heuristic",
+      "title": "Via stitching may be insufficient",
+      "description": "Board has 0 vias across 3850 mm\u00b2 (no vias detected). For the highest frequency on this board (150 MHz), \u03bb/20 stitching requires \u226448mm spacing.",
+      "components": [],
+      "nets": [],
+      "recommendation": "Add ground stitching vias at \u226448mm intervals, especially at board edges and near connectors.",
+      "detector": "emc_via_stitching",
+      "summary": "Via stitching may be insufficient",
+      "pins": [],
+      "evidence_source": "heuristic_rule",
+      "report_context": {
+        "section": "Via Stitching",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ]
+    },
+    {
+      "category": "emission_estimate",
+      "severity": "info",
+      "rule_id": "EE-001",
+      "confidence": "heuristic",
+      "title": "Board cavity resonance frequencies",
+      "description": "Board (70\u00d755mm, \u03b5r=4.4) cavity resonances: (1,0) at 1021 MHz; (0,1) at 1299 MHz; (1,1) at 1652 MHz; (2,0) at 2042 MHz; (2,1) at 2420 MHz. PDN impedance spikes at these frequencies. Ensure adequate decoupling at and around these frequencies.",
+      "components": [],
+      "nets": [],
+      "recommendation": "Add decoupling capacitors with SRF near these frequencies.",
+      "detector": "emc_emission_estimate",
+      "summary": "Board cavity resonance frequencies",
+      "pins": [],
+      "evidence_source": "heuristic_rule",
+      "report_context": {
+        "section": "Emission Estimate",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "schematic"
+      ]
+    },
+    {
+      "category": "switching_emc",
+      "severity": "warning",
+      "rule_id": "SW-001",
+      "confidence": "heuristic",
+      "title": "U6 harmonics in 30-88 MHz band",
+      "description": "U6 (TPS61022 (Boost)) switching at 0.5 MHz has 117 harmonics in the 30-88 MHz band (harmonics 60-176). Envelope rolloff at 32 MHz (-40 dB/decade above).",
+      "components": [
+        "U6"
+      ],
+      "nets": [],
+      "recommendation": "Minimize switching loop area for U6. Place input cap as close as possible. Consider spread-spectrum modulation if available.",
+      "detector": "emc_switching_emc",
+      "summary": "U6 harmonics in 30-88 MHz band",
+      "pins": [],
+      "evidence_source": "heuristic_rule",
+      "report_context": {
+        "section": "Switching Emc",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ]
+    },
+    {
+      "category": "switching_emc",
+      "severity": "info",
+      "rule_id": "SW-001",
+      "confidence": "heuristic",
+      "title": "U6 harmonics in 88-216 MHz band",
+      "description": "U6 (TPS61022 (Boost)) switching at 0.5 MHz has 257 harmonics in the 88-216 MHz band (harmonics 176-432). Envelope rolloff at 32 MHz (-40 dB/decade above).",
+      "components": [
+        "U6"
+      ],
+      "nets": [],
+      "recommendation": "Minimize switching loop area for U6. Place input cap as close as possible. Consider spread-spectrum modulation if available.",
+      "detector": "emc_switching_emc",
+      "summary": "U6 harmonics in 88-216 MHz band",
+      "pins": [],
+      "evidence_source": "heuristic_rule",
+      "report_context": {
+        "section": "Switching Emc",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ]
+    },
+    {
+      "category": "switching_emc",
+      "severity": "info",
+      "rule_id": "SW-001",
+      "confidence": "heuristic",
+      "title": "U6 harmonics in 216-960 MHz band",
+      "description": "U6 (TPS61022 (Boost)) switching at 0.5 MHz has 1489 harmonics in the 216-960 MHz band (harmonics 432-1920). Envelope rolloff at 32 MHz (-40 dB/decade above).",
+      "components": [
+        "U6"
+      ],
+      "nets": [],
+      "recommendation": "Minimize switching loop area for U6. Place input cap as close as possible. Consider spread-spectrum modulation if available.",
+      "detector": "emc_switching_emc",
+      "summary": "U6 harmonics in 216-960 MHz band",
+      "pins": [],
+      "evidence_source": "heuristic_rule",
+      "report_context": {
+        "section": "Switching Emc",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ]
+    },
+    {
+      "category": "emission_estimate",
+      "severity": "info",
+      "rule_id": "EE-002",
+      "confidence": "heuristic",
+      "title": "U6 harmonic envelope",
+      "description": "U6 (TPS61022 (Boost)) switching at 0.50 MHz, duty \u224850%. Harmonic envelope: flat to 0.3 MHz, -20 dB/dec to 32 MHz, -40 dB/dec above. Harmonics extend into FCC test range starting at 60th harmonic.",
+      "components": [
+        "U6"
+      ],
+      "nets": [],
+      "recommendation": "Minimize the hot loop area (input cap \u2192 high-side switch \u2192 inductor \u2192 low-side switch \u2192 input cap). Every halving of loop area reduces emissions by 6 dB.",
+      "detector": "emc_emission_estimate",
+      "summary": "U6 harmonic envelope",
+      "pins": [],
+      "evidence_source": "heuristic_rule",
+      "report_context": {
+        "section": "Emission Estimate",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "schematic"
+      ]
+    }
+  ],
+  "per_net_scores": [],
+  "test_plan": {
+    "frequency_bands": [
+      {
+        "band": "30-88 MHz",
+        "freq_min_hz": 30000000.0,
+        "freq_max_hz": 88000000.0,
+        "risk_level": "low",
+        "source_count": 1,
+        "sources": [
+          "U6 (TPS61022 (Boost)) harmonics 60-176"
+        ]
+      },
+      {
+        "band": "88-216 MHz",
+        "freq_min_hz": 88000000.0,
+        "freq_max_hz": 216000000.0,
+        "risk_level": "low",
+        "source_count": 1,
+        "sources": [
+          "U6 (TPS61022 (Boost)) harmonics 176-432"
+        ]
+      },
+      {
+        "band": "216-960 MHz",
+        "freq_min_hz": 216000000.0,
+        "freq_max_hz": 960000000.0,
+        "risk_level": "low",
+        "source_count": 1,
+        "sources": [
+          "U6 (TPS61022 (Boost)) harmonics 432-1920"
+        ]
+      },
+      {
+        "band": "960-40000 MHz",
+        "freq_min_hz": 960000000.0,
+        "freq_max_hz": 40000000000.0,
+        "risk_level": "low",
+        "source_count": 1,
+        "sources": [
+          "U6 (TPS61022 (Boost)) harmonics 1920-80000"
+        ]
+      }
+    ],
+    "interface_risks": [],
+    "probe_points": []
+  },
+  "regulatory_coverage": {
+    "market": "us",
+    "applicable_standards": [
+      "FCC Part 15 Class B",
+      "FCC Part 15 Class B"
+    ],
+    "coverage_matrix": [
+      {
+        "standard": "FCC Part 15 Class B",
+        "test_type": "radiated",
+        "coverage": "minimal",
+        "checked_rules": [
+          "GP-001",
+          "GP-002",
+          "SW-001",
+          "VS-001",
+          "EE-001",
+          "EE-002"
+        ],
+        "total_applicable_rules": 23,
+        "note": "Design rule checks identify common radiation sources. Cannot predict absolute emission levels."
+      },
+      {
+        "standard": "FCC Part 15 Class B",
+        "test_type": "conducted",
+        "coverage": "partial",
+        "checked_rules": [
+          "SW-001",
+          "EE-002"
+        ],
+        "total_applicable_rules": 4,
+        "note": "Switching harmonic analysis and decoupling checks. EMI filter verification not yet implemented."
+      }
+    ]
+  },
+  "category_summary": {
+    "ground_plane": {
+      "count": 2,
+      "max_severity": "error",
+      "severities": {
+        "error": 1,
+        "warning": 0,
+        "info": 1
+      },
+      "suppressed_count": 0
+    },
+    "via_stitching": {
+      "count": 1,
+      "max_severity": "warning",
+      "severities": {
+        "error": 0,
+        "warning": 1,
+        "info": 0
+      },
+      "suppressed_count": 0
+    },
+    "emission_estimate": {
+      "count": 2,
+      "max_severity": "info",
+      "severities": {
+        "error": 0,
+        "warning": 0,
+        "info": 2
+      },
+      "suppressed_count": 0
+    },
+    "switching_emc": {
+      "count": 3,
+      "max_severity": "warning",
+      "severities": {
+        "error": 0,
+        "warning": 1,
+        "info": 2
+      },
+      "suppressed_count": 0
+    }
+  },
+  "board_info": {
+    "board_width_mm": 70.0,
+    "board_height_mm": 55.0,
+    "layer_count": 0,
+    "footprint_count": 4,
+    "via_count": 0,
+    "has_stackup": false,
+    "total_components": 102,
+    "total_nets": 78
+  },
+  "elapsed_s": 0.003,
+  "audience_summary": {
+    "designer": {
+      "total_findings": 8,
+      "by_severity": {
+        "error": 1,
+        "warning": 2,
+        "info": 5
+      },
+      "by_category": {
+        "ground_plane": 2,
+        "via_stitching": 1,
+        "emission_estimate": 2,
+        "switching_emc": 3
+      },
+      "top_issues": [
+        {
+          "category": "ground_plane",
+          "severity": "error",
+          "rule_id": "GP-002",
+          "confidence": "deterministic",
+          "title": "No ground plane zones detected",
+          "description": "Board has 6 copper layers but no ground plane zones were found. A solid ground plane is the single most important EMC design feature.",
+          "components": [],
+          "nets": [],
+          "recommendation": "Add a solid ground pour on at least one inner layer.",
+          "detector": "emc_ground_plane",
+          "summary": "No ground plane zones detected",
+          "pins": [],
+          "evidence_source": "topology",
+          "report_context": {
+            "section": "Ground Plane",
+            "impact": "",
+            "standard_ref": ""
+          },
+          "suppressed": false,
+          "suppression_reason": "",
+          "stages": [
+            "layout"
+          ]
+        },
+        {
+          "category": "via_stitching",
+          "severity": "warning",
+          "rule_id": "VS-001",
+          "confidence": "heuristic",
+          "title": "Via stitching may be insufficient",
+          "description": "Board has 0 vias across 3850 mm\u00b2 (no vias detected). For the highest frequency on this board (150 MHz), \u03bb/20 stitching requires \u226448mm spacing.",
+          "components": [],
+          "nets": [],
+          "recommendation": "Add ground stitching vias at \u226448mm intervals, especially at board edges and near connectors.",
+          "detector": "emc_via_stitching",
+          "summary": "Via stitching may be insufficient",
+          "pins": [],
+          "evidence_source": "heuristic_rule",
+          "report_context": {
+            "section": "Via Stitching",
+            "impact": "",
+            "standard_ref": ""
+          },
+          "suppressed": false,
+          "suppression_reason": "",
+          "stages": [
+            "layout"
+          ]
+        },
+        {
+          "category": "switching_emc",
+          "severity": "warning",
+          "rule_id": "SW-001",
+          "confidence": "heuristic",
+          "title": "U6 harmonics in 30-88 MHz band",
+          "description": "U6 (TPS61022 (Boost)) switching at 0.5 MHz has 117 harmonics in the 30-88 MHz band (harmonics 60-176). Envelope rolloff at 32 MHz (-40 dB/decade above).",
+          "components": [
+            "U6"
+          ],
+          "nets": [],
+          "recommendation": "Minimize switching loop area for U6. Place input cap as close as possible. Consider spread-spectrum modulation if available.",
+          "detector": "emc_switching_emc",
+          "summary": "U6 harmonics in 30-88 MHz band",
+          "pins": [],
+          "evidence_source": "heuristic_rule",
+          "report_context": {
+            "section": "Switching Emc",
+            "impact": "",
+            "standard_ref": ""
+          },
+          "suppressed": false,
+          "suppression_reason": "",
+          "stages": [
+            "layout"
+          ]
+        }
+      ]
+    },
+    "reviewer": {
+      "total_findings": 3,
+      "by_category": {
+        "ground_plane": 1,
+        "via_stitching": 1,
+        "switching_emc": 1
+      },
+      "top_issues": [
+        {
+          "rule_id": "GP-002",
+          "severity": "error",
+          "summary": "No ground plane zones detected",
+          "recommendation": "Add a solid ground pour on at least one inner layer.",
+          "category": "ground_plane"
+        },
+        {
+          "rule_id": "VS-001",
+          "severity": "warning",
+          "summary": "Via stitching may be insufficient",
+          "recommendation": "Add ground stitching vias at \u226448mm intervals, especially at board edges and near connectors.",
+          "category": "via_stitching"
+        },
+        {
+          "rule_id": "SW-001",
+          "severity": "warning",
+          "summary": "U6 harmonics in 30-88 MHz band",
+          "recommendation": "Minimize switching loop area for U6. Place input cap as close as possible. Consider spread-spectrum modulation if available.",
+          "category": "switching_emc"
+        }
+      ]
+    },
+    "manager": {
+      "risk_level": "moderate",
+      "blocker_count": 1,
+      "warning_count": 2,
+      "stage_readiness": {
+        "schematic": "pass",
+        "layout": "needs_work",
+        "pre_fab": "pass",
+        "bring_up": "pass"
+      },
+      "one_liner": "1 error, 2 warnings across 3 categories. Layout stage has blockers."
+    }
+  },
+  "trust_summary": {
+    "total_findings": 8,
+    "trust_level": "low",
+    "by_confidence": {
+      "deterministic": 2,
+      "heuristic": 6,
+      "datasheet-backed": 0
+    },
+    "by_evidence_source": {
+      "datasheet": 0,
+      "topology": 2,
+      "heuristic_rule": 6,
+      "symbol_footprint": 0,
+      "bom": 0,
+      "geometry": 0,
+      "api_lookup": 0
+    },
+    "provenance_coverage_pct": 0.0
+  }
+}

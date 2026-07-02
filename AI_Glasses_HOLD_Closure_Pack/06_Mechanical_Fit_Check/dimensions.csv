@@ -1,0 +1,3 @@
+model,length_mm,width_mm,thickness_mm,purpose
+LP451165_nominal,65,11,4.5,Nominal public cell dimensions only
+LP451165_clearance_envelope,70,12.8,5.6,Early CAD clearance envelope pending supplier drawing

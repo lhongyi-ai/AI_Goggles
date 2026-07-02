@@ -154,7 +154,8 @@ def write_isolation_matrix() -> None:
     w("- RK3576, camera, Wi-Fi and audio domains must remain off with nRF reset or firmware hung.")
     w("- Any signal into a powered-down RK3576/camera/Wi-Fi domain needs measured leakage or isolation.")
     w("- Load switches with quick-output-discharge must prove the off-domain rail collapses fast enough.")
-    w("- FPC crossings need the same default-state review as board-local crossings.")
+    w("- Front/camera FPC crossings need the same default-state review as board-local crossings.")
+    w("- Hinge electrical interconnect is out of scope for Chip-down EVT V2.0: no hinge FPC footprint, no cross-hinge battery, MIPI, USB or audio wiring.")
 
     (DOCS / "09_power_domain_isolation_matrix.md").write_text("\n".join(md) + "\n", encoding="utf-8")
 
@@ -162,6 +163,8 @@ def write_isolation_matrix() -> None:
 def footprint_status(footprint: str) -> str:
     if not footprint:
         return "MISSING"
+    if "NO_BOARD_FOOTPRINT" in footprint:
+        return "pack-internal / harness block; no PCB land pattern to place"
     if "VERIFY" in footprint:
         return "VERIFY placeholder; not layout/fab ready"
     if footprint.startswith(("Package_", "Connector_", "Button_")):
@@ -206,7 +209,8 @@ def write_footprint_register() -> None:
 
 
 GATES = [
-    ("G00", "Mechanical/battery layout gate", "HOLD", "real cell fit, swell room, hinge FPC, antenna keep-out, no battery over RK3576/PMIC"),
+    ("G00", "Mechanical/battery layout gate", "HOLD", "real cell fit, swell room, fixed-temple cable/tab exits, antenna keep-out, no battery over RK3576/PMIC/boost"),
+    ("G00F", "Phase 1.5 mechanical/electrical floorplan", "HOLD", "dimensioned top/side floorplan + no-route KiCad placement envelopes prove all critical parts fit before routing"),
     ("G01", "RK3576 identity + HDG", "OPEN", "full datasheet/HDG/ball map, package drawing, reference-design delta plan"),
     ("G02", "LPDDR4X", "OPEN", "verified MPN, topology, placement, length report, DDR review"),
     ("G03", "RK806S PMIC", "OPEN", "exact MPN, rails, inductors/caps, sequence/timing with RK3576"),
@@ -218,7 +222,7 @@ GATES = [
     ("G09", "Thermal/boost droop", "OPEN", "RK3576 burst thermal path, TPS61088/RK806 droop and UVLO margin"),
     ("G10", "Camera module", "HOLD", "final IMX415 module FPC pinout, lens/FOV, lane count, rail current/timing"),
     ("G11", "Mic/audio topology", "OPEN", "mic coordinates, ports, wind/AEC/beamforming, NDP120 wake path"),
-    ("G12", "FPC/hinge", "HOLD", "front FPC pin count, impedance, bend radius, hinge life and interference"),
+    ("G12", "Camera/front FPC interconnect", "HOLD", "FH26W-33S pin count/contact orientation, camera FPC impedance, module vendor sign-off; hinge electrical interconnect is out of scope"),
     ("G13", "Magnetics/passives height", "OPEN", "inductor Isat/DCR/height, cap derating, wearable Z limits"),
     ("G14", "RF/worn tune", "OPEN", "antenna SKU, keep-out, matching in shell and worn condition"),
     ("G15", "Passive/manufacturing BOM", "OPEN", "expanded R/C/L MPNs, derating, lifecycle and alternates"),
@@ -230,7 +234,8 @@ HOLD_CLOSURE = [
     ("LP451165 cell", "HOLD", "Formal supplier datasheet, discharge curves, IR, cycle life, high-rate limit, certification, swell envelope", "AI_Glasses_HOLD_Closure_Pack/03_Battery_LP451165_1S2P", "Blocks BT1/BT2 and mechanical Gate 0"),
     ("1S2P pack", "HOLD", "Pairing rules, fusing, NTC placement, current-share shunts, protection scheme, charge/gauge profiling", "AI_Glasses_HOLD_Closure_Pack/03_Battery_LP451165_1S2P", "Blocks G07/G08/G00"),
     ("Camera power current", "HOLD", "Custom IMX415 module rail currents/timing/FPC pinout beyond bare sensor datasheet", "AI_Glasses_HOLD_Closure_Pack/04_IMX415", "Blocks U14, CAM rails and G10"),
-    ("Battery bay dimensions", "HOLD", "Real dummy-cell assembly, foam/swell allowance, hinge FPC path, antenna and speaker interference", "AI_Glasses_HOLD_Closure_Pack/06_Mechanical_Fit_Check", "Blocks PCB layout start"),
+    ("Battery bay dimensions", "HOLD", "Real dummy-cell assembly, foam/swell allowance, tab/cable exit, antenna and speaker interference", "AI_Glasses_HOLD_Closure_Pack/06_Mechanical_Fit_Check", "Blocks PCB layout start"),
+    ("Phase 1.5 floorplan", "HOLD", "Right/left temple dimension tables, no-route KiCad floorplan, antenna/speaker/FPC/pogo/thermal keep-outs, pass/fail decision", "v2_chipdown/docs/13_mechanical_electrical_floorplan.md", "Blocks formal PCB placement/routing"),
 ]
 
 
@@ -246,7 +251,7 @@ def write_layout_gate_status() -> None:
     w("## Verdict")
     w("")
     w("**PCB layout is NOT released.** The schematic is ERC-clean and useful for review, "
-      "procurement and bench planning, but Gate 0/G05/G07/G08/G10/G12 remain HOLD.")
+      "procurement and bench planning, but Gate 0/G00F/G05/G07/G08/G10/G12 remain HOLD.")
     w("")
     w(f"Current BOM state: **{len(COMPONENTS)} components** — {component_counts()}; "
       f"**{len(hold_refs)} HOLD** components.")
@@ -275,6 +280,7 @@ def write_layout_gate_status() -> None:
     w("## Allowed next work before layout release")
     w("")
     w("- Keep the functional schematic and generated docs current.")
+    w("- Complete Phase 1.5: dimensioned mechanical/electrical floorplan + no-route KiCad placement-envelope check.")
     w("- Procure missing datasheets/dev kits and run the AON/power bench tests.")
     w("- Build only small validation fixtures or dev-kit harnesses; do not start production PCB placement/copper.")
 

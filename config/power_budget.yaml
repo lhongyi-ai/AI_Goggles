@@ -1,0 +1,52 @@
+# AI Glasses Carrier V1 - power budget (ESTIMATE, pre-measurement).
+# Fill the `measured_mW` columns during bring-up (current via the R3 0R/shunt on
+# the +5V rail); the script recomputes runtime + required battery capacity.
+#
+# mW values are LOAD power at each subsystem's own rail. Battery-side current adds
+# the boost conversion loss (boost_efficiency). These are engineering estimates
+# from datasheet typicals, NOT bench-measured values.
+
+constants:
+  v_batt_nominal_V: 3.7      # 1S Li-Po nominal
+  boost_efficiency: 0.90     # TPS61022 3.7V -> 5V typical
+  usable_dod: 0.90           # usable depth-of-discharge (protect cycle life / cutoff)
+
+packs:                        # candidate batteries to size against
+  - {name: "V1 bench 103450", mAh: 2000}
+  - {name: "Glasses pack (2-3 cells)", mAh: 650}
+
+target_runtimes_h: [1, 2, 3, 4]
+
+scenarios: [idle, typical, full]
+
+subsystems:
+  - name: "CM4 (RK3576 SoC + LPDDR4X + eMMC)"
+    mW: {idle: 450, typical: 2000, full: 2900}
+    note: "Dominant load; NPU AI + camera ISP + H.265 encode drive the peaks"
+  - name: "Wi-Fi / BT radio (on CM4)"
+    mW: {idle: 50, typical: 200, full: 750}
+    note: "TX bursts; radio is on the CM4 module"
+  - name: "Camera IMX415 (4-lane MIPI)"
+    mW: {idle: 0, typical: 400, full: 450}
+    note: "Off in idle; streaming otherwise"
+  - name: "Audio amp + speaker (avg)"
+    mW: {idle: 0, typical: 150, full: 300}
+    note: "Class-D average for speech; short music peaks to ~3W not in the average"
+  - name: "PDM mics x2"
+    mW: {idle: 10, typical: 20, full: 20}
+    note: ""
+  - name: "GNSS MAX-M10S"
+    mW: {idle: 20, typical: 80, full: 80}
+    note: "~25 mA @3.3V during acquisition/tracking"
+  - name: "IMU ICM-42688-P"
+    mW: {idle: 1, typical: 1, full: 2}
+    note: "Low-power 6-axis"
+  - name: "Haptic DRV2605L (avg)"
+    mW: {idle: 0, typical: 0, full: 100}
+    note: "Only during a vibration pulse"
+  - name: "Status LEDs"
+    mW: {idle: 20, typical: 30, full: 30}
+    note: ""
+  - name: "LDO quiescent + regulation loss margin"
+    mW: {idle: 100, typical: 150, full: 200}
+    note: "3V3/1V8 LDO drop + headroom"

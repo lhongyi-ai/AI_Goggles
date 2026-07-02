@@ -24,3 +24,15 @@ generated/reports/*
 !generated/gerbers/.gitkeep
 !generated/logs/.gitkeep
 !generated/reports/.gitkeep
+
+# Local MCP server config (machine-specific abs paths)
+.mcp.json
+
+# kidoc PDF render venv (machine-specific)
+reports/.venv/
+
+# Local interactive/history artifacts
+.Rhistory
+**/.Rhistory
+.history/
+**/.history/

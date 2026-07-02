@@ -1,0 +1,98 @@
+{
+  "buses": [
+    {
+      "devices": [
+        {
+          "ref": "U10",
+          "role": "",
+          "value": "ICM-42688-P"
+        }
+      ],
+      "master": null,
+      "signals": [],
+      "type": "I2C"
+    },
+    {
+      "devices": [
+        {
+          "ref": "U10",
+          "role": "",
+          "value": "ICM-42688-P"
+        }
+      ],
+      "master": null,
+      "signals": [],
+      "type": "I2C"
+    },
+    {
+      "devices": [
+        {
+          "ref": "U7",
+          "role": "",
+          "value": "BQ25180"
+        },
+        {
+          "ref": "U9",
+          "role": "",
+          "value": "MAX17048"
+        }
+      ],
+      "master": null,
+      "signals": [],
+      "type": "I2C"
+    },
+    {
+      "devices": [
+        {
+          "ref": "U7",
+          "role": "",
+          "value": "BQ25180"
+        },
+        {
+          "ref": "U9",
+          "role": "",
+          "value": "MAX17048"
+        }
+      ],
+      "master": null,
+      "signals": [],
+      "type": "I2C"
+    },
+    {
+      "devices": [],
+      "master": null,
+      "signals": [],
+      "type": "UART"
+    },
+    {
+      "devices": [],
+      "master": null,
+      "signals": [],
+      "type": "UART"
+    },
+    {
+      "devices": [
+        {
+          "ref": "U14",
+          "role": "",
+          "value": "MAX-M10S-00B-01"
+        }
+      ],
+      "master": null,
+      "signals": [],
+      "type": "UART"
+    },
+    {
+      "devices": [
+        {
+          "ref": "U14",
+          "role": "",
+          "value": "MAX-M10S-00B-01"
+        }
+      ],
+      "master": null,
+      "signals": [],
+      "type": "UART"
+    }
+  ]
+}
